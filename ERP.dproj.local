@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2014/03/27 19:25:35.919.pas,C:\Users\Hanna\Documents\RAD Studio\Projects\Unit1.pas=C:\rapha\Meus Projetos\ERP\uPrincipal.pas</Transaction>
+    <Transaction>2014/03/27 19:25:35.920.dfm,C:\Users\Hanna\Documents\RAD Studio\Projects\Unit1.dfm=C:\rapha\Meus Projetos\ERP\uPrincipal.dfm</Transaction>
+    <Transaction>2014/03/27 19:25:49.766.dproj,C:\Users\Hanna\Documents\RAD Studio\Projects\Project1.dproj=C:\rapha\Meus Projetos\ERP\ERP.dproj</Transaction>
+    <Transaction>2014/03/27 19:31:25.197.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\Lst_CadastroERP.pas</Transaction>
+    <Transaction>2014/03/27 19:31:25.197.dfm,C:\rapha\Meus Projetos\ERP\Unit1.dfm=C:\rapha\Meus Projetos\ERP\Lst_CadastroERP.dfm</Transaction>
+    <Transaction>2014/03/27 19:32:23.712.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uCad_CadastroPaiERP.pas</Transaction>
+    <Transaction>2014/03/27 19:32:23.712.dfm,C:\rapha\Meus Projetos\ERP\Unit1.dfm=C:\rapha\Meus Projetos\ERP\uCad_CadastroPaiERP.dfm</Transaction>
+    <Transaction>2014/03/27 20:10:45.183.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uSQLERP.pas</Transaction>
+    <Transaction>2014/03/28 19:16:38.574.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uLibERP.pas</Transaction>
+    <Transaction>2014/03/31 19:26:37.454.pas,C:\rapha\Meus Projetos\ERP\uLibERP.pas=C:\rapha\Meus Projetos\ERP\uForms.pas</Transaction>
+    <Transaction>2014/04/01 18:38:36.349.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uCad_Funcionario.pas</Transaction>
+    <Transaction>2014/04/01 18:38:36.349.dfm,C:\rapha\Meus Projetos\ERP\Unit1.dfm=C:\rapha\Meus Projetos\ERP\uCad_Funcionario.dfm</Transaction>
+    <Transaction>2014/04/02 17:29:49.397.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uCad_Produto.pas</Transaction>
+    <Transaction>2014/04/02 17:29:49.397.dfm,C:\rapha\Meus Projetos\ERP\Unit1.dfm=C:\rapha\Meus Projetos\ERP\uCad_Produto.dfm</Transaction>
+    <Transaction>2014/04/04 19:26:41.046.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uRegrasProdutos.pas</Transaction>
+    <Transaction>2014/04/12 14:13:34.018.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uLst_Periodicidade.pas</Transaction>
+    <Transaction>2014/04/12 14:13:34.018.dfm,C:\rapha\Meus Projetos\ERP\Unit1.dfm=C:\rapha\Meus Projetos\ERP\uLst_Periodicidade.dfm</Transaction>
+    <Transaction>2014/04/12 15:21:40.550.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uLst_ContaBancaria.pas</Transaction>
+    <Transaction>2014/04/12 15:21:40.620.dfm,C:\rapha\Meus Projetos\ERP\Unit1.dfm=C:\rapha\Meus Projetos\ERP\uLst_ContaBancaria.dfm</Transaction>
+    <Transaction>2014/04/12 16:41:04.656.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uLst_CondicaoPagamento.pas</Transaction>
+    <Transaction>2014/04/12 16:41:04.693.dfm,C:\rapha\Meus Projetos\ERP\Unit1.dfm=C:\rapha\Meus Projetos\ERP\uLst_CondicaoPagamento.dfm</Transaction>
+    <Transaction>2014/04/12 16:49:02.263.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uConstantes.pas</Transaction>
+    <Transaction>2014/04/12 17:39:21.480.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uListagemPadraoERP.pas</Transaction>
+    <Transaction>2014/04/12 17:39:21.480.dfm,C:\rapha\Meus Projetos\ERP\Unit1.dfm=C:\rapha\Meus Projetos\ERP\uListagemPadraoERP.dfm</Transaction>
+    <Transaction>2014/04/12 17:44:47.155.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uLst_Proposta.pas</Transaction>
+    <Transaction>2014/04/12 17:44:47.155.dfm,C:\rapha\Meus Projetos\ERP\Unit1.dfm=C:\rapha\Meus Projetos\ERP\uLst_Proposta.dfm</Transaction>
+    <Transaction>2014/04/12 18:40:40.289.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uCad_proposta.pas</Transaction>
+    <Transaction>2014/04/12 18:40:40.289.dfm,C:\rapha\Meus Projetos\ERP\Unit1.dfm=C:\rapha\Meus Projetos\ERP\uCad_proposta.dfm</Transaction>
+    <Transaction>2014/04/14 20:16:43.748.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\uDlg_CadastroERP.pas</Transaction>
+    <Transaction>2014/04/14 20:16:43.748.dfm,C:\rapha\Meus Projetos\ERP\Unit1.dfm=C:\rapha\Meus Projetos\ERP\uDlg_CadastroERP.dfm</Transaction>
+    <Transaction>2014/04/14 20:17:49.948.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\udlg_ItensProposta.pas</Transaction>
+    <Transaction>2014/04/14 20:17:49.948.dfm,C:\rapha\Meus Projetos\ERP\Unit1.dfm=C:\rapha\Meus Projetos\ERP\udlg_ItensProposta.dfm</Transaction>
+    <Transaction>2014/04/21 16:36:40.273.pas,C:\rapha\Meus Projetos\ERP\Unit2.pas=C:\rapha\Meus Projetos\ERP\uRegras.pas</Transaction>
+    <Transaction>2014/04/21 16:37:19.512.pas,C:\rapha\Meus Projetos\ERP\Unit1.pas=C:\rapha\Meus Projetos\ERP\udlgCondicaoPagamentoProposta.pas</Transaction>
+    <Transaction>2014/04/21 16:37:19.512.dfm,C:\rapha\Meus Projetos\ERP\Unit1.dfm=C:\rapha\Meus Projetos\ERP\udlgCondicaoPagamentoProposta.dfm</Transaction>
+    <Transaction>2014/05/08 18:31:34.846.pas,D:\Meus Projetos\ERP\Unit1.pas=D:\Meus Projetos\ERP\uLst_TipoContrato.pas</Transaction>
+    <Transaction>2014/05/08 18:31:34.846.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\uLst_TipoContrato.dfm</Transaction>
+    <Transaction>2014/05/09 19:04:54.766.pas,D:\Meus Projetos\ERP\Unit1.pas=D:\Meus Projetos\ERP\ufrmLst_Contratos.pas</Transaction>
+    <Transaction>2014/05/09 19:04:54.766.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\ufrmLst_Contratos.dfm</Transaction>
+    <Transaction>2014/05/09 19:05:21.929.pas,D:\Meus Projetos\ERP\ufrmLst_Contratos.pas=D:\Meus Projetos\ERP\uLst_Contratos.pas</Transaction>
+    <Transaction>2014/05/09 19:05:21.929.dfm,D:\Meus Projetos\ERP\ufrmLst_Contratos.dfm=D:\Meus Projetos\ERP\uLst_Contratos.dfm</Transaction>
+    <Transaction>2014/05/09 19:26:32.152.pas,D:\Meus Projetos\ERP\Unit1.pas=D:\Meus Projetos\ERP\uCad_Contratos.pas</Transaction>
+    <Transaction>2014/05/09 19:26:32.152.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\uCad_Contratos.dfm</Transaction>
+  </Transactions>
+</BorlandProject>
