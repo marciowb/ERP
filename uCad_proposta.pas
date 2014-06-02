@@ -105,6 +105,7 @@ type
     procedure CdsParcelasPagamentoAfterOpen(DataSet: TDataSet);
     procedure CdsPagamentoAfterScroll(DataSet: TDataSet);
     procedure CdsCadastroAfterOpen(DataSet: TDataSet);
+    procedure edtClienteBtnNovoClick(Sender: TObject);
   private
     { Private declarations }
     TotalPagamentos,TotalProposta: Currency;
@@ -441,6 +442,12 @@ begin
    CdsParcelasPagamento.FieldByName('IDPARCONDPAGAMENTOPROPOSTA').AsString := GetCodigo(tpERPParcelaCondicaoPagamentoProposta);
 end;
 
+procedure TfrmCad_Proposta.edtClienteBtnNovoClick(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreCadastroCliente(toIncluir);
+end;
+
 procedure TfrmCad_Proposta.FormCreate(Sender: TObject);
 begin
   inherited;
@@ -470,7 +477,7 @@ begin
   inherited;
 
   ConfiguraEditPesquisa(edtEmpresa,CdsCadastro,tpERPEmpresa,True);
-  ConfiguraEditPesquisa(edtCliente,CdsCadastro,tpERPCliente,True,'','','CODIGO','',6, TrotinasForms.AbreCadastroCliente);
+  ConfiguraEditPesquisa(edtCliente,CdsCadastro,tpERPCliente,True);
   ConfiguraEditPesquisa(edtPeriodoVigenciaContrato,CdsCadastro,tpERPPeridicidade,False,'','','CODIGO','IDPERIDOVIGENCIACONTRATO');
   ConfiguraEditPesquisa(edtPeriodoVisitaContrato,CdsCadastro,tpERPPeridicidade,False,'','','CODIGO','IDPERIODICIDADEVISITACONTRATO');
   edtEmpresa.SetFocus;

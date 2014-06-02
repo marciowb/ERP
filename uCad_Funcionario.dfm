@@ -3,30 +3,43 @@ inherited frmCadFuncionario: TfrmCadFuncionario
   ClientHeight = 357
   ClientWidth = 714
   ExplicitWidth = 730
-  ExplicitHeight = 395
+  ExplicitHeight = 396
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
     Width = 714
+    ExplicitWidth = 714
   end
   inherited pnlTree: TPanel
     Height = 327
+    ExplicitHeight = 327
     inherited TreeItens: TcxTreeView
       Height = 321
+      ExplicitHeight = 321
     end
   end
   inherited Panel3: TPanel
     Width = 529
     Height = 327
+    ExplicitWidth = 529
+    ExplicitHeight = 327
     inherited PageControl: TcxPageControl
       Width = 529
       Height = 327
+      ExplicitWidth = 529
+      ExplicitHeight = 327
       ClientRectBottom = 326
       ClientRectRight = 528
       inherited TsPrincipal: TcxTabSheet
+        ExplicitLeft = 1
+        ExplicitTop = 21
+        ExplicitWidth = 527
+        ExplicitHeight = 305
         inherited pnlGeral: TPanel
           Width = 527
           Height = 305
+          ExplicitWidth = 527
+          ExplicitHeight = 305
           object LabelDBEdit1: TLabelDBEdit
             Left = 8
             Top = 24
@@ -111,7 +124,6 @@ inherited frmCadFuncionario: TfrmCadFuncionario
             Align = alCustom
             Anchors = [akTop, akRight, akBottom]
             TabOrder = 5
-            ExplicitHeight = 115
             object cxDBImage1: TcxDBImage
               Left = 1
               Top = 1
@@ -123,10 +135,6 @@ inherited frmCadFuncionario: TfrmCadFuncionario
               Properties.ImmediatePost = True
               Properties.Stretch = True
               TabOrder = 0
-              ExplicitLeft = 5
-              ExplicitTop = 0
-              ExplicitWidth = 127
-              ExplicitHeight = 130
               Height = 75
               Width = 135
             end
@@ -410,6 +418,7 @@ inherited frmCadFuncionario: TfrmCadFuncionario
             BtnPesquisa.NumGlyphs = 2
             BtnPesquisa.ParentShowHint = False
             BtnPesquisa.ShowHint = True
+            BtnPesquisa.OnClick = edtDeparetamentoBtnPesquisaClick
             BtnNovo.Left = 348
             BtnNovo.Top = 144
             BtnNovo.Width = 25
@@ -469,6 +478,7 @@ inherited frmCadFuncionario: TfrmCadFuncionario
             BtnNovo.NumGlyphs = 2
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
+            BtnNovo.OnClick = edtDeparetamentoBtnNovoClick
             BtnEditar.Left = 373
             BtnEditar.Top = 144
             BtnEditar.Width = 25
@@ -511,7 +521,7 @@ inherited frmCadFuncionario: TfrmCadFuncionario
             Display.TabStop = False
             Display.Color = clSkyBlue
             Display.ReadOnly = True
-            Display.TabOrder = 12
+            Display.TabOrder = 11
             TamanhoDisplay = 150
           end
           object GroupBox1: TGroupBox
@@ -530,7 +540,6 @@ inherited frmCadFuncionario: TfrmCadFuncionario
               DataBinding.DataSource = DataCadastro
               Properties.ScrollBars = ssBoth
               TabOrder = 0
-              ExplicitHeight = 158
               Height = 117
               Width = 523
             end
@@ -612,6 +621,7 @@ inherited frmCadFuncionario: TfrmCadFuncionario
             BtnPesquisa.NumGlyphs = 2
             BtnPesquisa.ParentShowHint = False
             BtnPesquisa.ShowHint = True
+            BtnPesquisa.OnClick = edtCargoBtnPesquisaClick
             BtnNovo.Left = 100
             BtnNovo.Top = 144
             BtnNovo.Width = 25
@@ -671,6 +681,7 @@ inherited frmCadFuncionario: TfrmCadFuncionario
             BtnNovo.NumGlyphs = 2
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
+            BtnNovo.OnClick = edtCargoBtnNovoClick
             BtnEditar.Left = 125
             BtnEditar.Top = 144
             BtnEditar.Width = 25
@@ -713,7 +724,7 @@ inherited frmCadFuncionario: TfrmCadFuncionario
             Display.TabStop = False
             Display.Color = clSkyBlue
             Display.ReadOnly = True
-            Display.TabOrder = 11
+            Display.TabOrder = 12
             TamanhoDisplay = 126
           end
           object LabelDBEdit6: TLabelDBEdit

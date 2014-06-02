@@ -3,6 +3,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
   Caption = 'Cadastro de proposta'
   ClientHeight = 504
   ClientWidth = 878
+  ExplicitTop = -109
   ExplicitWidth = 894
   ExplicitHeight = 543
   PixelsPerInch = 96
@@ -420,6 +421,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
               BtnNovo.NumGlyphs = 2
               BtnNovo.ParentShowHint = False
               BtnNovo.ShowHint = True
+              BtnNovo.OnClick = edtClienteBtnNovoClick
               BtnEditar.Left = 133
               BtnEditar.Top = 64
               BtnEditar.Width = 25

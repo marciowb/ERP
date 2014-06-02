@@ -57,7 +57,18 @@ uses
   uRegras in 'uRegras.pas',
   uLst_TipoContrato in 'uLst_TipoContrato.pas' {frmLst_TipoContrato},
   uLst_Contratos in 'uLst_Contratos.pas' {frmLst_Contratos},
-  uCad_Contratos in 'uCad_Contratos.pas' {frmCad_Contrato};
+  uCad_Contratos in 'uCad_Contratos.pas' {frmCad_Contrato},
+  uDlg_ServicoContrato in 'uDlg_ServicoContrato.pas' {frmDlg_ServicoContrato},
+  uAddItemPadrao in 'uAddItemPadrao.pas' {frmAddItemPadrao},
+  uDlgEquipamentoClienteContrato in 'uDlgEquipamentoClienteContrato.pas' {frmDlg_EquipamentoClienteContrato},
+  uDlg_EquipamentoCliente in 'uDlg_EquipamentoCliente.pas' {frmDlg_EquipamentoCliente},
+  uLst_TipoOS in 'uLst_TipoOS.pas' {frmLst_TipoOS},
+  uLst_StatusOS in 'uLst_StatusOS.pas' {frmLst_StatusOS},
+  uLst_OS in 'uLst_OS.pas' {frmLst_OS},
+  uCad_OS in 'uCad_OS.pas' {frmCad_OS},
+  uDlg_EquipamentoOS in 'uDlg_EquipamentoOS.pas' {frmDlg_EquipamentoOS},
+  uDlg_ExecucaoOSEquipamento in 'uDlg_ExecucaoOSEquipamento.pas' {frmDlg_ExecucaoOSEquipamento},
+  uDlg_ServicoEquipamentoOS in 'uDlg_ServicoEquipamentoOS.pas' {frmDlg_ServicoEquipamentoOS};
 
 {$R *.res}
 

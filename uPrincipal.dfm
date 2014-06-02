@@ -92,11 +92,23 @@ inherited frmPrincipal: TfrmPrincipal
       object ipodeContrato1: TMenuItem
         Action = actTipoContrato
       end
+      object ipodeOS1: TMenuItem
+        Action = actTipoOS
+      end
+      object StatusOS1: TMenuItem
+        Action = actStatusOS
+      end
     end
     object Venda1: TMenuItem
       Action = actVenda
       object Proposta1: TMenuItem
         Action = actProposta
+      end
+      object Centrodecontrato1: TMenuItem
+        Action = actContrato
+      end
+      object InclusaoOS1: TMenuItem
+        Action = actInclusaoOS
       end
     end
   end
@@ -229,6 +241,26 @@ inherited frmPrincipal: TfrmPrincipal
       Category = 'Cadastro'
       Caption = 'Tipo de Contrato'
       OnExecute = actTipoContratoExecute
+    end
+    object actContrato: TAction
+      Category = 'Venda'
+      Caption = 'Centro de contrato'
+      OnExecute = actContratoExecute
+    end
+    object actTipoOS: TAction
+      Category = 'Cadastro'
+      Caption = 'Tipo de O.S.'
+      OnExecute = actTipoOSExecute
+    end
+    object actStatusOS: TAction
+      Category = 'Cadastro'
+      Caption = 'Status O.S.'
+      OnExecute = actStatusOSExecute
+    end
+    object actInclusaoOS: TAction
+      Category = 'Venda'
+      Caption = 'Inclusao O.S.'
+      OnExecute = actInclusaoOSExecute
     end
   end
 end

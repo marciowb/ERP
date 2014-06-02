@@ -52,6 +52,7 @@ type
     cxTabSheet4: TcxTabSheet;
     LabelDBEdit9: TLabelDBEdit;
     LabelDBEdit11: TLabelDBEdit;
+    LabelDBEdit12: TLabelDBEdit;
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);

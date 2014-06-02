@@ -69,6 +69,14 @@ type
     Proposta1: TMenuItem;
     actTipoContrato: TAction;
     ipodeContrato1: TMenuItem;
+    actContrato: TAction;
+    Centrodecontrato1: TMenuItem;
+    actTipoOS: TAction;
+    ipodeOS1: TMenuItem;
+    actStatusOS: TAction;
+    StatusOS1: TMenuItem;
+    actInclusaoOS: TAction;
+    InclusaoOS1: TMenuItem;
     procedure actCadastroExecute(Sender: TObject);
     procedure actCFOPExecute(Sender: TObject);
     procedure actNCMExecute(Sender: TObject);
@@ -95,6 +103,10 @@ type
     procedure actPropostaExecute(Sender: TObject);
     procedure actVendaExecute(Sender: TObject);
     procedure actTipoContratoExecute(Sender: TObject);
+    procedure actContratoExecute(Sender: TObject);
+    procedure actTipoOSExecute(Sender: TObject);
+    procedure actStatusOSExecute(Sender: TObject);
+    procedure actInclusaoOSExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -158,6 +170,12 @@ begin
   TrotinasForms.AbreCadastroContaBancaria;
 end;
 
+procedure TfrmPrincipal.actContratoExecute(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreContratos;
+end;
+
 procedure TfrmPrincipal.actDepartamentoExecute(Sender: TObject);
 begin
   inherited;
@@ -200,6 +218,12 @@ begin
   TrotinasForms.AbreCadastroGrupo;
 end;
 
+procedure TfrmPrincipal.actInclusaoOSExecute(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreInclusaoOS;
+end;
+
 procedure TfrmPrincipal.actLinhaExecute(Sender: TObject);
 begin
   inherited;
@@ -236,10 +260,22 @@ begin
   TrotinasForms.AbreProposta;
 end;
 
+procedure TfrmPrincipal.actStatusOSExecute(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreCadastroStatusOS;
+end;
+
 procedure TfrmPrincipal.actTipoContratoExecute(Sender: TObject);
 begin
   inherited;
   TrotinasForms.AbreCadastroTipoContrato;
+end;
+
+procedure TfrmPrincipal.actTipoOSExecute(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreCadastroTipoOS;
 end;
 
 procedure TfrmPrincipal.actUnidadeExecute(Sender: TObject);

@@ -12,34 +12,40 @@ interface
     TClasseCadastroPai = class of TfrmCad_CadastroPaiERP;
     CampoChave = Variant;
 
+
     TrotinasForms = class
-      class Procedure AbreFormCadastroPai<MyForm: TfrmCad_CadastroPaiERP  >;
+      class Procedure AbreFormCadastroPai<MyForm: TfrmCad_CadastroPaiERP  >(TipoOperacaoForm: TTipoOperacaoForm);
       class Procedure AbreFormListagemPadrao<MyForm: TfrmListagemPadraoERP >;
-      class procedure AbreFormSimples(aForm: TfrmLstCadastroSimplesERP; aClasse: TClasseCadastroSimples);
-      class procedure AbreFormSimplesPeloTipoPesquisa(aTipoPesquisa: TTipoPesquisa);
-      class Function AbreCadastroNCM: CampoChave;
-      class Function AbreCadastroEmpresa: CampoChave;
-      class Function AbreCadastroCliente: CampoChave;
-      class Function AbreCadastroGrupoCliente: CampoChave;
-      class Function AbreCadastroCargos: CampoChave;
-      class Function AbreCadastroUsuario: CampoChave;
-      class function AbreCadastroDepartamento: CampoChave;
-      class function AbreCadastroFuncionarios: CampoChave;
-      class function AbreCadastroFornecedor: CampoChave;
-      class function AbreCadastroLinha: CampoChave;
-      class function AbreCadastroGrupo: CampoChave;
-      class function AbreCadastroLocalizacao: CampoChave;
-      class function AbreCadastroProduto: CampoChave;
-      class function AbreCadastroFabricante: CampoChave;
-      class function AbreCadastroUnidade: CampoChave;
-      class function AbreCadastroCodigoMunicipalServico: CampoChave;
-      class function AbreCadastroProcessoServico: CampoChave;
-      class function AbreCadastroPeridicidade: CampoChave;
-      class function AbreCadastroBanco: CampoChave;
-      class function AbreCadastroContaBancaria: CampoChave;
-      class function AbreCadastroCondicaoPagamento: CampoChave;
-      class function AbreProposta: CampoChave;
-      class function AbreCadastroTipoContrato: CampoChave;
+      class procedure AbreFormSimples(aForm: TfrmLstCadastroSimplesERP; aClasse: TClasseCadastroSimples;TipoOperacao: TTipoOperacaoForm = toNada);
+      class procedure AbreFormSimplesPeloTipoPesquisa(aTipoPesquisa: TTipoPesquisa;TipoOperacaoForm: TTipoOperacaoForm = toNada);
+      class Function AbreCadastroNCM(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class Function AbreCadastroEmpresa(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class Function AbreCadastroCliente(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class Function AbreCadastroGrupoCliente(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class Function AbreCadastroCargos(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class Function AbreCadastroUsuario(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroDepartamento(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroFuncionarios(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroFornecedor(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroLinha(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroGrupo(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroLocalizacao(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroProduto(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroFabricante(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroUnidade(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroCodigoMunicipalServico(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroProcessoServico(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroPeridicidade(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroBanco(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroContaBancaria(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroCondicaoPagamento(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreProposta(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroTipoContrato(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreContratos(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreManutencaoEquipamentoCliente(pIdCliente: Integer;TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroTipoOS(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroStatusOS(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreInclusaoOS: CampoChave;
     end;
 
 
@@ -48,135 +54,167 @@ implementation
 
 uses uCadNCM, Lst_Empresa, Cad_Cliente, Cad_usuario, uCad_Funcionario,
   uCad_Fornecedor, uCad_Produto, uLst_Periodicidade, uLst_ContaBancaria,
-  uLst_CondicaoPagamento, uLst_Proposta, uLst_TipoContrato;
+  uLst_CondicaoPagamento, uLst_Proposta, uLst_TipoContrato, uLst_Contratos,
+  uDlg_EquipamentoCliente, uLst_TipoOS, uLst_StatusOS, uLst_OS;
 
-class function TrotinasForms.AbreCadastroBanco: CampoChave;
+class function TrotinasForms.AbreCadastroBanco(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormSimplesPeloTipoPesquisa(tpERPBanco);
+  AbreFormSimplesPeloTipoPesquisa(tpERPBanco,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroCargos: CampoChave;
+class function TrotinasForms.AbreCadastroCargos(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormSimplesPeloTipoPesquisa(tpERPCargo);
+  AbreFormSimplesPeloTipoPesquisa(tpERPCargo,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroCliente: CampoChave;
+class function TrotinasForms.AbreCadastroCliente(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormCadastroPai<TfrmCad_Cliente>;
+  AbreFormCadastroPai<TfrmCad_Cliente>(TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroCodigoMunicipalServico: CampoChave;
+class function TrotinasForms.AbreCadastroCodigoMunicipalServico(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormSimplesPeloTipoPesquisa(tpERPCodigoMunicipalServico);
+  AbreFormSimplesPeloTipoPesquisa(tpERPCodigoMunicipalServico,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroCondicaoPagamento: CampoChave;
+class function TrotinasForms.AbreCadastroCondicaoPagamento(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormSimples(frmLst_CondicaoPagamento, TfrmLst_CondicaoPagamento);
+  AbreFormSimples(frmLst_CondicaoPagamento, TfrmLst_CondicaoPagamento,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroContaBancaria: CampoChave;
+class function TrotinasForms.AbreCadastroContaBancaria(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormSimples(frmLst_ContaBancaria, TfrmLst_ContaBancaria);
+  AbreFormSimples(frmLst_ContaBancaria, TfrmLst_ContaBancaria,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroDepartamento: CampoChave;
+class function TrotinasForms.AbreCadastroDepartamento(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormSimplesPeloTipoPesquisa(tpERPDepartamento);
+  AbreFormSimplesPeloTipoPesquisa(tpERPDepartamento,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroEmpresa: CampoChave;
+class function TrotinasForms.AbreCadastroEmpresa(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormSimples(frmLst_Empresa, TfrmLst_Empresa);
+  AbreFormSimples(frmLst_Empresa, TfrmLst_Empresa,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroFabricante: CampoChave;
+class function TrotinasForms.AbreCadastroFabricante(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormSimplesPeloTipoPesquisa(tpERPFabricante);
+  AbreFormSimplesPeloTipoPesquisa(tpERPFabricante,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroFornecedor: CampoChave;
+class function TrotinasForms.AbreCadastroFornecedor(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormCadastroPai<TfrmCad_Fornecedor>;
+  AbreFormCadastroPai<TfrmCad_Fornecedor>(TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroFuncionarios: CampoChave;
+class function TrotinasForms.AbreCadastroFuncionarios(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormCadastroPai<TfrmCadFuncionario>;
+  AbreFormCadastroPai<TfrmCadFuncionario>(TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroGrupo: CampoChave;
+class function TrotinasForms.AbreCadastroGrupo(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormSimplesPeloTipoPesquisa(tpERPGrupo);
+  AbreFormSimplesPeloTipoPesquisa(tpERPGrupo,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroGrupoCliente: CampoChave;
+class function TrotinasForms.AbreCadastroGrupoCliente(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-   AbreFormSimplesPeloTipoPesquisa(tpERPGrupoCliente);
+   AbreFormSimplesPeloTipoPesquisa(tpERPGrupoCliente,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroLinha: CampoChave;
+class function TrotinasForms.AbreCadastroLinha(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormSimplesPeloTipoPesquisa(tpERPLinha);
+  AbreFormSimplesPeloTipoPesquisa(tpERPLinha,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroLocalizacao: CampoChave;
+class function TrotinasForms.AbreCadastroLocalizacao(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormSimplesPeloTipoPesquisa(tpERPLocalizacao);
+  AbreFormSimplesPeloTipoPesquisa(tpERPLocalizacao,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroNCM: CampoChave;
+class function TrotinasForms.AbreCadastroNCM(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormCadastroPai<TfrmCad_NCM>;
+  AbreFormCadastroPai<TfrmCad_NCM>(TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroPeridicidade: CampoChave;
+class function TrotinasForms.AbreCadastroPeridicidade(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormSimples(frmLst_Periodicidade,TfrmLst_Periodicidade);
+  AbreFormSimples(frmLst_Periodicidade,TfrmLst_Periodicidade,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroProcessoServico: CampoChave;
+class function TrotinasForms.AbreCadastroProcessoServico(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-  AbreFormSimplesPeloTipoPesquisa(tpERPProcessosservico);
+  AbreFormSimplesPeloTipoPesquisa(tpERPProcessosservico,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroProduto: CampoChave;
+class function TrotinasForms.AbreCadastroProduto(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-   AbreFormCadastroPai<TfrmCad_Produto>;
+   AbreFormCadastroPai<TfrmCad_Produto>(TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroTipoContrato: CampoChave;
+class function TrotinasForms.AbreCadastroStatusOS(
+  TipoOperacao: TTipoOperacaoForm): CampoChave;
 begin
-  AbreFormSimples(frmLst_TipoContrato, TfrmLst_TipoContrato);
+  AbreFormSimples(frmLst_StatusOS,TfrmLst_StatusOS,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroUnidade: CampoChave;
+class function TrotinasForms.AbreCadastroTipoContrato(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
-   AbreFormSimplesPeloTipoPesquisa(tpERPUnidade);
+  AbreFormSimples(frmLst_TipoContrato, TfrmLst_TipoContrato,TipoOperacao);
 end;
 
-class function TrotinasForms.AbreCadastroUsuario: CampoChave;
+class function TrotinasForms.AbreCadastroTipoOS(
+  TipoOperacao: TTipoOperacaoForm): CampoChave;
 begin
-  AbreFormCadastroPai<TfrmCad_usuario>;
+  AbreFormSimples(frmLst_TipoOS,TfrmLst_TipoOS,TipoOperacao);
 end;
 
-class procedure TrotinasForms. AbreFormSimples(aForm: TfrmLstCadastroSimplesERP; aClasse: TClasseCadastroSimples);
+class function TrotinasForms.AbreCadastroUnidade(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+begin
+   AbreFormSimplesPeloTipoPesquisa(tpERPUnidade,TipoOperacao);
+end;
+
+class function TrotinasForms.AbreCadastroUsuario(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+begin
+  AbreFormCadastroPai<TfrmCad_usuario>(TipoOperacao);
+end;
+
+class function TrotinasForms.AbreContratos(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+begin
+   AbreFormListagemPadrao<TfrmLst_Contratos>
+end;
+
+class procedure TrotinasForms. AbreFormSimples(aForm: TfrmLstCadastroSimplesERP; aClasse: TClasseCadastroSimples;TipoOperacao: TTipoOperacaoForm = toNada);
   begin
     Try
       Application.CreateForm(aClasse, aform);
+      case TipoOperacao of
+        toNada: ;
+        toEditar:
+          aForm.EditReg := True;
+        toIncluir:
+          aForm.NovoReg := True ;
+      end;
       aForm.ShowModal;
     Finally
       FreeAndNil(aForm);
     End;
   end;
 
-class procedure TrotinasForms.AbreFormSimplesPeloTipoPesquisa(aTipoPesquisa: TTipoPesquisa);
+class procedure TrotinasForms.AbreFormSimplesPeloTipoPesquisa(aTipoPesquisa: TTipoPesquisa;TipoOperacaoForm: TTipoOperacaoForm);
   var
     aForm : TfrmLstCadastroSimplesERP;
   begin
     Try
       Application.CreateForm(TfrmLstCadastroSimplesERP, aform);
       aForm.TipoPesquisa := aTipoPesquisa;
+        case TipoOperacaoForm of
+        toNada: ;
+        toEditar:
+          aForm.EditReg := True;
+        toIncluir:
+          aForm.NovoReg := True ;
+      end;
       aForm.ShowModal;
     Finally
       FreeAndNil(aForm);
@@ -184,19 +222,50 @@ class procedure TrotinasForms.AbreFormSimplesPeloTipoPesquisa(aTipoPesquisa: TTi
   end;
 
 
-class function TrotinasForms.AbreProposta: CampoChave;
+class function TrotinasForms.AbreInclusaoOS: CampoChave;
+begin
+  AbreFormListagemPadrao<TfrmLst_OS>
+end;
+
+class function TrotinasForms.AbreManutencaoEquipamentoCliente(pIdCliente: Integer;TipoOperacao: TTipoOperacaoForm): CampoChave;
+begin
+  Try
+    frmDlg_EquipamentoCliente := TfrmDlg_EquipamentoCliente.Create(nil);
+    frmDlg_EquipamentoCliente.IdCliente := IntToSTr(pIdCliente);
+    case TipoOperacao of
+      toNada: ;
+      toEditar:
+        frmDlg_EquipamentoCliente.EditReg := True;
+      toIncluir:
+        frmDlg_EquipamentoCliente.NovoReg := True;
+    end;
+    if frmDlg_EquipamentoCliente.ShowModal= mrOk Then
+      Result := frmDlg_EquipamentoCliente.pDataSet.FieldByName('IDCLIENTEEQUIPAMENTOS').Value;
+  Finally
+    FreeAndNil(frmDlg_EquipamentoCliente);
+  End;
+end;
+
+class function TrotinasForms.AbreProposta(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
   AbreFormListagemPadrao<TfrmLst_Proposta>;
 end;
 
 { TTelas }
 
-class procedure TrotinasForms.AbreFormCadastroPai<MyForm>;
+class procedure TrotinasForms.AbreFormCadastroPai<MyForm>(TipoOperacaoForm: TTipoOperacaoForm);
 var
   aForm: MyForm;
 begin
   Try
     Application.CreateForm(MyForm, aform);
+    case TipoOperacaoForm of
+      toNada:;
+      toEditar:
+        aForm.EditReg := True;
+      toIncluir:
+        aForm.NovoReg := True;
+    end;
     aForm.ShowModal;
   Finally
     FreeAndNil(aForm);

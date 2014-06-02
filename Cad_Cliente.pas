@@ -67,6 +67,7 @@ type
     procedure edtCEPExit(Sender: TObject);
     procedure actIntegracaoExecute(Sender: TObject);
     procedure edtGrupoClienteBtnNovoClick(Sender: TObject);
+    procedure edtGrupoClienteBtnPesquisaClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -164,7 +165,13 @@ end;
 procedure TfrmCad_Cliente.edtGrupoClienteBtnNovoClick(Sender: TObject);
 begin
   inherited;
-  //TTelas.AbreCadastroGrupoCliente;
+  TrotinasForms.AbreCadastroGrupoCliente(toIncluir)
+end;
+
+procedure TfrmCad_Cliente.edtGrupoClienteBtnPesquisaClick(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreCadastroGrupoCliente(toEditar)
 end;
 
 procedure TfrmCad_Cliente.edtPesqCEPClick(Sender: TObject);
@@ -185,7 +192,7 @@ end;
 procedure TfrmCad_Cliente.FormShow(Sender: TObject);
 begin
   inherited;
-  ConfiguraEditPesquisa(edtGrupoCliente,CdsCadastro, tpERPGrupoCliente,False,'','','CODIGO','',6,TrotinasForms.AbreCadastroGrupoCliente);
+  ConfiguraEditPesquisa(edtGrupoCliente,CdsCadastro, tpERPGrupoCliente,False,'','','CODIGO','',6,nil);
   if NovoReg or EditReg then
     edtNome.SetFocus;
 end;

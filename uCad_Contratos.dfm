@@ -31,8 +31,6 @@ inherited frmCad_Contrato: TfrmCad_Contrato
       ClientRectBottom = 431
       ClientRectRight = 648
       inherited TsPrincipal: TcxTabSheet
-        ExplicitLeft = 1
-        ExplicitTop = 21
         ExplicitWidth = 647
         ExplicitHeight = 410
         inherited pnlGeral: TPanel
@@ -61,7 +59,7 @@ inherited frmCad_Contrato: TfrmCad_Contrato
               Height = 13
               Caption = 'Validade do contrato'
             end
-            object cxDBDateEdit1: TcxDBDateEdit
+            object edtData: TcxDBDateEdit
               Left = 16
               Top = 24
               DataBinding.DataField = 'Data'
@@ -264,7 +262,7 @@ inherited frmCad_Contrato: TfrmCad_Contrato
               DataSource = DataCadastro
               ParentBiDiMode = False
               ReadOnly = True
-              TabOrder = 7
+              TabOrder = 6
               Titulo.Left = 432
               Titulo.Top = 9
               Titulo.Width = 96
@@ -281,7 +279,7 @@ inherited frmCad_Contrato: TfrmCad_Contrato
               Top = 64
               Width = 65
               Height = 21
-              TabOrder = 8
+              TabOrder = 7
               TipoPesquisa = 0
               TamanhoCodigo = 0
               AutoPesquisa = True
@@ -412,6 +410,7 @@ inherited frmCad_Contrato: TfrmCad_Contrato
               BtnNovo.NumGlyphs = 2
               BtnNovo.ParentShowHint = False
               BtnNovo.ShowHint = True
+              BtnNovo.OnClick = edtClienteBtnNovoClick
               BtnEditar.Left = 133
               BtnEditar.Top = 64
               BtnEditar.Width = 25
@@ -462,11 +461,12 @@ inherited frmCad_Contrato: TfrmCad_Contrato
               Top = 112
               Width = 62
               Height = 21
-              TabOrder = 11
+              TabOrder = 8
               TipoPesquisa = 0
               TamanhoCodigo = 0
               AutoPesquisa = True
               AutoCompletar = True
+              OnRegAchado = edtPeriodoVigenciaContratoRegAchado
               UsaBtnNovo = False
               UsaBtnEditar = False
               UsaDisplay = True
@@ -636,7 +636,7 @@ inherited frmCad_Contrato: TfrmCad_Contrato
               Display.TabStop = False
               Display.Color = clSkyBlue
               Display.ReadOnly = True
-              Display.TabOrder = 10
+              Display.TabOrder = 11
               TamanhoDisplay = 60
             end
             object edtPeriodoVisitaContrato: TEditPesquisa
@@ -644,7 +644,7 @@ inherited frmCad_Contrato: TfrmCad_Contrato
               Top = 112
               Width = 65
               Height = 21
-              TabOrder = 12
+              TabOrder = 9
               TipoPesquisa = 0
               TamanhoCodigo = 0
               AutoPesquisa = True
@@ -818,16 +818,17 @@ inherited frmCad_Contrato: TfrmCad_Contrato
               Display.TabStop = False
               Display.Color = clSkyBlue
               Display.ReadOnly = True
-              Display.TabOrder = 6
+              Display.TabOrder = 12
               TamanhoDisplay = 50
             end
-            object cxDBDateEdit2: TcxDBDateEdit
+            object edtValidadeContrato: TcxDBDateEdit
               Left = 323
               Top = 112
+              TabStop = False
               DataBinding.DataField = 'DATATERMINO'
               DataBinding.DataSource = DataCadastro
               Properties.PostPopupValueOnTab = True
-              TabOrder = 9
+              TabOrder = 10
               Width = 97
             end
             object edtTipoContrato: TEditPesquisa
@@ -1196,8 +1197,8 @@ inherited frmCad_Contrato: TfrmCad_Contrato
             end
           end
           object DBCheckBox1: TDBCheckBox
-            Left = 432
-            Top = 114
+            Left = 428
+            Top = 115
             Width = 97
             Height = 17
             Caption = 'Indeterminado?'
@@ -1230,30 +1231,33 @@ inherited frmCad_Contrato: TfrmCad_Contrato
                 Align = alRight
                 TabOrder = 0
                 object BitBtn1: TBitBtn
-                  Left = 8
+                  Left = 5
                   Top = 53
                   Width = 115
                   Height = 25
+                  Action = actIncluirServico
                   Caption = 'Incluir [Ins]'
                   DoubleBuffered = True
                   ParentDoubleBuffered = False
                   TabOrder = 0
                 end
                 object BitBtn2: TBitBtn
-                  Left = 8
+                  Left = 5
                   Top = 89
                   Width = 115
                   Height = 25
+                  Action = actAlterarServico
                   Caption = 'Alterar [Ctrl+F8]'
                   DoubleBuffered = True
                   ParentDoubleBuffered = False
                   TabOrder = 1
                 end
                 object BitBtn3: TBitBtn
-                  Left = 8
+                  Left = 5
                   Top = 121
                   Width = 115
                   Height = 25
+                  Action = actExcluirServico
                   Caption = 'Excluir'
                   DoubleBuffered = True
                   ParentDoubleBuffered = False
@@ -1269,47 +1273,31 @@ inherited frmCad_Contrato: TfrmCad_Contrato
                 TabOrder = 1
                 object tvItens: TcxGridDBTableView
                   NavigatorButtons.ConfirmDelete = False
+                  DataController.DataSource = DataServicos
                   DataController.Summary.DefaultGroupSummaryItems = <>
                   DataController.Summary.FooterSummaryItems = <
                     item
                       Format = '##,##00.00'
                       Kind = skSum
-                      Column = tvItensColumn6
+                      Column = tvItensColumn3
                     end>
                   DataController.Summary.SummaryGroups = <>
                   OptionsView.Footer = True
                   OptionsView.GroupByBox = False
                   object tvItensColumn1: TcxGridDBColumn
                     Caption = 'C'#243'digo'
-                    DataBinding.FieldName = 'Codigo'
+                    DataBinding.FieldName = 'CODIGO'
                     Width = 60
                   end
                   object tvItensColumn2: TcxGridDBColumn
-                    Caption = 'Produto'
+                    Caption = 'Descri'#231#227'o'
                     DataBinding.FieldName = 'DESCRICAO'
-                    Width = 240
+                    Width = 350
                   end
                   object tvItensColumn3: TcxGridDBColumn
-                    Caption = 'Un'
-                    DataBinding.FieldName = 'Unidade'
-                    Width = 40
-                  end
-                  object tvItensColumn4: TcxGridDBColumn
-                    Caption = 'Valor Uni.'
-                    DataBinding.FieldName = 'ValorUnitario'
-                    HeaderAlignmentHorz = taRightJustify
-                    Width = 55
-                  end
-                  object tvItensColumn5: TcxGridDBColumn
-                    Caption = 'Quantidade '
-                    DataBinding.FieldName = 'Quantidade'
-                    HeaderAlignmentHorz = taRightJustify
-                    Width = 69
-                  end
-                  object tvItensColumn6: TcxGridDBColumn
                     Caption = 'Total'
                     DataBinding.FieldName = 'VALORTOTAL'
-                    FooterAlignmentHorz = taRightJustify
+                    GroupSummaryAlignment = taRightJustify
                     HeaderAlignmentHorz = taRightJustify
                     Width = 90
                   end
@@ -1319,9 +1307,88 @@ inherited frmCad_Contrato: TfrmCad_Contrato
                 end
               end
             end
-            object cxTabSheet1: TcxTabSheet
-              Caption = 'Produtos do cliente'
+            object tsEquipamentos: TcxTabSheet
+              Caption = 'Produtos do cliente [F12]'
               ImageIndex = 2
+              object Panel5: TPanel
+                Left = 522
+                Top = 0
+                Width = 125
+                Height = 194
+                Align = alRight
+                TabOrder = 0
+                object BitBtn4: TBitBtn
+                  Left = 6
+                  Top = 50
+                  Width = 115
+                  Height = 25
+                  Action = actIncluirEquipamento
+                  Caption = 'Incluir [Ctrl+R]'
+                  DoubleBuffered = True
+                  ParentDoubleBuffered = False
+                  TabOrder = 0
+                end
+                object BitBtn5: TBitBtn
+                  Left = 5
+                  Top = 85
+                  Width = 115
+                  Height = 25
+                  Action = actEditarEquipamento
+                  Caption = 'Alterar [Ctrl+W]'
+                  DoubleBuffered = True
+                  ParentDoubleBuffered = False
+                  TabOrder = 1
+                end
+                object BitBtn6: TBitBtn
+                  Left = 5
+                  Top = 121
+                  Width = 115
+                  Height = 25
+                  Action = acExcluirEquipamento
+                  Caption = 'Excluir'
+                  DoubleBuffered = True
+                  ParentDoubleBuffered = False
+                  TabOrder = 2
+                end
+              end
+              object cxGrid2: TcxGrid
+                Left = 0
+                Top = 0
+                Width = 522
+                Height = 194
+                Align = alClient
+                TabOrder = 1
+                object cxGridDBTableView1: TcxGridDBTableView
+                  NavigatorButtons.ConfirmDelete = False
+                  DataController.DataSource = DataEquipamento
+                  DataController.Summary.DefaultGroupSummaryItems = <>
+                  DataController.Summary.FooterSummaryItems = <
+                    item
+                      Format = '##,##00.00'
+                      Kind = skSum
+                    end>
+                  DataController.Summary.SummaryGroups = <>
+                  OptionsView.GroupByBox = False
+                  object cxGridDBTableView1Column1: TcxGridDBColumn
+                    Caption = 'Descri'#231#227'o'
+                    DataBinding.FieldName = 'DESCRICAOEQUIPAMENTO'
+                    Width = 250
+                  end
+                  object cxGridDBTableView1Column2: TcxGridDBColumn
+                    Caption = 'Identificador'
+                    DataBinding.FieldName = 'IDENTIFICADOR'
+                    Width = 150
+                  end
+                  object cxGridDBTableView1Column3: TcxGridDBColumn
+                    Caption = 'Periodicidade'
+                    DataBinding.FieldName = 'DESCRICAOPERIODICIDADE'
+                    Width = 80
+                  end
+                end
+                object cxGridLevel1: TcxGridLevel
+                  GridView = cxGridDBTableView1
+                end
+              end
             end
             object tsObs: TcxTabSheet
               Caption = 'Observa'#231#245'es [Ctrl+Q]'
@@ -1343,5 +1410,81 @@ inherited frmCad_Contrato: TfrmCad_Contrato
         end
       end
     end
+  end
+  inherited ActionList1: TActionList
+    Images = DMConexao.ImageList16_16
+    object actIncluirEquipamento: TAction [0]
+      Category = 'Outros'
+      Caption = 'Incluir [Ctrl+R]'
+      ImageIndex = 17
+      ShortCut = 16466
+      OnExecute = actIncluirEquipamentoExecute
+    end
+    object actEditarEquipamento: TAction [1]
+      Category = 'Outros'
+      Caption = 'Alterar [Ctrl+W]'
+      ImageIndex = 8
+      ShortCut = 16471
+      OnExecute = actEditarEquipamentoExecute
+    end
+    object acExcluirEquipamento: TAction [2]
+      Category = 'Outros'
+      Caption = 'Excluir'
+      ImageIndex = 16
+      OnExecute = acExcluirEquipamentoExecute
+    end
+    object actIncluirServico: TAction
+      Category = 'Outros'
+      Caption = 'Incluir [Ins]'
+      ImageIndex = 17
+      ShortCut = 45
+      OnExecute = actIncluirServicoExecute
+    end
+    object actAlterarServico: TAction
+      Category = 'Outros'
+      Caption = 'Alterar [Ctrl+F8]'
+      ImageIndex = 8
+      ShortCut = 16503
+      OnExecute = actAlterarServicoExecute
+    end
+    object actExcluirServico: TAction
+      Category = 'Outros'
+      Caption = 'Excluir'
+      ImageIndex = 16
+      OnExecute = actExcluirServicoExecute
+    end
+  end
+  inherited CdsCadastro: TpFIBClientDataSet
+    AfterScroll = CdsCadastroAfterScroll
+  end
+  object DataServicos: TDataSource
+    DataSet = CdsServicos
+    Left = 128
+    Top = 184
+  end
+  object CdsServicos: TpFIBClientDataSet
+    Aggregates = <>
+    Filter = 'flagedicao <> '#39'D'#39
+    Filtered = True
+    Params = <>
+    BeforePost = CdsServicosBeforePost
+    OnNewRecord = CdsServicosNewRecord
+    Left = 32
+    Top = 192
+  end
+  object CdsEquipamentos: TpFIBClientDataSet
+    Aggregates = <>
+    Filter = 'FLAGEDICAO <> '#39'D'#39
+    Filtered = True
+    Params = <>
+    BeforePost = CdsEquipamentosBeforePost
+    OnNewRecord = CdsEquipamentosNewRecord
+    Left = 40
+    Top = 280
+  end
+  object DataEquipamento: TDataSource
+    DataSet = CdsEquipamentos
+    Left = 128
+    Top = 272
   end
 end

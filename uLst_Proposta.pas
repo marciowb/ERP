@@ -21,8 +21,12 @@ uses
 
 type
   TfrmLst_Proposta = class(TfrmListagemPadraoERP)
+    BitBtn11: TBitBtn;
+    actConverteContrato: TAction;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure actConverteContratoExecute(Sender: TObject);
+    procedure ActionList1Update(Action: TBasicAction; var Handled: Boolean);
   private
     { Private declarations }
   public
@@ -34,9 +38,32 @@ var
 
 implementation
 
-uses MinhasClasses, uCad_proposta, Comandos;
+uses MinhasClasses, uCad_proposta, Comandos, uCad_Contratos;
 
 {$R *.dfm}
+
+procedure TfrmLst_Proposta.actConverteContratoExecute(Sender: TObject);
+begin
+  try
+    frmCad_Contrato := TfrmCad_Contrato.Create(nil);
+    frmCad_Contrato.NovoReg:= True;
+    frmCad_Contrato.idProposta := CdsListagem.FieldByName('IDPROPOSTA').AsInteger;
+    frmCad_Contrato.ShowModal;
+    AtuDados;
+  finally
+    FreeAndNil(frmCad_Contrato);
+  end;
+
+end;
+
+procedure TfrmLst_Proposta.ActionList1Update(Action: TBasicAction;
+  var Handled: Boolean);
+begin
+  inherited;
+  actConverteContrato.Enabled := (CdsListagem.FieldByName('FINALIDADEPROPOSTA').AsString = 'C') AND
+                                 (CdsListagem.FieldByName('STATUSPROPOSTA').AsString = 'A') ;
+
+end;
 
 procedure TfrmLst_Proposta.FormCreate(Sender: TObject);
 begin

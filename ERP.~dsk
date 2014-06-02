@@ -1,33 +1,42 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'D:\Meus Projetos\componentes\Kimera\TLabelEdit\LabelDBEdit.pas',0,1,251,1,253,0,0,,
-File_1=TSourceModule,'D:\Meus Projetos\Global\uPesquisa_kimera.pas',0,1,1541,64,1558,0,0,{{710,0},{787,11},{'L-Kimera'}}{{788,0},{921,11},{'Imovel'}}{{922,0},{1038,11},{'Alpha'}}{{1039,0},{1195,11},{'Dragon'}}{{1196,0},{1296,11},{'PET'}}{{1297,0},{1382,11},{'Aquarios2'}}{{1366,0},{1381,11},{'Militour'}}{{1383,0},{1470,11},{'CS'}}{{1471,0},{1506,11},{'Controle de Importação'}},
-File_2=TSourceModule,'D:\Meus Projetos\Global\Comandos.pas',0,1,729,1,751,0,0,{{1992,1},{2185,13},{'Traduz o Developer Express'}},
-File_3=TSourceModule,'D:\Meus Projetos\Global\Lst_CadastroSimples.pas',0,1,605,22,620,0,0,,
-File_4=TSourceModule,'D:\Meus Projetos\ERP\uPrincipal.pas',0,1,239,42,242,0,0,,
-File_5=TSourceModule,'D:\Meus Projetos\ERP\udlg_ItensProposta.pas',0,1,94,54,110,0,0,,
-File_6=TSourceModule,'D:\Meus Projetos\ERP\udlgCondicaoPagamentoProposta.pas',0,1,61,1,73,0,0,,{1,114,1}
-File_7=TSourceModule,'D:\Meus Projetos\ERP\uLst_Proposta.pas',0,1,31,96,50,0,0,,
-File_8=TSourceModule,'D:\Meus Projetos\componentes\Kimera\EditPesquisa\EditPesquisa.pas',0,1,433,1,445,0,0,,
-File_9=TSourceModule,'D:\Meus Projetos\ERP\Lst_Empresa.pas',0,1,1,1,1,0,0,,
-File_10=TSourceModule,'D:\Meus Projetos\ERP\uLst_TipoContrato.pas',0,1,16,22,28,0,0,,
+File_0=TSourceModule,'D:\Meus Projetos\ERP\uLst_Proposta.pas',0,1,71,2,88,0,0,,
+File_1=TSourceModule,'D:\Meus Projetos\ERP\uCad_Contratos.pas',0,1,201,29,205,0,0,,
+File_2=TSourceModule,'D:\Meus Projetos\ERP\uCad_OS.dfm',0,1,1,1,1,0,0,,
+File_3=TSourceModule,'D:\Meus Projetos\Global\uSQL.pas',0,1,27,1,195,0,0,{{27,8}
+File_4=TSourceModule,'D:\Meus Projetos\ERP\Lst_Empresa.pas',0,1,1,1,1,0,0,,
+File_5=TSourceModule,'D:\Meus Projetos\ERP\uLst_StatusOS.pas',0,1,27,15,35,0,0,,
+File_6=TSourceModule,'D:\Meus Projetos\ERP\uLst_TipoOS.pas',0,1,42,31,45,0,0,,
+File_7=TSourceModule,'D:\Meus Projetos\ERP\uLst_Contratos.pas',0,1,39,12,46,0,0,,
+File_8=TSourceModule,'D:\Meus Projetos\ERP\uAddItemPadrao.pas',0,1,135,1,144,0,0,,
+File_9=TSourceModule,'D:\Meus Projetos\ERP\uDlg_EquipamentoCliente.pas',0,1,101,18,121,0,0,,
+File_10=TSourceModule,'D:\Meus Projetos\ERP\Cad_Cliente.pas',0,1,171,50,174,0,0,,
 
 [Modules]
-Module0=D:\Meus Projetos\ERP\uCad_proposta.pas
-Module1=D:\Meus Projetos\ERP\uCad_Contratos.pas
+Module0=D:\Meus Projetos\ERP\uDlg_ServicoEquipamentoOS.pas
+Module1=D:\Meus Projetos\ERP\uDlg_ExecucaoOSEquipamento.pas
 Module2=D:\Meus Projetos\ERP\uSQLERP.pas
-Module3=D:\Meus Projetos\ERP\uLst_Contratos.pas
-Module4=D:\Meus Projetos\Global\MinhasClasses.pas
-Module5=D:\Meus Projetos\ERP\uForms.pas
-Module6=D:\Meus Projetos\ERP\uRegras.pas
-Count=7
+Module3=D:\Meus Projetos\ERP\uCad_OS.pas
+Module4=D:\Meus Projetos\ERP\uDlg_EquipamentoOS.pas
+Module5=D:\Meus Projetos\ERP\uLst_OS.pas
+Module6=D:\Meus Projetos\ERP\uDlgEquipamentoClienteContrato.pas
+Module7=D:\Meus Projetos\Global\MinhasClasses.pas
+Module8=D:\Meus Projetos\componentes\Kimera\EditPesquisa\EditPesquisa.pas
+Module9=D:\Meus Projetos\ERP\uPrincipal.pas
+Module10=D:\Meus Projetos\ERP\uForms.pas
+Module11=D:\Meus Projetos\ERP\uRegras.pas
+Module12=D:\Meus Projetos\Global\Comandos.pas
+Module13=D:\Meus Projetos\ERP\uCad_proposta.pas
+Module14=D:\Meus Projetos\Global\uPesquisa_kimera.pas
+Module15=default.htm
+Count=16
 EditWindowCount=1
 
-[D:\Meus Projetos\ERP\uCad_proposta.pas]
+[D:\Meus Projetos\ERP\uDlg_ServicoEquipamentoOS.pas]
 ModuleType=TSourceModule
 FormState=1
-FormOnTop=1
+FormOnTop=0
 
-[D:\Meus Projetos\ERP\uCad_Contratos.pas]
+[D:\Meus Projetos\ERP\uDlg_ExecucaoOSEquipamento.pas]
 ModuleType=TSourceModule
 FormState=1
 FormOnTop=1
@@ -37,14 +46,39 @@ ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
-[D:\Meus Projetos\ERP\uLst_Contratos.pas]
+[D:\Meus Projetos\ERP\uCad_OS.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=1
+
+[D:\Meus Projetos\ERP\uDlg_EquipamentoOS.pas]
 ModuleType=TSourceModule
 FormState=1
 FormOnTop=0
 
+[D:\Meus Projetos\ERP\uLst_OS.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[D:\Meus Projetos\ERP\uDlgEquipamentoClienteContrato.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=1
+
 [D:\Meus Projetos\Global\MinhasClasses.pas]
 ModuleType=TSourceModule
 FormState=0
+FormOnTop=0
+
+[D:\Meus Projetos\componentes\Kimera\EditPesquisa\EditPesquisa.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[D:\Meus Projetos\ERP\uPrincipal.pas]
+ModuleType=TSourceModule
+FormState=1
 FormOnTop=0
 
 [D:\Meus Projetos\ERP\uForms.pas]
@@ -57,6 +91,36 @@ ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
+[D:\Meus Projetos\Global\Comandos.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
+
+[D:\Meus Projetos\ERP\uCad_proposta.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[D:\Meus Projetos\Global\uPesquisa_kimera.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[default.htm]
+ModuleType=TURLModule
+
+[D:\Meus Projetos\ERP\uDlg_CadastroERP.pas]
+FormState=1
+FormOnTop=0
+
+[D:\Meus Projetos\Global\Dlg_Cadastro.pas]
+FormState=1
+FormOnTop=0
+
+[D:\Meus Projetos\Global\uFormPadrao.pas]
+FormState=1
+FormOnTop=0
+
 [D:\Meus Projetos\ERP\uCad_CadastroPaiERP.pas]
 FormState=1
 FormOnTop=0
@@ -65,19 +129,7 @@ FormOnTop=0
 FormState=1
 FormOnTop=0
 
-[D:\Meus Projetos\Global\uFormPadrao.pas]
-FormState=1
-FormOnTop=0
-
 [D:\Meus Projetos\Global\UDmConexao.pas]
-FormState=1
-FormOnTop=0
-
-[D:\Meus Projetos\ERP\uDlg_CadastroERP.pas]
-FormState=1
-FormOnTop=0
-
-[D:\Meus Projetos\Global\Dlg_Cadastro.pas]
 FormState=1
 FormOnTop=0
 
@@ -94,8 +146,8 @@ FormState=1
 FormOnTop=0
 
 [EditWindow0]
-ViewCount=7
-CurrentEditView=D:\Meus Projetos\ERP\uCad_proposta.pas
+ViewCount=16
+CurrentEditView=D:\Meus Projetos\ERP\uDlg_ServicoEquipamentoOS.pas
 View0=0
 View1=1
 View2=2
@@ -103,6 +155,15 @@ View3=3
 View4=4
 View5=5
 View6=6
+View7=7
+View8=8
+View9=9
+View10=10
+View11=11
+View12=12
+View13=13
+View14=14
+View15=15
 PercentageSizes=1
 Create=1
 Visible=1
@@ -119,57 +180,50 @@ ClientHeight=8558
 DockedToMainForm=1
 BorlandEditorCodeExplorer=BorlandEditorCodeExplorer@EditWindow0
 TopPanelSize=0
-LeftPanelSize=1896
-LeftPanelClients=PropertyInspector
-LeftPanelData=000008000100000000000000000000000000000F180000000000000100000000000000001100000050726F7065727479496E73706563746F72FFFFFFFF
+LeftPanelSize=0
 RightPanelSize=0
 BottomPanelSize=0
+BottomPanelClients=DockSite1
+BottomPanelData=0000080001000100000009000000446F636B53697465317A45000000000000000D06000000000000FFFFFFFF
 BottomMiddlePanelSize=0
 BottomMiddlePanelClients=DockSite0
 BottomMiddelPanelData=0000080001000100000009000000446F636B53697465302D1900000000000000771B000000000000FFFFFFFF
-TabDockLeftClients=DockSite3=0,DockSite2=1
-TabDockBottomClients=MessageView=0,DockSite1=1
+TabDockLeftClients=DockSite3=0,DockSite2=1,PropertyInspector=2
+TabDockBottomClients=MessageView=0
 TabDockRightClients=DockSite4=0
 
 [View0]
+CustomEditViewType=TWelcomePageView
+WelcomePageURL=bds:/default.htm
+
+[View1]
 CustomEditViewType=TEditView
 Module=D:\Meus Projetos\ERP\uRegras.pas
 CursorX=34
 CursorY=136
 TopLine=118
 LeftCol=1
-Elisions={{45,3},{55,14},{'Obtem informações'}}{{58,3},{66,14},{'Vaz validações'}}
+Elisions=
 Bookmarks=
 EditViewName=D:\Meus Projetos\ERP\uRegras.pas
 
-[View1]
+[View2]
 CustomEditViewType=TEditView
 Module=D:\Meus Projetos\ERP\uForms.pas
-CursorX=60
-CursorY=154
-TopLine=148
+CursorX=44
+CursorY=225
+TopLine=225
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=D:\Meus Projetos\ERP\uForms.pas
 
-[View2]
-CustomEditViewType=TEditView
-Module=D:\Meus Projetos\ERP\uLst_Contratos.pas
-CursorX=12
-CursorY=58
-TopLine=55
-LeftCol=1
-Elisions=
-Bookmarks=
-EditViewName=D:\Meus Projetos\ERP\uLst_Contratos.pas
-
 [View3]
 CustomEditViewType=TEditView
-Module=D:\Meus Projetos\ERP\uCad_Contratos.pas
-CursorX=1
-CursorY=70
-TopLine=69
+Module=D:\Meus Projetos\ERP\uPrincipal.pas
+CursorX=32
+CursorY=224
+TopLine=221
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -177,21 +231,21 @@ EditViewName=Borland.FormDesignerView
 
 [View4]
 CustomEditViewType=TEditView
-Module=D:\Meus Projetos\ERP\uCad_proposta.pas
-CursorX=43
-CursorY=313
-TopLine=289
+Module=D:\Meus Projetos\Global\uPesquisa_kimera.pas
+CursorX=32
+CursorY=1572
+TopLine=1546
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=Borland.FormDesignerView
+EditViewName=D:\Meus Projetos\Global\uPesquisa_kimera.pas
 
 [View5]
 CustomEditViewType=TEditView
 Module=D:\Meus Projetos\ERP\uSQLERP.pas
-CursorX=71
-CursorY=549
-TopLine=528
+CursorX=35
+CursorY=661
+TopLine=697
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -200,13 +254,112 @@ EditViewName=D:\Meus Projetos\ERP\uSQLERP.pas
 [View6]
 CustomEditViewType=TEditView
 Module=D:\Meus Projetos\Global\MinhasClasses.pas
-CursorX=22
-CursorY=195
-TopLine=185
+CursorX=30
+CursorY=197
+TopLine=94
 LeftCol=1
-Elisions={{29,21},{34,32},{'L-Kimera'}}{{35,21},{47,32},{'Flex'}}{{49,20},{60,32},{'Imovel'}}{{61,21},{92,32},{'Alpha'}}{{94,21},{119,32},{'Dragon'}}{{121,21},{143,32},{'Pet'}}{{145,21},{158,32},{'Aquarios2'}}{{160,21},{162,32},{'Militour'}}{{164,21},{172,32},{'Controle de Importação'}}{{174,21},{184,32},{'Controle de Serviços'}}{{186,21},{188,32},{'ProjetoX'}}{{253,25},{264,36},{'Imoveis'}}{{266,25},{275,36},{'Alpha'}}{{277,25},{284,36},{'Dragon'}}{{378,7},{423,21},{'L-Kimera'}}
+Elisions={{30,21},{35,32},{'L-Kimera'}}{{36,21},{48,32},{'Flex'}}{{50,20},{61,32},{'Imovel'}}{{62,21},{93,32},{'Alpha'}}{{95,21},{120,32},{'Dragon'}}{{122,21},{144,32},{'Pet'}}{{146,21},{159,32},{'Aquarios2'}}{{161,21},{163,32},{'Militour'}}{{165,21},{173,32},{'Controle de Importação'}}{{175,21},{185,32},{'Controle de Serviços'}}{{187,21},{189,32},{'ProjetoX'}}{{255,25},{266,36},{'Imoveis'}}{{268,25},{277,36},{'Alpha'}}{{279,25},{286,36},{'Dragon'}}{{380,7},{425,21},{'L-Kimera'}}
 Bookmarks=
 EditViewName=D:\Meus Projetos\Global\MinhasClasses.pas
+
+[View7]
+CustomEditViewType=TEditView
+Module=D:\Meus Projetos\ERP\uLst_OS.pas
+CursorX=1
+CursorY=45
+TopLine=35
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=D:\Meus Projetos\ERP\uLst_OS.pas
+
+[View8]
+CustomEditViewType=TEditView
+Module=D:\Meus Projetos\ERP\uCad_OS.pas
+CursorX=77
+CursorY=106
+TopLine=129
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View9]
+CustomEditViewType=TEditView
+Module=D:\Meus Projetos\ERP\uDlg_ExecucaoOSEquipamento.pas
+CursorX=1
+CursorY=122
+TopLine=104
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View10]
+CustomEditViewType=TEditView
+Module=D:\Meus Projetos\ERP\uDlg_ServicoEquipamentoOS.pas
+CursorX=40
+CursorY=47
+TopLine=41
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=D:\Meus Projetos\ERP\uDlg_ServicoEquipamentoOS.pas
+
+[View11]
+CustomEditViewType=TEditView
+Module=D:\Meus Projetos\ERP\uDlg_EquipamentoOS.pas
+CursorX=70
+CursorY=78
+TopLine=58
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=D:\Meus Projetos\ERP\uDlg_EquipamentoOS.pas
+
+[View12]
+CustomEditViewType=TEditView
+Module=D:\Meus Projetos\componentes\Kimera\EditPesquisa\EditPesquisa.pas
+CursorX=1
+CursorY=449
+TopLine=437
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=D:\Meus Projetos\componentes\Kimera\EditPesquisa\EditPesquisa.pas
+
+[View13]
+CustomEditViewType=TEditView
+Module=D:\Meus Projetos\ERP\uDlgEquipamentoClienteContrato.pas
+CursorX=34
+CursorY=58
+TopLine=53
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=Borland.FormDesignerView
+
+[View14]
+CustomEditViewType=TEditView
+Module=D:\Meus Projetos\ERP\uCad_proposta.pas
+CursorX=20
+CursorY=248
+TopLine=227
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=D:\Meus Projetos\ERP\uCad_proposta.pas
+
+[View15]
+CustomEditViewType=TEditView
+Module=D:\Meus Projetos\Global\Comandos.pas
+CursorX=1
+CursorY=1175
+TopLine=1160
+LeftCol=1
+Elisions={{1994,1},{2187,13},{'Traduz o Developer Express'}}
+Bookmarks=
+EditViewName=D:\Meus Projetos\Global\Comandos.pas
 
 [Watches]
 Count=4
@@ -225,12 +378,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=10000
-Height=879
+Width=3821
+Height=1071
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=10000
-ClientHeight=879
+ClientWidth=3821
+ClientHeight=1071
 TBDockHeight=220
 LRDockWidth=13602
 Dockable=1
@@ -287,13 +440,13 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=0
+Left=1
 Top=23
-Width=10000
+Width=9985
 Height=1319
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=10000
+ClientWidth=9985
 ClientHeight=1319
 TBDockHeight=1319
 LRDockWidth=2767
@@ -308,12 +461,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=1999
-Height=6346
+Width=1881
+Height=8063
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1999
-ClientHeight=6346
+ClientWidth=1881
+ClientHeight=8063
 TBDockHeight=7157
 LRDockWidth=1999
 Dockable=1
@@ -350,11 +503,11 @@ State=0
 Left=0
 Top=0
 Width=3821
-Height=975
+Height=1071
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3821
-ClientHeight=975
+ClientHeight=1071
 TBDockHeight=412
 LRDockWidth=4949
 Dockable=1
@@ -369,11 +522,11 @@ State=0
 Left=0
 Top=0
 Width=3821
-Height=975
+Height=1071
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3821
-ClientHeight=975
+ClientHeight=1071
 TBDockHeight=220
 LRDockWidth=7408
 Dockable=1
@@ -392,11 +545,11 @@ State=0
 Left=0
 Top=0
 Width=3821
-Height=975
+Height=1071
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3821
-ClientHeight=975
+ClientHeight=1071
 TBDockHeight=1538
 LRDockWidth=3485
 Dockable=1
@@ -411,11 +564,11 @@ State=0
 Left=0
 Top=0
 Width=3821
-Height=975
+Height=1071
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3821
-ClientHeight=975
+ClientHeight=1071
 TBDockHeight=2060
 LRDockWidth=3485
 Dockable=1
@@ -527,27 +680,27 @@ StayOnTop=0
 [PropertyInspector]
 PercentageSizes=1
 Create=1
-Visible=1
+Visible=0
 Docked=1
 State=0
-Left=0
-Top=23
+Left=1
+Top=20
 Width=1896
-Height=7926
+Height=7953
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=1896
-ClientHeight=7926
+ClientHeight=7953
 TBDockHeight=8599
 LRDockWidth=1896
 Dockable=1
 StayOnTop=0
-SplitPos=111
+SplitPos=134
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=Name,OnShow
-ExpandedItems=ActiveControl=0,Anchors=0,BorderIcons=0,Constraints=0,Font=0,GlassFrame=0,HorzScrollBar=0,Margins=0,Padding=0,Touch=0,VertScrollBar=0,DataSource=0,Titulo=1,Titulo.Anchors=0,Titulo.Constraints=0,Titulo.Font=0,Titulo.Margins=0,DataBinding=1,Properties=0,DataBinding.DataSource=0,BevelEdges=0,Style=0,StyleDisabled=0,BtnEditar=0,BtnNovo=0,BtnPesquisa=0,LblTitulo=0,LblTitulo.Anchors=0,LblTitulo.Constraints=0,LblTitulo.Font=0,LblTitulo.Margins=0,LblTitulo.Touch=0,Display=0,LookAndFeel=0
+SelectedItem=Name,OnKeyDown
+ExpandedItems=FilterOptions=0,ActiveControl=0,Action=0,Anchors=0,BevelEdges=0,BtnEditar=0,BtnNovo=0,BtnPesquisa=0,Constraints=0,Display=0,Font=0,LblTitulo=0,Margins=0,Touch=0,GlassFrame=0,HorzScrollBar=0,Padding=0,VertScrollBar=0,LblTitulo.Anchors=0,LblTitulo.Constraints=0,LblTitulo.Font=0,DataBinding=1,Properties=0,Style=0,StyleDisabled=0,StyleFocused=0,DataBinding.DataSource=0,Options=0,BorderIcons=0,DataSource=0,Title=1,Title.Font=0,Buttons=1,InfoPanel=0,LookAndFeel=0,InfoPanel.Font=0,Buttons.Append=0,Buttons.Cancel=0,Buttons.Delete=0,Buttons.Edit=0,Buttons.Filter=0,Buttons.First=0,Buttons.GotoBookmark=0,Buttons.Insert=0,Buttons.Last=0,Buttons.Next=0,Buttons.NextPage=0,Buttons.Post=0,Buttons.Prior=0,Buttons.PriorPage=0,Buttons.Refresh=0,Buttons.SaveBookmark=0,Font.Style=0,TitleFont=0,Titulo=1,Titulo.Anchors=0,Titulo.Constraints=0
 
 [ModelViewTool]
 PercentageSizes=1
@@ -596,11 +749,11 @@ State=0
 Left=0
 Top=0
 Width=3821
-Height=975
+Height=1071
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3821
-ClientHeight=975
+ClientHeight=1071
 TBDockHeight=1552
 LRDockWidth=8741
 Dockable=1
@@ -621,12 +774,12 @@ Docked=1
 State=0
 Left=0
 Top=0
-Width=1896
-Height=6593
+Width=1779
+Height=8063
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1896
-ClientHeight=6593
+ClientWidth=1779
+ClientHeight=8063
 TBDockHeight=3681
 LRDockWidth=1896
 Dockable=1
@@ -679,7 +832,7 @@ ActiveTabID=RefactoringForm
 TabDockClients=RefactoringForm,FindReferencsForm,ToDo List
 
 [DockSite1]
-HostDockSite=BottomDockTabSet
+HostDockSite=DockBottomPanel
 DockSiteType=1
 PercentageSizes=1
 Create=1
@@ -688,18 +841,18 @@ Docked=1
 State=0
 Left=0
 Top=23
-Width=10000
-Height=1223
+Width=3821
+Height=1415
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=10000
-ClientHeight=1223
-TBDockHeight=1223
+ClientWidth=3821
+ClientHeight=1415
+TBDockHeight=1415
 LRDockWidth=3821
 Dockable=1
 StayOnTop=0
 TabPosition=1
-ActiveTabID=WatchWindow
+ActiveTabID=DebugLogView
 TabDockClients=DebugLogView,BreakpointWindow,ThreadStatusWindow,CallStackWindow,WatchWindow,LocalVarsWindow
 
 [DockSite2]
@@ -734,14 +887,14 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=1
-Top=20
+Left=0
+Top=0
 Width=1896
-Height=6593
+Height=8599
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1896
-ClientHeight=6593
+ClientWidth=1779
+ClientHeight=8063
 TBDockHeight=8599
 LRDockWidth=1896
 Dockable=1
@@ -759,13 +912,13 @@ Visible=0
 Docked=1
 State=0
 Left=0
-Top=23
+Top=0
 Width=1999
-Height=6346
+Height=8599
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1999
-ClientHeight=6346
+ClientWidth=1881
+ClientHeight=8063
 TBDockHeight=8599
 LRDockWidth=1999
 Dockable=1

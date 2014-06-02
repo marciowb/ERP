@@ -1,7 +1,6 @@
 inherited frmLst_Empresa: TfrmLst_Empresa
   Caption = 'Cadastro de empresa'
   ClientHeight = 535
-  ExplicitTop = -18
   ExplicitWidth = 658
   ExplicitHeight = 574
   PixelsPerInch = 96
@@ -148,7 +147,7 @@ inherited frmLst_Empresa: TfrmLst_Empresa
         Top = 252
         Width = 323
         Height = 193
-        ActivePage = cxTabSheet1
+        ActivePage = cxTabSheet4
         Align = alBottom
         Style = 10
         TabOrder = 7
@@ -601,6 +600,25 @@ inherited frmLst_Empresa: TfrmLst_Empresa
             CorSecundaria = 11592447
             GravaEsteCampo = True
           end
+          object LabelDBEdit12: TLabelDBEdit
+            Left = 206
+            Top = 16
+            Width = 89
+            Height = 21
+            DataField = 'NUMEROOS'
+            DataSource = DataCadastro
+            TabOrder = 2
+            Titulo.Left = 206
+            Titulo.Top = 1
+            Titulo.Width = 68
+            Titulo.Height = 13
+            Titulo.Caption = 'N'#186' '#250'ltima O.S.'
+            IsNull = True
+            PodeRepetir = True
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+          end
         end
       end
       object LabelDBEdit10: TLabelDBEdit
@@ -623,6 +641,32 @@ inherited frmLst_Empresa: TfrmLst_Empresa
         GravaEsteCampo = True
       end
     end
+    inherited ToolBar1: TToolBar
+      inherited ToolButton1: TToolButton
+        ExplicitWidth = 24
+      end
+      inherited ToolButton2: TToolButton
+        ExplicitWidth = 24
+      end
+      inherited ToolButton3: TToolButton
+        ExplicitWidth = 24
+      end
+      inherited ToolButton4: TToolButton
+        ExplicitWidth = 24
+      end
+      inherited btnNovo: TToolButton
+        ExplicitWidth = 24
+      end
+      inherited ToolButton9: TToolButton
+        ExplicitWidth = 24
+      end
+      inherited ToolButton10: TToolButton
+        ExplicitWidth = 24
+      end
+      inherited ToolButton11: TToolButton
+        ExplicitWidth = 24
+      end
+    end
     inherited Panel2: TPanel
       Height = 486
       ExplicitHeight = 486
@@ -631,6 +675,9 @@ inherited frmLst_Empresa: TfrmLst_Empresa
         ExplicitHeight = 484
         ClientRectBottom = 480
         inherited tsGrid: TcxTabSheet
+          ExplicitLeft = 4
+          ExplicitTop = 24
+          ExplicitWidth = 293
           ExplicitHeight = 456
           inherited pnlGrid: TPanel
             Height = 456

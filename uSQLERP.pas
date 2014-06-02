@@ -32,7 +32,7 @@ begin
          Select :=
            'SELECT E.IDEMPRESA, E.CODIGO, E.RAZAOSOCIAL, E.FANTASIA, E.CNPJ, '+
            '       E.IDCEP, E.COMPLEMENTO, E.NUMERO, E.LOGOMARCA, E.IE,E.IM,E.NUMEROPROPOSTA, E.NUMEROCONTRATO, '+
-           '       E.TELEFONE, E.FAX, E.OBS, CEP.CEP, CEP.LOGRADOURO, CEP.BAIRRO, '+
+           '       E.TELEFONE, E.FAX, E.OBS,E.NUMEROOS, CEP.CEP, CEP.LOGRADOURO, CEP.BAIRRO, '+
            '       CEP.CIDADE, CEP.UF  '+
            '  FROM EMPRESA E '+
            ' INNER JOIN CEP  '+
@@ -531,29 +531,210 @@ begin
           NomeTabela := 'CONTRATO';
           DescricaoCampoDisplay := '';
           DescricaoTabela := 'Contrato';
+          CampoCodigo := '';
           Versao20 := False;
           UsaMaxParaCodigo := True;
+          DesconsiderarCampos := 'NOMECLIENTE;CODIGO_EMPRESA;LOGIN;NOMECONDICAOPAGAMENTO';
           Select :=
             ' SELECT C.IDCONTRATO, C.NUMEROCONTRATO, C.IDEMPRESA, C.DATAGERACAO,'+
-            '        C.DATA, C.IDPERIODICIDADEVGENCIA, C.DATATERMINO,'+
-            '        C.FLAGINDETERMINADO, C.IDCLIENTE, C.IDPERIODICIDADEVISITA,'+
-            '        C.IDTIPOCONTRATO, C.DATACANCELADO, C.FLAGSTATUS,C.IDCONDICAOPAGAMENTO,'+
-            '        C.VALORTOTAL, C.IDUSUARIO,CL.NOMECLIENTE,'+
-            '        E.CODIGO CODIGO_EMPRESA,  U.LOGIN,IDCONDICAOPAGAMENTO'+
+            '        C.DATA, C.DATATERMINO,C.IDPROPOSTA,'+
+            '        C.FLAGINDETERMINADO, C.IDCLIENTE, C.IDPERIODICIDADEVISITA, C.IDCONDICAOPAGAMENTO,'+
+            '        C.IDTIPOCONTRATO, C.DATACANCELADO, C.FLAGSTATUS,C.OBS,'+
+            '        C.VALORTOTAL, C.IDUSUARIO,C.IDPERIODICIDADEVIGENCIA,CL.NOMECLIENTE,'+
+            '        E.CODIGO CODIGO_EMPRESA,  U.LOGIN,CP.NOMECONDICAOPAGAMENTO'+
             '   FROM CONTRATO C'+
             '  INNER JOIN CLIENTE CL'+
             '     ON (CL.IDCLIENTE = C.IDCLIENTE)'+
             '  INNER JOIN EMPRESA E'+
             '     ON (E.IDEMPRESA = C.IDEMPRESA)'+
-            '  INNER JOIN CONDICAOPAGAMENTO CP '+
-            '     ON (CP.IDCONDICAOPAGAMENTO=C.IDCONDICAOPAGAMENTO) '+
+            '  INNER JOIN CONDICAOPAGAMENTO CP'+
+            '     ON (CP.IDCONDICAOPAGAMENTO=C.IDCONDICAOPAGAMENTO)'+
             '   LEFT JOIN USUARIO U'+
             '     ON (U.IDUSUARIO = C.IDUSUARIO)'+
-
             ' WHERE 1=1 '+Complemento;
        end;
+       tpERPServicoContrato:
+       begin
+          CampoChave := 'IDCONTRATOPRODUTOS';
+          CampoDisplay := '';
+          NomeTabela := 'CONTRATOPRODUTOS';
+          DescricaoCampoDisplay := '';
+          DescricaoTabela := 'Serviços do Contrato';
+          CampoCodigo := '';
+          Versao20 := False;
+          UsaMaxParaCodigo := True;
+          DesconsiderarCampos := 'CODIGO;DESCRICAO;FLAGEDICAO;QUANTIDADE';
+          Select :=
+            'SELECT CP.IDCONTRATOPRODUTOS, CP.IDCONTRATO, CP.IDPRODUTO, '+
+            '       CP.VALORUNITARIO, CP.VALORDESCONTO, CP.VALORACRESCIMO, '+
+            '       CP.VALORTOTAL, CP.OBS, CP.ALIQDESCONTO, CP.ALIQACRESCIMO, '+
+            '       CP.SUBTOTAL,P.CODIGO, P.DESCRICAO,''N'' FLAGEDICAO, CAST(1 AS VALOR) QUANTIDADE '+
+            '  FROM CONTRATOPRODUTOS CP '+
+            ' INNER JOIN PRODUTO P '+
+            '    ON (P.IDPRODUTO = CP.IDPRODUTO) '+
+            ' WHERE 1=1 '+Complemento;
+       end;
+      tpERPClienteEquipamento:
+       Begin
+          CampoChave := 'IDCLIENTEEQUIPAMENTOS';
+          CampoDisplay := 'DESCRICAOEQUIPAMENTO';
+          NomeTabela := 'CLIENTEEQUIPAMENTOS';
+          DescricaoCampoDisplay := 'Descrição';
+          DescricaoTabela := 'Equipamentos do cliente';
+          CampoCodigo := 'IDENTIFICADOR';
+          Versao20 := True;
+          UsaMaxParaCodigo := True;
+          DesconsiderarCampos := '';
+          Select :=
+           ' SELECT CE.IDCLIENTEEQUIPAMENTOS, CE.IDCLIENTE, '+
+           '        CE.DESCRICAOEQUIPAMENTO, CE.DESCRICAOCOMPLETA, '+
+           '        CE.IDENTIFICADOR, CE.IDPRODUTO'+
+           '   FROM CLIENTEEQUIPAMENTOS CE    '+
+            ' WHERE 1=1 '+Complemento;
+       End;
+       tpERPClienteEquipamentoContrato:
+       Begin
+          CampoChave := 'IDCONTRATOEQUIPAMENTOCLIENTE';
+          CampoDisplay := '';
+          NomeTabela := 'CONTRATOEQUIPAMENTOCLIENTE';
+          DescricaoCampoDisplay := '';
+          DescricaoTabela := 'Equipamentos do cliente no contrato';
+          CampoCodigo := '';
+          Versao20 := False;
+          UsaMaxParaCodigo := True;
+          DesconsiderarCampos := 'DESCRICAOEQUIPAMENTO;IDENTIFICADOR;DESCRICAOPERIODICIDADE;FLAGEDICAO;IDPRODUTO';
+          Select :=
+            '  SELECT CEC.IDCONTRATOEQUIPAMENTOCLIENTE,'+
+            '         CEC.IDCLIENTEEQUIPAMENTOS, CEC.IDPERIODICIADEVISITA,'+
+            '         CEC.IDCONTRATO, CE.DESCRICAOEQUIPAMENTO, CE.IDENTIFICADOR,'+
+            '         P.DESCRICAOPERIODICIDADE,''N'' FLAGEDICAO,CE.IDPRODUTO'+
+            '    FROM CONTRATOEQUIPAMENTOCLIENTE CEC'+
+            '   INNER JOIN CLIENTEEQUIPAMENTOS CE'+
+            '      ON (CE.IDCLIENTEEQUIPAMENTOS = CEC.IDCLIENTEEQUIPAMENTOS)'+
+            '    LEFT JOIN PERIODICIDADE P'+
+            '      ON (P.IDPERIODICIDADE = CEC.IDPERIODICIADEVISITA)'+
+            '   WHERE 1=1 '+Complemento;
+       End;
+       tpERPTipoOS:
+       begin
+          CampoChave := 'IDTIPOOS';
+          CampoDisplay := 'NOMETIPOOS';
+          NomeTabela := 'TIPOOS';
+          DescricaoCampoDisplay := 'Descrição';
+          DescricaoTabela := 'Tipo de O.S.';
+          Versao20 := True;
+          UsaMaxParaCodigo := True;
+          Select :=
+            'SELECT IDTIPOOS, CODIGO, NOMETIPOOS,IDLAYOUT '+
+            '  FROM TIPOOS'+
+            ' WHERE 1=1 '+Complemento;
+       end;
+       tpERPStatusOS:
+       begin
+          CampoChave := 'IDSTATUSOS';
+          CampoDisplay := 'NOMESTATUSOS';
+          NomeTabela := 'STATUSOS';
+          DescricaoCampoDisplay := 'Descrição';
+          DescricaoTabela := 'Status de O.S.';
+          Versao20 := True;
+          UsaMaxParaCodigo := True;
+          Select :=
+            'SELECT IDSTATUSOS, CODIGO, NOMESTATUSOS,COR '+
+            '  FROM STATUSOS'+
+            ' WHERE 1=1 '+Complemento;
+       end;
+       tpERPOS:
+       begin
+          CampoChave := 'IDOS';
+          CampoDisplay := '';
+          NomeTabela := 'OS';
+          DescricaoCampoDisplay := '';
+          DescricaoTabela := 'O.S.';
+          Versao20 := False;
+          CampoCodigo := '';
+          DesconsiderarCampos := 'CODIGOCLIENTE;NOMECLIENTE;NOMETIPOOS;NOMESTATUSOS;NUMEROCONTRATO';
+          Select :=
+            ' SELECT O.IDOS, O.NUMEROOS, O.DATAGERACAO,'+
+            '        O.IDUSUARIO, O.IDEMPRESA, O.DATA, O.HORA, O.IDCLIENTE,'+
+            '        O.IDTIPOOS,O.IDSTATUSOS, O.VALORTOTAL, O.OBS,'+
+            '        O.IDCONTRATO , C.CODIGO CODIGOCLIENTE,'+
+            '        C.NOMECLIENTE, T.NOMETIPOOS,S.NOMESTATUSOS,'+
+            '        CO.NUMEROCONTRATO'+
+            '   FROM OS O'+
+            '  INNER JOIN CLIENTE C'+
+            '     ON (C.IDCLIENTE = O.IDCLIENTE)'+
+            '  INNER JOIN TIPOOS T'+
+            '     ON (T.IDTIPOOS = O.IDTIPOOS)'+
+            '   LEFT JOIN STATUSOS S'+
+            '     ON (S.IDSTATUSOS = O.IDSTATUSOS)'+
+            '   LEFT JOIN CONTRATO CO'+
+            '     ON (CO.IDCONTRATO = O.IDCONTRATO)'+
+            '  WHERE 1=1 '+Complemento;
+       end;
+       tpERPEquipamentoOS:
+       begin
+          CampoChave := 'IDEQUIPAMENTOSOS';
+          CampoDisplay := '';
+          NomeTabela := 'EQUIPAMENTOSOS';
+          DescricaoCampoDisplay := '';
+          DescricaoTabela := 'Equipamentos da O.S.';
+          Versao20 := False;
+          CampoCodigo := '';
+          DesconsiderarCampos := 'DESCRICAOEQUIPAMENTO;IDENTIFICADOR;FLAGEDICAO';
+          Select :=
+            '  SELECT E.IDEQUIPAMENTOSOS, E.IDEQUIPAMENTOCLIENTE,'+
+            '         E.IDOS, E.DETALHEDEFEITO,'+
+            '         E.VALORTOTALEQUIPAMENTO,E.SOLUCAO,E.IDFUNCIONARIOSOLUCAO,'+
+            '         C.DESCRICAOEQUIPAMENTO,C.IDENTIFICADOR,''N'' FLAGEDICAO '+
+            '    FROM EQUIPAMENTOSOS E'+
+            '   INNER JOIN CLIENTEEQUIPAMENTOS C'+
+            '      ON (C.IDCLIENTEEQUIPAMENTOS = E.IDEQUIPAMENTOCLIENTE)'+
+            '   WHERE 1=1 '+Complemento;
 
+       end;
+       tpERPServicoEquipamentoOS :
+       begin
+          CampoChave := 'IDSERVICOOS';
+          CampoDisplay := '';
+          NomeTabela := 'SERVICOOS';
+          DescricaoCampoDisplay := '';
+          DescricaoTabela := 'Serviços do Equipamentos da O.S.';
+          Versao20 := False;
+          CampoCodigo := '';
+          DesconsiderarCampos := 'CODIGOSERVICO;DESCRICAOSERVICO;NOMEFUNCIONARIO;FLAGEDICAO';
+          Select :=
+            'SELECT S.IDSERVICOOS, S.IDEQUIPAMENTOSOS, S.IDPRODUTO, S.VALORSERVICO,'+
+            '       S.VALORTOTALPRODUTOS, S.VALORTOTAL,S.OBS,'+
+            '       S.IDFUNCIONARIO,P.CODIGO CODIGOSERVICO, P.DESCRICAO DESCRICAOSERVICO,'+
+            '       F.NOMEFUNCIONARIO,''N'' FLAGEDICAO '+
+            '  FROM SERVICOOS S'+
+            ' INNER JOIN PRODUTO P'+
+            '    ON (P.IDPRODUTO = S.IDPRODUTO)'+
+            ' INNER JOIN FUNCIONARIO F'+
+            '    ON (F.IDFUNCIONARIO = S.IDFUNCIONARIO)'+
+            '   WHERE 1=1 '+Complemento;
 
+       end;
+      tpERPProdutoServicoOS:
+        begin
+          CampoChave := 'IDPRODUTOSSERVICOOS';
+          CampoDisplay := '';
+          NomeTabela := 'PRODUTOSSERVICOOS';
+          DescricaoCampoDisplay := '';
+          DescricaoTabela := 'Produto dos Serviços da O.S.';
+          Versao20 := False;
+          CampoCodigo := '';
+          DesconsiderarCampos := 'CODIGO;DESCRICAO;FLAGEDICAO';
+          Select :=
+            'SELECT PS.IDPRODUTOSSERVICOOS, PS.IDSERVICOOS,'+
+            '       PS.IDPRODUTO, PS.QUANTIDADE, PS.VALORUNITARIO, PS.TOTAL,'+
+            '       P.CODIGO, P.DESCRICAO,''N'' FLAGEDICAO '+
+            '  FROM PRODUTOSSERVICOOS PS'+
+            ' INNER JOIN PRODUTO P'+
+            '    ON (P.IDPRODUTO = PS.IDPRODUTO)'+
+            '   WHERE 1=1 '+Complemento;
+
+       end;
     end;
 
   End;

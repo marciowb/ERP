@@ -34,7 +34,7 @@ var
 
 implementation
 
-uses MinhasClasses;
+uses MinhasClasses, uCad_Contratos;
 
 {$R *.dfm}
 
@@ -55,7 +55,10 @@ end;
 procedure TfrmLst_Contratos.FormShow(Sender: TObject);
 begin
   inherited;
+  Self.FormCadastro :=  frmCad_Contrato;
+  Self.ClasseCadPai := TfrmCad_Contrato;
   AtuDados;
 end;
+
 
 end.

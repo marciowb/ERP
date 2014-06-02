@@ -184,6 +184,39 @@
 			<DCCReference Include="uCad_Contratos.pas">
 				<Form>frmCad_Contrato</Form>
 			</DCCReference>
+			<DCCReference Include="uDlg_ServicoContrato.pas">
+				<Form>frmDlg_ServicoContrato</Form>
+			</DCCReference>
+			<DCCReference Include="uAddItemPadrao.pas">
+				<Form>frmAddItemPadrao</Form>
+			</DCCReference>
+			<DCCReference Include="uDlgEquipamentoClienteContrato.pas">
+				<Form>frmDlg_EquipamentoClienteContrato</Form>
+			</DCCReference>
+			<DCCReference Include="uDlg_EquipamentoCliente.pas">
+				<Form>frmDlg_EquipamentoCliente</Form>
+			</DCCReference>
+			<DCCReference Include="uLst_TipoOS.pas">
+				<Form>frmLst_TipoOS</Form>
+			</DCCReference>
+			<DCCReference Include="uLst_StatusOS.pas">
+				<Form>frmLst_StatusOS</Form>
+			</DCCReference>
+			<DCCReference Include="uLst_OS.pas">
+				<Form>frmLst_OS</Form>
+			</DCCReference>
+			<DCCReference Include="uCad_OS.pas">
+				<Form>frmCad_OS</Form>
+			</DCCReference>
+			<DCCReference Include="uDlg_EquipamentoOS.pas">
+				<Form>frmDlg_EquipamentoOS</Form>
+			</DCCReference>
+			<DCCReference Include="uDlg_ExecucaoOSEquipamento.pas">
+				<Form>frmDlg_ExecucaoOSEquipamento</Form>
+			</DCCReference>
+			<DCCReference Include="uDlg_ServicoEquipamentoOS.pas">
+				<Form>frmDlg_ServicoEquipamentoOS</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

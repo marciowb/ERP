@@ -26,6 +26,10 @@ interface
 
     end;
 
+    TRegrasPeriodo = class
+      CLASS function GetDataFinal(DataInicial: TDate;IdPeriodiciadade: Integer): TDateTime;
+    end;
+
 implementation
 
 uses uConstantes;
@@ -134,6 +138,17 @@ begin
   Result := 0;
   Temp := GetValorCds(tpERPProduto,'idproduto = '+IntToStr(IdProduto),'PRECO');
   Result := StrToCurrDef(Temp,0);
+end;
+
+{ TRegrasPeriodo }
+
+class function TRegrasPeriodo.GetDataFinal(DataInicial: TDate;
+  IdPeriodiciadade: Integer): TDateTime;
+var
+  NumDias: Integer;
+begin
+  NumDias := StrToInt(GetValorCds(tpERPPeridicidade,'IDPERIODICIDADE = '+IntToStr(IdPeriodiciadade),'NUMDIAS'));
+  Result := AddDay(NumDias,DataInicial);
 end;
 
 end.

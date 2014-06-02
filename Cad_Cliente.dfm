@@ -3,7 +3,7 @@ inherited frmCad_Cliente: TfrmCad_Cliente
   ClientHeight = 498
   ClientWidth = 773
   ExplicitWidth = 789
-  ExplicitHeight = 536
+  ExplicitHeight = 537
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
@@ -691,6 +691,7 @@ inherited frmCad_Cliente: TfrmCad_Cliente
           BtnPesquisa.NumGlyphs = 2
           BtnPesquisa.ParentShowHint = False
           BtnPesquisa.ShowHint = True
+          BtnPesquisa.OnClick = edtGrupoClienteBtnPesquisaClick
           BtnNovo.Left = 108
           BtnNovo.Top = 32
           BtnNovo.Width = 25
