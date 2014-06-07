@@ -46,6 +46,7 @@ interface
       class function AbreCadastroTipoOS(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
       class function AbreCadastroStatusOS(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
       class function AbreInclusaoOS: CampoChave;
+      class function AbreCentralOS: CampoChave;
     end;
 
 
@@ -55,7 +56,7 @@ implementation
 uses uCadNCM, Lst_Empresa, Cad_Cliente, Cad_usuario, uCad_Funcionario,
   uCad_Fornecedor, uCad_Produto, uLst_Periodicidade, uLst_ContaBancaria,
   uLst_CondicaoPagamento, uLst_Proposta, uLst_TipoContrato, uLst_Contratos,
-  uDlg_EquipamentoCliente, uLst_TipoOS, uLst_StatusOS, uLst_OS;
+  uDlg_EquipamentoCliente, uLst_TipoOS, uLst_StatusOS, uLst_OS, uCad_OS;
 
 class function TrotinasForms.AbreCadastroBanco(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
@@ -179,6 +180,11 @@ begin
   AbreFormCadastroPai<TfrmCad_usuario>(TipoOperacao);
 end;
 
+class function TrotinasForms.AbreCentralOS: CampoChave;
+begin
+  AbreFormListagemPadrao<TfrmLst_OS>
+end;
+
 class function TrotinasForms.AbreContratos(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
    AbreFormListagemPadrao<TfrmLst_Contratos>
@@ -224,7 +230,7 @@ class procedure TrotinasForms.AbreFormSimplesPeloTipoPesquisa(aTipoPesquisa: TTi
 
 class function TrotinasForms.AbreInclusaoOS: CampoChave;
 begin
-  AbreFormListagemPadrao<TfrmLst_OS>
+  AbreFormCadastroPai<TfrmCad_OS>(toIncluir);
 end;
 
 class function TrotinasForms.AbreManutencaoEquipamentoCliente(pIdCliente: Integer;TipoOperacao: TTipoOperacaoForm): CampoChave;

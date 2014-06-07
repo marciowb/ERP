@@ -77,6 +77,10 @@ type
     StatusOS1: TMenuItem;
     actInclusaoOS: TAction;
     InclusaoOS1: TMenuItem;
+    actCentralOS: TAction;
+    actOS: TAction;
+    Ordensdeservio1: TMenuItem;
+    CentralOS1: TMenuItem;
     procedure actCadastroExecute(Sender: TObject);
     procedure actCFOPExecute(Sender: TObject);
     procedure actNCMExecute(Sender: TObject);
@@ -107,6 +111,8 @@ type
     procedure actTipoOSExecute(Sender: TObject);
     procedure actStatusOSExecute(Sender: TObject);
     procedure actInclusaoOSExecute(Sender: TObject);
+    procedure actCentralOSExecute(Sender: TObject);
+    procedure actOSExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -150,6 +156,12 @@ procedure TfrmPrincipal.actCargoExecute(Sender: TObject);
 begin
   inherited;
   TrotinasForms. AbreCadastroCargos
+end;
+
+procedure TfrmPrincipal.actCentralOSExecute(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreCentralOS;
 end;
 
 procedure TfrmPrincipal.actCFOPExecute(Sender: TObject);
@@ -240,6 +252,12 @@ procedure TfrmPrincipal.actNCMExecute(Sender: TObject);
 begin
   inherited;
   TrotinasForms.AbreCadastroNCM;
+end;
+
+procedure TfrmPrincipal.actOSExecute(Sender: TObject);
+begin
+  inherited;
+//
 end;
 
 procedure TfrmPrincipal.actPeriodicidadeExecute(Sender: TObject);

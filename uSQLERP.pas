@@ -656,7 +656,7 @@ begin
           Select :=
             ' SELECT O.IDOS, O.NUMEROOS, O.DATAGERACAO,'+
             '        O.IDUSUARIO, O.IDEMPRESA, O.DATA, O.HORA, O.IDCLIENTE,'+
-            '        O.IDTIPOOS,O.IDSTATUSOS, O.VALORTOTAL, O.OBS,'+
+            '        O.IDTIPOOS,O.IDSTATUSOS, O.VALORTOTAL, O.OBS,O.FLAGBAIXADA,'+
             '        O.IDCONTRATO , C.CODIGO CODIGOCLIENTE,'+
             '        C.NOMECLIENTE, T.NOMETIPOOS,S.NOMESTATUSOS,'+
             '        CO.NUMEROCONTRATO'+
@@ -710,7 +710,7 @@ begin
             '  FROM SERVICOOS S'+
             ' INNER JOIN PRODUTO P'+
             '    ON (P.IDPRODUTO = S.IDPRODUTO)'+
-            ' INNER JOIN FUNCIONARIO F'+
+            '  LEFT JOIN FUNCIONARIO F'+
             '    ON (F.IDFUNCIONARIO = S.IDFUNCIONARIO)'+
             '   WHERE 1=1 '+Complemento;
 
