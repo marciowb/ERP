@@ -66,5 +66,10 @@
     <Transaction>2014/05/28 19:24:26.505.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\uDlg_ExecucaoOSEquipamento.dfm</Transaction>
     <Transaction>2014/05/28 21:09:53.154.pas,D:\Meus Projetos\ERP\Unit1.pas=D:\Meus Projetos\ERP\uDlg_ServicoEquipamentoOS.pas</Transaction>
     <Transaction>2014/05/28 21:09:53.154.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\uDlg_ServicoEquipamentoOS.dfm</Transaction>
+    <Transaction>2014/06/08 07:52:59.345.pas,D:\Meus Projetos\ERP\Unit1.pas=D:\Meus Projetos\ERP\uLibERP.pas</Transaction>
+    <Transaction>2014/06/21 07:56:57.027.pas,D:\Meus Projetos\ERP\Unit1.pas=D:\Meus Projetos\ERP\Lst_OperacaoEstoque.pas</Transaction>
+    <Transaction>2014/06/21 07:56:57.027.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\Lst_OperacaoEstoque.dfm</Transaction>
+    <Transaction>2014/06/22 07:17:54.144.pas,D:\Meus Projetos\ERP\Unit1.pas=D:\Meus Projetos\ERP\uDlg_ManutencaoSerialProduto.pas</Transaction>
+    <Transaction>2014/06/22 07:17:54.153.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\uDlg_ManutencaoSerialProduto.dfm</Transaction>
   </Transactions>
 </BorlandProject>

@@ -12,11 +12,112 @@ inherited frmPrincipal: TfrmPrincipal
     ExplicitTop = 506
     ExplicitWidth = 842
   end
+  object dxDockSite1: TdxDockSite [1]
+    Left = 0
+    Top = 0
+    Width = 842
+    Height = 506
+    Align = alClient
+    DockType = 0
+    OriginalWidth = 842
+    OriginalHeight = 506
+    object dxLayoutDockSite2: TdxLayoutDockSite
+      Left = 0
+      Top = 0
+      Width = 842
+      Height = 366
+      DockType = 1
+      OriginalWidth = 300
+      OriginalHeight = 200
+      object dxLayoutDockSite1: TdxLayoutDockSite
+        Left = 0
+        Top = 0
+        Width = 520
+        Height = 366
+        DockType = 1
+        OriginalWidth = 300
+        OriginalHeight = 200
+      end
+      object DockAgenda: TdxDockPanel
+        Left = 520
+        Top = 0
+        Width = 322
+        Height = 366
+        AllowDockClients = [dtNone, dtClient, dtLeft, dtTop, dtRight, dtBottom]
+        AllowFloating = True
+        AllowDock = [dtNone, dtClient, dtLeft, dtTop, dtRight, dtBottom]
+        AutoHide = False
+        Caption = 'Agenda'
+        CaptionButtons = [cbHide]
+        TabPosition = tctpTop
+        DockType = 4
+        OriginalWidth = 322
+        OriginalHeight = 140
+        object pnlAgenda: TPanel
+          Left = 0
+          Top = 0
+          Width = 318
+          Height = 338
+          Align = alClient
+          BevelOuter = bvNone
+          TabOrder = 0
+          object cxGrid1: TcxGrid
+            Left = 0
+            Top = 0
+            Width = 318
+            Height = 338
+            Align = alClient
+            TabOrder = 0
+            object cxGrid1DBTableView1: TcxGridDBTableView
+              OnDblClick = cxGrid1DBTableView1DblClick
+              NavigatorButtons.ConfirmDelete = False
+              DataController.DataSource = DataAgenda
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.CellAutoHeight = True
+              OptionsView.GroupByBox = False
+              OptionsView.Header = False
+              object cxGrid1DBTableView1Column1: TcxGridDBColumn
+                DataBinding.FieldName = 'DATACOMPROMISSO'
+                Visible = False
+                GroupIndex = 0
+                Options.ShowCaption = False
+                Options.SortByDisplayText = isbtOff
+                IsCaptionAssigned = True
+              end
+              object cxGrid1DBTableView1Column2: TcxGridDBColumn
+                DataBinding.FieldName = 'CAPTION'
+                Width = 273
+              end
+            end
+            object cxGrid1Level1: TcxGridLevel
+              GridView = cxGrid1DBTableView1
+            end
+          end
+        end
+      end
+    end
+    object dxDockPanel1: TdxDockPanel
+      Left = 0
+      Top = 366
+      Width = 842
+      Height = 140
+      AllowFloating = True
+      AutoHide = False
+      Caption = 'Estoque'
+      DockType = 5
+      OriginalWidth = 305
+      OriginalHeight = 140
+    end
+  end
   inherited dxBarManager1: TdxBarManager
     Categories.ItemsVisibles = (
       2)
     Categories.Visibles = (
       True)
+    Left = 272
+    Top = 128
     DockControlHeights = (
       0
       0
@@ -24,6 +125,8 @@ inherited frmPrincipal: TfrmPrincipal
       0)
   end
   inherited MainMenu: TMainMenu
+    Left = 112
+    Top = 128
     object Cadastro1: TMenuItem
       Action = actCadastro
       object actCFOP1: TMenuItem
@@ -98,6 +201,9 @@ inherited frmPrincipal: TfrmPrincipal
       object StatusOS1: TMenuItem
         Action = actStatusOS
       end
+      object OperaoEstoque1: TMenuItem
+        Action = actOperacaoEstoque
+      end
     end
     object Venda1: TMenuItem
       Action = actVenda
@@ -116,9 +222,17 @@ inherited frmPrincipal: TfrmPrincipal
           Action = actCentralOS
         end
       end
+      object Entradadeprodutos1: TMenuItem
+        Action = actEntrada
+      end
+    end
+    object Agenda1: TMenuItem
+      Action = actAgenda
     end
   end
   inherited ActionList1: TActionList
+    Left = 184
+    Top = 128
     object actCadastro: TAction
       Category = 'Cadastro'
       Caption = 'Cadastro'
@@ -278,5 +392,48 @@ inherited frmPrincipal: TfrmPrincipal
       Caption = 'Ordens de servi'#231'o'
       OnExecute = actOSExecute
     end
+    object actAgenda: TAction
+      Category = 'Venda'
+      Caption = 'Agenda'
+      OnExecute = actAgendaExecute
+    end
+    object actEntrada: TAction
+      Category = 'Venda'
+      Caption = 'Entrada de produtos'
+      OnExecute = actEntradaExecute
+    end
+    object actOperacaoEstoque: TAction
+      Category = 'Cadastro'
+      Caption = 'Opera'#231#227'o Estoque'
+      OnExecute = actOperacaoEstoqueExecute
+    end
+  end
+  object dxDockingManager1: TdxDockingManager
+    Color = clBtnFace
+    DefaultHorizContainerSiteProperties.Dockable = True
+    DefaultHorizContainerSiteProperties.ImageIndex = -1
+    DefaultVertContainerSiteProperties.Dockable = True
+    DefaultVertContainerSiteProperties.ImageIndex = -1
+    DefaultTabContainerSiteProperties.Dockable = True
+    DefaultTabContainerSiteProperties.ImageIndex = -1
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ViewStyle = vsUseLookAndFeel
+    Left = 232
+    Top = 192
+  end
+  object DataAgenda: TDataSource
+    DataSet = CdsAgenda
+    Left = 112
+    Top = 240
+  end
+  object CdsAgenda: TpFIBClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 168
+    Top = 248
   end
 end

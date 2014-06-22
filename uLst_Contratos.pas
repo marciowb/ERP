@@ -48,7 +48,7 @@ begin
   CriaColuna('NOMECLIENTE','Cliente',200,tcString);
   CriaColuna('VALORTOTAL','Valor',100,tcReal);
   CriaColuna('LOGIN','Usuario',100,tcString);
-  CriaColuna('FLAGSTATUS','Status',100,tcString);
+  CriaColuna('FLAGSTATUS_LEGENDA','Status',100,tcString);
 
 end;
 

@@ -46,6 +46,7 @@ inherited frmLst_Empresa: TfrmLst_Empresa
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object LabelDBEdit2: TLabelDBEdit
         Left = 16
@@ -65,6 +66,7 @@ inherited frmLst_Empresa: TfrmLst_Empresa
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object LabelDBEdit3: TLabelDBEdit
         Left = 16
@@ -84,6 +86,7 @@ inherited frmLst_Empresa: TfrmLst_Empresa
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object LabelDBEdit4: TLabelDBEdit
         Left = 168
@@ -103,6 +106,7 @@ inherited frmLst_Empresa: TfrmLst_Empresa
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object LabelDBEdit5: TLabelDBEdit
         Left = 16
@@ -122,6 +126,7 @@ inherited frmLst_Empresa: TfrmLst_Empresa
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object LabelDBEdit6: TLabelDBEdit
         Left = 168
@@ -141,13 +146,14 @@ inherited frmLst_Empresa: TfrmLst_Empresa
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object cxPageControl1: TcxPageControl
         Left = 0
         Top = 252
         Width = 323
         Height = 193
-        ActivePage = cxTabSheet4
+        ActivePage = cxTabSheet1
         Align = alBottom
         Style = 10
         TabOrder = 7
@@ -175,7 +181,6 @@ inherited frmLst_Empresa: TfrmLst_Empresa
               TamanhoCodigo = 0
               AutoPesquisa = True
               AutoCompletar = True
-              OnRegAchado = edtCEPRegAchado
               OnRegNaoAchado = edtCEPRegNaoAchado
               UsaBtnNovo = False
               UsaBtnEditar = False
@@ -393,6 +398,7 @@ inherited frmLst_Empresa: TfrmLst_Empresa
               CorPrincipal = clWhite
               CorSecundaria = 11592447
               GravaEsteCampo = True
+              AsInteger = 0
             end
             object LabelDBEdit8: TLabelDBEdit
               Left = 76
@@ -412,6 +418,7 @@ inherited frmLst_Empresa: TfrmLst_Empresa
               CorPrincipal = clWhite
               CorSecundaria = 11592447
               GravaEsteCampo = True
+              AsInteger = 0
             end
             object edtUf: TLabeledEdit
               Left = 275
@@ -580,6 +587,7 @@ inherited frmLst_Empresa: TfrmLst_Empresa
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit11: TLabelDBEdit
             Left = 111
@@ -599,6 +607,7 @@ inherited frmLst_Empresa: TfrmLst_Empresa
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit12: TLabelDBEdit
             Left = 206
@@ -618,6 +627,7 @@ inherited frmLst_Empresa: TfrmLst_Empresa
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
         end
       end
@@ -639,6 +649,7 @@ inherited frmLst_Empresa: TfrmLst_Empresa
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
     end
     inherited ToolBar1: TToolBar

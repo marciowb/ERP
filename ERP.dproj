@@ -217,6 +217,19 @@
 			<DCCReference Include="uDlg_ServicoEquipamentoOS.pas">
 				<Form>frmDlg_ServicoEquipamentoOS</Form>
 			</DCCReference>
+			<DCCReference Include="uLibERP.pas"/>
+			<DCCReference Include="uEntrada.pas">
+				<Form>frmEntradaEstoque</Form>
+			</DCCReference>
+			<DCCReference Include="Inc_ProdutoEntrada.pas">
+				<Form>frmInc_ProdutoEntrada</Form>
+			</DCCReference>
+			<DCCReference Include="Lst_OperacaoEstoque.pas">
+				<Form>frmLst_OperacaoEstoque</Form>
+			</DCCReference>
+			<DCCReference Include="uDlg_ManutencaoSerialProduto.pas">
+				<Form>frmDlg_ManutencaoSerialProduto</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

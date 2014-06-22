@@ -14,7 +14,11 @@ uses
   dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
   dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
   dxSkinXmas2008Blue, dxSkinsdxBarPainter, ActnList, Menus, dxBar, dxStatusBar,
-  dxRibbonStatusBar,Generics.Collections;
+  dxRibbonStatusBar,Generics.Collections, dxSkinscxPCPainter, cxPC, StdCtrls,
+  ExtCtrls, dxSkinsdxDockControlPainter, dxDockControl, dxDockPanel, cxStyles,
+  cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, DB, cxDBData,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, DBClient,
+  pFIBClientDataSet, cxGridLevel, cxClasses, cxGridCustomView, cxGrid;
 
 type
   TfrmPrincipal = class(TfrmPrincipalPadrao)
@@ -81,6 +85,26 @@ type
     actOS: TAction;
     Ordensdeservio1: TMenuItem;
     CentralOS1: TMenuItem;
+    actAgenda: TAction;
+    Agenda1: TMenuItem;
+    dxDockingManager1: TdxDockingManager;
+    DockAgenda: TdxDockPanel;
+    dxDockSite1: TdxDockSite;
+    dxLayoutDockSite1: TdxLayoutDockSite;
+    dxDockPanel1: TdxDockPanel;
+    dxLayoutDockSite2: TdxLayoutDockSite;
+    pnlAgenda: TPanel;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    DataAgenda: TDataSource;
+    CdsAgenda: TpFIBClientDataSet;
+    cxGrid1DBTableView1Column1: TcxGridDBColumn;
+    cxGrid1DBTableView1Column2: TcxGridDBColumn;
+    actEntrada: TAction;
+    Entradadeprodutos1: TMenuItem;
+    actOperacaoEstoque: TAction;
+    OperaoEstoque1: TMenuItem;
     procedure actCadastroExecute(Sender: TObject);
     procedure actCFOPExecute(Sender: TObject);
     procedure actNCMExecute(Sender: TObject);
@@ -113,8 +137,14 @@ type
     procedure actInclusaoOSExecute(Sender: TObject);
     procedure actCentralOSExecute(Sender: TObject);
     procedure actOSExecute(Sender: TObject);
+    procedure actAgendaExecute(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure cxGrid1DBTableView1DblClick(Sender: TObject);
+    procedure actEntradaExecute(Sender: TObject);
+    procedure actOperacaoEstoqueExecute(Sender: TObject);
   private
     { Private declarations }
+    Procedure AtualizaAgenda;
   public
     { Public declarations }
   end;
@@ -124,9 +154,15 @@ var
 
 implementation
 
-uses uForms, MinhasClasses, uCadNCM;
+uses uForms, MinhasClasses, uCadNCM, Comandos;
 
 {$R *.dfm}
+
+procedure TfrmPrincipal.actAgendaExecute(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreAgenda;
+end;
 
 procedure TfrmPrincipal.actBancoExecute(Sender: TObject);
 begin
@@ -138,6 +174,7 @@ procedure TfrmPrincipal.actCadastroExecute(Sender: TObject);
 begin
   inherited;
   //
+
 end;
 
 procedure TfrmPrincipal.actCadClienteExecute(Sender: TObject);
@@ -200,6 +237,12 @@ begin
   TrotinasForms.AbreCadastroEmpresa;
 end;
 
+procedure TfrmPrincipal.actEntradaExecute(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreEntradaProduto;
+end;
+
 procedure TfrmPrincipal.actFabricanteExecute(Sender: TObject);
 begin
   inherited;
@@ -252,6 +295,12 @@ procedure TfrmPrincipal.actNCMExecute(Sender: TObject);
 begin
   inherited;
   TrotinasForms.AbreCadastroNCM;
+end;
+
+procedure TfrmPrincipal.actOperacaoEstoqueExecute(Sender: TObject);
+begin
+  inherited;
+  TRotinasForms.AbreCadastroOperacaoEstoque;
 end;
 
 procedure TfrmPrincipal.actOSExecute(Sender: TObject);
@@ -314,10 +363,33 @@ begin
   //
 end;
 
+procedure TfrmPrincipal.AtualizaAgenda;
+var
+  Filtro: String;
+begin
+  Filtro := '  (DATACOMPROMISSO <= CURRENT_DATE +7 ) AND  COALESCE(A.FLAGBAIXADO,''N'') = ''N'' ';
+  SetCds(CdsAgenda,tpERPAgenda,Filtro);
+//  if CdsAgenda.RecordCount = 0 Then
+//    DockAgenda.AutoHide := True;
+end;
+
+procedure TfrmPrincipal.cxGrid1DBTableView1DblClick(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreAgenda( Self.CdsAgenda.FieldByName('IdAgenda').AsInteger);
+end;
+
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
   inherited;
   Menu := MainMenu;
+
+end;
+
+procedure TfrmPrincipal.FormShow(Sender: TObject);
+begin
+  inherited;
+  AtualizaAgenda;
 end;
 
 end.

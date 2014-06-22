@@ -76,7 +76,7 @@ begin
   CriaColuna('NOMECLIENTE','Nome do cliente',200, tcString);
   CriaRodapeTableView(CriaColuna('VALORTOTALPROPOSTA','Valor total',200, tcMoeda),skSum,skSum);
   CriaColuna('LOGIN','Usuário',100, tcString);
-  CriaColuna('STATUSPROPOSTA','Status',100, tcString);
+  CriaColuna('STATUSPROPOSTA_LEGENDA','Status',100, tcString);
 
 
 

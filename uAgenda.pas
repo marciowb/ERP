@@ -41,6 +41,7 @@ type
     BitBtn1: TBitBtn;
     grpFiltro: TRadioGroup;
     edtCliente: TEditPesquisa;
+    edtFuncionario: TEditPesquisa;
     procedure FormShow(Sender: TObject);
     procedure grpTipoViewClick(Sender: TObject);
     procedure CdsAgendaAfterOpen(DataSet: TDataSet);
@@ -164,8 +165,10 @@ begin
   end;
   if not edtCliente.IsNull then
     Filtro := Filtro+ ' AND A.IDCLIENTE = '+edtCliente.ValorChaveString;
+  if not edtFuncionario.IsNull then
+    Filtro := Filtro+ ' AND A.IDFUNCIONARIO = '+edtFuncionario.ValorChaveString;
 
-  SetCds(CdsAgenda,tpcsAGenda,Filtro);
+  SetCds(CdsAgenda,tpERPAGenda,Filtro);
 
 
 end;
@@ -234,7 +237,8 @@ end;
 procedure TfrmAgenda.FormCreate(Sender: TObject);
 begin
   inherited;
-  ConfiguraEditPesquisa(edtCliente,nil,tpCsCliente);
+  ConfiguraEditPesquisa(edtCliente,nil,tpERPCliente);
+  ConfiguraEditPesquisa(edtFuncionario,nil,tpERPFuncionario);
 end;
 
 procedure TfrmAgenda.FormShow(Sender: TObject);
@@ -275,6 +279,7 @@ end;
 procedure TfrmAgenda.SetIdAgenda(const Value: Integer);
 begin
   FIdAgenda := Value;
+
 end;
 
 end.

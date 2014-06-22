@@ -4,7 +4,7 @@ interface
   uses
      Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
      Dialogs,Lst_CadastroERP, MinhasClasses,uCad_CadastroPaiERP,uListagemPadraoERP,
-     Generics.Collections;
+     Generics.Collections,cxPC,TypInfo;
 
 
   type
@@ -47,6 +47,11 @@ interface
       class function AbreCadastroStatusOS(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
       class function AbreInclusaoOS: CampoChave;
       class function AbreCentralOS: CampoChave;
+      class procedure AbreEntradaProduto;
+      class procedure AbreAgenda(IdAgenda: Integer = -1);
+      class function AbreCadastroOperacaoEstoque(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+  private
+
     end;
 
 
@@ -56,7 +61,19 @@ implementation
 uses uCadNCM, Lst_Empresa, Cad_Cliente, Cad_usuario, uCad_Funcionario,
   uCad_Fornecedor, uCad_Produto, uLst_Periodicidade, uLst_ContaBancaria,
   uLst_CondicaoPagamento, uLst_Proposta, uLst_TipoContrato, uLst_Contratos,
-  uDlg_EquipamentoCliente, uLst_TipoOS, uLst_StatusOS, uLst_OS, uCad_OS;
+  uDlg_EquipamentoCliente, uLst_TipoOS, uLst_StatusOS, uLst_OS, uCad_OS,
+  uAgenda, uPrincipal, uEntrada, Lst_OperacaoEstoque;
+
+class procedure TrotinasForms.AbreAgenda(IdAgenda: Integer = -1);
+begin
+  Try
+    frmAgenda := TfrmAgenda.Create(nil);
+    frmAgenda.IdAgenda := IdAgenda;
+    frmAgenda.ShowModal;
+  Finally
+    FreeAndNil(frmAgenda);
+  End;
+end;
 
 class function TrotinasForms.AbreCadastroBanco(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
@@ -138,6 +155,12 @@ begin
   AbreFormCadastroPai<TfrmCad_NCM>(TipoOperacao);
 end;
 
+class function TrotinasForms.AbreCadastroOperacaoEstoque(
+  TipoOperacao: TTipoOperacaoForm): CampoChave;
+begin
+  AbreFormSimples(frmLst_OperacaoEstoque,TfrmLst_OperacaoEstoque,TipoOperacao);
+end;
+
 class function TrotinasForms.AbreCadastroPeridicidade(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
   AbreFormSimples(frmLst_Periodicidade,TfrmLst_Periodicidade,TipoOperacao);
@@ -188,6 +211,16 @@ end;
 class function TrotinasForms.AbreContratos(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
    AbreFormListagemPadrao<TfrmLst_Contratos>
+end;
+
+class procedure TrotinasForms.AbreEntradaProduto;
+begin
+  if not Assigned(frmEntradaEstoque) then
+    frmEntradaEstoque := TfrmEntradaEstoque.Create(nil);
+  if frmEntradaEstoque.Showing then
+    frmEntradaEstoque.BringToFront
+  else
+    frmEntradaEstoque.Show;
 end;
 
 class procedure TrotinasForms. AbreFormSimples(aForm: TfrmLstCadastroSimplesERP; aClasse: TClasseCadastroSimples;TipoOperacao: TTipoOperacaoForm = toNada);
@@ -257,6 +290,7 @@ begin
   AbreFormListagemPadrao<TfrmLst_Proposta>;
 end;
 
+
 { TTelas }
 
 class procedure TrotinasForms.AbreFormCadastroPai<MyForm>(TipoOperacaoForm: TTipoOperacaoForm);
@@ -272,6 +306,7 @@ begin
       toIncluir:
         aForm.NovoReg := True;
     end;
+
     aForm.ShowModal;
   Finally
     FreeAndNil(aForm);

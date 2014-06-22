@@ -74,6 +74,14 @@ type
     cxGrid1: TcxGrid;
     DataProcessos: TDataSource;
     cxGrid1DBTableView1Column1: TcxGridDBColumn;
+    cxGrid2DBTableView1: TcxGridDBTableView;
+    cxGrid2Level1: TcxGridLevel;
+    cxGrid2: TcxGrid;
+    DataSeriais: TDataSource;
+    CdsSeriais: TpFIBClientDataSet;
+    cxGrid2DBTableView1Column1: TcxGridDBColumn;
+    cxGrid2DBTableView1Column2: TcxGridDBColumn;
+    cxGrid2DBTableView1Column3: TcxGridDBColumn;
     procedure CdsCadastroAfterScroll(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -88,6 +96,12 @@ type
     procedure cxGrid1DBTableView1NavigatorButtonsButtonClick(Sender: TObject;
       AButtonIndex: Integer; var ADone: Boolean);
     procedure CdsCadastroAfterPost(DataSet: TDataSet);
+    procedure edtLinhaBtnNovoClick(Sender: TObject);
+    procedure edtGrupoBtnNovoClick(Sender: TObject);
+    procedure edtLocalizacaoBtnNovoClick(Sender: TObject);
+    procedure edtFabricanteBtnNovoClick(Sender: TObject);
+    procedure edtFornecedorBtnNovoClick(Sender: TObject);
+    procedure edtNCMBtnNovoClick(Sender: TObject);
   private
     { Private declarations }
     Procedure SetControlesServico;
@@ -100,7 +114,7 @@ var
 
 implementation
 
-uses MinhasClasses, Comandos, uRegras;
+uses MinhasClasses, Comandos, uRegras, uForms;
 
 {$R *.dfm}
 
@@ -155,7 +169,7 @@ begin
   inherited;
   SetControlesServico;
   SetCds(CdsProcessos,tpERPProdutoProcessosservico,'PS.IDPRODUTO = '+ValorChave);
-
+  SetCds(CdsSeriais,tpERPSerialProduto,'IDPRODUTO = '+ValorChave);
 end;
 
 
@@ -265,6 +279,42 @@ begin
     AdicionaListaPesquisa(CdsProcessos,tpERPProcessosservico,'Esse processo já foi adicionado','');
     Abort;
   end;
+end;
+
+procedure TfrmCad_Produto.edtFabricanteBtnNovoClick(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreCadastroFabricante(toIncluir);
+end;
+
+procedure TfrmCad_Produto.edtFornecedorBtnNovoClick(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreCadastroFornecedor(toIncluir);
+end;
+
+procedure TfrmCad_Produto.edtGrupoBtnNovoClick(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreCadastroGrupo(toIncluir);
+end;
+
+procedure TfrmCad_Produto.edtLinhaBtnNovoClick(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreCadastroLinha(toIncluir);
+end;
+
+procedure TfrmCad_Produto.edtLocalizacaoBtnNovoClick(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreCadastroLocalizacao(toIncluir);
+end;
+
+procedure TfrmCad_Produto.edtNCMBtnNovoClick(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreCadastroNCM(toIncluir);
 end;
 
 end.

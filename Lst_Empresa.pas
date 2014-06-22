@@ -89,7 +89,7 @@ begin
   CdsCadastro.FieldByName('BAIRRO').ProviderFlags := [];
   CdsCadastro.FieldByName('CEP').ProviderFlags := [];
   CdsCadastro.FieldByName('CIDADE').ProviderFlags := [];
-  CdsCadastro.FieldByName('UF').ProviderFlags := [];
+//  CdsCadastro.FieldByName('UF').ProviderFlags := [];
   CdsCadastro.FieldByName('LOGRADOURO').ProviderFlags := [];
   FormataMascara(CdsCadastro.FieldByName('CNPJ'),tcCNPJ);
 end;

@@ -1,5 +1,5 @@
 inherited frmCad_Produto: TfrmCad_Produto
-  ActiveControl = LabelDBEdit1
+  ActiveControl = cxTabSheet7
   Caption = 'Cadastro de produto'
   ClientHeight = 393
   ClientWidth = 703
@@ -27,6 +27,7 @@ inherited frmCad_Produto: TfrmCad_Produto
     inherited PageControl: TcxPageControl
       Width = 518
       Height = 363
+      ActivePage = cxTabSheet7
       ExplicitWidth = 518
       ExplicitHeight = 363
       ClientRectBottom = 362
@@ -95,13 +96,14 @@ inherited frmCad_Produto: TfrmCad_Produto
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit2: TLabelDBEdit
             Left = 119
             Top = 28
             Width = 290
             Height = 21
-            DataField = 'DESCRICAO'
+            DataField = 'NOMEPRODUTO'
             DataSource = DataCadastro
             TabOrder = 1
             Titulo.Left = 119
@@ -114,6 +116,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit3: TLabelDBEdit
             Left = 415
@@ -136,6 +139,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object grpTipoProduto: TDBRadioGroup
             Left = 12
@@ -173,7 +177,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             TamanhoCodigo = 0
             AutoPesquisa = True
             AutoCompletar = True
-            UsaBtnNovo = False
+            UsaBtnNovo = True
             UsaBtnEditar = False
             UsaDisplay = True
             LblTitulo.Left = 168
@@ -299,7 +303,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnNovo.NumGlyphs = 2
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
-            BtnNovo.Visible = False
+            BtnNovo.OnClick = edtLinhaBtnNovoClick
             BtnEditar.Left = 285
             BtnEditar.Top = 64
             BtnEditar.Width = 25
@@ -335,15 +339,15 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnEditar.ParentShowHint = False
             BtnEditar.ShowHint = True
             BtnEditar.Visible = False
-            Display.Left = 260
+            Display.Left = 285
             Display.Top = 64
-            Display.Width = 240
+            Display.Width = 215
             Display.Height = 21
             Display.TabStop = False
             Display.Color = clSkyBlue
             Display.ReadOnly = True
             Display.TabOrder = 6
-            TamanhoDisplay = 240
+            TamanhoDisplay = 215
           end
           object edtGrupo: TEditPesquisa
             Left = 167
@@ -355,7 +359,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             TamanhoCodigo = 0
             AutoPesquisa = True
             AutoCompletar = True
-            UsaBtnNovo = False
+            UsaBtnNovo = True
             UsaBtnEditar = False
             UsaDisplay = True
             LblTitulo.Left = 167
@@ -481,7 +485,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnNovo.NumGlyphs = 2
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
-            BtnNovo.Visible = False
+            BtnNovo.OnClick = edtGrupoBtnNovoClick
             BtnEditar.Left = 284
             BtnEditar.Top = 104
             BtnEditar.Width = 25
@@ -517,15 +521,15 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnEditar.ParentShowHint = False
             BtnEditar.ShowHint = True
             BtnEditar.Visible = False
-            Display.Left = 259
+            Display.Left = 284
             Display.Top = 104
-            Display.Width = 240
+            Display.Width = 215
             Display.Height = 21
             Display.TabStop = False
             Display.Color = clSkyBlue
             Display.ReadOnly = True
             Display.TabOrder = 7
-            TamanhoDisplay = 240
+            TamanhoDisplay = 215
           end
           object edtLocalizacao: TEditPesquisa
             Left = 168
@@ -537,7 +541,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             TamanhoCodigo = 0
             AutoPesquisa = True
             AutoCompletar = True
-            UsaBtnNovo = False
+            UsaBtnNovo = True
             UsaBtnEditar = False
             UsaDisplay = True
             LblTitulo.Left = 168
@@ -663,7 +667,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnNovo.NumGlyphs = 2
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
-            BtnNovo.Visible = False
+            BtnNovo.OnClick = edtLocalizacaoBtnNovoClick
             BtnEditar.Left = 285
             BtnEditar.Top = 141
             BtnEditar.Width = 25
@@ -699,15 +703,15 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnEditar.ParentShowHint = False
             BtnEditar.ShowHint = True
             BtnEditar.Visible = False
-            Display.Left = 260
+            Display.Left = 285
             Display.Top = 141
-            Display.Width = 240
+            Display.Width = 215
             Display.Height = 21
             Display.TabStop = False
             Display.Color = clSkyBlue
             Display.ReadOnly = True
             Display.TabOrder = 5
-            TamanhoDisplay = 240
+            TamanhoDisplay = 215
           end
           object cxDBCheckBox1: TcxDBCheckBox
             Left = 12
@@ -715,6 +719,9 @@ inherited frmCad_Produto: TfrmCad_Produto
             Caption = 'Inativo'
             DataBinding.DataField = 'FLAGINATIVO'
             DataBinding.DataSource = DataCadastro
+            Properties.ValueChecked = 'Y'
+            Properties.ValueGrayed = 'N'
+            Properties.ValueUnchecked = 'N'
             TabOrder = 10
             Width = 57
           end
@@ -724,6 +731,9 @@ inherited frmCad_Produto: TfrmCad_Produto
             Caption = 'Usa Serial'
             DataBinding.DataField = 'FLAGSERIAL'
             DataBinding.DataSource = DataCadastro
+            Properties.ValueChecked = 'Y'
+            Properties.ValueGrayed = 'N'
+            Properties.ValueUnchecked = 'N'
             TabOrder = 11
             Width = 77
           end
@@ -733,6 +743,9 @@ inherited frmCad_Produto: TfrmCad_Produto
             Caption = 'Usa lote'
             DataBinding.DataField = 'FLAGLOTE'
             DataBinding.DataSource = DataCadastro
+            Properties.ValueChecked = 'Y'
+            Properties.ValueGrayed = 'N'
+            Properties.ValueUnchecked = 'N'
             TabOrder = 12
             Visible = False
             Width = 64
@@ -873,6 +886,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnNovo.NumGlyphs = 2
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
+            BtnNovo.OnClick = edtFabricanteBtnNovoClick
             BtnEditar.Left = 129
             BtnEditar.Top = 211
             BtnEditar.Width = 25
@@ -1054,6 +1068,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnNovo.NumGlyphs = 2
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
+            BtnNovo.OnClick = edtFornecedorBtnNovoClick
             BtnEditar.Left = 369
             BtnEditar.Top = 211
             BtnEditar.Width = 25
@@ -1299,6 +1314,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit6: TLabelDBEdit
             Left = 400
@@ -1321,6 +1337,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit4: TLabelDBEdit
             Left = 12
@@ -1340,6 +1357,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object GroupBox4: TGroupBox
             Left = 0
@@ -1366,6 +1384,7 @@ inherited frmCad_Produto: TfrmCad_Produto
               CorPrincipal = clWhite
               CorSecundaria = 11592447
               GravaEsteCampo = True
+              AsInteger = 0
             end
             object LabelDBEdit8: TLabelDBEdit
               Left = 103
@@ -1388,6 +1407,7 @@ inherited frmCad_Produto: TfrmCad_Produto
               CorPrincipal = clWhite
               CorSecundaria = 11592447
               GravaEsteCampo = True
+              AsInteger = 0
             end
             object LabelDBEdit9: TLabelDBEdit
               Left = 194
@@ -1410,6 +1430,7 @@ inherited frmCad_Produto: TfrmCad_Produto
               CorPrincipal = clWhite
               CorSecundaria = 11592447
               GravaEsteCampo = True
+              AsInteger = 0
             end
             object LabelDBEdit10: TLabelDBEdit
               Left = 285
@@ -1430,6 +1451,7 @@ inherited frmCad_Produto: TfrmCad_Produto
               CorPrincipal = clWhite
               CorSecundaria = 11592447
               GravaEsteCampo = True
+              AsInteger = 0
             end
             object LabelDBEdit11: TLabelDBEdit
               Left = 347
@@ -1450,6 +1472,7 @@ inherited frmCad_Produto: TfrmCad_Produto
               CorPrincipal = clWhite
               CorSecundaria = 11592447
               GravaEsteCampo = True
+              AsInteger = 0
             end
           end
         end
@@ -1566,7 +1589,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             Top = 80
             Width = 65
             Height = 21
-            TabOrder = 0
+            TabOrder = 6
             TipoPesquisa = 0
             TamanhoCodigo = 0
             AutoPesquisa = True
@@ -1740,7 +1763,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             Display.TabStop = False
             Display.Color = clSkyBlue
             Display.ReadOnly = True
-            Display.TabOrder = 1
+            Display.TabOrder = 0
             TamanhoDisplay = 200
           end
           object edtNCM: TEditPesquisa
@@ -1748,7 +1771,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             Top = 38
             Width = 65
             Height = 21
-            TabOrder = 2
+            TabOrder = 1
             TipoPesquisa = 0
             TamanhoCodigo = 0
             AutoPesquisa = True
@@ -1880,6 +1903,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
             BtnNovo.Visible = False
+            BtnNovo.OnClick = edtNCMBtnNovoClick
             BtnEditar.Left = 129
             BtnEditar.Top = 38
             BtnEditar.Width = 25
@@ -1922,7 +1946,7 @@ inherited frmCad_Produto: TfrmCad_Produto
             Display.TabStop = False
             Display.Color = clSkyBlue
             Display.ReadOnly = True
-            Display.TabOrder = 3
+            Display.TabOrder = 5
             TamanhoDisplay = 200
           end
           object cmbCST: TcxDBComboBox
@@ -1950,7 +1974,7 @@ inherited frmCad_Produto: TfrmCad_Produto
                 '70 - Com redu'#231#227'o de base de c'#225'lculo e cobran'#231'a do ICMS por subst' +
                 'itui'#231#227'o tribut'#225'ria '
               '90 - Outras')
-            TabOrder = 4
+            TabOrder = 3
             Width = 65
           end
           object cmbOrigem: TcxDBComboBox
@@ -1964,7 +1988,7 @@ inherited frmCad_Produto: TfrmCad_Produto
               '1 - Estrangeira - Importa'#231#227'o direta '
               '2 - Estrangeira - Adquirida no mercado interno')
             Style.PopupBorderStyle = epbsDefault
-            TabOrder = 5
+            TabOrder = 2
             Width = 34
           end
           object cmbCSOSN: TcxDBComboBox
@@ -2064,7 +2088,7 @@ inherited frmCad_Produto: TfrmCad_Produto
                 '2900    SIMPLES NACIONAL (EXCESSO DE SUBLIMITE DE RECEITA BRUTA)' +
                 ' - Outros'
               '3900    REGIME NORMAL - Outros')
-            TabOrder = 6
+            TabOrder = 4
             Width = 65
           end
         end
@@ -2085,6 +2109,50 @@ inherited frmCad_Produto: TfrmCad_Produto
       object cxTabSheet7: TcxTabSheet
         Caption = 'Seriais'
         ImageIndex = 3
+        object cxGrid2: TcxGrid
+          Left = 0
+          Top = 0
+          Width = 516
+          Height = 341
+          Align = alClient
+          TabOrder = 0
+          ExplicitLeft = 120
+          ExplicitTop = 96
+          ExplicitWidth = 250
+          ExplicitHeight = 200
+          object cxGrid2DBTableView1: TcxGridDBTableView
+            NavigatorButtons.ConfirmDelete = False
+            DataController.DataSource = DataSeriais
+            DataController.Summary.DefaultGroupSummaryItems = <>
+            DataController.Summary.FooterSummaryItems = <
+              item
+                Format = 'Quantidade de seriais: 000'
+                Kind = skCount
+                Column = cxGrid2DBTableView1Column1
+              end>
+            DataController.Summary.SummaryGroups = <>
+            OptionsView.Footer = True
+            OptionsView.GroupByBox = False
+            object cxGrid2DBTableView1Column1: TcxGridDBColumn
+              Caption = 'Serial'
+              DataBinding.FieldName = 'SERIAL'
+              Width = 261
+            end
+            object cxGrid2DBTableView1Column2: TcxGridDBColumn
+              Caption = 'Data de entrada'
+              DataBinding.FieldName = 'DATAENTRADA'
+              Width = 90
+            end
+            object cxGrid2DBTableView1Column3: TcxGridDBColumn
+              Caption = 'Data de sa'#237'da'
+              DataBinding.FieldName = 'DATASAIDA'
+              Width = 90
+            end
+          end
+          object cxGrid2Level1: TcxGridLevel
+            GridView = cxGrid2DBTableView1
+          end
+        end
       end
       object cxTabSheet2: TcxTabSheet
         Caption = 'Processos/procedimentos'
@@ -2162,5 +2230,16 @@ inherited frmCad_Produto: TfrmCad_Produto
     DataSet = CdsProcessos
     Left = 96
     Top = 168
+  end
+  object DataSeriais: TDataSource
+    DataSet = CdsSeriais
+    Left = 40
+    Top = 264
+  end
+  object CdsSeriais: TpFIBClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 112
+    Top = 232
   end
 end

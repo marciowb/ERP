@@ -68,7 +68,12 @@ uses
   uCad_OS in 'uCad_OS.pas' {frmCad_OS},
   uDlg_EquipamentoOS in 'uDlg_EquipamentoOS.pas' {frmDlg_EquipamentoOS},
   uDlg_ExecucaoOSEquipamento in 'uDlg_ExecucaoOSEquipamento.pas' {frmDlg_ExecucaoOSEquipamento},
-  uDlg_ServicoEquipamentoOS in 'uDlg_ServicoEquipamentoOS.pas' {frmDlg_ServicoEquipamentoOS};
+  uDlg_ServicoEquipamentoOS in 'uDlg_ServicoEquipamentoOS.pas' {frmDlg_ServicoEquipamentoOS},
+  uLibERP in 'uLibERP.pas',
+  uEntrada in 'uEntrada.pas' {frmEntradaEstoque},
+  Inc_ProdutoEntrada in 'Inc_ProdutoEntrada.pas' {frmInc_ProdutoEntrada},
+  Lst_OperacaoEstoque in 'Lst_OperacaoEstoque.pas' {frmLst_OperacaoEstoque},
+  uDlg_ManutencaoSerialProduto in 'uDlg_ManutencaoSerialProduto.pas' {frmDlg_ManutencaoSerialProduto};
 
 {$R *.res}
 
@@ -91,5 +96,6 @@ begin
 
   Application.CreateForm(TDMConexao, DMConexao);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TfrmDlg_ManutencaoSerialProduto, frmDlg_ManutencaoSerialProduto);
   Application.Run;
 end.

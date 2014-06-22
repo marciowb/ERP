@@ -33,6 +33,8 @@ type
     DBCheckBox1: TDBCheckBox;
     Label3: TLabel;
     edtRepetir: TcxDBSpinEdit;
+    DBCheckBox2: TDBCheckBox;
+    edtFuncionario: TEditPesquisa;
     procedure FormShow(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
     procedure edtAnimalBtnNovoClick(Sender: TObject);
@@ -47,7 +49,7 @@ var
 
 implementation
 
-uses Comandos, MinhasClasses;
+uses Comandos, MinhasClasses, uForms;
 
 {$R *.dfm}
 
@@ -120,22 +122,14 @@ end;
 procedure TfrmCad_Agenda.edtAnimalBtnNovoClick(Sender: TObject);
 begin
   inherited;
-//  if frmCad_Cliente = nil then
-//    frmCad_Cliente := TfrmCad_Cliente.Create(nil);
-//  if frmCad_Cliente.Showing Then
-//    frmCad_Cliente.Close;
-//  frmCad_Cliente.NovoReg := True;
-//  if frmCad_Cliente.ShowModal = mrOK Then
-//  Begin
-//    pDataSet.FieldByName('IDCLIENTE').AsInteger := frmCad_Cliente.CdsCadastro.FieldByName('IDCLIENTE').AsInteger;
-//    edtCliente.Localiza;
-//  End;
+  TrotinasForms.AbreCadastroCliente(toIncluir);
 end;
 
 procedure TfrmCad_Agenda.FormShow(Sender: TObject);
 begin
   inherited;
-  ConfiguraEditPesquisa(edtCliente,pDataSet,tpCsCliente);
+  ConfiguraEditPesquisa(edtCliente,pDataSet,tpERPCliente,False);
+  ConfiguraEditPesquisa(edtFuncionario,pDataSet,tpERPFuncionario,False);
   DataCadAgenda.DataSet := pDataSet;
   //edtCliente.BtnNovo.Visible := GetPermissao(IdCadastroClienteNovo);
 

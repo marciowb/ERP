@@ -8,15 +8,14 @@ inherited frmLst_Proposta: TfrmLst_Proposta
   TextHeight = 13
   inherited pnlFiltros: TPanel
     Width = 998
-    ExplicitWidth = 872
+    ExplicitWidth = 998
   end
   inherited Panel2: TPanel
     Width = 998
-    ExplicitWidth = 872
+    ExplicitWidth = 998
     inherited BitBtn1: TBitBtn
       Left = 788
-      ExplicitLeft = 742
-      ExplicitTop = -2
+      ExplicitLeft = 788
     end
     object BitBtn11: TBitBtn
       Left = 627
@@ -34,31 +33,33 @@ inherited frmLst_Proposta: TfrmLst_Proposta
   inherited Status: TdxStatusBar
     Top = 503
     Width = 998
-    ExplicitTop = -20
-    ExplicitWidth = 872
+    ExplicitTop = 503
+    ExplicitWidth = 998
   end
   inherited pnlCaption: TPanel
     Width = 998
-    ExplicitWidth = 872
+    ExplicitWidth = 998
     inherited Panel4: TPanel
       Left = 647
-      ExplicitLeft = 521
+      ExplicitLeft = 647
     end
   end
   inherited PageControl: TcxPageControl
     Width = 998
     Height = 415
-    ExplicitWidth = 872
+    ExplicitWidth = 998
+    ExplicitHeight = 415
     ClientRectBottom = 415
     ClientRectRight = 998
     inherited tsListagem: TcxTabSheet
       ExplicitTop = 20
-      ExplicitWidth = 872
-      ExplicitHeight = 402
+      ExplicitWidth = 998
+      ExplicitHeight = 395
       inherited cxGrid1: TcxGrid
         Width = 998
         Height = 395
-        ExplicitWidth = 872
+        ExplicitWidth = 998
+        ExplicitHeight = 395
         inherited TvListagem: TcxGridDBTableView
           Styles.Inactive = nil
           Styles.Selection = nil
