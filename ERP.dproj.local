@@ -71,5 +71,11 @@
     <Transaction>2014/06/21 07:56:57.027.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\Lst_OperacaoEstoque.dfm</Transaction>
     <Transaction>2014/06/22 07:17:54.144.pas,D:\Meus Projetos\ERP\Unit1.pas=D:\Meus Projetos\ERP\uDlg_ManutencaoSerialProduto.pas</Transaction>
     <Transaction>2014/06/22 07:17:54.153.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\uDlg_ManutencaoSerialProduto.dfm</Transaction>
+    <Transaction>2014/06/25 07:50:40.652.pas,D:\Meus Projetos\ERP\Unit1.pas=D:\Meus Projetos\ERP\uLst_Entrada.pas</Transaction>
+    <Transaction>2014/06/25 07:50:40.652.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\uLst_Entrada.dfm</Transaction>
+    <Transaction>2014/06/25 08:05:10.698.pas,D:\Meus Projetos\ERP\Unit1.pas=D:\Meus Projetos\ERP\uCad_Entrada.pas</Transaction>
+    <Transaction>2014/06/25 08:05:10.698.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\uCad_Entrada.dfm</Transaction>
+    <Transaction>2014/06/29 09:55:35.941.pas,D:\Meus Projetos\ERP\Unit1.pas=D:\Meus Projetos\ERP\udlg_SaidaSerial.pas</Transaction>
+    <Transaction>2014/06/29 09:55:35.941.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\udlg_SaidaSerial.dfm</Transaction>
   </Transactions>
 </BorlandProject>

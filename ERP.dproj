@@ -230,6 +230,15 @@
 			<DCCReference Include="uDlg_ManutencaoSerialProduto.pas">
 				<Form>frmDlg_ManutencaoSerialProduto</Form>
 			</DCCReference>
+			<DCCReference Include="uLst_Entrada.pas">
+				<Form>frmLst_Entrada</Form>
+			</DCCReference>
+			<DCCReference Include="uCad_Entrada.pas">
+				<Form>frmCad_Entrada</Form>
+			</DCCReference>
+			<DCCReference Include="udlg_SaidaSerial.pas">
+				<Form>frmDlg_SaidaSerial</Form>
+			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

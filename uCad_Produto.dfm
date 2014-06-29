@@ -1,10 +1,10 @@
 inherited frmCad_Produto: TfrmCad_Produto
-  ActiveControl = cxTabSheet7
+  ActiveControl = LabelDBEdit1
   Caption = 'Cadastro de produto'
-  ClientHeight = 393
+  ClientHeight = 399
   ClientWidth = 703
   ExplicitWidth = 719
-  ExplicitHeight = 432
+  ExplicitHeight = 438
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
@@ -12,39 +12,38 @@ inherited frmCad_Produto: TfrmCad_Produto
     ExplicitWidth = 703
   end
   inherited pnlTree: TPanel
-    Height = 363
+    Height = 369
     ExplicitHeight = 363
     inherited TreeItens: TcxTreeView
-      Height = 357
+      Height = 363
       ExplicitHeight = 357
     end
   end
   inherited Panel3: TPanel
     Width = 518
-    Height = 363
+    Height = 369
     ExplicitWidth = 518
     ExplicitHeight = 363
     inherited PageControl: TcxPageControl
+      Top = 48
       Width = 518
-      Height = 363
-      ActivePage = cxTabSheet7
+      Height = 321
+      TabOrder = 1
       ExplicitWidth = 518
       ExplicitHeight = 363
-      ClientRectBottom = 362
+      ClientRectBottom = 320
       ClientRectRight = 517
       inherited TsPrincipal: TcxTabSheet
-        ExplicitLeft = 1
-        ExplicitTop = 21
         ExplicitWidth = 516
         ExplicitHeight = 341
         inherited pnlGeral: TPanel
           Width = 516
-          Height = 341
+          Height = 299
           ExplicitWidth = 516
           ExplicitHeight = 341
           object btnAjustaEstoque: TSpeedButton
-            Left = 476
-            Top = 248
+            Left = 468
+            Top = 208
             Width = 23
             Height = 22
             Hint = 'Criar acerto de estoque'
@@ -78,72 +77,9 @@ inherited frmCad_Produto: TfrmCad_Produto
             ParentShowHint = False
             ShowHint = True
           end
-          object LabelDBEdit1: TLabelDBEdit
-            Left = 12
-            Top = 28
-            Width = 101
-            Height = 21
-            DataField = 'codigo'
-            DataSource = DataCadastro
-            TabOrder = 0
-            Titulo.Left = 12
-            Titulo.Top = 13
-            Titulo.Width = 33
-            Titulo.Height = 13
-            Titulo.Caption = 'C'#243'digo'
-            IsNull = False
-            PodeRepetir = False
-            CorPrincipal = clWhite
-            CorSecundaria = 11592447
-            GravaEsteCampo = True
-            AsInteger = 0
-          end
-          object LabelDBEdit2: TLabelDBEdit
-            Left = 119
-            Top = 28
-            Width = 290
-            Height = 21
-            DataField = 'NOMEPRODUTO'
-            DataSource = DataCadastro
-            TabOrder = 1
-            Titulo.Left = 119
-            Titulo.Top = 13
-            Titulo.Width = 46
-            Titulo.Height = 13
-            Titulo.Caption = 'Descri'#231#227'o'
-            IsNull = False
-            PodeRepetir = True
-            CorPrincipal = clWhite
-            CorSecundaria = 11592447
-            GravaEsteCampo = True
-            AsInteger = 0
-          end
-          object LabelDBEdit3: TLabelDBEdit
-            Left = 415
-            Top = 28
-            Width = 82
-            Height = 21
-            TabStop = False
-            Color = clSkyBlue
-            DataField = 'DATACADASTRO'
-            DataSource = DataCadastro
-            ReadOnly = True
-            TabOrder = 2
-            Titulo.Left = 415
-            Titulo.Top = 13
-            Titulo.Width = 44
-            Titulo.Height = 13
-            Titulo.Caption = 'Cadastro'
-            IsNull = False
-            PodeRepetir = True
-            CorPrincipal = clWhite
-            CorSecundaria = 11592447
-            GravaEsteCampo = True
-            AsInteger = 0
-          end
           object grpTipoProduto: TDBRadioGroup
-            Left = 12
-            Top = 56
+            Left = 4
+            Top = 8
             Width = 149
             Height = 109
             Caption = ' Tipo '
@@ -157,7 +93,7 @@ inherited frmCad_Produto: TfrmCad_Produto
               'USO INTERNO'
               'USO INTERNO E VENDA')
             ParentBackground = True
-            TabOrder = 3
+            TabOrder = 0
             Values.Strings = (
               'S'
               'V'
@@ -168,11 +104,11 @@ inherited frmCad_Produto: TfrmCad_Produto
             OnClick = grpTipoProdutoClick
           end
           object edtLinha: TEditPesquisa
-            Left = 168
-            Top = 64
+            Left = 160
+            Top = 16
             Width = 65
             Height = 21
-            TabOrder = 4
+            TabOrder = 1
             TipoPesquisa = 0
             TamanhoCodigo = 0
             AutoPesquisa = True
@@ -180,13 +116,13 @@ inherited frmCad_Produto: TfrmCad_Produto
             UsaBtnNovo = True
             UsaBtnEditar = False
             UsaDisplay = True
-            LblTitulo.Left = 168
-            LblTitulo.Top = 49
+            LblTitulo.Left = 160
+            LblTitulo.Top = 1
             LblTitulo.Width = 25
             LblTitulo.Height = 13
             LblTitulo.Caption = 'Linha'
-            BtnPesquisa.Left = 235
-            BtnPesquisa.Top = 64
+            BtnPesquisa.Left = 227
+            BtnPesquisa.Top = 16
             BtnPesquisa.Width = 25
             BtnPesquisa.Height = 21
             BtnPesquisa.Hint = 'F2 para pesquisar'
@@ -244,8 +180,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnPesquisa.NumGlyphs = 2
             BtnPesquisa.ParentShowHint = False
             BtnPesquisa.ShowHint = True
-            BtnNovo.Left = 260
-            BtnNovo.Top = 64
+            BtnNovo.Left = 252
+            BtnNovo.Top = 16
             BtnNovo.Width = 25
             BtnNovo.Height = 21
             BtnNovo.Hint = 'F3 para criar novo registro'
@@ -304,8 +240,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
             BtnNovo.OnClick = edtLinhaBtnNovoClick
-            BtnEditar.Left = 285
-            BtnEditar.Top = 64
+            BtnEditar.Left = 277
+            BtnEditar.Top = 16
             BtnEditar.Width = 25
             BtnEditar.Height = 21
             BtnEditar.Hint = 'F5 para editar esse registro'
@@ -339,22 +275,22 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnEditar.ParentShowHint = False
             BtnEditar.ShowHint = True
             BtnEditar.Visible = False
-            Display.Left = 285
-            Display.Top = 64
+            Display.Left = 277
+            Display.Top = 16
             Display.Width = 215
             Display.Height = 21
             Display.TabStop = False
             Display.Color = clSkyBlue
             Display.ReadOnly = True
-            Display.TabOrder = 6
+            Display.TabOrder = 3
             TamanhoDisplay = 215
           end
           object edtGrupo: TEditPesquisa
-            Left = 167
-            Top = 104
+            Left = 159
+            Top = 56
             Width = 65
             Height = 21
-            TabOrder = 8
+            TabOrder = 5
             TipoPesquisa = 0
             TamanhoCodigo = 0
             AutoPesquisa = True
@@ -362,13 +298,13 @@ inherited frmCad_Produto: TfrmCad_Produto
             UsaBtnNovo = True
             UsaBtnEditar = False
             UsaDisplay = True
-            LblTitulo.Left = 167
-            LblTitulo.Top = 89
+            LblTitulo.Left = 159
+            LblTitulo.Top = 41
             LblTitulo.Width = 29
             LblTitulo.Height = 13
             LblTitulo.Caption = 'Grupo'
-            BtnPesquisa.Left = 234
-            BtnPesquisa.Top = 104
+            BtnPesquisa.Left = 226
+            BtnPesquisa.Top = 56
             BtnPesquisa.Width = 25
             BtnPesquisa.Height = 21
             BtnPesquisa.Hint = 'F2 para pesquisar'
@@ -426,8 +362,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnPesquisa.NumGlyphs = 2
             BtnPesquisa.ParentShowHint = False
             BtnPesquisa.ShowHint = True
-            BtnNovo.Left = 259
-            BtnNovo.Top = 104
+            BtnNovo.Left = 251
+            BtnNovo.Top = 56
             BtnNovo.Width = 25
             BtnNovo.Height = 21
             BtnNovo.Hint = 'F3 para criar novo registro'
@@ -486,8 +422,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
             BtnNovo.OnClick = edtGrupoBtnNovoClick
-            BtnEditar.Left = 284
-            BtnEditar.Top = 104
+            BtnEditar.Left = 276
+            BtnEditar.Top = 56
             BtnEditar.Width = 25
             BtnEditar.Height = 21
             BtnEditar.Hint = 'F5 para editar esse registro'
@@ -521,22 +457,22 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnEditar.ParentShowHint = False
             BtnEditar.ShowHint = True
             BtnEditar.Visible = False
-            Display.Left = 284
-            Display.Top = 104
+            Display.Left = 276
+            Display.Top = 56
             Display.Width = 215
             Display.Height = 21
             Display.TabStop = False
             Display.Color = clSkyBlue
             Display.ReadOnly = True
-            Display.TabOrder = 7
+            Display.TabOrder = 4
             TamanhoDisplay = 215
           end
           object edtLocalizacao: TEditPesquisa
-            Left = 168
-            Top = 141
+            Left = 160
+            Top = 93
             Width = 65
             Height = 21
-            TabOrder = 9
+            TabOrder = 6
             TipoPesquisa = 0
             TamanhoCodigo = 0
             AutoPesquisa = True
@@ -544,13 +480,13 @@ inherited frmCad_Produto: TfrmCad_Produto
             UsaBtnNovo = True
             UsaBtnEditar = False
             UsaDisplay = True
-            LblTitulo.Left = 168
-            LblTitulo.Top = 126
+            LblTitulo.Left = 160
+            LblTitulo.Top = 78
             LblTitulo.Width = 54
             LblTitulo.Height = 13
             LblTitulo.Caption = 'Localiza'#231#227'o'
-            BtnPesquisa.Left = 235
-            BtnPesquisa.Top = 141
+            BtnPesquisa.Left = 227
+            BtnPesquisa.Top = 93
             BtnPesquisa.Width = 25
             BtnPesquisa.Height = 21
             BtnPesquisa.Hint = 'F2 para pesquisar'
@@ -608,8 +544,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnPesquisa.NumGlyphs = 2
             BtnPesquisa.ParentShowHint = False
             BtnPesquisa.ShowHint = True
-            BtnNovo.Left = 260
-            BtnNovo.Top = 141
+            BtnNovo.Left = 252
+            BtnNovo.Top = 93
             BtnNovo.Width = 25
             BtnNovo.Height = 21
             BtnNovo.Hint = 'F3 para criar novo registro'
@@ -668,8 +604,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
             BtnNovo.OnClick = edtLocalizacaoBtnNovoClick
-            BtnEditar.Left = 285
-            BtnEditar.Top = 141
+            BtnEditar.Left = 277
+            BtnEditar.Top = 93
             BtnEditar.Width = 25
             BtnEditar.Height = 21
             BtnEditar.Hint = 'F5 para editar esse registro'
@@ -703,59 +639,59 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnEditar.ParentShowHint = False
             BtnEditar.ShowHint = True
             BtnEditar.Visible = False
-            Display.Left = 285
-            Display.Top = 141
+            Display.Left = 277
+            Display.Top = 93
             Display.Width = 215
             Display.Height = 21
             Display.TabStop = False
             Display.Color = clSkyBlue
             Display.ReadOnly = True
-            Display.TabOrder = 5
+            Display.TabOrder = 2
             TamanhoDisplay = 215
           end
           object cxDBCheckBox1: TcxDBCheckBox
-            Left = 12
-            Top = 171
+            Left = 4
+            Top = 123
             Caption = 'Inativo'
             DataBinding.DataField = 'FLAGINATIVO'
             DataBinding.DataSource = DataCadastro
             Properties.ValueChecked = 'Y'
             Properties.ValueGrayed = 'N'
             Properties.ValueUnchecked = 'N'
-            TabOrder = 10
+            TabOrder = 7
             Width = 57
           end
           object chkSerial: TcxDBCheckBox
-            Left = 76
-            Top = 171
+            Left = 68
+            Top = 123
             Caption = 'Usa Serial'
             DataBinding.DataField = 'FLAGSERIAL'
             DataBinding.DataSource = DataCadastro
             Properties.ValueChecked = 'Y'
             Properties.ValueGrayed = 'N'
             Properties.ValueUnchecked = 'N'
-            TabOrder = 11
+            TabOrder = 8
             Width = 77
           end
           object chkLote: TcxDBCheckBox
-            Left = 153
-            Top = 171
+            Left = 145
+            Top = 123
             Caption = 'Usa lote'
             DataBinding.DataField = 'FLAGLOTE'
             DataBinding.DataSource = DataCadastro
             Properties.ValueChecked = 'Y'
             Properties.ValueGrayed = 'N'
             Properties.ValueUnchecked = 'N'
-            TabOrder = 12
+            TabOrder = 9
             Visible = False
             Width = 64
           end
           object edtFabricante: TEditPesquisa
-            Left = 12
-            Top = 211
+            Left = 4
+            Top = 163
             Width = 65
             Height = 21
-            TabOrder = 16
+            TabOrder = 13
             TipoPesquisa = 0
             TamanhoCodigo = 0
             AutoPesquisa = True
@@ -763,13 +699,13 @@ inherited frmCad_Produto: TfrmCad_Produto
             UsaBtnNovo = True
             UsaBtnEditar = False
             UsaDisplay = True
-            LblTitulo.Left = 12
-            LblTitulo.Top = 196
+            LblTitulo.Left = 4
+            LblTitulo.Top = 148
             LblTitulo.Width = 51
             LblTitulo.Height = 13
             LblTitulo.Caption = 'Fabricante'
-            BtnPesquisa.Left = 79
-            BtnPesquisa.Top = 211
+            BtnPesquisa.Left = 71
+            BtnPesquisa.Top = 163
             BtnPesquisa.Width = 25
             BtnPesquisa.Height = 21
             BtnPesquisa.Hint = 'F2 para pesquisar'
@@ -827,8 +763,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnPesquisa.NumGlyphs = 2
             BtnPesquisa.ParentShowHint = False
             BtnPesquisa.ShowHint = True
-            BtnNovo.Left = 104
-            BtnNovo.Top = 211
+            BtnNovo.Left = 96
+            BtnNovo.Top = 163
             BtnNovo.Width = 25
             BtnNovo.Height = 21
             BtnNovo.Hint = 'F3 para criar novo registro'
@@ -887,8 +823,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
             BtnNovo.OnClick = edtFabricanteBtnNovoClick
-            BtnEditar.Left = 129
-            BtnEditar.Top = 211
+            BtnEditar.Left = 121
+            BtnEditar.Top = 163
             BtnEditar.Width = 25
             BtnEditar.Height = 21
             BtnEditar.Hint = 'F5 para editar esse registro'
@@ -922,22 +858,22 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnEditar.ParentShowHint = False
             BtnEditar.ShowHint = True
             BtnEditar.Visible = False
-            Display.Left = 129
-            Display.Top = 211
+            Display.Left = 121
+            Display.Top = 163
             Display.Width = 120
             Display.Height = 21
             Display.TabStop = False
             Display.Color = clSkyBlue
             Display.ReadOnly = True
-            Display.TabOrder = 15
+            Display.TabOrder = 12
             TamanhoDisplay = 120
           end
           object edtFornecedor: TEditPesquisa
-            Left = 252
-            Top = 211
+            Left = 244
+            Top = 163
             Width = 65
             Height = 21
-            TabOrder = 17
+            TabOrder = 14
             TipoPesquisa = 0
             TamanhoCodigo = 0
             AutoPesquisa = True
@@ -945,13 +881,13 @@ inherited frmCad_Produto: TfrmCad_Produto
             UsaBtnNovo = True
             UsaBtnEditar = False
             UsaDisplay = True
-            LblTitulo.Left = 252
-            LblTitulo.Top = 196
+            LblTitulo.Left = 244
+            LblTitulo.Top = 148
             LblTitulo.Width = 55
             LblTitulo.Height = 13
             LblTitulo.Caption = 'Fornecedor'
-            BtnPesquisa.Left = 319
-            BtnPesquisa.Top = 211
+            BtnPesquisa.Left = 311
+            BtnPesquisa.Top = 163
             BtnPesquisa.Width = 25
             BtnPesquisa.Height = 21
             BtnPesquisa.Hint = 'F2 para pesquisar'
@@ -1009,8 +945,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnPesquisa.NumGlyphs = 2
             BtnPesquisa.ParentShowHint = False
             BtnPesquisa.ShowHint = True
-            BtnNovo.Left = 344
-            BtnNovo.Top = 211
+            BtnNovo.Left = 336
+            BtnNovo.Top = 163
             BtnNovo.Width = 25
             BtnNovo.Height = 21
             BtnNovo.Hint = 'F3 para criar novo registro'
@@ -1069,8 +1005,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
             BtnNovo.OnClick = edtFornecedorBtnNovoClick
-            BtnEditar.Left = 369
-            BtnEditar.Top = 211
+            BtnEditar.Left = 361
+            BtnEditar.Top = 163
             BtnEditar.Width = 25
             BtnEditar.Height = 21
             BtnEditar.Hint = 'F5 para editar esse registro'
@@ -1104,22 +1040,22 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnEditar.ParentShowHint = False
             BtnEditar.ShowHint = True
             BtnEditar.Visible = False
-            Display.Left = 369
-            Display.Top = 211
+            Display.Left = 361
+            Display.Top = 163
             Display.Width = 130
             Display.Height = 21
             Display.TabStop = False
             Display.Color = clSkyBlue
             Display.ReadOnly = True
-            Display.TabOrder = 14
+            Display.TabOrder = 11
             TamanhoDisplay = 130
           end
           object edtUnidade: TEditPesquisa
-            Left = 109
-            Top = 248
+            Left = 101
+            Top = 208
             Width = 65
             Height = 21
-            TabOrder = 19
+            TabOrder = 16
             TipoPesquisa = 0
             TamanhoCodigo = 0
             AutoPesquisa = True
@@ -1127,13 +1063,13 @@ inherited frmCad_Produto: TfrmCad_Produto
             UsaBtnNovo = False
             UsaBtnEditar = False
             UsaDisplay = True
-            LblTitulo.Left = 109
-            LblTitulo.Top = 233
+            LblTitulo.Left = 101
+            LblTitulo.Top = 193
             LblTitulo.Width = 39
             LblTitulo.Height = 13
             LblTitulo.Caption = 'Unidade'
-            BtnPesquisa.Left = 176
-            BtnPesquisa.Top = 248
+            BtnPesquisa.Left = 168
+            BtnPesquisa.Top = 208
             BtnPesquisa.Width = 25
             BtnPesquisa.Height = 21
             BtnPesquisa.Hint = 'F2 para pesquisar'
@@ -1191,8 +1127,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnPesquisa.NumGlyphs = 2
             BtnPesquisa.ParentShowHint = False
             BtnPesquisa.ShowHint = True
-            BtnNovo.Left = 201
-            BtnNovo.Top = 248
+            BtnNovo.Left = 193
+            BtnNovo.Top = 208
             BtnNovo.Width = 25
             BtnNovo.Height = 21
             BtnNovo.Hint = 'F3 para criar novo registro'
@@ -1251,8 +1187,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnNovo.ParentShowHint = False
             BtnNovo.ShowHint = True
             BtnNovo.Visible = False
-            BtnEditar.Left = 226
-            BtnEditar.Top = 248
+            BtnEditar.Left = 218
+            BtnEditar.Top = 208
             BtnEditar.Width = 25
             BtnEditar.Height = 21
             BtnEditar.Hint = 'F5 para editar esse registro'
@@ -1286,26 +1222,26 @@ inherited frmCad_Produto: TfrmCad_Produto
             BtnEditar.ParentShowHint = False
             BtnEditar.ShowHint = True
             BtnEditar.Visible = False
-            Display.Left = 201
-            Display.Top = 248
+            Display.Left = 193
+            Display.Top = 208
             Display.Width = 100
             Display.Height = 21
             Display.TabStop = False
             Display.Color = clSkyBlue
             Display.ReadOnly = True
-            Display.TabOrder = 13
+            Display.TabOrder = 10
             TamanhoDisplay = 100
           end
           object edtEstoqueMinimo: TLabelDBEdit
-            Left = 313
-            Top = 248
+            Left = 305
+            Top = 208
             Width = 81
             Height = 21
             DataField = 'ESTOQUEMINIMO'
             DataSource = DataCadastro
-            TabOrder = 20
-            Titulo.Left = 313
-            Titulo.Top = 233
+            TabOrder = 17
+            Titulo.Left = 305
+            Titulo.Top = 193
             Titulo.Width = 74
             Titulo.Height = 13
             Titulo.Caption = 'Estoque m'#237'nimo'
@@ -1317,8 +1253,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             AsInteger = 0
           end
           object LabelDBEdit6: TLabelDBEdit
-            Left = 400
-            Top = 248
+            Left = 392
+            Top = 208
             Width = 74
             Height = 21
             TabStop = False
@@ -1326,9 +1262,9 @@ inherited frmCad_Produto: TfrmCad_Produto
             DataField = 'ESTOQUEATUAL'
             DataSource = DataCadastro
             ReadOnly = True
-            TabOrder = 21
-            Titulo.Left = 400
-            Titulo.Top = 233
+            TabOrder = 18
+            Titulo.Left = 392
+            Titulo.Top = 193
             Titulo.Width = 66
             Titulo.Height = 13
             Titulo.Caption = 'Estoque atual'
@@ -1340,15 +1276,15 @@ inherited frmCad_Produto: TfrmCad_Produto
             AsInteger = 0
           end
           object LabelDBEdit4: TLabelDBEdit
-            Left = 12
-            Top = 248
+            Left = 4
+            Top = 208
             Width = 85
             Height = 21
             DataField = 'CODIGOBARRAS'
             DataSource = DataCadastro
-            TabOrder = 18
-            Titulo.Left = 12
-            Titulo.Top = 233
+            TabOrder = 15
+            Titulo.Left = 4
+            Titulo.Top = 193
             Titulo.Width = 82
             Titulo.Height = 13
             Titulo.Caption = 'C'#243'digo de barras'
@@ -1361,20 +1297,22 @@ inherited frmCad_Produto: TfrmCad_Produto
           end
           object GroupBox4: TGroupBox
             Left = 0
-            Top = 276
+            Top = 234
             Width = 516
             Height = 65
             Align = alBottom
-            TabOrder = 22
+            TabOrder = 19
+            ExplicitLeft = 145
+            ExplicitTop = 228
             object LabelDBEdit7: TLabelDBEdit
-              Left = 12
+              Left = 10
               Top = 28
               Width = 85
               Height = 21
               DataField = 'CUSTOATUAL'
               DataSource = DataCadastro
               TabOrder = 0
-              Titulo.Left = 12
+              Titulo.Left = 10
               Titulo.Top = 13
               Titulo.Width = 55
               Titulo.Height = 13
@@ -1480,6 +1418,7 @@ inherited frmCad_Produto: TfrmCad_Produto
       object cxTabSheet1: TcxTabSheet
         Caption = 'Adicionais'
         ImageIndex = 1
+        ExplicitHeight = 341
         object GroupBox1: TGroupBox
           Left = 0
           Top = 0
@@ -1508,10 +1447,11 @@ inherited frmCad_Produto: TfrmCad_Produto
           Left = 0
           Top = 145
           Width = 314
-          Height = 196
+          Height = 154
           Align = alClient
           Caption = ' Observa'#231#245'es '
           TabOrder = 1
+          ExplicitHeight = 196
           object cxDBRichEdit2: TcxDBRichEdit
             Left = 2
             Top = 15
@@ -1524,7 +1464,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             Properties.ScrollBars = ssBoth
             Properties.WantTabs = True
             TabOrder = 0
-            Height = 179
+            ExplicitHeight = 179
+            Height = 137
             Width = 310
           end
         end
@@ -1532,10 +1473,11 @@ inherited frmCad_Produto: TfrmCad_Produto
           Left = 314
           Top = 145
           Width = 202
-          Height = 196
+          Height = 154
           Align = alRight
           Caption = ' Imagem '
           TabOrder = 2
+          ExplicitHeight = 196
           object cxDBImage1: TcxDBImage
             Left = 2
             Top = 15
@@ -1547,7 +1489,8 @@ inherited frmCad_Produto: TfrmCad_Produto
             Properties.ImmediatePost = True
             Properties.Stretch = True
             TabOrder = 0
-            Height = 179
+            ExplicitHeight = 179
+            Height = 137
             Width = 198
           end
         end
@@ -1555,6 +1498,7 @@ inherited frmCad_Produto: TfrmCad_Produto
       object cxTabSheet4: TcxTabSheet
         Caption = 'Outros'
         ImageIndex = 2
+        ExplicitHeight = 341
         object GroupBox5: TGroupBox
           Left = 0
           Top = 0
@@ -2096,30 +2040,30 @@ inherited frmCad_Produto: TfrmCad_Produto
           Left = 0
           Top = 114
           Width = 516
-          Height = 227
+          Height = 185
           Align = alClient
           Caption = ' Fornecedores '
           TabOrder = 1
+          ExplicitHeight = 227
         end
       end
       object cxTabSheet8: TcxTabSheet
         Caption = 'Estoque'
         ImageIndex = 3
+        ExplicitHeight = 341
       end
       object cxTabSheet7: TcxTabSheet
         Caption = 'Seriais'
         ImageIndex = 3
+        ExplicitHeight = 341
         object cxGrid2: TcxGrid
           Left = 0
           Top = 0
           Width = 516
-          Height = 341
+          Height = 299
           Align = alClient
           TabOrder = 0
-          ExplicitLeft = 120
-          ExplicitTop = 96
-          ExplicitWidth = 250
-          ExplicitHeight = 200
+          ExplicitHeight = 341
           object cxGrid2DBTableView1: TcxGridDBTableView
             NavigatorButtons.ConfirmDelete = False
             DataController.DataSource = DataSeriais
@@ -2157,21 +2101,24 @@ inherited frmCad_Produto: TfrmCad_Produto
       object cxTabSheet2: TcxTabSheet
         Caption = 'Processos/procedimentos'
         ImageIndex = 5
+        ExplicitHeight = 341
         object grpProcesso: TGroupBox
           Left = 0
           Top = 0
           Width = 516
-          Height = 341
+          Height = 299
           Align = alClient
           Caption = ' Processos/procedimentos'
           TabOrder = 0
+          ExplicitHeight = 341
           object cxGrid1: TcxGrid
             Left = 2
             Top = 15
             Width = 512
-            Height = 324
+            Height = 282
             Align = alClient
             TabOrder = 0
+            ExplicitHeight = 324
             object cxGrid1DBTableView1: TcxGridDBTableView
               Tag = 99
               NavigatorButtons.OnButtonClick = cxGrid1DBTableView1NavigatorButtonsButtonClick
@@ -2209,6 +2156,78 @@ inherited frmCad_Produto: TfrmCad_Produto
             end
           end
         end
+      end
+    end
+    object Panel2: TPanel
+      Left = 0
+      Top = 0
+      Width = 518
+      Height = 48
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 0
+      object LabelDBEdit1: TLabelDBEdit
+        Left = 12
+        Top = 20
+        Width = 101
+        Height = 21
+        DataField = 'codigo'
+        DataSource = DataCadastro
+        TabOrder = 0
+        Titulo.Left = 12
+        Titulo.Top = 5
+        Titulo.Width = 33
+        Titulo.Height = 13
+        Titulo.Caption = 'C'#243'digo'
+        IsNull = False
+        PodeRepetir = False
+        CorPrincipal = clWhite
+        CorSecundaria = 11592447
+        GravaEsteCampo = True
+        AsInteger = 0
+      end
+      object LabelDBEdit2: TLabelDBEdit
+        Left = 119
+        Top = 20
+        Width = 290
+        Height = 21
+        DataField = 'NOMEPRODUTO'
+        DataSource = DataCadastro
+        TabOrder = 1
+        Titulo.Left = 119
+        Titulo.Top = 5
+        Titulo.Width = 46
+        Titulo.Height = 13
+        Titulo.Caption = 'Descri'#231#227'o'
+        IsNull = False
+        PodeRepetir = True
+        CorPrincipal = clWhite
+        CorSecundaria = 11592447
+        GravaEsteCampo = True
+        AsInteger = 0
+      end
+      object LabelDBEdit3: TLabelDBEdit
+        Left = 415
+        Top = 20
+        Width = 82
+        Height = 21
+        TabStop = False
+        Color = clSkyBlue
+        DataField = 'DATACADASTRO'
+        DataSource = DataCadastro
+        ReadOnly = True
+        TabOrder = 2
+        Titulo.Left = 415
+        Titulo.Top = 5
+        Titulo.Width = 44
+        Titulo.Height = 13
+        Titulo.Caption = 'Cadastro'
+        IsNull = False
+        PodeRepetir = True
+        CorPrincipal = clWhite
+        CorSecundaria = 11592447
+        GravaEsteCampo = True
+        AsInteger = 0
       end
     end
   end

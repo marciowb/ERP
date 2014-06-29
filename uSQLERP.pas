@@ -595,11 +595,11 @@ begin
           CampoCodigo := 'IDENTIFICADOR';
           Versao20 := True;
           UsaMaxParaCodigo := True;
-          DesconsiderarCampos := '';
+          DesconsiderarCampos := 'FLAGEDICAO';
           Select :=
            ' SELECT CE.IDCLIENTEEQUIPAMENTOS, CE.IDCLIENTE, '+
            '        CE.DESCRICAOEQUIPAMENTO, CE.DESCRICAOCOMPLETA, '+
-           '        CE.IDENTIFICADOR, CE.IDPRODUTO'+
+           '        CE.IDENTIFICADOR, CE.IDPRODUTO,''N'' FLAGEDICAO'+
            '   FROM CLIENTEEQUIPAMENTOS CE    '+
             ' WHERE 1=1 '+Complemento;
        End;
@@ -756,28 +756,39 @@ begin
           DescricaoTabela := 'Entrada de Produtos ';
           Versao20 := False;
           CampoCodigo := '';
-          DesconsiderarCampos := 'NOMEOPERACAOESTOQUE;PESSOA;TIPOPESSOA;LOGIN;IDCFOP';
+          DesconsiderarCampos := 'NOMEOPERACAOESTOQUE;PESSOA;TIPOPESSOA;LOGIN;IDCFOP;CODIGOEMPRESA;ESTACANCELADA';
           Select :=
-            'SELECT E.IDENTRADA, E.DATA, E.IDOPERACAOESTOQUE, E.IDFORNECEDOR,'+
-            '       E.NUMERONOTA, E.SERIE, E.MODELO, E.VALORTOTALPRODUTOS,'+
-            '       E.BASEICMS, E.VALORICMS, E.BASEIPI, E.VALORIPI, E.BASEST,'+
-            '       E.VALORST, E.VALORSEGURO, E.VALORFRETE, E.VALOROUTRAS,'+
-            '       E.VALORTOTALNOTA, E.FLAGCANCELADA, E.OBS, E.VALORDESCONTO,'+
-            '       E.IDEMPRESA, E.FRETEPORCONTA, E.IDUSUARIO,'+
-            '       E.DATACRIACAO, E.IDCLIENTE,'+
-            '       O.NOMEOPERACAOESTOQUE,'+
-            '       COALESCE(F.RAZAOSOCIAL,C.NOMECLIENTE) PESSOA,'+
-            '       CASE WHEN E.IDFORNECEDOR IS NULL THEN ''C'' ELSE ''F'' END TIPOPESSOA,'+
-            '       U.LOGIN,cast(null as chave) IDCFOP'+
-            '  FROM ENTRADA E'+
-            ' INNER JOIN OPERACAOESTOQUE O'+
-            '    ON (O.IDOPERACAOESTOQUE = E.IDOPERACAOESTOQUE)'+
-            '  LEFT JOIN FORNECEDOR F'+
-            '    ON (F.IDFORNECEDOR = E.IDFORNECEDOR)'+
-            '  LEFT JOIN CLIENTE C'+
-            '    ON (C.IDCLIENTE = E.IDCLIENTE)'+
-            '  LEFT JOIN USUARIO U'+
-            '    ON (U.IDUSUARIO = E.IDUSUARIO)'+
+            'SELECT IDENTRADA,DATA,IDOPERACAOESTOQUE,IDFORNECEDOR,NUMERONOTA,SERIE,MODELO,'+
+            '       VALORTOTALPRODUTOS,BASEICMS,VALORICMS,BASEIPI,VALORIPI,BASEST,'+
+            '       VALORST,VALORSEGURO,VALORFRETE,VALOROUTRAS,VALORTOTALNOTA,'+
+            '       FLAGCANCELADA,OBS,VALORDESCONTO,IDEMPRESA,'+
+            '       FRETEPORCONTA,IDUSUARIO,DATACRIACAO,IDCLIENTE,'+
+            '       NOMEOPERACAOESTOQUE,PESSOA,TIPOPESSOA,LOGIN,'+
+            '       IDCFOP,CODIGOEMPRESA,ESTACANCELADA'+
+            ' FROM ('+
+            '        SELECT E.IDENTRADA, E.DATA, E.IDOPERACAOESTOQUE, E.IDFORNECEDOR,'+
+            '               E.NUMERONOTA, E.SERIE, E.MODELO, E.VALORTOTALPRODUTOS,'+
+            '               E.BASEICMS, E.VALORICMS, E.BASEIPI, E.VALORIPI, E.BASEST,'+
+            '               E.VALORST, E.VALORSEGURO, E.VALORFRETE, E.VALOROUTRAS,'+
+            '               E.VALORTOTALNOTA, E.FLAGCANCELADA, E.OBS, E.VALORDESCONTO,'+
+            '               E.IDEMPRESA, E.FRETEPORCONTA, E.IDUSUARIO,'+
+            '               E.DATACRIACAO, E.IDCLIENTE,'+
+            '               O.NOMEOPERACAOESTOQUE,'+
+            '               COALESCE(F.RAZAOSOCIAL,C.NOMECLIENTE) PESSOA,'+
+            '               CASE WHEN E.IDFORNECEDOR IS NULL THEN ''C'' ELSE ''F'' END TIPOPESSOA,'+
+            '               U.LOGIN,CAST(NULL AS CHAVE) IDCFOP,EP.CODIGO CODIGOEMPRESA,'+
+            '               CASE WHEN COALESCE(E.FLAGCANCELADA,''N'') = ''Y'' THEN ''SIM'' ELSE ''NÃO'' END ESTACANCELADA '+
+            '          FROM ENTRADA E'+
+            '         INNER JOIN EMPRESA EP'+
+            '            ON (E.IDEMPRESA = EP.IDEMPRESA)'+
+            '         INNER JOIN OPERACAOESTOQUE O'+
+            '            ON (O.IDOPERACAOESTOQUE = E.IDOPERACAOESTOQUE)'+
+            '          LEFT JOIN FORNECEDOR F'+
+            '            ON (F.IDFORNECEDOR = E.IDFORNECEDOR)'+
+            '          LEFT JOIN CLIENTE C'+
+            '            ON (C.IDCLIENTE = E.IDCLIENTE)'+
+            '          LEFT JOIN USUARIO U'+
+            '            ON (U.IDUSUARIO = E.IDUSUARIO))X'+
             ' WHERE 1=1 '+Complemento;
 
        end;
@@ -790,7 +801,7 @@ begin
           DescricaoTabela := 'Entrada de Produtos(Itens) ';
           Versao20 := False;
           CampoCodigo := '';
-          DesconsiderarCampos := 'CODIGO_PRODUTO;NOME_PRODUTO;CFOP;UNIDADE;UNIDADE_COMPRA;CODIGOPRODUTOFORNECEDOR';
+          DesconsiderarCampos := 'CODIGO_PRODUTO;NOME_PRODUTO;CFOP;UNIDADE;UNIDADE_COMPRA;CODIGOPRODUTOFORNECEDOR;FLAGEDICAO';
           Select :=
             'SELECT EP.IDENTRADAPRODUTO, EP.IDENTRADA, EP.IDCFOP, EP.IDPRODUTO,'+
             '       EP.QUANTIDADE, EP.VALORUNITARIO, EP.VALORACRESCIMO,'+
@@ -801,8 +812,11 @@ begin
             '       EP.IDUNIDADE, EP.NUMITEM, EP.VALORST, EP.BASEST, EP.MVA,'+
             '       EP.REDUCAOBASE, EP.IDUNIDADECOMPRA,EP.CST,'+
             '       EP.FATORMULTIPLICADOR, EP.QUANTIDADERECEBIDA, P.CODIGO CODIGO_PRODUTO,'+
-            '       P.NOMEPRODUTO NOME_PRODUTO,C.CFOP,U.CODIGO UNIDADE,UC.CODIGO UNIDADE_COMPRA,PF.CODIGOPRODUTO CODIGOPRODUTOFORNECEDOR'+
-            '  FROM ENTRADAPRODUTO EP'+
+            '       P.NOMEPRODUTO NOME_PRODUTO,C.CFOP,U.CODIGO UNIDADE,UC.CODIGO UNIDADE_COMPRA,'+
+            '       PF.CODIGOPRODUTO CODIGOPRODUTOFORNECEDOR,''N'' FLAGEDICAO'+
+            '  FROM ENTRADA E '+
+            ' INNER JOIN ENTRADAPRODUTO EP '+
+            '    ON (EP.IDENTRADA = E.IDENTRADA)'+
             ' INNER JOIN PRODUTO P'+
             '    ON (P.IDPRODUTO = EP.IDPRODUTO)'+
             ' INNER JOIN CFOP C'+
@@ -812,7 +826,7 @@ begin
             '  LEFT JOIN UNIDADE UC'+
             '    ON (UC.IDUNIDADE = EP.IDUNIDADECOMPRA)'+
             '  LEFT JOIN PRODUTOFORNECEDOR PF '+
-            '    ON (PF.IDPRODUTO = P.IDPRODUTO)'+
+            '    ON (PF.IDPRODUTO = P.IDPRODUTO AND PF.IDFORNECEDOR = E.IDFORNECEDOR) '+
             ' WHERE 1=1 '+Complemento;
 
        end;
@@ -851,7 +865,7 @@ begin
                                  IfThen(TipoPesquisa = tpERPOperacaoSaida,' FLAGTIPOOPERACAO =''S'' ', ' 1=1 '))+   Complemento;
 
        end;
-       tpERPSerialProduto:
+       tpERPSerialProduto,tpERPSerialProdutoAtivo:
        begin
           CampoChave := 'IDSERIALPRODUTO';
           CampoDisplay := '';
@@ -860,12 +874,12 @@ begin
           DescricaoTabela := 'Seriais do produto ';
           Versao20 := False;
           CampoCodigo := '';
-          DesconsiderarCampos := '';
+          DesconsiderarCampos := 'FLAGEDICAO';
           Select :=
             'SELECT IDSERIALPRODUTO, IDPRODUTO, '+
-            '       IDEMPRESA, SERIAL, DATAENTRADA, DATASAIDA, FLAGATIVO '+
+            '       IDEMPRESA, SERIAL, DATAENTRADA, DATASAIDA, FLAGATIVO,''N'' FLAGEDICAO '+
             '  FROM SERIALPRODUTO '+
-            '  WHERE 1=1 '+Complemento;
+            '  WHERE '+IfThen(TipoPesquisa = tpERPSerialProdutoAtivo,' COALESCE(FLAGATIVO,''N'') = ''Y'' ',' 1=1 ')+Complemento;
        end;
        tpERPSerialProdutoEntrada:
        begin
@@ -876,10 +890,10 @@ begin
           DescricaoTabela := 'Seriais do produto(Entrada) ';
           Versao20 := False;
           CampoCodigo := '';
-          DesconsiderarCampos := '';
+          DesconsiderarCampos := 'FLAGEDICAO';
           Select :=
             'SELECT ES.IDENTRADAPRODUTOSERIAL, ES.IDENTRADAPRODUTO, ES.IDSERIALPRODUTO, '+
-            '       P.CODIGO, P.NOMEPRODUTO,SP.SERIAL, SP.IDEMPRESA, SP.DATAENTRADA '+
+            '       P.CODIGO, P.NOMEPRODUTO,SP.SERIAL, SP.IDEMPRESA, SP.DATAENTRADA,''N'' FLAGEDICAO'+
             '  FROM ENTRADAPRODUTOSERIAL ES '+
             ' INNER JOIN SERIALPRODUTO SP '+
             '    ON (SP.IDSERIALPRODUTO = ES.IDSERIALPRODUTO) '+

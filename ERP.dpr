@@ -73,7 +73,10 @@ uses
   uEntrada in 'uEntrada.pas' {frmEntradaEstoque},
   Inc_ProdutoEntrada in 'Inc_ProdutoEntrada.pas' {frmInc_ProdutoEntrada},
   Lst_OperacaoEstoque in 'Lst_OperacaoEstoque.pas' {frmLst_OperacaoEstoque},
-  uDlg_ManutencaoSerialProduto in 'uDlg_ManutencaoSerialProduto.pas' {frmDlg_ManutencaoSerialProduto};
+  uDlg_ManutencaoSerialProduto in 'uDlg_ManutencaoSerialProduto.pas' {frmDlg_ManutencaoSerialProduto},
+  uLst_Entrada in 'uLst_Entrada.pas' {frmLst_Entrada},
+  uCad_Entrada in 'uCad_Entrada.pas' {frmCad_Entrada},
+  udlg_SaidaSerial in 'udlg_SaidaSerial.pas' {frmDlg_SaidaSerial};
 
 {$R *.res}
 
@@ -96,6 +99,6 @@ begin
 
   Application.CreateForm(TDMConexao, DMConexao);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmDlg_ManutencaoSerialProduto, frmDlg_ManutencaoSerialProduto);
+  Application.CreateForm(TfrmDlg_SaidaSerial, frmDlg_SaidaSerial);
   Application.Run;
 end.

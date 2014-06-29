@@ -1,7 +1,7 @@
 unit uRegras;
 
 interface
-  Uses MinhasClasses, uSQLERP,Comandos,Classes,SysUtils, Math;
+  Uses MinhasClasses, uSQLERP,Comandos,Classes,SysUtils, Math,DB,pFIBClientDataSet;
   Type
     TParcela = record
       NumParcela: Integer;
@@ -28,6 +28,10 @@ interface
 
     TRegrasPeriodo = class
       CLASS function GetDataFinal(DataInicial: TDate;IdPeriodiciadade: Integer): TDateTime;
+    end;
+    TRegrasEntradaMercadoria = class
+      class Procedure CalculaTotalNotaEntrada(var DataSetMaster: TpFIBClientDataSet; var DataSetProdutos: TpFIBClientDataSet);
+      class procedure CalculaValoresItens(var CampoAtual: TField);
     end;
 
 implementation
@@ -149,6 +153,116 @@ var
 begin
   NumDias := StrToInt(GetValorCds(tpERPPeridicidade,'IDPERIODICIDADE = '+IntToStr(IdPeriodiciadade),'NUMDIAS'));
   Result := AddDay(NumDias,DataInicial);
+end;
+
+{ TRegrasEntradaMercadoria }
+
+class procedure TRegrasEntradaMercadoria.CalculaTotalNotaEntrada(
+  var DataSetMaster, DataSetProdutos: TpFIBClientDataSet);
+var
+  CdsClone : TpFIBClientDataSet;
+  vValorTotal,vValorICMS, vValorIPI,vValorICMSST : Currency;
+begin
+  inherited;
+  Try
+    CdsClone := TpFIBClientDataSet.Create(nil);
+    CdsClone.CloneCursor(DataSetProdutos, True);
+
+    CdsClone.First;
+    vValorTotal := 0;
+    vValorICMS := 0;
+    vValorIPI := 0;
+    vValorICMSST := 0;
+    while not CdsClone.Eof do
+    Begin
+      vValorTotal := vValorTotal + CdsClone.FieldByName('VALORTOTALBRUTO').AsCurrency;
+      vValorICMS := vValorICMS + CdsClone.FieldByName('VALORICMS').AsCurrency;
+      vValorIPI := vValorIPI + CdsClone.FieldByName('VALORIPI').AsCurrency;
+      vValorICMSST := vValorICMSST+CdsClone.FieldByName('VALORST').AsCurrency;
+      CdsClone.Next;
+    End;
+    DataSetMaster.FieldByName('VALORTOTALPRODUTOS').AsCurrency := vValorTotal;
+    DataSetMaster.FieldByName('BASEICMS').AsCurrency := DataSetMaster.FieldByName('VALORTOTALPRODUTOS').AsCurrency ;
+    DataSetMaster.FieldByName('VALORIPI').AsCurrency := vValorIPI;
+    DataSetMaster.FieldByName('VALORICMS').AsCurrency := vValorICMS;
+    DataSetMaster.FieldByName('VALORTOTALNOTA').AsCurrency :=
+        (vValorIPI+vValorTotal+vValorICMSST+DataSetMaster.FieldByName('VALORSEGURO').AsCurrency +
+         DataSetMaster.FieldByName('VALOROUTRAS').AsCurrency+
+         IfThen(DataSetMaster.FieldByName('freteporconta').AsString ='D',DataSetMaster.FieldByName('VALORFRETE').AsCurrency,0)
+         )-DataSetMaster.FieldByName('VALORDESCONTO').AsCurrency  ;
+  Finally
+    FreeAndNil(CdsClone);
+  End;
+
+end;
+
+class procedure TRegrasEntradaMercadoria.CalculaValoresItens(
+  var CampoAtual: TField);
+Var
+  MVA : Currency;
+  StrSQL : String;
+begin
+  inherited;
+  { TODO : Rever }
+//  StrSQL :=
+//     'SELECT CASE WHEN '+GetStr(UfEmpresa)+' = '+GetStr(UfFornecedor)+' THEN NCM.MVADENTROUF ELSE NCM.MVAFORAUF END MVA '+
+//     '  FROM NCM '+
+//     ' WHERE NCM.IDNCM = '+GetStr(CdsProdutos.FieldByName('IDNCM').AsString);
+  MVA := 0;///StrToCurrDef(StrSQL, 0);
+  if (UpperCase(CampoAtual.FieldName) = 'QUANTIDADERECEBIDA') or
+     (UpperCase(CampoAtual.FieldName) = 'FATORMULTIPLICADOR') Then
+  begin
+    CampoAtual.DataSet.FieldByName('QUANTIDADE').AsCurrency :=
+       CampoAtual.DataSet.FieldByName('QUANTIDADERECEBIDA').AsCurrency *
+       CampoAtual.DataSet.FieldByName('FATORMULTIPLICADOR').AsCurrency;
+
+  end;
+  if (UpperCase(CampoAtual.FieldName) = 'QUANTIDADERECEBIDA') OR
+     (UpperCase(CampoAtual.FieldName) = 'VALORUNITARIO')  then
+  Begin
+    CampoAtual.DataSet.FieldByName('VALORTOTAL').AsCurrency :=
+      (CampoAtual.DataSet.FieldByName('QUANTIDADERECEBIDA').AsCurrency *
+       CampoAtual.DataSet.FieldByName('VALORUNITARIO').AsCurrency);
+    CampoAtual.DataSet.FieldByName('BASEICMS').AsCurrency :=
+      CampoAtual.DataSet.FieldByName('VALORTOTAL').AsCurrency ;
+   if CampoAtual.DataSet.FieldByName('REDUCAOBASE').AsCurrency > 0 then
+     CampoAtual.DataSet.FieldByName('BASEICMS').AsCurrency :=
+       (CampoAtual.DataSet.FieldByName('BASEICMS').AsCurrency *
+       CampoAtual.DataSet.FieldByName('REDUCAOBASE').AsCurrency) / 100  ;
+  End;
+
+  if (UpperCase(CampoAtual.FieldName) = 'ALIQIPI')   then
+  Begin
+    CampoAtual.DataSet.FieldByName('VALORIPI').AsCurrency :=
+      (CampoAtual.DataSet.FieldByName('VALORTOTAL').AsCurrency *
+       CampoAtual.DataSet.FieldByName('ALIQIPI').AsCurrency) / 100.00;
+
+    CampoAtual.DataSet.FieldByName('VALORTOTAL').AsCurrency :=
+      (CampoAtual.DataSet.FieldByName('QUANTIDADERECEBIDA').AsCurrency *
+       CampoAtual.DataSet.FieldByName('VALORUNITARIO').AsCurrency)+
+      CampoAtual.DataSet.FieldByName('VALORIPI').AsCurrency;
+  End;
+
+  if (UpperCase(CampoAtual.FieldName) = 'ALIQICMS')   then
+  Begin
+    CampoAtual.DataSet.FieldByName('VALORICMS').AsCurrency :=
+      (CampoAtual.DataSet.FieldByName('BASEICMS').AsCurrency *
+       CampoAtual.DataSet.FieldByName('ALIQICMS').AsCurrency) / 100.00;
+    if MVA > 0 then
+    Begin
+//      CampoAtual.DataSet.FieldByName('BASEST').AsCurrency :=
+//        (CampoAtual.DataSet.FieldByName('BASEICMS').AsCurrency +
+//         CampoAtual.DataSet.FieldByName('VALORIPI').AsCurrency );
+//
+//      CampoAtual.DataSet.FieldByName('VALORST').AsCurrency :=
+//         (CampoAtual.DataSet.FieldByName('BASEST').AsCurrency * MVA)/ 100;
+//      CampoAtual.DataSet.FieldByName('VALORST').AsCurrency :=
+//        CampoAtual.DataSet.FieldByName('VALORST').AsCurrency -
+//        ((CampoAtual.DataSet.FieldByName('BASEICMS').AsCurrency * AliqICMSInterno) / 100);
+    End;
+
+  End;
+
 end;
 
 end.

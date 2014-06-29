@@ -20,6 +20,7 @@ uses
 type
   TfrmCad_CadastroPaiERP = class(TfrmCad_CadastroPai)
     procedure CdsCadastroNewRecord(DataSet: TDataSet);
+    procedure actNovoExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,6 +36,13 @@ implementation
 uses Comandos;
 
 {$R *.dfm}
+
+procedure TfrmCad_CadastroPaiERP.actNovoExecute(Sender: TObject);
+begin
+  ActiveControl := Self.ActiveControl;
+  inherited;
+
+end;
 
 procedure TfrmCad_CadastroPaiERP.CdsCadastroNewRecord(DataSet: TDataSet);
 begin

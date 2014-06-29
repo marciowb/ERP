@@ -68,9 +68,8 @@ type
     actCondicaoPagamento: TAction;
     CondiodePagamento1: TMenuItem;
     actProposta: TAction;
-    actVenda: TAction;
+    actEstoque: TAction;
     Venda1: TMenuItem;
-    Proposta1: TMenuItem;
     actTipoContrato: TAction;
     ipodeContrato1: TMenuItem;
     actContrato: TAction;
@@ -101,10 +100,30 @@ type
     CdsAgenda: TpFIBClientDataSet;
     cxGrid1DBTableView1Column1: TcxGridDBColumn;
     cxGrid1DBTableView1Column2: TcxGridDBColumn;
-    actEntrada: TAction;
+    actNovaEntrada: TAction;
     Entradadeprodutos1: TMenuItem;
     actOperacaoEstoque: TAction;
     OperaoEstoque1: TMenuItem;
+    actVenda: TAction;
+    actListagemEntrada: TAction;
+    Venda2: TMenuItem;
+    Proposta2: TMenuItem;
+    N1: TMenuItem;
+    ListagemdeEntrada1: TMenuItem;
+    actClientes: TAction;
+    Pessoas1: TMenuItem;
+    actProdutos: TAction;
+    Produtos1: TMenuItem;
+    actSobreEmpresa: TAction;
+    Empresa1: TMenuItem;
+    actCadOS: TAction;
+    OS1: TMenuItem;
+    actCadFin: TAction;
+    Financeiro1: TMenuItem;
+    actCadContrato: TAction;
+    Contrato1: TMenuItem;
+    actEntradas: TAction;
+    Entrada1: TMenuItem;
     procedure actCadastroExecute(Sender: TObject);
     procedure actCFOPExecute(Sender: TObject);
     procedure actNCMExecute(Sender: TObject);
@@ -129,7 +148,7 @@ type
     procedure actContaBancariaExecute(Sender: TObject);
     procedure actCondicaoPagamentoExecute(Sender: TObject);
     procedure actPropostaExecute(Sender: TObject);
-    procedure actVendaExecute(Sender: TObject);
+    procedure actEstoqueExecute(Sender: TObject);
     procedure actTipoContratoExecute(Sender: TObject);
     procedure actContratoExecute(Sender: TObject);
     procedure actTipoOSExecute(Sender: TObject);
@@ -140,8 +159,17 @@ type
     procedure actAgendaExecute(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cxGrid1DBTableView1DblClick(Sender: TObject);
-    procedure actEntradaExecute(Sender: TObject);
+    procedure actNovaEntradaExecute(Sender: TObject);
     procedure actOperacaoEstoqueExecute(Sender: TObject);
+    procedure actVendaExecute(Sender: TObject);
+    procedure actListagemEntradaExecute(Sender: TObject);
+    procedure actClientesExecute(Sender: TObject);
+    procedure actProdutosExecute(Sender: TObject);
+    procedure actSobreEmpresaExecute(Sender: TObject);
+    procedure actCadOSExecute(Sender: TObject);
+    procedure actCadFinExecute(Sender: TObject);
+    procedure actCadContratoExecute(Sender: TObject);
+    procedure actEntradasExecute(Sender: TObject);
   private
     { Private declarations }
     Procedure AtualizaAgenda;
@@ -181,6 +209,24 @@ procedure TfrmPrincipal.actCadClienteExecute(Sender: TObject);
 begin
   inherited;
   TrotinasForms.AbreCadastroCliente;
+end;
+
+procedure TfrmPrincipal.actCadContratoExecute(Sender: TObject);
+begin
+  inherited;
+  //
+end;
+
+procedure TfrmPrincipal.actCadFinExecute(Sender: TObject);
+begin
+  inherited;
+  //
+end;
+
+procedure TfrmPrincipal.actCadOSExecute(Sender: TObject);
+begin
+  inherited;
+  //
 end;
 
 procedure TfrmPrincipal.actCadProdutoExecute(Sender: TObject);
@@ -237,7 +283,13 @@ begin
   TrotinasForms.AbreCadastroEmpresa;
 end;
 
-procedure TfrmPrincipal.actEntradaExecute(Sender: TObject);
+procedure TfrmPrincipal.actEntradasExecute(Sender: TObject);
+begin
+  inherited;
+  //
+end;
+
+procedure TfrmPrincipal.actNovaEntradaExecute(Sender: TObject);
 begin
   inherited;
   TrotinasForms.AbreEntradaProduto;
@@ -285,6 +337,12 @@ begin
   TrotinasForms.AbreCadastroLinha;
 end;
 
+procedure TfrmPrincipal.actListagemEntradaExecute(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreListageEntrada;
+end;
+
 procedure TfrmPrincipal.actLocalizacaoExecute(Sender: TObject);
 begin
   inherited;
@@ -315,16 +373,34 @@ begin
   TrotinasForms.AbreCadastroPeridicidade;
 end;
 
+procedure TfrmPrincipal.actClientesExecute(Sender: TObject);
+begin
+  inherited;
+  //
+end;
+
 procedure TfrmPrincipal.actProcessoServicoExecute(Sender: TObject);
 begin
   inherited;
   TrotinasForms.AbreCadastroProcessoServico;
 end;
 
+procedure TfrmPrincipal.actProdutosExecute(Sender: TObject);
+begin
+  inherited;
+//
+end;
+
 procedure TfrmPrincipal.actPropostaExecute(Sender: TObject);
 begin
   inherited;
   TrotinasForms.AbreProposta;
+end;
+
+procedure TfrmPrincipal.actSobreEmpresaExecute(Sender: TObject);
+begin
+  inherited;
+  //
 end;
 
 procedure TfrmPrincipal.actStatusOSExecute(Sender: TObject);
@@ -358,6 +434,12 @@ begin
 end;
 
 procedure TfrmPrincipal.actVendaExecute(Sender: TObject);
+begin
+  inherited;
+  //
+end;
+
+procedure TfrmPrincipal.actEstoqueExecute(Sender: TObject);
 begin
   inherited;
   //

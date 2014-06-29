@@ -50,6 +50,7 @@ interface
       class procedure AbreEntradaProduto;
       class procedure AbreAgenda(IdAgenda: Integer = -1);
       class function AbreCadastroOperacaoEstoque(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class Procedure AbreListageEntrada;
   private
 
     end;
@@ -62,7 +63,7 @@ uses uCadNCM, Lst_Empresa, Cad_Cliente, Cad_usuario, uCad_Funcionario,
   uCad_Fornecedor, uCad_Produto, uLst_Periodicidade, uLst_ContaBancaria,
   uLst_CondicaoPagamento, uLst_Proposta, uLst_TipoContrato, uLst_Contratos,
   uDlg_EquipamentoCliente, uLst_TipoOS, uLst_StatusOS, uLst_OS, uCad_OS,
-  uAgenda, uPrincipal, uEntrada, Lst_OperacaoEstoque;
+  uAgenda, uPrincipal, uEntrada, Lst_OperacaoEstoque, uLst_Entrada;
 
 class procedure TrotinasForms.AbreAgenda(IdAgenda: Integer = -1);
 begin
@@ -264,6 +265,11 @@ class procedure TrotinasForms.AbreFormSimplesPeloTipoPesquisa(aTipoPesquisa: TTi
 class function TrotinasForms.AbreInclusaoOS: CampoChave;
 begin
   AbreFormCadastroPai<TfrmCad_OS>(toIncluir);
+end;
+
+class procedure TrotinasForms.AbreListageEntrada;
+begin
+  AbreFormListagemPadrao<TfrmLst_Entrada>;
 end;
 
 class function TrotinasForms.AbreManutencaoEquipamentoCliente(pIdCliente: Integer;TipoOperacao: TTipoOperacaoForm): CampoChave;

@@ -23,9 +23,6 @@ uses
 
 type
   TfrmCad_Produto = class(TfrmCad_CadastroPaiERP)
-    LabelDBEdit1: TLabelDBEdit;
-    LabelDBEdit2: TLabelDBEdit;
-    LabelDBEdit3: TLabelDBEdit;
     grpTipoProduto: TDBRadioGroup;
     edtLinha: TEditPesquisa;
     edtGrupo: TEditPesquisa;
@@ -82,6 +79,10 @@ type
     cxGrid2DBTableView1Column1: TcxGridDBColumn;
     cxGrid2DBTableView1Column2: TcxGridDBColumn;
     cxGrid2DBTableView1Column3: TcxGridDBColumn;
+    Panel2: TPanel;
+    LabelDBEdit1: TLabelDBEdit;
+    LabelDBEdit2: TLabelDBEdit;
+    LabelDBEdit3: TLabelDBEdit;
     procedure CdsCadastroAfterScroll(DataSet: TDataSet);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -102,6 +103,7 @@ type
     procedure edtFabricanteBtnNovoClick(Sender: TObject);
     procedure edtFornecedorBtnNovoClick(Sender: TObject);
     procedure edtNCMBtnNovoClick(Sender: TObject);
+    procedure CdsCadastroNewRecord(DataSet: TDataSet);
   private
     { Private declarations }
     Procedure SetControlesServico;
@@ -173,6 +175,15 @@ begin
 end;
 
 
+procedure TfrmCad_Produto.CdsCadastroNewRecord(DataSet: TDataSet);
+begin
+  CdsCadastro.FieldByName('TIPOPRODUTO').AsString := 'V';
+  SetControlesServico;
+  inherited;
+
+
+end;
+
 Procedure TfrmCad_Produto.grpTipoProdutoClick(Sender: TObject);
 begin
   inherited;
@@ -189,6 +200,7 @@ end;
 procedure TfrmCad_Produto.FormShow(Sender: TObject);
 begin
   inherited;
+  edtCodMunServico.SQLComp := 'flagtipo = ''S''';
   ConfiguraEditPesquisa(edtLinha,CdsCadastro,tpERPLinha);
   ConfiguraEditPesquisa(edtFornecedor,CdsCadastro,tpERPFornecedor);
   ConfiguraEditPesquisa(edtFabricante,CdsCadastro,tpERPFabricante);
@@ -198,7 +210,7 @@ begin
   ConfiguraEditPesquisa(edtLocalizacao,CdsCadastro,tpERPLocalizacao);
   ConfiguraEditPesquisa(edtCodMunServico,CdsCadastro,tpERPCodigoMunicipalServico);
   edtNCM.AutoCompletar := False;
-  edtCodMunServico.SQLComp := 'flagtipo = ''S''';
+
   SetControlesServico;
 
 end;

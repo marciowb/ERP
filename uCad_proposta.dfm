@@ -3,7 +3,6 @@ inherited frmCad_Proposta: TfrmCad_Proposta
   Caption = 'Cadastro de proposta'
   ClientHeight = 504
   ClientWidth = 878
-  ExplicitTop = -109
   ExplicitWidth = 894
   ExplicitHeight = 543
   PixelsPerInch = 96
@@ -284,6 +283,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
               CorPrincipal = clWhite
               CorSecundaria = 11592447
               GravaEsteCampo = True
+              AsInteger = 0
             end
             object edtCliente: TEditPesquisa
               Left = 16
@@ -869,7 +869,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
             Top = 145
             Width = 683
             Height = 224
-            ActivePage = tsPagamento
+            ActivePage = tsProduto
             Align = alClient
             Style = 2
             TabOrder = 1
@@ -1110,6 +1110,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit3: TLabelDBEdit
             Left = 143
@@ -1131,6 +1132,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit4: TLabelDBEdit
             Left = 223
@@ -1152,6 +1154,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit5: TLabelDBEdit
             Left = 399
@@ -1173,6 +1176,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit6: TLabelDBEdit
             Left = 319
@@ -1194,6 +1198,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit7: TLabelDBEdit
             Left = 512
@@ -1218,6 +1223,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
         end
       end

@@ -129,101 +129,131 @@ inherited frmPrincipal: TfrmPrincipal
     Top = 128
     object Cadastro1: TMenuItem
       Action = actCadastro
-      object actCFOP1: TMenuItem
-        Action = actCFOP
+      object Pessoas1: TMenuItem
+        Action = actClientes
+        object Cliente1: TMenuItem
+          Action = actCadCliente
+        end
+        object GrupodeCliente1: TMenuItem
+          Action = actGrupoCliente
+        end
       end
-      object actNCM1: TMenuItem
-        Action = actNCM
+      object Produtos1: TMenuItem
+        Action = actProdutos
+        object Cadastrodeproduto1: TMenuItem
+          Action = actCadProduto
+        end
+        object Fornecedor1: TMenuItem
+          Action = actFornecedor
+        end
+        object Fabricante1: TMenuItem
+          Action = actFabricante
+        end
+        object GrupodeCliente2: TMenuItem
+          Action = actGrupoProduto
+        end
+        object Localizao1: TMenuItem
+          Action = actLocalizacao
+        end
+        object actNCM1: TMenuItem
+          Action = actNCM
+        end
+        object Linha1: TMenuItem
+          Action = actLinha
+        end
+        object Unidade1: TMenuItem
+          Action = actUnidade
+        end
+        object ProcessosdeServio1: TMenuItem
+          Action = actProcessoServico
+        end
+        object OperaoEstoque1: TMenuItem
+          Action = actOperacaoEstoque
+        end
+        object actCFOP1: TMenuItem
+          Action = actCFOP
+        end
       end
-      object actEmpresa1: TMenuItem
-        Action = actEmpresa
+      object OS1: TMenuItem
+        Action = actCadOS
+        object ipodeOS1: TMenuItem
+          Action = actTipoOS
+        end
+        object StatusOS1: TMenuItem
+          Action = actStatusOS
+        end
       end
-      object Cliente1: TMenuItem
-        Action = actCadCliente
+      object Financeiro1: TMenuItem
+        Action = actCadFin
+        object Banco1: TMenuItem
+          Action = actBanco
+        end
+        object actContaBancaria1: TMenuItem
+          Action = actContaBancaria
+        end
+        object CondiodePagamento1: TMenuItem
+          Action = actCondicaoPagamento
+        end
       end
-      object GrupodeCliente1: TMenuItem
-        Action = actGrupoCliente
+      object Contrato1: TMenuItem
+        Action = actCadContrato
+        object ipodeContrato1: TMenuItem
+          Action = actTipoContrato
+        end
+        object Periodicidade1: TMenuItem
+          Action = actPeriodicidade
+        end
       end
-      object Cargo1: TMenuItem
-        Action = actCargo
+      object Empresa1: TMenuItem
+        Action = actSobreEmpresa
+        object actEmpresa1: TMenuItem
+          Action = actEmpresa
+        end
+        object Cargo1: TMenuItem
+          Action = actCargo
+        end
+        object Funcionario1: TMenuItem
+          Action = actFuncionario
+        end
+        object Departamento1: TMenuItem
+          Action = actDepartamento
+        end
       end
       object actUsuario1: TMenuItem
         Action = actUsuario
       end
-      object Departamento1: TMenuItem
-        Action = actDepartamento
-      end
-      object Funcionario1: TMenuItem
-        Action = actFuncionario
-      end
-      object Fornecedor1: TMenuItem
-        Action = actFornecedor
-      end
-      object Linha1: TMenuItem
-        Action = actLinha
-      end
-      object Localizao1: TMenuItem
-        Action = actLocalizacao
-      end
-      object GrupodeCliente2: TMenuItem
-        Action = actGrupoProduto
-      end
-      object Cadastrodeproduto1: TMenuItem
-        Action = actCadProduto
-      end
-      object Unidade1: TMenuItem
-        Action = actUnidade
-      end
-      object Fabricante1: TMenuItem
-        Action = actFabricante
-      end
-      object ProcessosdeServio1: TMenuItem
-        Action = actProcessoServico
-      end
-      object Periodicidade1: TMenuItem
-        Action = actPeriodicidade
-      end
-      object Banco1: TMenuItem
-        Action = actBanco
-      end
-      object actContaBancaria1: TMenuItem
-        Action = actContaBancaria
-      end
-      object CondiodePagamento1: TMenuItem
-        Action = actCondicaoPagamento
-      end
-      object ipodeContrato1: TMenuItem
-        Action = actTipoContrato
-      end
-      object ipodeOS1: TMenuItem
-        Action = actTipoOS
-      end
-      object StatusOS1: TMenuItem
-        Action = actStatusOS
-      end
-      object OperaoEstoque1: TMenuItem
-        Action = actOperacaoEstoque
-      end
     end
     object Venda1: TMenuItem
-      Action = actVenda
-      object Proposta1: TMenuItem
-        Action = actProposta
-      end
-      object Centrodecontrato1: TMenuItem
-        Action = actContrato
-      end
-      object Ordensdeservio1: TMenuItem
-        Action = actOS
-        object InclusaoOS1: TMenuItem
-          Action = actInclusaoOS
-        end
-        object CentralOS1: TMenuItem
-          Action = actCentralOS
+      Action = actEstoque
+      object Venda2: TMenuItem
+        Action = actVenda
+        object Proposta2: TMenuItem
+          Action = actProposta
         end
       end
-      object Entradadeprodutos1: TMenuItem
-        Action = actEntrada
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object Entrada1: TMenuItem
+        Action = actEntradas
+        object Entradadeprodutos1: TMenuItem
+          Action = actNovaEntrada
+        end
+        object ListagemdeEntrada1: TMenuItem
+          Action = actListagemEntrada
+        end
+      end
+    end
+    object Centrodecontrato1: TMenuItem
+      Action = actContrato
+    end
+    object Ordensdeservio1: TMenuItem
+      Action = actOS
+      object InclusaoOS1: TMenuItem
+        Action = actInclusaoOS
+      end
+      object CentralOS1: TMenuItem
+        Action = actCentralOS
       end
     end
     object Agenda1: TMenuItem
@@ -250,7 +280,7 @@ inherited frmPrincipal: TfrmPrincipal
     end
     object actEmpresa: TAction
       Category = 'Cadastro'
-      Caption = 'Empresa'
+      Caption = 'Cadastro de Empresa'
       OnExecute = actEmpresaExecute
     end
     object actCadCliente: TAction
@@ -352,10 +382,10 @@ inherited frmPrincipal: TfrmPrincipal
       Caption = 'Proposta'
       OnExecute = actPropostaExecute
     end
-    object actVenda: TAction
-      Category = 'Venda'
-      Caption = 'Venda'
-      OnExecute = actVendaExecute
+    object actEstoque: TAction
+      Category = 'Estoque'
+      Caption = 'Estoque'
+      OnExecute = actEstoqueExecute
     end
     object actTipoContrato: TAction
       Category = 'Cadastro'
@@ -397,15 +427,60 @@ inherited frmPrincipal: TfrmPrincipal
       Caption = 'Agenda'
       OnExecute = actAgendaExecute
     end
-    object actEntrada: TAction
-      Category = 'Venda'
-      Caption = 'Entrada de produtos'
-      OnExecute = actEntradaExecute
+    object actNovaEntrada: TAction
+      Category = 'Estoque'
+      Caption = 'Inclus'#227'o de Entrada de produtos'
+      OnExecute = actNovaEntradaExecute
     end
     object actOperacaoEstoque: TAction
       Category = 'Cadastro'
       Caption = 'Opera'#231#227'o Estoque'
       OnExecute = actOperacaoEstoqueExecute
+    end
+    object actVenda: TAction
+      Category = 'Venda'
+      Caption = 'Venda'
+      OnExecute = actVendaExecute
+    end
+    object actListagemEntrada: TAction
+      Category = 'Estoque'
+      Caption = 'Todas as Entradas'
+      OnExecute = actListagemEntradaExecute
+    end
+    object actClientes: TAction
+      Category = 'Cadastro'
+      Caption = 'Clientes'
+      OnExecute = actClientesExecute
+    end
+    object actProdutos: TAction
+      Category = 'Cadastro'
+      Caption = 'Produtos / Estoque'
+      OnExecute = actProdutosExecute
+    end
+    object actSobreEmpresa: TAction
+      Category = 'Cadastro'
+      Caption = 'Empresa'
+      OnExecute = actSobreEmpresaExecute
+    end
+    object actCadOS: TAction
+      Category = 'Cadastro'
+      Caption = 'Ordens de Servi'#231'os'
+      OnExecute = actCadOSExecute
+    end
+    object actCadFin: TAction
+      Category = 'Cadastro'
+      Caption = 'Financeiro'
+      OnExecute = actCadFinExecute
+    end
+    object actCadContrato: TAction
+      Category = 'Cadastro'
+      Caption = 'Contrato'
+      OnExecute = actCadContratoExecute
+    end
+    object actEntradas: TAction
+      Category = 'Estoque'
+      Caption = 'Entrada'
+      OnExecute = actEntradasExecute
     end
   end
   object dxDockingManager1: TdxDockingManager

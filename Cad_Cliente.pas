@@ -23,9 +23,6 @@ uses
 
 type
   TfrmCad_Cliente = class(TfrmCad_CadastroPaiERP)
-    LabelDBEdit1: TLabelDBEdit;
-    edtNome: TLabelDBEdit;
-    LabelDBEdit7: TLabelDBEdit;
     LabelDBEdit8: TLabelDBEdit;
     LabelDBEdit9: TLabelDBEdit;
     LabelDBEdit10: TLabelDBEdit;
@@ -46,7 +43,6 @@ type
     LabelDBEdit4: TLabelDBEdit;
     LabelDBEdit5: TLabelDBEdit;
     LabelDBEdit6: TLabelDBEdit;
-    LabelDBEdit16: TLabelDBEdit;
     edtLogradouro: TLabelDBEdit;
     edtPesqCEP: TSpeedButton;
     edtCEP: TLabelDBEdit;
@@ -56,7 +52,29 @@ type
     DBMemo1: TDBMemo;
     LabelDBEdit11: TLabelDBEdit;
     cxTabSheet1: TcxTabSheet;
+    Panel2: TPanel;
     edtGrupoCliente: TEditPesquisa;
+    cxTabSheet2: TcxTabSheet;
+    GroupBox3: TGroupBox;
+    Panel4: TPanel;
+    LabelDBEdit1: TLabelDBEdit;
+    edtNome: TLabelDBEdit;
+    LabelDBEdit16: TLabelDBEdit;
+    LabelDBEdit7: TLabelDBEdit;
+    TvEquipamentos: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    DataEquipamentos: TDataSource;
+    CdsEquipamentos: TpFIBClientDataSet;
+    vEquipamentosColumn1: TcxGridDBColumn;
+    vEquipamentosColumn2: TcxGridDBColumn;
+    Panel5: TPanel;
+    actNovoEquipamento: TAction;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
+    BitBtn3: TBitBtn;
+    actAlterar: TAction;
+    actExcluir: TAction;
     procedure FormCreate(Sender: TObject);
     procedure CdsCadastroAfterOpen(DataSet: TDataSet);
     procedure CdsCadastroNewRecord(DataSet: TDataSet);
@@ -68,6 +86,13 @@ type
     procedure actIntegracaoExecute(Sender: TObject);
     procedure edtGrupoClienteBtnNovoClick(Sender: TObject);
     procedure edtGrupoClienteBtnPesquisaClick(Sender: TObject);
+    procedure CdsCadastroAfterScroll(DataSet: TDataSet);
+    procedure actNovoEquipamentoExecute(Sender: TObject);
+    procedure actAlterarExecute(Sender: TObject);
+    procedure actExcluirExecute(Sender: TObject);
+    procedure CdsEquipamentosNewRecord(DataSet: TDataSet);
+    procedure CdsEquipamentosBeforePost(DataSet: TDataSet);
+    procedure CdsCadastroAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
 
@@ -82,7 +107,7 @@ var
 
 implementation
 
-uses  Comandos, UDmConexao, uPesquisa_kimera , uForms;
+uses  Comandos, UDmConexao, uPesquisa_kimera , uForms, uDlg_EquipamentoCliente;
 
 {$R *.dfm}
 
@@ -108,10 +133,54 @@ begin
 
 end;
 
+procedure TfrmCad_Cliente.actAlterarExecute(Sender: TObject);
+begin
+  inherited;
+  Try
+    MudaEstado;
+    frmDlg_EquipamentoCliente := TfrmDlg_EquipamentoCliente.Create(nil);
+    frmDlg_EquipamentoCliente.UsaDataSetInterno := False;
+    frmDlg_EquipamentoCliente.pDataSet := CdsEquipamentos;
+    frmDlg_EquipamentoCliente.FechaEGrava := True;
+    frmDlg_EquipamentoCliente.pDataSet.Edit;
+    frmDlg_EquipamentoCliente.ShowModal;
+  Finally
+    FreeAndNil(frmDlg_EquipamentoCliente);
+  End;
+end;
+
+procedure TfrmCad_Cliente.actExcluirExecute(Sender: TObject);
+begin
+  inherited;
+  if ConfirmaDel then
+  begin
+     CdsEquipamentos.Edit;
+     CdsEquipamentos.FieldByName('flagedicao').Value := 'D';
+     CdsEquipamentos.Post;
+  end;
+end;
+
 procedure TfrmCad_Cliente.actIntegracaoExecute(Sender: TObject);
 begin
   inherited;
   //
+end;
+
+procedure TfrmCad_Cliente.actNovoEquipamentoExecute(Sender: TObject);
+begin
+  inherited;
+  Try
+    MudaEstado;
+    frmDlg_EquipamentoCliente := TfrmDlg_EquipamentoCliente.Create(nil);
+    frmDlg_EquipamentoCliente.UsaDataSetInterno := False;
+    frmDlg_EquipamentoCliente.pDataSet := CdsEquipamentos;
+    frmDlg_EquipamentoCliente.FechaEGrava := True;
+    frmDlg_EquipamentoCliente.pDataSet.Append;
+    frmDlg_EquipamentoCliente.ShowModal;
+
+  Finally
+    FreeAndNil(frmDlg_EquipamentoCliente);
+  End;
 end;
 
 procedure TfrmCad_Cliente.actNovoExecute(Sender: TObject);
@@ -141,11 +210,38 @@ begin
 
 end;
 
+procedure TfrmCad_Cliente.CdsCadastroAfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  SetRegistros(CdsEquipamentos, tpERPClienteEquipamento);
+end;
+
+procedure TfrmCad_Cliente.CdsCadastroAfterScroll(DataSet: TDataSet);
+begin
+  inherited;
+  SetCds(CdsEquipamentos,tpERPClienteEquipamento,'idcliente = '+ValorChave);
+end;
+
 procedure TfrmCad_Cliente.CdsCadastroNewRecord(DataSet: TDataSet);
 begin
   inherited;
   CdsCadastro.FieldByName('FLAGTIPOPESSOA').AsString := 'J';
   CdsCadastro.FieldByName('DATACADASTRO').AsString := GetDataServidor;
+end;
+
+procedure TfrmCad_Cliente.CdsEquipamentosBeforePost(DataSet: TDataSet);
+begin
+  inherited;
+  if CdsEquipamentos.FieldByName('flagedicao').Value = 'N' then
+    CdsEquipamentos.FieldByName('flagedicao').Value := 'E';
+end;
+
+procedure TfrmCad_Cliente.CdsEquipamentosNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  CdsEquipamentos.FieldByName('IDCLIENTEEQUIPAMENTOS').Value := GetCodigo(tpERPClienteEquipamento);
+  CdsEquipamentos.FieldByName('IDCLIENTE').Value := ValorChave;
+  CdsEquipamentos.FieldByName('flagedicao').Value := 'I';
 end;
 
 procedure TfrmCad_Cliente.grpTipoPessoaChange(Sender: TObject);
