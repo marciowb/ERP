@@ -3,7 +3,6 @@ inherited frmDlg_ExecucaoOSEquipamento: TfrmDlg_ExecucaoOSEquipamento
   Caption = 'Execu'#231#227'o da O.S do equipamento'
   ClientHeight = 560
   ClientWidth = 763
-  ExplicitTop = -43
   ExplicitWidth = 779
   ExplicitHeight = 599
   PixelsPerInch = 96
@@ -14,12 +13,12 @@ inherited frmDlg_ExecucaoOSEquipamento: TfrmDlg_ExecucaoOSEquipamento
     ExplicitTop = 519
     ExplicitWidth = 763
     inherited btnOk: TBitBtn
-      Left = 493
-      ExplicitLeft = 493
+      Left = 489
+      ExplicitLeft = 489
     end
     inherited btnCancelar: TBitBtn
-      Left = 584
-      ExplicitLeft = 584
+      Left = 580
+      ExplicitLeft = 580
     end
   end
   inherited Panel2: TPanel
@@ -648,7 +647,6 @@ inherited frmDlg_ExecucaoOSEquipamento: TfrmDlg_ExecucaoOSEquipamento
       HotZoneClassName = 'TcxMediaPlayer9Style'
       AlignSplitter = salBottom
       Control = GroupBox3
-      ExplicitTop = -8
     end
   end
   object ActionList1: TActionList

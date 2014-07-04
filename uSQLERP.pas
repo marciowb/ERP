@@ -901,7 +901,34 @@ begin
             '    ON (P.IDPRODUTO = SP.IDPRODUTO) '+
             '  WHERE 1=1 '+Complemento;
        end;
+       tpERPSerialProdutoOS:
+       begin
+          CampoChave := 'IDSERIALPRODUTOOS';
+          CampoDisplay := '';
+          NomeTabela := 'SERIALPRODUTOOS';
+          DescricaoCampoDisplay := '';
+          DescricaoTabela := 'Seriais do produto(OS) ';
+          Versao20 := False;
+          CampoCodigo := '';
+          DesconsiderarCampos := 'SERIAL;IDSERVICOOS;FLAGEDICAO';
+          Select :=
+            'SELECT SO.IDSERIALPRODUTOOS, SO.IDPRODUTOSSERVICOOS, SO.IDSERIALPRODUTO,'+
+            '       SE.SERIAL,S.IDSERVICOOS,''N'' FLAGEDICAO'+
+            '  FROM SERIALPRODUTOOS SO'+
+            ' INNER JOIN PRODUTOSSERVICOOS PS'+
+            '    ON (PS.IDPRODUTOSSERVICOOS = SO.IDPRODUTOSSERVICOOS)'+
+            ' INNER JOIN SERVICOOS S'+
+            '    ON (S.IDSERVICOOS = PS.IDSERVICOOS)'+
+            ' INNER JOIN EQUIPAMENTOSOS E'+
+            '    ON (E.IDEQUIPAMENTOSOS = S.IDEQUIPAMENTOSOS)'+
+            ' INNER JOIN OS'+
+            '    ON (OS.IDOS = E.IDOS)'+
+            ' INNER JOIN SERIALPRODUTO SE'+
+            '    ON (SE.IDSERIALPRODUTO = SO.IDSERIALPRODUTO AND'+
+            '        SE.IDEMPRESA = OS.IDEMPRESA   )'+
+            '  WHERE 1=1 '+Complemento;
 
+       end;
 
     end;
 

@@ -1000,8 +1000,10 @@ inherited frmCad_OS: TfrmCad_OS
     Aggregates = <>
     Filtered = True
     Params = <>
+    AfterEdit = CdsProdutoServicoEquipamentoAfterEdit
     BeforePost = CdsProdutoServicoEquipamentoBeforePost
     BeforeDelete = CdsProdutoServicoEquipamentoBeforeDelete
+    AfterScroll = CdsProdutoServicoEquipamentoAfterScroll
     OnNewRecord = CdsProdutoServicoEquipamentoNewRecord
     Left = 72
     Top = 288

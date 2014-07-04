@@ -44,6 +44,7 @@ type
     cxDBTimeEdit1: TcxDBTimeEdit;
     GridProdutoLevel2: TcxGridLevel;
     GridProdutoDBTableView1: TcxGridDBTableView;
+    GridProdutoDBTableView1Column1: TcxGridDBColumn;
     procedure FormShow(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure edtServicoRegAchado(const ValoresCamposEstra: array of Variant);

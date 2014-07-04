@@ -13,12 +13,12 @@ inherited frmDlg_ServicoEquipamentoOS: TfrmDlg_ServicoEquipamentoOS
     ExplicitTop = 447
     ExplicitWidth = 633
     inherited btnOk: TBitBtn
-      Left = 371
-      ExplicitLeft = 371
+      Left = 367
+      ExplicitLeft = 367
     end
     inherited btnCancelar: TBitBtn
-      Left = 462
-      ExplicitLeft = 462
+      Left = 458
+      ExplicitLeft = 458
     end
   end
   inherited Panel2: TPanel
@@ -422,6 +422,8 @@ inherited frmDlg_ServicoEquipamentoOS: TfrmDlg_ServicoEquipamentoOS
           Height = 163
           Align = alClient
           TabOrder = 0
+          ExplicitLeft = 1
+          ExplicitTop = 9
           object tvProduto: TcxGridDBTableView
             Tag = 99
             NavigatorButtons.ConfirmDelete = False
@@ -440,8 +442,9 @@ inherited frmDlg_ServicoEquipamentoOS: TfrmDlg_ServicoEquipamentoOS
             NavigatorButtons.SaveBookmark.Visible = False
             NavigatorButtons.GotoBookmark.Visible = False
             NavigatorButtons.Filter.Visible = False
+            DataController.DataModeController.SmartRefresh = True
             DataController.DataSource = frmCad_OS.DataProdutoServicoEquipamento
-            DataController.Options = [dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost, dcoInsertOnNewItemRowFocusing]
+            DataController.Options = [dcoAssignMasterDetailKeys, dcoSaveExpanding, dcoImmediatePost]
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <
               item
@@ -450,13 +453,11 @@ inherited frmDlg_ServicoEquipamentoOS: TfrmDlg_ServicoEquipamentoOS
                 Column = tvProdutoColumn5
               end>
             DataController.Summary.SummaryGroups = <>
-            OptionsBehavior.FocusCellOnTab = True
-            OptionsBehavior.FocusFirstCellOnNewRecord = True
-            OptionsBehavior.GoToNextCellOnEnter = True
             OptionsBehavior.NavigatorHints = True
             OptionsCustomize.ColumnFiltering = False
             OptionsCustomize.ColumnGrouping = False
             OptionsCustomize.ColumnSorting = False
+            OptionsView.FocusRect = False
             OptionsView.Navigator = True
             OptionsView.Footer = True
             OptionsView.GroupByBox = False
@@ -479,14 +480,12 @@ inherited frmDlg_ServicoEquipamentoOS: TfrmDlg_ServicoEquipamentoOS
             object tvProdutoColumn3: TcxGridDBColumn
               Caption = 'Quantidade'
               DataBinding.FieldName = 'QUANTIDADE'
-              FooterAlignmentHorz = taRightJustify
               HeaderAlignmentHorz = taRightJustify
               Width = 80
             end
             object tvProdutoColumn4: TcxGridDBColumn
               Caption = 'Valor Uni.'
               DataBinding.FieldName = 'VALORUNITARIO'
-              FooterAlignmentHorz = taRightJustify
               HeaderAlignmentHorz = taRightJustify
               Options.Editing = False
               Options.Focusing = False
@@ -494,7 +493,6 @@ inherited frmDlg_ServicoEquipamentoOS: TfrmDlg_ServicoEquipamentoOS
             object tvProdutoColumn5: TcxGridDBColumn
               Caption = 'Total'
               DataBinding.FieldName = 'TOTAL'
-              FooterAlignmentHorz = taRightJustify
               HeaderAlignmentHorz = taRightJustify
               Options.Editing = False
               Options.Focusing = False
@@ -503,9 +501,23 @@ inherited frmDlg_ServicoEquipamentoOS: TfrmDlg_ServicoEquipamentoOS
           end
           object GridProdutoDBTableView1: TcxGridDBTableView
             NavigatorButtons.ConfirmDelete = False
+            DataController.DataSource = frmCad_OS.DataSerialOS
+            DataController.DetailKeyFieldNames = 'IDPRODUTOSSERVICOOS'
+            DataController.KeyFieldNames = 'IDPRODUTOSSERVICOOS'
+            DataController.MasterKeyFieldNames = 'IDPRODUTOSSERVICOOS'
             DataController.Summary.DefaultGroupSummaryItems = <>
             DataController.Summary.FooterSummaryItems = <>
             DataController.Summary.SummaryGroups = <>
+            OptionsData.CancelOnExit = False
+            OptionsData.Deleting = False
+            OptionsData.Editing = False
+            OptionsData.Inserting = False
+            OptionsView.ColumnAutoWidth = True
+            object GridProdutoDBTableView1Column1: TcxGridDBColumn
+              Caption = 'Serial'
+              DataBinding.FieldName = 'SERIAL'
+              Width = 151
+            end
           end
           object GridProdutoLevel1: TcxGridLevel
             GridView = tvProduto

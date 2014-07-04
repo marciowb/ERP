@@ -73,10 +73,13 @@ type
     procedure CdsServicoEquipamentoBeforePost(DataSet: TDataSet);
     procedure CdsEquipamentoBeforePost(DataSet: TDataSet);
     procedure actGravarExecute(Sender: TObject);
+    procedure CdsProdutoServicoEquipamentoAfterScroll(DataSet: TDataSet);
+    procedure CdsProdutoServicoEquipamentoAfterEdit(DataSet: TDataSet);
   private
     { Private declarations }
   public
     { Public declarations }
+    Procedure AddSerial;
   end;
 
 var
@@ -205,6 +208,66 @@ begin
 
 end;
 
+procedure TfrmCad_OS.AddSerial;
+var
+  I: Integer;
+begin
+   Try
+        frmDlg_SaidaSerial := TfrmDlg_SaidaSerial.Create(nil);
+        frmDlg_SaidaSerial.IdProduto := CdsProdutoServicoEquipamento.FieldByName('IDPRODUTO').Value;
+        if frmDlg_SaidaSerial.CdsSeriais.IsEmpty then
+          Exit;
+        Self.CdsSerialOS.First;
+        while not Self.CdsSerialOS.Eof do
+        begin
+          if frmDlg_SaidaSerial.CdsSeriais.Locate('serial',Self.CdsSerialOS.FieldByName('serial').AsString,[]) Then
+          Begin
+            frmDlg_SaidaSerial.CdsSeriais.Edit;
+            frmDlg_SaidaSerial.CdsSeriais.FieldByName('FLAGEDICAO').AsString := 'U';
+            frmDlg_SaidaSerial.CdsSeriais.Post;
+          end;
+          Self.CdsSerialOS.Next;
+        end;
+        if frmDlg_SaidaSerial.ShowModal = mrOK Then
+        begin
+          frmDlg_SaidaSerial.CdsSeriais.First;
+          I:= 0;
+          while not frmDlg_SaidaSerial.CdsSeriais.Eof do
+          begin
+            if  frmDlg_SaidaSerial.CdsSeriais.FieldByName('FLAGEDICAO').Value = 'N' then
+            begin
+               frmDlg_SaidaSerial.CdsSeriais.Next;
+               Continue;
+            end;
+            if Self.CdsSerialOS.Locate('IDPRODUTOSSERVICOOS;Serial',
+                       VarArrayOf([CdsProdutoServicoEquipamento.FieldByName('IDPRODUTOSSERVICOOS').Value,
+                                   frmDlg_SaidaSerial.CdsSeriais.FieldByName('serial').AsString]),[]) then
+              Self.CdsSerialOS.Edit
+            else
+            begin
+              Self.CdsSerialOS.Append;
+              Self.CdsSerialOS.FieldByName('IDSERIALPRODUTOOS').Value := GetCodigo(tpERPSerialProdutoOS);
+            end;
+            Self.CdsSerialOS.FieldByName('SERIAL').Value :=  frmDlg_SaidaSerial.CdsSeriais.FieldByName('SERIAL').Value;
+            Self.CdsSerialOS.FieldByName('IDSERIALPRODUTO').Value :=  frmDlg_SaidaSerial.CdsSeriais.FieldByName('IDSERIALPRODUTO').Value;
+            Self.CdsSerialOS.FieldByName('FLAGEDICAO').Value :=  frmDlg_SaidaSerial.CdsSeriais.FieldByName('FLAGEDICAO').Value;
+            Self.CdsSerialOS.FieldByName('IDPRODUTOSSERVICOOS').Value := CdsProdutoServicoEquipamento.FieldByName('IDPRODUTOSSERVICOOS').AsString;
+
+            Self.CdsSerialOS.Post;
+            if  frmDlg_SaidaSerial.CdsSeriais.FieldByName('FLAGEDICAO').Value = 'U' then
+              Inc(I);
+            frmDlg_SaidaSerial.CdsSeriais.Next;
+          end;
+          CdsProdutoServicoEquipamento.FieldByName('quantidade').Value := I;
+          CdsProdutoServicoEquipamento.Post;
+          Self.CdsSerialOS.Filtered := True;
+        end;
+      Finally
+        FreeAndNil(frmDlg_SaidaSerial);
+      End;
+
+end;
+
 procedure TfrmCad_OS.CdsCadastroAfterPost(DataSet: TDataSet);
 begin
   inherited;
@@ -213,6 +276,7 @@ begin
   begin
     SetRegistros(CdsServicoEquipamento,tpERPServicoEquipamentoOS);
     SetRegistros(CdsProdutoServicoEquipamento,tpERPProdutoServicoOS);
+    SetRegistros(CdsSerialOS,tpERPSerialProdutoOS);
   end;
 
 end;
@@ -235,6 +299,7 @@ begin
 
       SetCds(Self.CdsServicoEquipamento,tpERPServicoEquipamentoOS,StrSQL);
 
+      SetCds(Self.CdsSerialOS,tpERPSerialProdutoOS,'os.idos = '+ValorChave);
       StrSQL:=
          ' EXISTS(SELECT 1   '+
          '         FROM SERVICOOS S  '+
@@ -245,6 +310,10 @@ begin
          '                        AND E.IDEQUIPAMENTOSOS = S.IDEQUIPAMENTOSOS) '+
          '                         ) ';
       SetCds(Self.CdsProdutoServicoEquipamento,tpERPProdutoServicoOS,StrSQL);
+
+
+
+
 
     end;
   Finally
@@ -281,6 +350,22 @@ begin
   CdsEquipamento.FieldByName('FLAGEDICAO').AsString:= 'I';
 end;
 
+procedure TfrmCad_OS.CdsProdutoServicoEquipamentoAfterEdit(DataSet: TDataSet);
+begin
+  inherited;
+  AddSerial;
+end;
+
+procedure TfrmCad_OS.CdsProdutoServicoEquipamentoAfterScroll(DataSet: TDataSet);
+begin
+  inherited;
+  if CdsProdutoServicoEquipamento.FieldByName('IDSERVICOOS').AsString<> '' Then
+    CdsSerialOS.Filter :=' (FLAGEDICAO <> ''D'')  and (IDSERVICOOS = '+CdsProdutoServicoEquipamento.FieldByName('IDSERVICOOS').AsString+  ')';
+
+  CdsSerialOS.Filtered := True;
+
+end;
+
 procedure TfrmCad_OS.CdsProdutoServicoEquipamentoBeforeDelete(
   DataSet: TDataSet);
 begin
@@ -307,6 +392,8 @@ begin
 end;
 
 procedure TfrmCad_OS.CdsProdutoServicoEquipamentoNewRecord(DataSet: TDataSet);
+var
+  I: Integer;
 begin
   inherited;
   CdsProdutoServicoEquipamento.FieldByName('IDSERVICOOS').AsString := CdsServicoEquipamento.FieldByName('IDSERVICOOS').AsString;
@@ -326,17 +413,7 @@ begin
                                                  CdsCadastro.FieldByName('IDCLIENTE').AsInteger,
                                                  CdsCadastro.FieldByName('IDEMPRESA').AsInteger,
                                                  CdsCadastro.FieldByName('DATA').AsDateTime );
-      Try
-        frmDlg_SaidaSerial := TfrmDlg_SaidaSerial.Create(nil);
-        frmDlg_SaidaSerial.IdProduto := CdsProdutoServicoEquipamento.FieldByName('IDPRODUTO').Value;
-        if frmDlg_SaidaSerial.ShowModal = mrOK Then
-        begin
-
-        end;
-      Finally
-        FreeAndNil(frmDlg_SaidaSerial);
-      End;
-
+     AddSerial;
     end;
   Finally
     FreeAndNil(frmPesquisa);

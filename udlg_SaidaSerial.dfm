@@ -10,30 +10,33 @@ inherited frmDlg_SaidaSerial: TfrmDlg_SaidaSerial
   inherited Panel1: TPanel
     Top = 392
     Width = 374
+    ExplicitTop = 392
+    ExplicitWidth = 374
     inherited btnOk: TBitBtn
-      Left = 124
-      ExplicitLeft = 168
+      Left = 116
+      ExplicitLeft = 116
     end
     inherited btnCancelar: TBitBtn
-      Left = 215
-      ExplicitLeft = 259
+      Left = 207
+      ExplicitLeft = 207
     end
   end
   inherited Panel2: TPanel
     Width = 374
     Height = 392
-    object cxGrid1: TcxGrid
+    ExplicitWidth = 374
+    ExplicitHeight = 392
+    object GridSerial: TcxGrid
       Left = 0
-      Top = 0
+      Top = 21
       Width = 374
-      Height = 392
+      Height = 371
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 40
-      ExplicitTop = 56
-      ExplicitWidth = 250
-      ExplicitHeight = 200
+      ExplicitTop = 0
+      ExplicitHeight = 392
       object TvSeriais: TcxGridDBTableView
+        OnDblClick = TvSeriaisDblClick
         NavigatorButtons.ConfirmDelete = False
         DataController.DataSource = DataSeriais
         DataController.Summary.DefaultGroupSummaryItems = <>
@@ -52,7 +55,7 @@ inherited frmDlg_SaidaSerial: TfrmDlg_SaidaSerial
           Properties.Items = <
             item
               ImageIndex = 14
-              Value = 'I'
+              Value = 'U'
             end
             item
               ImageIndex = 9
@@ -66,9 +69,22 @@ inherited frmDlg_SaidaSerial: TfrmDlg_SaidaSerial
           IsCaptionAssigned = True
         end
       end
-      object cxGrid1Level1: TcxGridLevel
+      object GridSerialLevel1: TcxGridLevel
         GridView = TvSeriais
       end
+    end
+    object edtPesquisa: TEdit
+      Left = 0
+      Top = 0
+      Width = 374
+      Height = 21
+      Align = alTop
+      TabOrder = 1
+      TextHint = 'Pesquisar'
+      OnKeyPress = edtPesquisaKeyPress
+      ExplicitLeft = 224
+      ExplicitTop = 72
+      ExplicitWidth = 121
     end
   end
   object DataSeriais: TDataSource

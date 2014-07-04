@@ -107,7 +107,12 @@ end;
 procedure TfrmDlg_ExecucaoOSEquipamento.actExcluirExecute(Sender: TObject);
 begin
   inherited;
-//
+  if ConfirmaDel then
+  begin
+    pDataSetServico.Edit;
+    pDataSetServico.FieldByName('FLAGEDICAO').AsString :='D';
+    pDataSetServico.Post;
+  end;
 
 end;
 
