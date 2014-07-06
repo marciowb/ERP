@@ -23,10 +23,13 @@ type
   TfrmLst_Proposta = class(TfrmListagemPadraoERP)
     BitBtn11: TBitBtn;
     actConverteContrato: TAction;
+    actConverterOS: TAction;
+    BitBtn12: TBitBtn;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure actConverteContratoExecute(Sender: TObject);
     procedure ActionList1Update(Action: TBasicAction; var Handled: Boolean);
+    procedure actConverterOSExecute(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,7 +41,7 @@ var
 
 implementation
 
-uses MinhasClasses, uCad_proposta, Comandos, uCad_Contratos;
+uses MinhasClasses, uCad_proposta, Comandos, uCad_Contratos, uForms;
 
 {$R *.dfm}
 
@@ -56,11 +59,19 @@ begin
 
 end;
 
+procedure TfrmLst_Proposta.actConverterOSExecute(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreInclusaoOS(CdsListagem.FieldByName('IDPROPOSTA').AsLargeInt);
+end;
+
 procedure TfrmLst_Proposta.ActionList1Update(Action: TBasicAction;
   var Handled: Boolean);
 begin
   inherited;
-  actConverteContrato.Enabled := (CdsListagem.FieldByName('FINALIDADEPROPOSTA').AsString = 'C') AND
+  actConverteContrato.Visible := (CdsListagem.FieldByName('FINALIDADEPROPOSTA').AsString = 'C') AND
+                                 (CdsListagem.FieldByName('STATUSPROPOSTA').AsString = 'A') ;
+  actConverterOS.Visible := (CdsListagem.FieldByName('FINALIDADEPROPOSTA').AsString = 'O') AND
                                  (CdsListagem.FieldByName('STATUSPROPOSTA').AsString = 'A') ;
 
 end;

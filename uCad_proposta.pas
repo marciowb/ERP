@@ -131,10 +131,14 @@ uses UDmConexao, Comandos, MinhasClasses, udlg_ItensProposta,
 procedure TfrmCad_Proposta.actAlterarExecute(Sender: TObject);
 begin
   inherited;
+  MudaEstado;
   Try
     frmDlg_ItensProposta := TfrmDlg_ItensProposta.Create(nil);
     frmDlg_ItensProposta.pDataSet := Self.CdsItens;
-    frmDlg_ItensProposta.CdsProposta := Self.CdsCadastro;
+    frmDlg_ItensProposta.IdCliente :=  CdsCadastro.FieldByName('IDCLIENTE').AsInteger;
+    frmDlg_ItensProposta.IdEmpresa :=  CdsCadastro.FieldByName('IDEMPRESA').AsInteger;
+    frmDlg_ItensProposta.Data :=  CdsCadastro.FieldByName('DATA').AsDateTime;
+    frmDlg_ItensProposta.SomenteServicos := CdsCadastro.FieldByName('FINALIDADEPROPOSTA').AsString = 'O';
     frmDlg_ItensProposta.FechaEGrava := True;
     frmDlg_ItensProposta.pDataSet.Edit;
     frmDlg_ItensProposta.ShowModal;
@@ -179,6 +183,7 @@ begin
   inherited;
   if ConfirmaDel then
   begin
+    MudaEstado;
     Self.CdsItens.Edit;
     Self.CdsItens.FieldByName('FLAGEDICAO').AsString := 'D';
     Self.CdsItens.Post;
@@ -210,11 +215,14 @@ end;
 procedure TfrmCad_Proposta.actIncluirExecute(Sender: TObject);
 begin
   inherited;
- 
+  MudaEstado;
   Try
     frmDlg_ItensProposta := TfrmDlg_ItensProposta.Create(nil);
     frmDlg_ItensProposta.pDataSet := Self.CdsItens;
-    frmDlg_ItensProposta.CdsProposta := Self.CdsCadastro;
+    frmDlg_ItensProposta.IdCliente :=  CdsCadastro.FieldByName('IDCLIENTE').AsInteger;
+    frmDlg_ItensProposta.IdEmpresa :=  CdsCadastro.FieldByName('IDEMPRESA').AsInteger;
+    frmDlg_ItensProposta.Data :=  CdsCadastro.FieldByName('DATA').AsDateTime;
+    frmDlg_ItensProposta.SomenteServicos := CdsCadastro.FieldByName('FINALIDADEPROPOSTA').AsString = 'O';
     frmDlg_ItensProposta.FechaEGrava := False;
     frmDlg_ItensProposta.pDataSet.Append;
     frmDlg_ItensProposta.ShowModal;
@@ -232,6 +240,7 @@ begin
     Avisa('Propósta para contrato só pode ter uma forma de pagamento.');
     Exit;
   end;
+  MudaEstado;
   Try
     frmdlgCondicaoPagamentoProposta := TfrmdlgCondicaoPagamentoProposta.Create(nil);
     frmdlgCondicaoPagamentoProposta.pDataSet := Self.CdsPagamento;

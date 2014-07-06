@@ -3,7 +3,7 @@ inherited frmCad_CEP: TfrmCad_CEP
   ClientHeight = 216
   ClientWidth = 620
   ExplicitWidth = 636
-  ExplicitHeight = 254
+  ExplicitHeight = 255
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
@@ -31,8 +31,8 @@ inherited frmCad_CEP: TfrmCad_CEP
       ClientRectBottom = 185
       ClientRectRight = 434
       inherited TsPrincipal: TcxTabSheet
-        ExplicitLeft = 0
-        ExplicitTop = 0
+        ExplicitLeft = 1
+        ExplicitTop = 21
         ExplicitWidth = 433
         ExplicitHeight = 164
         inherited pnlGeral: TPanel
@@ -65,6 +65,7 @@ inherited frmCad_CEP: TfrmCad_CEP
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit2: TLabelDBEdit
             Left = 95
@@ -84,6 +85,7 @@ inherited frmCad_CEP: TfrmCad_CEP
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit3: TLabelDBEdit
             Left = 6
@@ -103,6 +105,7 @@ inherited frmCad_CEP: TfrmCad_CEP
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object LabelDBEdit4: TLabelDBEdit
             Left = 164
@@ -122,6 +125,7 @@ inherited frmCad_CEP: TfrmCad_CEP
             CorPrincipal = clWhite
             CorSecundaria = 11592447
             GravaEsteCampo = True
+            AsInteger = 0
           end
           object cmbUF: TDBComboBox
             Left = 384
@@ -132,16 +136,33 @@ inherited frmCad_CEP: TfrmCad_CEP
             DataField = 'uf'
             DataSource = DataCadastro
             Items.Strings = (
-              'RJ'
-              'SP'
-              'MG'
-              'ES'
-              'RS'
-              'MS'
-              'SC'
               'AC'
+              'AL'
+              'AP'
+              'AM'
+              'BA'
+              'CE'
+              'DF'
+              'ES'
               'GO'
-              'PE')
+              'MA'
+              'MT'
+              'MS'
+              'MG'
+              'PA'
+              'PB'
+              'PR'
+              'PE'
+              'PI'
+              'RJ'
+              'RN'
+              'RS'
+              'RO'
+              'RR'
+              'SC'
+              'SP'
+              'SE'
+              'TO')
             TabOrder = 4
           end
         end
@@ -151,7 +172,6 @@ inherited frmCad_CEP: TfrmCad_CEP
   inherited ActionList1: TActionList
     inherited actImprimir: TAction
       Enabled = False
-      Visible = False
     end
   end
 end

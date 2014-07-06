@@ -56,10 +56,10 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure edtCEPRegAchado(ADataSet: TDataSet);
     procedure edtCEPRegNaoAchado(ADataSet: TDataSet; Sender: TObject);
     procedure CdsCadastroAfterOpen(DataSet: TDataSet);
     procedure actGravarExecute(Sender: TObject);
+    procedure edtCEPRegAchado(const ValoresCamposEstra: array of Variant);
   private
     { Private declarations }
 
@@ -94,7 +94,8 @@ begin
   FormataMascara(CdsCadastro.FieldByName('CNPJ'),tcCNPJ);
 end;
 
-procedure TfrmLst_Empresa.edtCEPRegAchado(ADataSet: TDataSet);
+procedure TfrmLst_Empresa.edtCEPRegAchado(
+  const ValoresCamposEstra: array of Variant);
 begin
   inherited;
   with getCds(GetSelect(tpImoCEP,'idcep = '+edtCEP.ValorChaveString)) do
@@ -104,7 +105,6 @@ begin
     edtUf.Text :=     FieldByName('UF').AsString;
     Free;
   End;
-
 end;
 
 procedure TfrmLst_Empresa.edtCEPRegNaoAchado(ADataSet: TDataSet;

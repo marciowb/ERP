@@ -181,6 +181,7 @@ inherited frmLst_Empresa: TfrmLst_Empresa
               TamanhoCodigo = 0
               AutoPesquisa = True
               AutoCompletar = True
+              OnRegAchado = edtCEPRegAchado
               OnRegNaoAchado = edtCEPRegNaoAchado
               UsaBtnNovo = False
               UsaBtnEditar = False

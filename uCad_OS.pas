@@ -76,10 +76,13 @@ type
     procedure CdsProdutoServicoEquipamentoAfterScroll(DataSet: TDataSet);
     procedure CdsProdutoServicoEquipamentoAfterEdit(DataSet: TDataSet);
   private
+    FIdProposta: Integer;
     { Private declarations }
+    Procedure AddSerial;
+    procedure SetIdProposta(const Value: Integer);
   public
     { Public declarations }
-    Procedure AddSerial;
+    property IdProposta: Integer read FIdProposta write SetIdProposta;
   end;
 
 var
@@ -462,6 +465,24 @@ begin
   ConfiguraEditPesquisa(edtTipoOS, CdsCadastro, tpERPTipoOS,True);
   ConfiguraEditPesquisa(edtStatusOS, CdsCadastro, tpERPStatusOS,True);
   ConfiguraEditPesquisa(edtCliente, CdsCadastro, tpERPCliente,True);
+
+  if FIdProposta > 0 then
+  begin
+    with GetCds(tpERPProposta,'idproposta = '+IntToStr(FIdProposta)) do
+    begin
+      Self.CdsCadastro.FieldByName('IDEMPRESA').Value := FieldByName('IDEMPRESA').Value;
+      Self.CdsCadastro.FieldByName('IDCLIENTE').Value := FieldByName('IDCLIENTE').Value;
+      Self.CdsCadastro.FieldByName('IDPROPOSTA').Value := FIdProposta;
+      Free;
+    end;
+  end;
+
+
+end;
+
+procedure TfrmCad_OS.SetIdProposta(const Value: Integer);
+begin
+  FIdProposta := Value;
 
 end;
 

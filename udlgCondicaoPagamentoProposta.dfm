@@ -13,12 +13,12 @@ inherited frmdlgCondicaoPagamentoProposta: TfrmdlgCondicaoPagamentoProposta
     ExplicitTop = 248
     ExplicitWidth = 517
     inherited btnOk: TBitBtn
-      Left = 243
-      ExplicitLeft = 243
+      Left = 239
+      ExplicitLeft = 239
     end
     inherited btnCancelar: TBitBtn
-      Left = 334
-      ExplicitLeft = 334
+      Left = 330
+      ExplicitLeft = 330
     end
   end
   inherited Panel2: TPanel
@@ -29,7 +29,7 @@ inherited frmdlgCondicaoPagamentoProposta: TfrmdlgCondicaoPagamentoProposta
     object lblTotalRestante: TLabel
       Left = 0
       Top = 70
-      Width = 124
+      Width = 517
       Height = 18
       Align = alBottom
       Caption = 'lblTotalRestante'
@@ -39,6 +39,7 @@ inherited frmdlgCondicaoPagamentoProposta: TfrmdlgCondicaoPagamentoProposta
       Font.Name = 'Tahoma'
       Font.Style = [fsBold, fsItalic]
       ParentFont = False
+      ExplicitWidth = 124
     end
     object edtCondicaoPagamento: TEditPesquisa
       Left = 19
@@ -244,6 +245,7 @@ inherited frmdlgCondicaoPagamentoProposta: TfrmdlgCondicaoPagamentoProposta
       CorPrincipal = clWhite
       CorSecundaria = 11592447
       GravaEsteCampo = True
+      AsInteger = 0
     end
     object edtValor: TLabelDBEdit
       Left = 318
@@ -267,6 +269,7 @@ inherited frmdlgCondicaoPagamentoProposta: TfrmdlgCondicaoPagamentoProposta
       CorPrincipal = clWhite
       CorSecundaria = 11592447
       GravaEsteCampo = True
+      AsInteger = 0
     end
     object GroupBox1: TGroupBox
       Left = 0

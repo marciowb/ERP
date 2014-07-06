@@ -45,12 +45,14 @@ interface
       class function AbreManutencaoEquipamentoCliente(pIdCliente: Integer;TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
       class function AbreCadastroTipoOS(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
       class function AbreCadastroStatusOS(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
-      class function AbreInclusaoOS: CampoChave;
+      class function AbreInclusaoOS(pIdProposta: Integer = -1): CampoChave;
       class function AbreCentralOS: CampoChave;
       class procedure AbreEntradaProduto;
       class procedure AbreAgenda(IdAgenda: Integer = -1);
       class function AbreCadastroOperacaoEstoque(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
       class Procedure AbreListageEntrada;
+      CLASS procedure AbreVenda(IdVenda: Integer = - 1);
+      class function AbreCadastroTransportadora(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
   private
 
     end;
@@ -63,7 +65,8 @@ uses uCadNCM, Lst_Empresa, Cad_Cliente, Cad_usuario, uCad_Funcionario,
   uCad_Fornecedor, uCad_Produto, uLst_Periodicidade, uLst_ContaBancaria,
   uLst_CondicaoPagamento, uLst_Proposta, uLst_TipoContrato, uLst_Contratos,
   uDlg_EquipamentoCliente, uLst_TipoOS, uLst_StatusOS, uLst_OS, uCad_OS,
-  uAgenda, uPrincipal, uEntrada, Lst_OperacaoEstoque, uLst_Entrada;
+  uAgenda, uPrincipal, uEntrada, Lst_OperacaoEstoque, uLst_Entrada, uSaida,
+  uCad_Transportadora;
 
 class procedure TrotinasForms.AbreAgenda(IdAgenda: Integer = -1);
 begin
@@ -194,6 +197,12 @@ begin
   AbreFormSimples(frmLst_TipoOS,TfrmLst_TipoOS,TipoOperacao);
 end;
 
+class function TrotinasForms.AbreCadastroTransportadora(
+  TipoOperacao: TTipoOperacaoForm): CampoChave;
+begin
+  AbreFormCadastroPai<TfrmCad_Transportadora>(TipoOperacao);
+end;
+
 class function TrotinasForms.AbreCadastroUnidade(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
 begin
    AbreFormSimplesPeloTipoPesquisa(tpERPUnidade,TipoOperacao);
@@ -262,9 +271,16 @@ class procedure TrotinasForms.AbreFormSimplesPeloTipoPesquisa(aTipoPesquisa: TTi
   end;
 
 
-class function TrotinasForms.AbreInclusaoOS: CampoChave;
+class function TrotinasForms.AbreInclusaoOS(pIdProposta: Integer = -1): CampoChave;
 begin
-  AbreFormCadastroPai<TfrmCad_OS>(toIncluir);
+   frmCad_OS := TfrmCad_OS.Create(nil);
+   Try
+     frmCad_OS.NovoReg := True;
+     frmCad_OS.IdProposta := pIdProposta;
+     frmCad_OS.ShowModal;
+   Finally
+     FreeAndNil(frmCad_OS);
+   End;
 end;
 
 class procedure TrotinasForms.AbreListageEntrada;
@@ -296,6 +312,16 @@ begin
   AbreFormListagemPadrao<TfrmLst_Proposta>;
 end;
 
+
+class procedure TrotinasForms.AbreVenda(IdVenda: Integer);
+begin
+  if not Assigned(frmSaida) Then
+    frmSaida := TfrmSaida.Create(nil);
+  if frmSaida.Showing Then
+    frmSaida.BringToFront
+  else
+    frmSaida.Show;
+end;
 
 { TTelas }
 

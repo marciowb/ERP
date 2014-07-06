@@ -52,7 +52,6 @@ uses
   uLst_Proposta in 'uLst_Proposta.pas' {frmLst_Proposta},
   uCad_proposta in 'uCad_proposta.pas' {frmCad_Proposta},
   uDlg_CadastroERP in 'uDlg_CadastroERP.pas' {frmDlg_CadastroERP},
-  udlg_ItensProposta in 'udlg_ItensProposta.pas' {frmDlg_ItensProposta},
   udlgCondicaoPagamentoProposta in 'udlgCondicaoPagamentoProposta.pas' {frmdlgCondicaoPagamentoProposta},
   uRegras in 'uRegras.pas',
   uLst_TipoContrato in 'uLst_TipoContrato.pas' {frmLst_TipoContrato},
@@ -76,7 +75,12 @@ uses
   uDlg_ManutencaoSerialProduto in 'uDlg_ManutencaoSerialProduto.pas' {frmDlg_ManutencaoSerialProduto},
   uLst_Entrada in 'uLst_Entrada.pas' {frmLst_Entrada},
   uCad_Entrada in 'uCad_Entrada.pas' {frmCad_Entrada},
-  udlg_SaidaSerial in 'udlg_SaidaSerial.pas' {frmDlg_SaidaSerial};
+  udlg_SaidaSerial in 'udlg_SaidaSerial.pas' {frmDlg_SaidaSerial},
+  udlg_ItensProposta in 'udlg_ItensProposta.pas' {frmDlg_ItensProposta},
+  uSaida in 'uSaida.pas' {frmSaida},
+  uLibSaida in 'uLibSaida.pas',
+  uDlg_SaidaItem in 'uDlg_SaidaItem.pas' {frmDlg_SaidaItem},
+  uCad_Transportadora in 'uCad_Transportadora.pas' {frmCad_Transportadora};
 
 {$R *.res}
 
@@ -99,6 +103,5 @@ begin
 
   Application.CreateForm(TDMConexao, DMConexao);
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
-  Application.CreateForm(TfrmDlg_SaidaSerial, frmDlg_SaidaSerial);
   Application.Run;
 end.

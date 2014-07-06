@@ -168,9 +168,6 @@
 			<DCCReference Include="uDlg_CadastroERP.pas">
 				<Form>frmDlg_CadastroERP</Form>
 			</DCCReference>
-			<DCCReference Include="udlg_ItensProposta.pas">
-				<Form>frmDlg_ItensProposta</Form>
-			</DCCReference>
 			<DCCReference Include="udlgCondicaoPagamentoProposta.pas">
 				<Form>frmdlgCondicaoPagamentoProposta</Form>
 			</DCCReference>
@@ -238,6 +235,19 @@
 			</DCCReference>
 			<DCCReference Include="udlg_SaidaSerial.pas">
 				<Form>frmDlg_SaidaSerial</Form>
+			</DCCReference>
+			<DCCReference Include="udlg_ItensProposta.pas">
+				<Form>frmDlg_ItensProposta</Form>
+			</DCCReference>
+			<DCCReference Include="uSaida.pas">
+				<Form>frmSaida</Form>
+			</DCCReference>
+			<DCCReference Include="uLibSaida.pas"/>
+			<DCCReference Include="uDlg_SaidaItem.pas">
+				<Form>frmDlg_SaidaItem</Form>
+			</DCCReference>
+			<DCCReference Include="uCad_Transportadora.pas">
+				<Form>frmCad_Transportadora</Form>
 			</DCCReference>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>

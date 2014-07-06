@@ -51,7 +51,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
             Left = 0
             Top = 0
             Width = 683
-            Height = 145
+            Height = 178
             Align = alTop
             BevelOuter = bvNone
             TabOrder = 0
@@ -483,16 +483,20 @@ inherited frmCad_Proposta: TfrmCad_Proposta
                 item
                   Caption = 'Pedido de venda'
                   Value = 'V'
+                end
+                item
+                  Caption = 'O.S.'
+                  Value = 'O'
                 end>
               Properties.OnChange = grpFinalidadePropostaPropertiesChange
               TabOrder = 9
-              Height = 40
-              Width = 209
+              Height = 79
+              Width = 249
             end
             object edtPeriodoVigenciaContrato: TEditPesquisa
-              Left = 227
-              Top = 104
-              Width = 62
+              Left = 271
+              Top = 106
+              Width = 65
               Height = 21
               TabOrder = 10
               TipoPesquisa = 0
@@ -502,13 +506,13 @@ inherited frmCad_Proposta: TfrmCad_Proposta
               UsaBtnNovo = False
               UsaBtnEditar = False
               UsaDisplay = True
-              LblTitulo.Left = 227
-              LblTitulo.Top = 89
+              LblTitulo.Left = 271
+              LblTitulo.Top = 91
               LblTitulo.Width = 155
               LblTitulo.Height = 13
               LblTitulo.Caption = 'Per'#237'odo de Vigencia do contrato '
-              BtnPesquisa.Left = 291
-              BtnPesquisa.Top = 104
+              BtnPesquisa.Left = 338
+              BtnPesquisa.Top = 106
               BtnPesquisa.Width = 25
               BtnPesquisa.Height = 21
               BtnPesquisa.Hint = 'F2 para pesquisar'
@@ -566,8 +570,8 @@ inherited frmCad_Proposta: TfrmCad_Proposta
               BtnPesquisa.NumGlyphs = 2
               BtnPesquisa.ParentShowHint = False
               BtnPesquisa.ShowHint = True
-              BtnNovo.Left = 316
-              BtnNovo.Top = 104
+              BtnNovo.Left = 363
+              BtnNovo.Top = 106
               BtnNovo.Width = 25
               BtnNovo.Height = 21
               BtnNovo.Hint = 'F3 para criar novo registro'
@@ -626,8 +630,8 @@ inherited frmCad_Proposta: TfrmCad_Proposta
               BtnNovo.ParentShowHint = False
               BtnNovo.ShowHint = True
               BtnNovo.Visible = False
-              BtnEditar.Left = 341
-              BtnEditar.Top = 104
+              BtnEditar.Left = 388
+              BtnEditar.Top = 106
               BtnEditar.Width = 25
               BtnEditar.Height = 21
               BtnEditar.Hint = 'F5 para editar esse registro'
@@ -661,19 +665,19 @@ inherited frmCad_Proposta: TfrmCad_Proposta
               BtnEditar.ParentShowHint = False
               BtnEditar.ShowHint = True
               BtnEditar.Visible = False
-              Display.Left = 316
-              Display.Top = 104
-              Display.Width = 60
+              Display.Left = 363
+              Display.Top = 106
+              Display.Width = 170
               Display.Height = 21
               Display.TabStop = False
               Display.Color = clSkyBlue
               Display.ReadOnly = True
               Display.TabOrder = 5
-              TamanhoDisplay = 60
+              TamanhoDisplay = 170
             end
             object edtPeriodoVisitaContrato: TEditPesquisa
-              Left = 388
-              Top = 104
+              Left = 271
+              Top = 147
               Width = 65
               Height = 21
               TabOrder = 11
@@ -684,13 +688,13 @@ inherited frmCad_Proposta: TfrmCad_Proposta
               UsaBtnNovo = False
               UsaBtnEditar = False
               UsaDisplay = True
-              LblTitulo.Left = 388
-              LblTitulo.Top = 89
+              LblTitulo.Left = 271
+              LblTitulo.Top = 132
               LblTitulo.Width = 141
               LblTitulo.Height = 13
               LblTitulo.Caption = 'Per'#237'odo de Visita do contrato '
-              BtnPesquisa.Left = 455
-              BtnPesquisa.Top = 104
+              BtnPesquisa.Left = 338
+              BtnPesquisa.Top = 147
               BtnPesquisa.Width = 25
               BtnPesquisa.Height = 21
               BtnPesquisa.Hint = 'F2 para pesquisar'
@@ -748,8 +752,8 @@ inherited frmCad_Proposta: TfrmCad_Proposta
               BtnPesquisa.NumGlyphs = 2
               BtnPesquisa.ParentShowHint = False
               BtnPesquisa.ShowHint = True
-              BtnNovo.Left = 480
-              BtnNovo.Top = 104
+              BtnNovo.Left = 363
+              BtnNovo.Top = 147
               BtnNovo.Width = 25
               BtnNovo.Height = 21
               BtnNovo.Hint = 'F3 para criar novo registro'
@@ -808,8 +812,8 @@ inherited frmCad_Proposta: TfrmCad_Proposta
               BtnNovo.ParentShowHint = False
               BtnNovo.ShowHint = True
               BtnNovo.Visible = False
-              BtnEditar.Left = 505
-              BtnEditar.Top = 104
+              BtnEditar.Left = 388
+              BtnEditar.Top = 147
               BtnEditar.Width = 25
               BtnEditar.Height = 21
               BtnEditar.Hint = 'F5 para editar esse registro'
@@ -843,15 +847,15 @@ inherited frmCad_Proposta: TfrmCad_Proposta
               BtnEditar.ParentShowHint = False
               BtnEditar.ShowHint = True
               BtnEditar.Visible = False
-              Display.Left = 480
-              Display.Top = 104
-              Display.Width = 50
+              Display.Left = 363
+              Display.Top = 147
+              Display.Width = 170
               Display.Height = 21
               Display.TabStop = False
               Display.Color = clSkyBlue
               Display.ReadOnly = True
               Display.TabOrder = 3
-              TamanhoDisplay = 50
+              TamanhoDisplay = 170
             end
             object cxDBDateEdit2: TcxDBDateEdit
               Left = 432
@@ -866,14 +870,14 @@ inherited frmCad_Proposta: TfrmCad_Proposta
           object pageOpcoes: TcxPageControl
             Tag = 99
             Left = 0
-            Top = 145
+            Top = 178
             Width = 683
-            Height = 224
+            Height = 191
             ActivePage = tsProduto
             Align = alClient
             Style = 2
             TabOrder = 1
-            ClientRectBottom = 224
+            ClientRectBottom = 191
             ClientRectRight = 683
             ClientRectTop = 23
             object tsProduto: TcxTabSheet
@@ -882,12 +886,12 @@ inherited frmCad_Proposta: TfrmCad_Proposta
                 Left = 558
                 Top = 0
                 Width = 125
-                Height = 201
+                Height = 168
                 Align = alRight
                 TabOrder = 0
                 object BitBtn1: TBitBtn
                   Left = 8
-                  Top = 53
+                  Top = 37
                   Width = 115
                   Height = 25
                   Action = actIncluir
@@ -898,7 +902,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
                 end
                 object BitBtn2: TBitBtn
                   Left = 8
-                  Top = 89
+                  Top = 73
                   Width = 115
                   Height = 25
                   Action = actAlterar
@@ -909,7 +913,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
                 end
                 object BitBtn3: TBitBtn
                   Left = 8
-                  Top = 121
+                  Top = 105
                   Width = 115
                   Height = 25
                   Action = actExcluir
@@ -923,7 +927,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
                 Left = 0
                 Top = 0
                 Width = 558
-                Height = 201
+                Height = 168
                 Align = alClient
                 TabOrder = 1
                 object tvItens: TcxGridDBTableView
@@ -946,7 +950,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
                   end
                   object tvItensColumn2: TcxGridDBColumn
                     Caption = 'Produto'
-                    DataBinding.FieldName = 'DESCRICAO'
+                    DataBinding.FieldName = 'NOMEPRODUTO'
                     Width = 240
                   end
                   object tvItensColumn3: TcxGridDBColumn
@@ -986,12 +990,12 @@ inherited frmCad_Proposta: TfrmCad_Proposta
                 Left = 536
                 Top = 0
                 Width = 147
-                Height = 201
+                Height = 168
                 Align = alRight
                 TabOrder = 0
                 object BitBtn4: TBitBtn
                   Left = 15
-                  Top = 73
+                  Top = 41
                   Width = 121
                   Height = 25
                   Action = actIncluirPagamento
@@ -1002,7 +1006,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
                 end
                 object BitBtn5: TBitBtn
                   Left = 15
-                  Top = 113
+                  Top = 81
                   Width = 121
                   Height = 25
                   Action = actAlterarPagamento
@@ -1013,7 +1017,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
                 end
                 object BitBtn6: TBitBtn
                   Left = 15
-                  Top = 153
+                  Top = 121
                   Width = 121
                   Height = 25
                   Action = actApagarPagamento
@@ -1027,7 +1031,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
                 Left = 0
                 Top = 0
                 Width = 536
-                Height = 201
+                Height = 168
                 Align = alClient
                 TabOrder = 1
                 object cxGrid2DBTableView1: TcxGridDBTableView
@@ -1073,7 +1077,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
                 Properties.ScrollBars = ssBoth
                 Properties.WantTabs = True
                 TabOrder = 0
-                Height = 201
+                Height = 168
                 Width = 683
               end
             end

@@ -1,32 +1,36 @@
 inherited frmAddItemPadrao: TfrmAddItemPadrao
   ActiveControl = edtProduto
   Caption = 'frmAddItemPadrao'
-  ClientHeight = 348
-  ExplicitHeight = 387
+  ClientHeight = 437
+  ExplicitHeight = 476
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
-    Top = 307
+    Top = 396
     ExplicitTop = 307
     inherited btnOk: TBitBtn
-      Left = 166
+      Left = 158
       Top = 6
-      ExplicitLeft = 166
+      ExplicitLeft = 158
       ExplicitTop = 6
+    end
+    inherited btnCancelar: TBitBtn
+      Left = 255
+      ExplicitLeft = 255
     end
   end
   inherited Panel2: TPanel
-    Height = 307
+    Height = 396
     ExplicitHeight = 307
     object Panel3: TPanel
       Left = 0
       Top = 0
       Width = 418
-      Height = 307
+      Height = 396
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitTop = -6
+      ExplicitTop = 32
       object edtProduto: TEditPesquisa
         Left = 16
         Top = 26
@@ -230,6 +234,7 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object edtValUni: TLabelDBEdit
         Left = 103
@@ -252,6 +257,7 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object edtPercDesc: TLabelDBEdit
         Left = 175
@@ -274,6 +280,7 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object edtPercAcrescimo: TLabelDBEdit
         Left = 260
@@ -296,6 +303,7 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object LabelDBEdit6: TLabelDBEdit
         Left = 247
@@ -320,9 +328,10 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object edtValorAcrescimo: TLabelDBEdit
-        Left = 83
+        Left = 86
         Top = 105
         Width = 60
         Height = 21
@@ -332,7 +341,7 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
         ParentBiDiMode = False
         TabOrder = 7
         OnExit = edtValorAcrescimoExit
-        Titulo.Left = 83
+        Titulo.Left = 86
         Titulo.Top = 90
         Titulo.Width = 62
         Titulo.Height = 13
@@ -342,6 +351,7 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object edtValorDesc: TLabelDBEdit
         Left = 16
@@ -364,6 +374,7 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object LabelDBEdit9: TLabelDBEdit
         Left = 152
@@ -388,15 +399,17 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
+        AsInteger = 0
       end
       object GroupBox1: TGroupBox
         Left = 0
-        Top = 153
+        Top = 242
         Width = 418
         Height = 154
         Align = alBottom
         Caption = ' Observa'#231#245'es '
         TabOrder = 10
+        ExplicitTop = 153
         object cxDBMemo1: TcxDBMemo
           Left = 2
           Top = 15
@@ -405,8 +418,6 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
           DataBinding.DataSource = DataItens
           Properties.ScrollBars = ssBoth
           TabOrder = 0
-          ExplicitLeft = 3
-          ExplicitTop = 14
           Height = 137
           Width = 414
         end
@@ -414,7 +425,7 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
     end
   end
   object DataItens: TDataSource
-    Left = 200
-    Top = 176
+    Left = 112
+    Top = 320
   end
 end

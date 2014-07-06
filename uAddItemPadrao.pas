@@ -36,10 +36,10 @@ type
     procedure btnOkClick(Sender: TObject);
     procedure edtPercAcrescimoExit(Sender: TObject);
     procedure edtPercDescExit(Sender: TObject);
-    procedure edtProdutoRegAchado(ADataSet: TDataSet);
     procedure edtValorAcrescimoExit(Sender: TObject);
     procedure edtValorDescExit(Sender: TObject);
     procedure edtValUniExit(Sender: TObject);
+    procedure edtProdutoRegAchado(const ValoresCamposEstra: array of Variant);
   private
     FIdEmpresa: Integer;
     FIdCliente: Integer;
@@ -95,12 +95,18 @@ begin
   CalculaTotal;
 end;
 
-procedure TfrmAddItemPadrao.edtProdutoRegAchado(ADataSet: TDataSet);
+procedure TfrmAddItemPadrao.edtProdutoRegAchado(
+  const ValoresCamposEstra: array of Variant);
 begin
   inherited;
   if (pDataSet.State in [dsInsert,dsEdit]) and (pDataSet.FieldByName('VALORUNITARIO').IsNull) then
+  begin
      pDataSet.FieldByName('VALORUNITARIO').AsCurrency := TRegrasVendaProduto.PrecoVendaProduto(edtProduto.ValorChaveInteger,
                                                                    IdCliente,IdEmpresa,Data);
+     pDataSet.FieldByName('CODIGO').AsString := edtProduto.Text;
+     pDataSet.FieldByName('NOMEPRODUTO').AsString := edtProduto.Display.Text;
+  end;
+
 end;
 
 procedure TfrmAddItemPadrao.edtValorAcrescimoExit(Sender: TObject);

@@ -14,7 +14,7 @@ inherited frmLst_Proposta: TfrmLst_Proposta
     Width = 998
     ExplicitWidth = 998
     inherited BitBtn1: TBitBtn
-      Left = 788
+      Left = 929
       ExplicitLeft = 788
     end
     object BitBtn11: TBitBtn
@@ -28,6 +28,18 @@ inherited frmLst_Proposta: TfrmLst_Proposta
       DoubleBuffered = True
       ParentDoubleBuffered = False
       TabOrder = 10
+    end
+    object BitBtn12: TBitBtn
+      Left = 788
+      Top = 0
+      Width = 141
+      Height = 31
+      Action = actConverterOS
+      Align = alLeft
+      Caption = 'Converter em O.S.'
+      DoubleBuffered = True
+      ParentDoubleBuffered = False
+      TabOrder = 11
     end
   end
   inherited Status: TdxStatusBar
@@ -73,6 +85,11 @@ inherited frmLst_Proposta: TfrmLst_Proposta
       Caption = 'Converter em Contrato'
       ImageIndex = 12
       OnExecute = actConverteContratoExecute
+    end
+    object actConverterOS: TAction
+      Caption = 'Converter em O.S.'
+      ImageIndex = 34
+      OnExecute = actConverterOSExecute
     end
   end
 end

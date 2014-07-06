@@ -173,6 +173,9 @@ inherited frmPrincipal: TfrmPrincipal
         object actCFOP1: TMenuItem
           Action = actCFOP
         end
+        object ransportadora1: TMenuItem
+          Action = actTransportadora
+        end
       end
       object OS1: TMenuItem
         Action = actCadOS
@@ -229,6 +232,9 @@ inherited frmPrincipal: TfrmPrincipal
         Action = actVenda
         object Proposta2: TMenuItem
           Action = actProposta
+        end
+        object NovaSada1: TMenuItem
+          Action = actNovaSaida
         end
       end
       object N1: TMenuItem
@@ -481,6 +487,16 @@ inherited frmPrincipal: TfrmPrincipal
       Category = 'Estoque'
       Caption = 'Entrada'
       OnExecute = actEntradasExecute
+    end
+    object actNovaSaida: TAction
+      Category = 'Venda'
+      Caption = 'Inclus'#227'o de sa'#237'da'
+      OnExecute = actNovaSaidaExecute
+    end
+    object actTransportadora: TAction
+      Category = 'Cadastro'
+      Caption = 'Transportadora'
+      OnExecute = actTransportadoraExecute
     end
   end
   object dxDockingManager1: TdxDockingManager

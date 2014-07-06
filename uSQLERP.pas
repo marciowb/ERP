@@ -474,7 +474,7 @@ begin
             '       IP.QUANTIDADE, IP.VALORUNITARIO, IP.SUBTOTAL, IP.VALORDESCONTO,'+
             '       IP.VALORACRESCIMO,IP.ALIQDESCONTO,IP.OBS,'+
             '       IP.ALIQACRESCIMO, IP.VALORTOTAL, U.CODIGO UNIDADE,''N'' FLAGEDICAO, '+
-            '       P.NOMEPRODUTO DESCRICAO, P.CODIGO'+
+            '       P.NOMEPRODUTO, P.CODIGO'+
             '  FROM ITEMPROPOSTA IP'+
             '  INNER JOIN PRODUTO P'+
             '     ON (P.IDPRODUTO = IP.IDPRODUTO)'+
@@ -669,7 +669,7 @@ begin
             '        O.IDUSUARIO, O.IDEMPRESA, O.DATA, O.HORA, O.IDCLIENTE,'+
             '        O.IDTIPOOS,O.IDSTATUSOS, O.VALORTOTAL, O.OBS,O.FLAGBAIXADA,'+
             '        O.DATAINICIO,O.HORAINICIO, O.DATATERMINO, O.HORATERMINO , '+
-            '        O.IDCONTRATO , C.CODIGO CODIGOCLIENTE,'+
+            '        O.IDCONTRATO ,O.IDPROPOSTA, C.CODIGO CODIGOCLIENTE,'+
             '        C.NOMECLIENTE, T.NOMETIPOOS,S.NOMESTATUSOS,S.COR,'+
             '        CO.NUMEROCONTRATO'+
             '   FROM OS O'+
@@ -929,7 +929,125 @@ begin
             '  WHERE 1=1 '+Complemento;
 
        end;
+       tpERPSaida:
+       begin
+        CampoChave := 'IDSAIDA';
+        CampoDisplay := '';
+        NomeTabela := 'SAIDA';
+        DescricaoCampoDisplay := '';
+        DescricaoTabela := 'Saída de produto';
+        Versao20 := False;
+        CampoCodigo := '';
+        DesconsiderarCampos := 'NOMEOPERACAOESTOQUE;CODIGO_PESSOA;PESSOA;UF_PESSOA;TRANSPORTADORA;USUARIO';
+        Select :=
+          ' SELECT S.IDSAIDA, S.DATACRIACAO, S.HORA, S.DATA, S.IDOPERACAOESTOQUE, S.IDEMPRESA, S.IDCLIENTE, S.IDOS, S.NUMNOTA,'+
+          '        S.MOEDELO, S.DATASAIDA, S.HORASAIDA, S.IDTRANSPORTADORA, S.PLACAVEICULO, S.UFPLACAVEICULO, S.FLAGFINALIDADE,'+
+          '        S.OBS, S.PESOLIQ, S.PESOBRUTO, S.VOLUME, S.ESPECIE, S.FLAGMODALIDADEFRETE, S.VALORFRETE, S.VALORDESCONTOTOTAL,'+
+          '        S.VALORACRESCIMOTOTAL, S.VALORTOTALPRODUTOS, S.VALORTOTALSERVICOS, S.VALORSEGURO, S.VALOROUTRASDESPESAS,'+
+          '        S.BASECALCULOICMS, S.BASECALCULOIPI,  S.BASECALCULOPISCOFINS, S.BASECALCULOICMSST,'+
+          '        S.BASECALCULOISS, S.BASECSLL, S.VALORICMS, S.VALORIPI, S.VALORST, S.VALORPIS, S.VALORCOFINS, S.VALORTOTALNOTA,'+
+          '        S.VALORICMSST, S.VALORISS, S.VAORPISSERVICO, S.VAORCOFINSSERVICO, S.VALORCSLL, S.CHAVEACESSO, S.FLAGCANCELADA,'+
+          '        S.JUSTIFICATIVACANCELAMENTO, S.IDUSUARIO, S.IDUSUARIOCANCELAMENTO, S.DATACANCELAMENTO, S.HORACANCELAMENTO,'+
+          '        S.IDPROPOSTA,S.FLAGVENDA, S.FLAGMOVIMENTAESTOQUE,S.ALIQACRESCIMO,S.ALIQDESCONTO,'+
+          '        O.NOMEOPERACAOESTOQUE,COALESCE(C.CODIGO, F.CODIGO) CODIGO_PESSOA,'+
+          '        COALESCE( C.NOMECLIENTE, F.RAZAOSOCIAL) PESSOA,COALESCE( C.UF, F.UF) UF_PESSOA, T.RAZAOSOCIAL TRANSPORTADORA ,'+
+          '        U.LOGIN USUARIO'+
+          '   FROM SAIDA S'+
+          '  INNER JOIN OPERACAOESTOQUE O'+
+          '     ON (S.IDOPERACAOESTOQUE = O.IDOPERACAOESTOQUE)'+
+          '  INNER JOIN EMPRESA E'+
+          '     ON (S.IDEMPRESA = E.IDEMPRESA)'+
+          '   LEFT JOIN CLIENTE C'+
+          '     ON (S.IDCLIENTE = C.IDCLIENTE)'+
+          '   LEFT JOIN FORNECEDOR F'+
+          '     ON (S.IDFORNECEDOR = F.IDFORNECEDOR)'+
+          '   LEFT JOIN TRANSPORTADORA T'+
+          '     ON (S.IDTRANSPORTADORA = T.IDTRANSPORTADORA)'+
+          '   LEFT JOIN USUARIO U'+
+          '     ON (S.IDUSUARIO = U.IDUSUARIO)'+
+          '  WHERE 1=1 '+Complemento;
 
+       end;
+       tpERPSaidaProduto:
+       begin
+        CampoChave := 'IDSAIDAPRODUTO';
+        CampoDisplay := '';
+        NomeTabela := 'SAIDAPRODUTO';
+        DescricaoCampoDisplay := '';
+        DescricaoTabela := 'Saída de produto(Itens)';
+        Versao20 := False;
+        CampoCodigo := '';
+        DesconsiderarCampos := 'CODIGO;NOMEPRODUTO;UNIDADE;CFOP,FLAGEDICAO';
+        Select :=
+          ' SELECT SP.IDSAIDAPRODUTO, SP.IDSAIDA, SP.IDPRODUTO, SP.NUMITEM, SP.IDUNIDADE, SP.QUANTIDADE, SP.VALORUNITARIO,'+
+          '        SP.ALIQDESCONTO, SP.ALIQACRESCIMO, SP.VALORDESCONTO, SP.VALORACRESCIMO, SP.BASEICMS, SP.ALIQICMS, SP.VALORICMS,'+
+          '        SP.BASEIPI, SP.ALIQIPI, SP.VALORIPI, SP.BASEICMSST, SP.ALIQST, SP.MVA, SP.VALORST, SP.BASEPISCOFINS, SP.ALIQPIS,'+
+          '        SP.ALIQCOFINS, SP.VALORPIS, SP.VALORCOFINS, SP.BASEISS, SP.ALIQISS, SP.VALORISS, SP.BASECSLL, SP.ALIQCSLL,'+
+          '        SP.VALORCSLL, SP.IDCFOP, SP.IDNCM, SP.IDCODIGOMUNICIPAL, SP.CST, SP.CSOSN, SP.CUSTOMEDIO, SP.CUSTOESTOQUE,'+
+          '        SP.CUSTOCONTABIL, SP.EAN, SP.MARCKUP, SP.VALORLUCRO, SP.VALORFRETERATEADO, SP.VALORSEGURORATEADO,'+
+          '        SP.VALOROUTRASDESPESASRATEADO, SP.SUBTOTAL, SP.VALORTOTAL,SP.OBS, P.CODIGO ,'+
+          '        P.NOMEPRODUTO,U.CODIGO UNIDADE,C.CFOP,''N'' FLAGEDICAO'+
+          '   FROM SAIDAPRODUTO SP'+
+          '  INNER JOIN PRODUTO P'+
+          '     ON (SP.IDPRODUTO = P.IDPRODUTO)'+
+          '  INNER JOIN UNIDADE U'+
+          '     ON (SP.IDUNIDADE =  U.IDUNIDADE)'+
+          '  INNER JOIN CFOP C '+
+          '     ON (SP.IDCFOP = C.IDCFOP ) '+
+          '  WHERE 1=1 '+Complemento;
+       end;
+      tpERPSaidaCondicaoPagamento:
+       begin
+        CampoChave := 'IDSAIDACONDICAOPAGAMENTO';
+        CampoDisplay := '';
+        NomeTabela := 'SAIDACONDICAOPAGAMENTO';
+        DescricaoCampoDisplay := '';
+        DescricaoTabela := 'Saída de produto(Pagamentos)';
+        Versao20 := False;
+        CampoCodigo := '';
+        DesconsiderarCampos := 'NOMECONDICAOPAGAMENTO;FLAGEDICAO';
+        Select :=
+          ' SELECT SC.IDSAIDACONDICAOPAGAMENTO, SC.IDSAIDA,'+
+          '        SC.IDCONDICAOPAGAMENTO, SC.VALOR,'+
+          '        SC.NUMTOTALPARCELAS,C.NOMECONDICAOPAGAMENTO,''N'' FLAGEDICAO'+
+          '   FROM SAIDACONDICAOPAGAMENTO SC'+
+          '  INNER JOIN CONDICAOPAGAMENTO C'+
+          '     ON (SC.IDCONDICAOPAGAMENTO = C.IDCONDICAOPAGAMENTO)'+
+          '  WHERE 1=1 '+Complemento;
+       end;
+     tpERPSaidaCondicaoPagamentoParcelas:
+       begin
+        CampoChave := 'IDPARSAIDACONDICAOPAGAMENTO';
+        CampoDisplay := '';
+        NomeTabela := 'PARSAIDACONDICAOPAGAMENTO';
+        DescricaoCampoDisplay := '';
+        DescricaoTabela := 'Saída de produto(Parcelamentos de Pagamentos)';
+        Versao20 := False;
+        CampoCodigo := '';
+        DesconsiderarCampos := 'NOMECONDICAOPAGAMENTO;FLAGEDICAO';
+        Select :=
+         'SELECT PS.IDPARSAIDACONDICAOPAGAMENTO, PS.IDSAIDACONDICAOPAGAMENTO, '+
+         '       PS.NUMPARCELA, PS.VALOR '+
+         '  FROM PARSAIDACONDICAOPAGAMENTO PS '+
+         '  WHERE 1=1 '+Complemento;
+       end;
+      tpERPTransportadora:
+        begin
+          CampoChave := 'IDTRANSPORTADORA';
+          CampoDisplay := 'NOMEFANTASIA';
+          NomeTabela := 'TRANSPORTADORA';
+          DescricaoCampoDisplay := 'Nome fantasia';
+          DescricaoTabela := 'Transportadora';
+          Versao20 := False;
+          DesconsiderarCampos := 'CEP;LOGRADOURO;BAIRRO;CIDADE;UF';
+          Select :=
+             'SELECT T.IDTRANSPORTADORA, T.CODIGO, T.RAZAOSOCIAL, T.NOMEFANTASIA, T.CNPJ, T.IE, T.IDCEP, T.COMPLEMENTO, T.NUMERO, '+
+             '       T.RNTRC, T.IDCFOP, CEP.CEP, CEP.LOGRADOURO, CEP.BAIRRO, CEP.CIDADE, CEP.UF '+
+             '  FROM TRANSPORTADORA T '+
+             ' INNER JOIN CEP '+
+             '    ON (CEP.IDCEP = T.IDCEP) '+
+             '  WHERE 1=1 '+Complemento;
+        end;
     end;
 
   End;

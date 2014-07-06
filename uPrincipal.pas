@@ -124,6 +124,10 @@ type
     Contrato1: TMenuItem;
     actEntradas: TAction;
     Entrada1: TMenuItem;
+    actNovaSaida: TAction;
+    NovaSada1: TMenuItem;
+    actTransportadora: TAction;
+    ransportadora1: TMenuItem;
     procedure actCadastroExecute(Sender: TObject);
     procedure actCFOPExecute(Sender: TObject);
     procedure actNCMExecute(Sender: TObject);
@@ -170,6 +174,8 @@ type
     procedure actCadFinExecute(Sender: TObject);
     procedure actCadContratoExecute(Sender: TObject);
     procedure actEntradasExecute(Sender: TObject);
+    procedure actNovaSaidaExecute(Sender: TObject);
+    procedure actTransportadoraExecute(Sender: TObject);
   private
     { Private declarations }
     Procedure AtualizaAgenda;
@@ -293,6 +299,12 @@ procedure TfrmPrincipal.actNovaEntradaExecute(Sender: TObject);
 begin
   inherited;
   TrotinasForms.AbreEntradaProduto;
+end;
+
+procedure TfrmPrincipal.actNovaSaidaExecute(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreVenda;
 end;
 
 procedure TfrmPrincipal.actFabricanteExecute(Sender: TObject);
@@ -419,6 +431,12 @@ procedure TfrmPrincipal.actTipoOSExecute(Sender: TObject);
 begin
   inherited;
   TrotinasForms.AbreCadastroTipoOS;
+end;
+
+procedure TfrmPrincipal.actTransportadoraExecute(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreCadastroTransportadora;
 end;
 
 procedure TfrmPrincipal.actUnidadeExecute(Sender: TObject);

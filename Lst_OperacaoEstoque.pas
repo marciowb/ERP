@@ -29,6 +29,7 @@ type
     DBRadioGroup2: TDBRadioGroup;
     cxDBCheckBox2: TcxDBCheckBox;
     cxDBCheckBox3: TcxDBCheckBox;
+    DBRadioGroup3: TDBRadioGroup;
     procedure actGravarExecute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private

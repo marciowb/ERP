@@ -33,9 +33,10 @@ type
     pFIBClientDataSet1: TpFIBClientDataSet;
     lblTotalRestante: TLabel;
     procedure FormShow(Sender: TObject);
-    procedure edtCondicaoPagamentoRegAchado(ADataSet: TDataSet);
     procedure edtValorExit(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
+    procedure edtCondicaoPagamentoRegAchado(
+      const ValoresCamposEstra: array of Variant);
   private
     FDataSetParcelas: TpFIBClientDataSet;
     FValorTotalProposta: Currency;
@@ -126,16 +127,13 @@ begin
 end;
 
 procedure TfrmdlgCondicaoPagamentoProposta.edtCondicaoPagamentoRegAchado(
-  ADataSet: TDataSet);
+  const ValoresCamposEstra: array of Variant);
 begin
   inherited;
   edtTotalParcela.Enabled := TRegrasCondicaoPagamento.PodeParcelar(edtCondicaoPagamento.ValorChaveInteger);
   if pDataSet.State = dsInsert then
     edtValor.AsCurrency := GetValorRestante;
-//  SelectNext(edtCondicaoPagamento,True,True);
-//  if not edtTotalParcela.Enabled then
-//    if edtValor.CanFocus then
-//      edtValor.SetFocus;
+
 end;
 
 procedure TfrmdlgCondicaoPagamentoProposta.edtValorExit(Sender: TObject);
