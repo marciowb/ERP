@@ -1027,7 +1027,7 @@ begin
         DesconsiderarCampos := 'NOMECONDICAOPAGAMENTO;FLAGEDICAO';
         Select :=
          'SELECT PS.IDPARSAIDACONDICAOPAGAMENTO, PS.IDSAIDACONDICAOPAGAMENTO, '+
-         '       PS.NUMPARCELA, PS.VALOR '+
+         '       PS.NUMPARCELA, PS.VALORPARCELA ,''N'' FLAGEDICAO'+
          '  FROM PARSAIDACONDICAOPAGAMENTO PS '+
          '  WHERE 1=1 '+Complemento;
        end;

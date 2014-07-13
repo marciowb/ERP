@@ -1,4 +1,4 @@
-unit udlgCondicaoPagamentoProposta;
+unit udlgCondicaoPagamento;
 
 interface
 
@@ -20,7 +20,7 @@ uses
   cxGrid, DBClient, pFIBClientDataSet;
 
 type
-  TfrmdlgCondicaoPagamentoProposta = class(TfrmDlg_CadastroERP)
+  TfrmdlgCondicaoPagamento = class(TfrmDlg_CadastroERP)
     edtCondicaoPagamento: TEditPesquisa;
     edtTotalParcela: TLabelDBEdit;
     edtValor: TLabelDBEdit;
@@ -28,22 +28,26 @@ type
     TvParcelas: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     cxGrid1: TcxGrid;
+    lblTotalRestante: TLabel;
+    DataParcelas: TDataSource;
     vParcelasColumn1: TcxGridDBColumn;
     vParcelasColumn2: TcxGridDBColumn;
-    pFIBClientDataSet1: TpFIBClientDataSet;
-    lblTotalRestante: TLabel;
+    DataPagamento: TDataSource;
     procedure FormShow(Sender: TObject);
     procedure edtValorExit(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
     procedure edtCondicaoPagamentoRegAchado(
       const ValoresCamposEstra: array of Variant);
+    procedure TvParcelasTcxGridDBDataControllerTcxDataSummaryFooterSummaryItems0GetText(
+      Sender: TcxDataSummaryItem; const AValue: Variant; AIsFooter: Boolean;
+      var AText: string);
   private
     FDataSetParcelas: TpFIBClientDataSet;
-    FValorTotalProposta: Currency;
+    FValorTotal: Currency;
     FValorTotalPagamentos: Currency;
     TotalPagamentoAtual: Currency;
     procedure SetDataSetParcelas(const Value: TpFIBClientDataSet);
-    procedure SetValorTotalProposta(const Value: Currency);
+    procedure SetValorTotal(const Value: Currency);
     procedure SetValorTotalPagamentos(const Value: Currency);
     function GetValorRestante: Currency;
     procedure AtulizaDados;
@@ -53,20 +57,20 @@ type
   public
     { Public declarations }
     property DataSetParcelas: TpFIBClientDataSet read FDataSetParcelas write SetDataSetParcelas;
-    property ValorTotalProposta: Currency read FValorTotalProposta write SetValorTotalProposta;
+    property ValorTotal: Currency read FValorTotal write SetValorTotal;
     property ValorTotalPagamentos: Currency read FValorTotalPagamentos write SetValorTotalPagamentos;
   end;
 
 var
-  frmdlgCondicaoPagamentoProposta: TfrmdlgCondicaoPagamentoProposta;
+  frmdlgCondicaoPagamento: TfrmdlgCondicaoPagamento;
 
 implementation
 
-uses uCad_proposta, Comandos, MinhasClasses, uRegras, uLst_Proposta;
+uses Comandos, MinhasClasses, uRegras;
 
 {$R *.dfm}
 
-procedure TfrmdlgCondicaoPagamentoProposta.AtualizaLblFata;
+procedure TfrmdlgCondicaoPagamento.AtualizaLblFata;
 var
   Rest: Currency;
 begin
@@ -76,57 +80,77 @@ begin
     lblTotalRestante.Caption := lblTotalRestante.Caption +' Total: '+ FormatFloat(MascaraMoeda,edtValor.AsCurrency+Rest )+' ('+edtValor.Text+' + '+FormatFloat(MascaraMoeda,Rest)+' )';
 end;
 
-procedure TfrmdlgCondicaoPagamentoProposta.AtulizaDados;
+procedure TfrmdlgCondicaoPagamento.AtulizaDados;
 var
   Parcelas: TParcelas;
   I: Integer;
 begin
   inherited;
-  if FValorTotalProposta < edtValor.AsCurrency then
-    AvisaErro('O valor do pagamento é maior que o valor da proposta');
+  if FValorTotal < edtValor.AsCurrency then
+    AvisaErro('O valor do pagamento é maior que o valor da operação');
    if (FValorTotalPagamentos > (FValorTotalPagamentos+edtValor.AsCurrency)) and (FValorTotalPagamentos > 0) then
-     AvisaErro('O valor da soma dos pagamentos é maior que o valor total da proposta');
+     AvisaErro('O valor da soma dos pagamentos é maior que o valor total da operação');
 
+  if DataParcelas.State = dsEdit then
+    if not Pergunta('Os valoresserão reajustados. Deseja continuar?') then
+       Exit;
   TotalPagamentoAtual := FValorTotalPagamentos+ edtValor.AsCurrency;
 
   Parcelas := TRegrasCondicaoPagamento.GeraParcela(edtCondicaoPagamento.ValorChaveInteger,edtValor.AsCurrency, edtTotalParcela.AsInteger);
-  Self.FDataSetParcelas.First;
+  DataSetParcelas.First;
+  Try
+    DataSetParcelas.DisableControls;
+    DataSetParcelas.Filtered :=False;
 
-  while not Self.FDataSetParcelas.Eof do
-  begin
-    Self.FDataSetParcelas.Edit;
-    Self.FDataSetParcelas.FieldByName('flagedicao').AsString:= 'D';
-    Self.FDataSetParcelas.Post;
-    Self.FDataSetParcelas.Next;
-  end;
-
-
-
-  if High(Parcelas)>= 1   then
-  begin
-    for I := 0 to High(Parcelas) do
+    while not DataSetParcelas.Eof do
     begin
-      Self.FDataSetParcelas.Append;
-      Self.FDataSetParcelas.FieldByName('NUMPARCELA').AsInteger := Parcelas[i].NumParcela;
-      Self.FDataSetParcelas.FieldByName('VALORPARCELA').AsCurrency := Parcelas[i].Valor;
-      Self.FDataSetParcelas.Post;
+      DataSetParcelas.Edit;
+      DataSetParcelas.FieldByName('flagedicao').AsString:= 'D';
+      DataSetParcelas.Post;
+      DataSetParcelas.Next;
     end;
-  end;
+
+
+
+    if High(Parcelas)>= 1   then
+    begin
+      for I := 0 to High(Parcelas) do
+      begin
+        DataSetParcelas.Append;
+        DataSetParcelas.FieldByName('NUMPARCELA').AsInteger := Parcelas[i].NumParcela;
+        DataSetParcelas.FieldByName('VALORPARCELA').AsCurrency := Parcelas[i].Valor;
+        DataSetParcelas.Post;
+      end;
+    end;
+  Finally
+    DataSetParcelas.Filtered :=True;
+    DataSetParcelas.EnableControls;
+  End;
 
 end;
 
-procedure TfrmdlgCondicaoPagamentoProposta.btnOkClick(Sender: TObject);
+procedure TfrmdlgCondicaoPagamento.btnOkClick(Sender: TObject);
 begin
+  if DataParcelas.State in [dsInsert, dsEdit] then
+    DataSetParcelas.Post;
+
+  if (not VarIsNull(TvParcelas.DataController.Summary.FooterSummaryValues[0])) and
+     (currency(TvParcelas.DataController.Summary.FooterSummaryValues[0]) <> edtValor.AsCurrency) Then
+  begin
+    Avisa('O somatório das parcelas não bate com o valor total');
+    Exit;
+  end;
+
   ActiveControl := nil;
   inherited;
-  if TotalPagamentoAtual >= FValorTotalPagamentos then
+  if (FValorTotalPagamentos+ TotalPagamentoAtual) >= FValorTotal then
     Self.Close
   else
     edtCondicaoPagamento.SetFocus;
   ValorTotalPagamentos :=  TotalPagamentoAtual;
 end;
 
-procedure TfrmdlgCondicaoPagamentoProposta.edtCondicaoPagamentoRegAchado(
+procedure TfrmdlgCondicaoPagamento.edtCondicaoPagamentoRegAchado(
   const ValoresCamposEstra: array of Variant);
 begin
   inherited;
@@ -136,42 +160,53 @@ begin
 
 end;
 
-procedure TfrmdlgCondicaoPagamentoProposta.edtValorExit(Sender: TObject);
+procedure TfrmdlgCondicaoPagamento.edtValorExit(Sender: TObject);
 begin
    AtulizaDados;
 end;
 
-procedure TfrmdlgCondicaoPagamentoProposta.FormShow(Sender: TObject);
+procedure TfrmdlgCondicaoPagamento.FormShow(Sender: TObject);
 begin
   inherited;
+  DataParcelas.DataSet := DataSetParcelas;
+  DataPagamento.DataSet := pDataSet;
   ConfiguraEditPesquisa(edtCondicaoPagamento,pDataSet,tpERPCondicaoPagamento,True);
 end;
 
-function TfrmdlgCondicaoPagamentoProposta.GetValorRestante: Currency;
+function TfrmdlgCondicaoPagamento.GetValorRestante: Currency;
 begin
-  if FValorTotalProposta = 0 then
+  if FValorTotal = 0 then
     Result := 0
   else
-    Result := FValorTotalProposta - FValorTotalPagamentos
+    Result := FValorTotal - FValorTotalPagamentos
 end;
 
-procedure TfrmdlgCondicaoPagamentoProposta.SetDataSetParcelas(
+procedure TfrmdlgCondicaoPagamento.SetDataSetParcelas(
   const Value: TpFIBClientDataSet);
 begin
   FDataSetParcelas := Value;
 end;
 
-procedure TfrmdlgCondicaoPagamentoProposta.SetValorTotalPagamentos(
+procedure TfrmdlgCondicaoPagamento.SetValorTotalPagamentos(
   const Value: Currency);
 begin
   FValorTotalPagamentos := Value;
   AtualizaLblFata;
 end;
 
-procedure TfrmdlgCondicaoPagamentoProposta.SetValorTotalProposta(
+procedure TfrmdlgCondicaoPagamento.TvParcelasTcxGridDBDataControllerTcxDataSummaryFooterSummaryItems0GetText(
+  Sender: TcxDataSummaryItem; const AValue: Variant; AIsFooter: Boolean;
+  var AText: string);
+begin
+  inherited;
+  if not VarIsNull(AValue)  then
+     AText := 'Total: '+FormatFloat(MascaraFloat,Currency(AValue))+' | Restante: '+FormatFloat(MascaraFloat,edtValor.AsCurrency- Currency(AValue));
+end;
+
+procedure TfrmdlgCondicaoPagamento.SetValorTotal(
   const Value: Currency);
 begin
-  FValorTotalProposta := Value;
+  FValorTotal := Value;
   AtualizaLblFata;
 end;
 

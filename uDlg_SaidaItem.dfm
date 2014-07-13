@@ -1,29 +1,42 @@
 inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
   Caption = 'Saida de produtos'
-  ClientHeight = 480
+  ClientHeight = 488
   ClientWidth = 328
+  ExplicitTop = -85
   ExplicitWidth = 344
-  ExplicitHeight = 519
+  ExplicitHeight = 527
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
-    Top = 439
+    Top = 447
     Width = 328
+    ExplicitTop = 439
+    ExplicitWidth = 328
     inherited btnOk: TBitBtn
-      Left = 68
+      Left = 60
+      ExplicitLeft = 60
     end
     inherited btnCancelar: TBitBtn
-      Left = 165
+      Left = 157
+      ExplicitLeft = 157
     end
   end
   inherited Panel2: TPanel
     Width = 328
-    Height = 439
+    Height = 447
+    ExplicitWidth = 328
+    ExplicitHeight = 439
     inherited Panel3: TPanel
       Width = 328
-      Height = 439
+      Height = 447
+      ExplicitWidth = 328
+      ExplicitHeight = 439
       inherited edtProduto: TEditPesquisa
+        BtnNovo.Visible = True
+        BtnEditar.Visible = True
+        Display.Left = 158
         Display.Width = 205
+        Display.ExplicitLeft = 158
         Display.ExplicitWidth = 205
         TamanhoDisplay = 205
       end
@@ -50,16 +63,16 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         ExplicitLeft = 84
       end
       inherited GroupBox1: TGroupBox
-        Top = 327
+        Top = 335
         Width = 328
         Height = 112
-        ExplicitTop = 334
+        TabOrder = 28
+        ExplicitTop = 327
         ExplicitWidth = 328
         ExplicitHeight = 112
         inherited cxDBMemo1: TcxDBMemo
-          ExplicitTop = 16
           ExplicitWidth = 324
-          ExplicitHeight = 136
+          ExplicitHeight = 95
           Height = 95
           Width = 324
         end
@@ -71,7 +84,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         Height = 21
         DataField = 'BASEICMS'
         DataSource = DataItens
-        TabOrder = 11
+        TabOrder = 10
         Titulo.Left = 245
         Titulo.Top = 90
         Titulo.Width = 51
@@ -91,7 +104,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         Height = 21
         DataField = 'ALIQICMS'
         DataSource = DataItens
-        TabOrder = 12
+        TabOrder = 11
         Titulo.Left = 16
         Titulo.Top = 129
         Titulo.Width = 49
@@ -114,7 +127,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         DataField = 'VALORICMS'
         DataSource = DataItens
         ReadOnly = True
-        TabOrder = 13
+        TabOrder = 12
         Titulo.Left = 84
         Titulo.Top = 129
         Titulo.Width = 52
@@ -134,7 +147,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         Height = 21
         DataField = 'BASEISS'
         DataSource = DataItens
-        TabOrder = 14
+        TabOrder = 13
         Titulo.Left = 152
         Titulo.Top = 129
         Titulo.Width = 42
@@ -154,7 +167,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         Height = 21
         DataField = 'ALIQISS'
         DataSource = DataItens
-        TabOrder = 15
+        TabOrder = 14
         Titulo.Left = 200
         Titulo.Top = 129
         Titulo.Width = 40
@@ -177,7 +190,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         DataField = 'VALORISS'
         DataSource = DataItens
         ReadOnly = True
-        TabOrder = 16
+        TabOrder = 15
         Titulo.Left = 245
         Titulo.Top = 129
         Titulo.Width = 43
@@ -197,7 +210,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         Height = 21
         DataField = 'BASEIPI'
         DataSource = DataItens
-        TabOrder = 17
+        TabOrder = 16
         Titulo.Left = 16
         Titulo.Top = 171
         Titulo.Width = 40
@@ -217,7 +230,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         Height = 21
         DataField = 'ALIQIPI'
         DataSource = DataItens
-        TabOrder = 18
+        TabOrder = 17
         Titulo.Left = 84
         Titulo.Top = 171
         Titulo.Width = 38
@@ -240,7 +253,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         DataField = 'VALORIPI'
         DataSource = DataItens
         ReadOnly = True
-        TabOrder = 19
+        TabOrder = 18
         Titulo.Left = 129
         Titulo.Top = 171
         Titulo.Width = 41
@@ -260,7 +273,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         Height = 21
         DataField = 'BASEICMSST'
         DataSource = DataItens
-        TabOrder = 20
+        TabOrder = 19
         Titulo.Left = 200
         Titulo.Top = 171
         Titulo.Width = 74
@@ -280,7 +293,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         Height = 21
         DataField = 'ALIQST'
         DataSource = DataItens
-        TabOrder = 21
+        TabOrder = 20
         Titulo.Left = 16
         Titulo.Top = 211
         Titulo.Width = 44
@@ -300,7 +313,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         Height = 21
         DataField = 'MVA'
         DataSource = DataItens
-        TabOrder = 22
+        TabOrder = 21
         Titulo.Left = 84
         Titulo.Top = 211
         Titulo.Width = 21
@@ -323,7 +336,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         DataField = 'VALORST'
         DataSource = DataItens
         ReadOnly = True
-        TabOrder = 23
+        TabOrder = 22
         Titulo.Left = 129
         Titulo.Top = 211
         Titulo.Width = 67
@@ -343,7 +356,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         Height = 21
         DataField = 'BASEPISCOFINS'
         DataSource = DataItens
-        TabOrder = 24
+        TabOrder = 23
         Titulo.Left = 201
         Titulo.Top = 211
         Titulo.Width = 91
@@ -363,7 +376,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         Height = 21
         DataField = 'ALIQPIS'
         DataSource = DataItens
-        TabOrder = 25
+        TabOrder = 24
         Titulo.Left = 16
         Titulo.Top = 251
         Titulo.Width = 40
@@ -383,7 +396,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         Height = 21
         DataField = 'ALIQCOFINS'
         DataSource = DataItens
-        TabOrder = 26
+        TabOrder = 25
         Titulo.Left = 84
         Titulo.Top = 251
         Titulo.Width = 62
@@ -406,7 +419,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         DataField = 'VALORPIS'
         DataSource = DataItens
         ReadOnly = True
-        TabOrder = 27
+        TabOrder = 26
         Titulo.Left = 156
         Titulo.Top = 251
         Titulo.Width = 43
@@ -429,7 +442,7 @@ inherited frmDlg_SaidaItem: TfrmDlg_SaidaItem
         DataField = 'VALORCOFINS'
         DataSource = DataItens
         ReadOnly = True
-        TabOrder = 28
+        TabOrder = 27
         Titulo.Left = 232
         Titulo.Top = 251
         Titulo.Width = 65

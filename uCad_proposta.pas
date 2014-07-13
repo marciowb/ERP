@@ -122,7 +122,7 @@ var
 implementation
 
 uses UDmConexao, Comandos, MinhasClasses, udlg_ItensProposta,
-  udlgCondicaoPagamentoProposta, uForms;
+  udlgCondicaoPagamento, uForms;
 
 {$R *.dfm}
 
@@ -152,17 +152,17 @@ procedure TfrmCad_Proposta.actAlterarPagamentoExecute(Sender: TObject);
 begin
   inherited;
  Try
-    frmdlgCondicaoPagamentoProposta := TfrmdlgCondicaoPagamentoProposta.Create(nil);
-    frmdlgCondicaoPagamentoProposta.pDataSet := Self.CdsPagamento;
-    frmdlgCondicaoPagamentoProposta.DataSetParcelas := Self.CdsParcelasPagamento;
-    frmdlgCondicaoPagamentoProposta.FechaEGrava := True;
-    frmdlgCondicaoPagamentoProposta.pDataSet.Edit;
-    frmdlgCondicaoPagamentoProposta.ValorTotalPagamentos := Self.TotalPagamentos;
-    frmdlgCondicaoPagamentoProposta.ValorTotalProposta := Self.TotalProposta;
-    frmdlgCondicaoPagamentoProposta.ShowModal;
+    frmdlgCondicaoPagamento := TfrmdlgCondicaoPagamento.Create(nil);
+    frmdlgCondicaoPagamento.pDataSet := Self.CdsPagamento;
+    frmdlgCondicaoPagamento.DataSetParcelas := Self.CdsParcelasPagamento;
+    frmdlgCondicaoPagamento.FechaEGrava := True;
+    frmdlgCondicaoPagamento.pDataSet.Edit;
+    frmdlgCondicaoPagamento.ValorTotalPagamentos := Self.TotalPagamentos;
+    frmdlgCondicaoPagamento.ValorTotal := Self.TotalProposta;
+    frmdlgCondicaoPagamento.ShowModal;
     CalculaTotalPagamentos;
   Finally
-    FreeAndNil(frmdlgCondicaoPagamentoProposta);
+    FreeAndNil(frmdlgCondicaoPagamento);
   End;
 end;
 
@@ -242,18 +242,18 @@ begin
   end;
   MudaEstado;
   Try
-    frmdlgCondicaoPagamentoProposta := TfrmdlgCondicaoPagamentoProposta.Create(nil);
-    frmdlgCondicaoPagamentoProposta.pDataSet := Self.CdsPagamento;
-    frmdlgCondicaoPagamentoProposta.DataSetParcelas := Self.CdsParcelasPagamento;
-    frmdlgCondicaoPagamentoProposta.FechaEGrava := False;
-    frmdlgCondicaoPagamentoProposta.ValorTotalPagamentos := Self.TotalPagamentos;
-    frmdlgCondicaoPagamentoProposta.ValorTotalProposta := Self.TotalProposta;
+    frmdlgCondicaoPagamento := TfrmdlgCondicaoPagamento.Create(nil);
+    frmdlgCondicaoPagamento.pDataSet := Self.CdsPagamento;
+    frmdlgCondicaoPagamento.DataSetParcelas := Self.CdsParcelasPagamento;
+    frmdlgCondicaoPagamento.FechaEGrava := False;
+    frmdlgCondicaoPagamento.ValorTotalPagamentos := Self.TotalPagamentos;
+    frmdlgCondicaoPagamento.ValorTotal := Self.TotalProposta;
 
-    frmdlgCondicaoPagamentoProposta.pDataSet.Append;
-    frmdlgCondicaoPagamentoProposta.ShowModal;
+    frmdlgCondicaoPagamento.pDataSet.Append;
+    frmdlgCondicaoPagamento.ShowModal;
     CalculaTotalPagamentos;
   Finally
-    FreeAndNil(frmdlgCondicaoPagamentoProposta);
+    FreeAndNil(frmdlgCondicaoPagamento);
   End;
 end;
 

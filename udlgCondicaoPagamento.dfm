@@ -1,4 +1,4 @@
-inherited frmdlgCondicaoPagamentoProposta: TfrmdlgCondicaoPagamentoProposta
+inherited frmdlgCondicaoPagamento: TfrmdlgCondicaoPagamento
   ActiveControl = edtCondicaoPagamento
   Caption = 'Condi'#231#245'es de pagamento'
   ClientHeight = 289
@@ -13,12 +13,12 @@ inherited frmdlgCondicaoPagamentoProposta: TfrmdlgCondicaoPagamentoProposta
     ExplicitTop = 248
     ExplicitWidth = 517
     inherited btnOk: TBitBtn
-      Left = 239
-      ExplicitLeft = 239
+      Left = 231
+      ExplicitLeft = 231
     end
     inherited btnCancelar: TBitBtn
-      Left = 330
-      ExplicitLeft = 330
+      Left = 322
+      ExplicitLeft = 322
     end
   end
   inherited Panel2: TPanel
@@ -231,7 +231,7 @@ inherited frmdlgCondicaoPagamentoProposta: TfrmdlgCondicaoPagamentoProposta
       Height = 21
       BiDiMode = bdRightToLeft
       DataField = 'NUMTOTALPARCELAS'
-      DataSource = frmCad_Proposta.DataPagamento
+      DataSource = DataPagamento
       ParentBiDiMode = False
       TabOrder = 3
       OnExit = edtValorExit
@@ -254,7 +254,7 @@ inherited frmdlgCondicaoPagamentoProposta: TfrmdlgCondicaoPagamentoProposta
       Height = 21
       BiDiMode = bdRightToLeft
       DataField = 'VALOR'
-      DataSource = frmCad_Proposta.DataPagamento
+      DataSource = DataPagamento
       ParentBiDiMode = False
       TabOrder = 2
       OnExit = edtValorExit
@@ -287,22 +287,38 @@ inherited frmdlgCondicaoPagamentoProposta: TfrmdlgCondicaoPagamentoProposta
         Align = alClient
         TabOrder = 0
         object TvParcelas: TcxGridDBTableView
+          Tag = 99
           NavigatorButtons.ConfirmDelete = False
-          DataController.DataSource = frmCad_Proposta.DataParcelasPagamento
+          DataController.DataSource = DataParcelas
           DataController.Summary.DefaultGroupSummaryItems = <>
-          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Format = '00.00'
+              Kind = skSum
+              OnGetText = TvParcelasTcxGridDBDataControllerTcxDataSummaryFooterSummaryItems0GetText
+              Column = vParcelasColumn2
+            end>
           DataController.Summary.SummaryGroups = <>
+          OptionsBehavior.GoToNextCellOnEnter = True
+          OptionsData.Deleting = False
+          OptionsData.Inserting = False
+          OptionsView.Footer = True
+          OptionsView.FooterAutoHeight = True
           OptionsView.GroupByBox = False
           object vParcelasColumn1: TcxGridDBColumn
-            Caption = 'N'#186' da parcela'
+            Caption = 'N'#186' Parcela'
             DataBinding.FieldName = 'NUMPARCELA'
-            Width = 80
+            Options.Editing = False
+            Options.Focusing = False
+            Width = 83
           end
           object vParcelasColumn2: TcxGridDBColumn
             Caption = 'Valor'
             DataBinding.FieldName = 'VALORPARCELA'
+            FooterAlignmentHorz = taRightJustify
+            GroupSummaryAlignment = taRightJustify
             HeaderAlignmentHorz = taRightJustify
-            Width = 90
+            Width = 213
           end
         end
         object cxGrid1Level1: TcxGridLevel
@@ -311,10 +327,12 @@ inherited frmdlgCondicaoPagamentoProposta: TfrmdlgCondicaoPagamentoProposta
       end
     end
   end
-  object pFIBClientDataSet1: TpFIBClientDataSet
-    Aggregates = <>
-    Params = <>
+  object DataParcelas: TDataSource
     Left = 256
     Top = 152
+  end
+  object DataPagamento: TDataSource
+    Left = 104
+    Top = 168
   end
 end

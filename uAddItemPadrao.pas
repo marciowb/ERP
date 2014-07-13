@@ -99,7 +99,9 @@ procedure TfrmAddItemPadrao.edtProdutoRegAchado(
   const ValoresCamposEstra: array of Variant);
 begin
   inherited;
-  if (pDataSet.State in [dsInsert,dsEdit]) and (pDataSet.FieldByName('VALORUNITARIO').IsNull) then
+  if (pDataSet.State in [dsInsert,dsEdit]) and
+     ((pDataSet.FieldByName('VALORUNITARIO').IsNull) or
+      (pDataSet.FieldByName('VALORUNITARIO').OldValue <> pDataSet.FieldByName('VALORUNITARIO').Value))   then
   begin
      pDataSet.FieldByName('VALORUNITARIO').AsCurrency := TRegrasVendaProduto.PrecoVendaProduto(edtProduto.ValorChaveInteger,
                                                                    IdCliente,IdEmpresa,Data);

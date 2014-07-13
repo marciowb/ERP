@@ -1,28 +1,29 @@
 inherited frmSaida: TfrmSaida
   Caption = 'Sa'#237'da'
   ClientHeight = 584
-  ClientWidth = 1036
+  ClientWidth = 1225
+  Position = poDesigned
   WindowState = wsMaximized
-  ExplicitWidth = 1052
+  ExplicitTop = -189
+  ExplicitWidth = 1241
   ExplicitHeight = 623
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 1036
+    Width = 1225
     Height = 123
     Align = alTop
     TabOrder = 0
     object GroupBox2: TGroupBox
       Left = 1
       Top = 1
-      Width = 1034
+      Width = 1223
       Height = 121
       Align = alClient
       Caption = ' Geral '
       TabOrder = 0
-      ExplicitHeight = 93
       object Label1: TLabel
         Left = 16
         Top = 21
@@ -222,7 +223,7 @@ inherited frmSaida: TfrmSaida
         TamanhoDisplay = 150
       end
       object edtOperacao: TEditPesquisa
-        Left = 379
+        Left = 376
         Top = 40
         Width = 65
         Height = 21
@@ -235,12 +236,12 @@ inherited frmSaida: TfrmSaida
         UsaBtnNovo = False
         UsaBtnEditar = False
         UsaDisplay = True
-        LblTitulo.Left = 379
+        LblTitulo.Left = 376
         LblTitulo.Top = 25
         LblTitulo.Width = 47
         LblTitulo.Height = 13
         LblTitulo.Caption = 'Opera'#231#227'o'
-        BtnPesquisa.Left = 446
+        BtnPesquisa.Left = 443
         BtnPesquisa.Top = 40
         BtnPesquisa.Width = 25
         BtnPesquisa.Height = 21
@@ -299,7 +300,7 @@ inherited frmSaida: TfrmSaida
         BtnPesquisa.NumGlyphs = 2
         BtnPesquisa.ParentShowHint = False
         BtnPesquisa.ShowHint = True
-        BtnNovo.Left = 471
+        BtnNovo.Left = 468
         BtnNovo.Top = 40
         BtnNovo.Width = 25
         BtnNovo.Height = 21
@@ -359,7 +360,7 @@ inherited frmSaida: TfrmSaida
         BtnNovo.ParentShowHint = False
         BtnNovo.ShowHint = True
         BtnNovo.Visible = False
-        BtnEditar.Left = 496
+        BtnEditar.Left = 493
         BtnEditar.Top = 40
         BtnEditar.Width = 25
         BtnEditar.Height = 21
@@ -394,7 +395,7 @@ inherited frmSaida: TfrmSaida
         BtnEditar.ParentShowHint = False
         BtnEditar.ShowHint = True
         BtnEditar.Visible = False
-        Display.Left = 471
+        Display.Left = 468
         Display.Top = 40
         Display.Width = 200
         Display.Height = 21
@@ -660,32 +661,28 @@ inherited frmSaida: TfrmSaida
   object Panel2: TPanel
     Left = 0
     Top = 123
-    Width = 1036
-    Height = 266
+    Width = 1225
+    Height = 271
     Align = alClient
     TabOrder = 1
-    ExplicitTop = 160
-    ExplicitWidth = 1039
-    ExplicitHeight = 256
+    ExplicitHeight = 245
     object GroupBox1: TGroupBox
       Left = 1
       Top = 1
-      Width = 1034
-      Height = 164
+      Width = 1223
+      Height = 196
       Align = alClient
       Caption = ' Itens '
       TabOrder = 0
-      ExplicitWidth = 1037
-      ExplicitHeight = 154
+      ExplicitHeight = 174
       object cxGrid1: TcxGrid
         Left = 2
         Top = 15
-        Width = 882
-        Height = 147
+        Width = 1071
+        Height = 179
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 885
-        ExplicitHeight = 137
+        ExplicitHeight = 157
         object TvItens: TcxGridDBTableView
           NavigatorButtons.ConfirmDelete = False
           DataController.DataSource = DataItens
@@ -849,14 +846,13 @@ inherited frmSaida: TfrmSaida
         end
       end
       object Panel6: TPanel
-        Left = 884
+        Left = 1073
         Top = 15
         Width = 148
-        Height = 147
+        Height = 179
         Align = alRight
         TabOrder = 1
-        ExplicitLeft = 887
-        ExplicitHeight = 137
+        ExplicitHeight = 157
         object BitBtn1: TBitBtn
           Left = 16
           Top = 17
@@ -878,6 +874,7 @@ inherited frmSaida: TfrmSaida
           DoubleBuffered = True
           ParentDoubleBuffered = False
           TabOrder = 1
+          TabStop = False
         end
         object BitBtn3: TBitBtn
           Left = 16
@@ -889,150 +886,85 @@ inherited frmSaida: TfrmSaida
           DoubleBuffered = True
           ParentDoubleBuffered = False
           TabOrder = 2
+          TabStop = False
         end
       end
     end
-    object GroupBox4: TGroupBox
+    object GroupBox3: TGroupBox
       Left = 1
-      Top = 165
-      Width = 1034
-      Height = 100
+      Top = 197
+      Width = 1223
+      Height = 73
       Align = alBottom
-      Caption = ' Totais '
+      Caption = ' Frete '
       TabOrder = 1
-      ExplicitTop = 155
-      ExplicitWidth = 1037
-      object LabelDBEdit16: TLabelDBEdit
-        Left = 774
-        Top = 72
-        Width = 123
-        Height = 22
-        TabStop = False
-        Color = clSkyBlue
-        DataField = 'VALORTOTALNOTA'
+      ExplicitTop = 198
+      object Label2: TLabel
+        Left = 935
+        Top = 24
+        Width = 92
+        Height = 13
+        Caption = 'UF Placa do ve'#237'culo'
+      end
+      object Label3: TLabel
+        Left = 1037
+        Top = 22
+        Width = 66
+        Height = 13
+        Caption = 'Data de sa'#237'da'
+      end
+      object grpFrete: TDBRadioGroup
+        Left = 16
+        Top = 16
+        Width = 171
+        Height = 49
+        Caption = ' Por conta'
+        Columns = 2
+        DataField = 'FLAGMODALIDADEFRETE'
         DataSource = DataSaida
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-        ReadOnly = True
+        Items.Strings = (
+          'Destinat'#225'rio'
+          'Emitente')
+        ParentBackground = True
         TabOrder = 0
-        Titulo.Left = 774
-        Titulo.Top = 56
-        Titulo.Width = 89
-        Titulo.Height = 13
-        Titulo.Caption = 'Valor total da nota'
-        IsNull = True
-        PodeRepetir = True
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
+        Values.Strings = (
+          'D'
+          'E')
+        OnClick = grpFreteClick
       end
-      object LabelDBEdit12: TLabelDBEdit
-        Left = 646
-        Top = 72
-        Width = 121
-        Height = 22
-        TabStop = False
-        Color = clSkyBlue
-        DataField = 'VALORTOTALPRODUTOS'
-        DataSource = DataSaida
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-        ReadOnly = True
-        TabOrder = 1
-        Titulo.Left = 646
-        Titulo.Top = 56
-        Titulo.Width = 115
-        Titulo.Height = 13
-        Titulo.Caption = 'Valor total dos produtos'
-        IsNull = True
-        PodeRepetir = True
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object LabelDBEdit20: TLabelDBEdit
-        Left = 551
-        Top = 73
-        Width = 80
+      object LabelDBEdit1: TLabelDBEdit
+        Left = 195
+        Top = 38
+        Width = 98
         Height = 21
-        DataField = 'VALORACRESCIMOTOTAL'
+        DataField = 'PESOBRUTO'
+        DataSource = DataSaida
+        TabOrder = 1
+        Titulo.Left = 195
+        Titulo.Top = 23
+        Titulo.Width = 52
+        Titulo.Height = 13
+        Titulo.Caption = 'Peso bruto'
+        IsNull = True
+        PodeRepetir = True
+        CorPrincipal = clWhite
+        CorSecundaria = 11592447
+        GravaEsteCampo = True
+        AsInteger = 0
+      end
+      object LabelDBEdit2: TLabelDBEdit
+        Left = 298
+        Top = 38
+        Width = 86
+        Height = 21
+        DataField = 'PESOLIQ'
         DataSource = DataSaida
         TabOrder = 2
-        Titulo.Left = 551
-        Titulo.Top = 58
-        Titulo.Width = 67
-        Titulo.Height = 13
-        Titulo.Caption = 'Acr'#233'scimo(%)'
-        IsNull = True
-        PodeRepetir = True
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object LabelDBEdit21: TLabelDBEdit
-        Left = 464
-        Top = 73
-        Width = 80
-        Height = 21
-        DataField = 'VALORDESCONTOTOTAL'
-        DataSource = DataSaida
-        TabOrder = 3
-        Titulo.Left = 464
-        Titulo.Top = 58
-        Titulo.Width = 64
-        Titulo.Height = 13
-        Titulo.Caption = 'Desconto(%)'
-        IsNull = True
-        PodeRepetir = True
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object edtTotalnota: TLabelDBEdit
-        Left = 388
-        Top = 73
-        Width = 69
-        Height = 21
-        DataField = 'VALORACRESCIMOTOTAL'
-        DataSource = DataSaida
-        TabOrder = 4
-        Titulo.Left = 388
-        Titulo.Top = 58
-        Titulo.Width = 62
-        Titulo.Height = 13
-        Titulo.Caption = 'Acr'#233'scimo($)'
-        IsNull = True
-        PodeRepetir = True
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object LabelDBEdit15: TLabelDBEdit
-        Left = 293
-        Top = 73
-        Width = 88
-        Height = 21
-        DataField = 'VALORDESCONTOTOTAL'
-        DataSource = DataSaida
-        TabOrder = 5
-        Titulo.Left = 293
-        Titulo.Top = 58
+        Titulo.Left = 298
+        Titulo.Top = 23
         Titulo.Width = 59
         Titulo.Height = 13
-        Titulo.Caption = 'Desconto($)'
+        Titulo.Caption = 'Peso L'#237'quido'
         IsNull = True
         PodeRepetir = True
         CorPrincipal = clWhite
@@ -1040,39 +972,19 @@ inherited frmSaida: TfrmSaida
         GravaEsteCampo = True
         AsInteger = 0
       end
-      object LabelDBEdit14: TLabelDBEdit
-        Left = 206
-        Top = 73
-        Width = 82
+      object LabelDBEdit3: TLabelDBEdit
+        Left = 392
+        Top = 38
+        Width = 49
         Height = 21
-        DataField = 'VALOROUTRASDESPESAS'
+        DataField = 'VOLUME'
         DataSource = DataSaida
-        TabOrder = 6
-        Titulo.Left = 206
-        Titulo.Top = 58
-        Titulo.Width = 81
-        Titulo.Height = 13
-        Titulo.Caption = 'Outras despesas'
-        IsNull = True
-        PodeRepetir = True
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object LabelDBEdit13: TLabelDBEdit
-        Left = 104
-        Top = 73
-        Width = 96
-        Height = 21
-        DataField = 'VALORSEGURO'
-        DataSource = DataSaida
-        TabOrder = 7
-        Titulo.Left = 104
-        Titulo.Top = 58
+        TabOrder = 3
+        Titulo.Left = 392
+        Titulo.Top = 23
         Titulo.Width = 34
         Titulo.Height = 13
-        Titulo.Caption = 'Seguro'
+        Titulo.Caption = 'Volume'
         IsNull = True
         PodeRepetir = True
         CorPrincipal = clWhite
@@ -1080,19 +992,19 @@ inherited frmSaida: TfrmSaida
         GravaEsteCampo = True
         AsInteger = 0
       end
-      object edtFrete: TLabelDBEdit
-        Left = 16
-        Top = 73
-        Width = 82
+      object LabelDBEdit4: TLabelDBEdit
+        Left = 449
+        Top = 38
+        Width = 110
         Height = 21
-        DataField = 'VALORFRETE'
+        DataField = 'ESPECIE'
         DataSource = DataSaida
-        TabOrder = 8
-        Titulo.Left = 16
-        Titulo.Top = 58
-        Titulo.Width = 26
+        TabOrder = 4
+        Titulo.Left = 449
+        Titulo.Top = 23
+        Titulo.Width = 36
         Titulo.Height = 13
-        Titulo.Caption = 'Frete'
+        Titulo.Caption = 'Esp'#233'cie'
         IsNull = True
         PodeRepetir = True
         CorPrincipal = clWhite
@@ -1100,231 +1012,269 @@ inherited frmSaida: TfrmSaida
         GravaEsteCampo = True
         AsInteger = 0
       end
-      object LabelDBEdit7: TLabelDBEdit
-        Left = 16
-        Top = 32
-        Width = 82
+      object edtTransportadora: TEditPesquisa
+        Left = 566
+        Top = 38
+        Width = 65
         Height = 21
-        TabStop = False
-        Color = clSkyBlue
-        DataField = 'BASECALCULOICMS'
+        TabOrder = 5
+        TipoPesquisa = 0
+        TamanhoCodigo = 0
+        AutoPesquisa = True
+        AutoCompletar = True
+        UsaBtnNovo = False
+        UsaBtnEditar = False
+        UsaDisplay = True
+        LblTitulo.Left = 566
+        LblTitulo.Top = 23
+        LblTitulo.Width = 75
+        LblTitulo.Height = 13
+        LblTitulo.Caption = 'Transportadora'
+        BtnPesquisa.Left = 633
+        BtnPesquisa.Top = 38
+        BtnPesquisa.Width = 25
+        BtnPesquisa.Height = 21
+        BtnPesquisa.Hint = 'F2 para pesquisar'
+        BtnPesquisa.Glyph.Data = {
+          36060000424D3606000000000000360000002800000020000000100000000100
+          1800000000000006000000000000000000000000000000000000FF00FF4A667C
+          BE9596FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+          FFFF00FFFF00FFFF00FFFF00FF777777BDBDBDFF00FFFF00FFFF00FFFF00FFFF
+          00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF6B9CC31E89E8
+          4B7AA3C89693FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+          FFFF00FFFF00FFFF00FFABABAB9797978B8B8BC1C1C1FF00FFFF00FFFF00FFFF
+          00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF4BB4FE51B5FF
+          2089E94B7AA2C69592FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+          FFFF00FFFF00FFFF00FFB8B8B8BCBCBC9898988A8A8AC0C0C0FF00FFFF00FFFF
+          00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF51B7FE
+          51B3FF1D87E64E7AA0CA9792FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
+          FFFF00FFFF00FFFF00FFFF00FFBBBBBBBCBCBC9595958B8B8BC2C2C2FF00FFFF
+          00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+          51B7FE4EB2FF1F89E64E7BA2B99497FF00FFFF00FFFF00FFFF00FFFF00FFFF00
+          FFFF00FFFF00FFFF00FFFF00FFFF00FFBBBBBBBABABA9696968C8C8CBABABAFF
+          00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+          FF00FF52B8FE4BB1FF2787D95F6A76FF00FFB0857FC09F94C09F96BC988EFF00
+          FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBCBCBCB9B9B99494947E7E7EFF
+          00FF979797AAAAAAABABABA5A5A5FF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
+          FF00FFFF00FF55BDFFB5D6EDBF9D92BB9B8CE7DAC2FFFFE3FFFFE5FDFADAD8C3
+          B3B58D85FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBEBEBED1D1D1A8A8A8A3
+          A3A3D4D4D4F1F1F1F2F2F2EBEBEBC5C5C59D9D9DFF00FFFF00FFFF00FFFF00FF
+          FF00FFFF00FFFF00FFFF00FFCEA795FDEEBEFFFFD8FFFFDAFFFFDBFFFFE6FFFF
+          FBEADDDCAE837FFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFB1B1B1DD
+          DDDDEBEBEBECECECEDEDEDF2F2F2FDFDFDE3E3E3969696FF00FFFF00FFFF00FF
+          FF00FFFF00FFFF00FFFF00FFC1A091FBDCA8FEF7D0FFFFDBFFFFE3FFFFF8FFFF
+          FDFFFFFDC6A99CFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFA9A9A9D1
+          D1D1E7E7E7EDEDEDF1F1F1FBFBFBFEFEFEFEFEFEB1B1B1FF00FFFF00FFFF00FF
+          FF00FFFF00FFFF00FFC1A091FEE3ACF1C491FCF2CAFFFFDDFFFFE4FFFFF7FFFF
+          F7FFFFE9EEE5CBB9948CFF00FFFF00FFFF00FFFF00FFFF00FFA9A9A9D5D5D5C1
+          C1C1E3E3E3EEEEEEF1F1F1FBFBFBFBFBFBF4F4F4DCDCDCA2A2A2FF00FFFF00FF
+          FF00FFFF00FFFF00FFC2A191FFE6AEEEB581F7DCAEFEFDD8FFFFDFFFFFE3FFFF
+          E4FFFFE0F3ECD2BB968EFF00FFFF00FFFF00FFFF00FFFF00FFA9A9A9D6D6D6B7
+          B7B7D2D2D2EBEBEBEFEFEFF1F1F1F1F1F1EFEFEFE2E2E2A4A4A4FF00FFFF00FF
+          FF00FFFF00FFFF00FFBC978CFBE7B7F4C791F2C994F8E5B9FEFCD8FFFFDDFFFF
+          DCFFFFE0E2D2BAB68E86FF00FFFF00FFFF00FFFF00FFFF00FFA4A4A4D9D9D9C2
+          C2C2C3C3C3D8D8D8EBEBEBEEEEEEEDEDEDEFEFEFCECECE9E9E9EFF00FFFF00FF
+          FF00FFFF00FFFF00FFFF00FFD9C3A9FFFEE5F7DCB8F2C994F5D4A5FAE8BDFDF4
+          C9FDFBD6B69089FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFC1C1C1F2
+          F2F2D7D7D7C3C3C3CDCDCDDBDBDBE3E3E3E9E9E99F9F9FFF00FFFF00FFFF00FF
+          FF00FFFF00FFFF00FFFF00FFB58D85E8DEDDFFFEF2F9D8A3F4C48CF9D49FFDEA
+          B8D0B49FB89086FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF9D9D9DE2
+          E2E2F8F8F8CECECEC0C0C0CCCCCCDADADAB7B7B79F9F9FFF00FFFF00FFFF00FF
+          FF00FFFF00FFFF00FFFF00FFFF00FFAD827FC9AA9EEFE0B7EFDFB2E7CEACB890
+          86B89086FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF96
+          9696B3B3B3D3D3D3D0D0D0C9C9C99F9F9F9F9F9FFF00FFFF00FFFF00FFFF00FF
+          FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBA968ABB988CB79188FF00
+          FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
+          00FFFF00FFA2A2A2A3A3A39F9F9FFF00FFFF00FFFF00FFFF00FF}
+        BtnPesquisa.NumGlyphs = 2
+        BtnPesquisa.ParentShowHint = False
+        BtnPesquisa.ShowHint = True
+        BtnNovo.Left = 658
+        BtnNovo.Top = 38
+        BtnNovo.Width = 25
+        BtnNovo.Height = 21
+        BtnNovo.Hint = 'F3 para criar novo registro'
+        BtnNovo.Glyph.Data = {
+          36060000424D3606000000000000360000002800000020000000100000000100
+          18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
+          B78183B78183B78183B78183B78183B78183B78183B78183B78183B78183B781
+          83B78183B78183FF00FFFF00FFFF00FF9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C
+          9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9CFF00FFFF00FFFF00FF
+          C7A79CFEEED4F7E3C5F6DFBCF5DBB4F3D7ABF3D3A2F1CF9AF0CF97F0CF98F0CF
+          98F5D49AB78183FF00FFFF00FFFF00FF9C9C9CE9E9E9DEDEDED9D9D9D4D4D4CF
+          CFCFCACACAC5C5C5C3C3C3C4C4C4C4C4C4C7C7C79C9C9CFF00FFFF00FFFF00FF
+          C7A79EFDEFD9F6E3CBF5DFC2F4DBBAF2D7B2F1D4A9F1D0A2EECC99EECC97EECC
+          97F3D199B78183FF00FFFF00FFFF00FF9C9C9CEBEBEBE0E0E0DBDBDBD7D7D7D2
+          D2D2CDCDCDC9C9C9C3C3C3C2C2C2C2C2C2C6C6C69C9C9CFF00FFFF00FFFF00FF
+          C7A9A1FEF3E3F8E7D3F5E3CBF5DFC3F3DBBBF2D7B2F1D4ABF0D0A3EECC9AEECC
+          97F3D199B78183FF00FFFF00FFFF00FF959595F0F0F0E5E5E5E0E0E0DCDCDCD7
+          D7D7D2D2D2CECECEC9C9C9C4C4C4C2C2C2C6C6C69C9C9CFF00FFFF00FFFF00FF
+          C9ACA5FFF7EBF9EBDAF7E7D2F6E3CAF5DFC2F4DBB9F2D7B2F1D4AAF0D0A1EFCD
+          99F3D198B78183FF00FFFF00FFFF00FF959595F5F5F5E9E9E9E4E4E4E0E0E0DB
+          DBDBD6D6D6D2D2D2CDCDCDC8C8C8C4C4C4C5C5C59C9C9CFF00FFFF00FFFF00FF
+          CEB2AAFFFCF4FAEFE4F8EADAF7E7D3F5E2CBF5DFC2F4DBBBF1D7B2F1D3AAF0D0
+          A1F3D29BB78183FF00FFFF00FFFF00FF9F9F9FF9F9F9EFEFEFE9E9E9E5E5E5E0
+          E0E0DBDBDBD7D7D7D1D1D1CDCDCDC8C8C8C7C7C79C9C9CFF00FFFF00FFFF00FF
+          D3B7AFFFFFFDFBF4ECFAEFE3F9EBDAF7E7D2F5E3C9F5DFC2F4DBBAF2D7B1F0D4
+          A9F5D5A3B78183FF00FFFF00FFFF00FF9F9F9FFEFEFEF3F3F3EEEEEEE9E9E9E4
+          E4E4DFDFDFDBDBDBD7D7D7D1D1D1CCCCCCCCCCCC9C9C9CFF00FFFF00FFFF00FF
+          D7BBB2FFFFFFFEF9F5FBF3ECFAEFE2F9EADAF8E7D2F5E3CAF5DEC2F4DBBAF2D8
+          B2F6D9ACB78183FF00FFFF00FFFF00FFA6A6A6FFFFFFF9F9F9F3F3F3EEEEEEE9
+          E9E9E5E5E5DFDFDFDBDBDBD7D7D7D2D2D2D1D1D19C9C9CFF00FFFF00FFFF00FF
+          DABEB3FFFFFFFFFEFDFDF8F4FBF3ECF9EFE3F8EADAF7E7D2F6E2CAF6DEC1F4DB
+          B9F8DDB4B78183FF00FFFF00FFFF00FFA6A6A6FFFFFFFEFEFEF8F8F8F3F3F3EE
+          EEEEE9E9E9E4E4E4E0E0E0DBDBDBD6D6D6D6D6D69C9C9CFF00FFFF00FFFF00FF
+          DEC1B5FFFFFFFFFFFFFFFEFDFEF9F4FBF3EBFAEFE2F9EBD9F8E6D1F6E2C8F7E1
+          C2F0DAB7B78183FF00FFFF00FFFF00FFB1B1B1FFFFFFFFFFFFFEFEFEF9F9F9F3
+          F3F3EEEEEEE9E9E9E4E4E4DFDFDFDCDCDCD3D3D39C9C9CFF00FFFF00FFFF00FF
+          E2C5B5FFFFFFFFFFFFFFFFFFFFFEFDFDF9F4FBF3EBFAEEE2FAEDDCFCEFD9E6D9
+          C4C6BCA9B78183FF00FFFF00FFFF00FFB1B1B1FFFFFFFFFFFFFFFFFFFEFEFEF8
+          F8F8F3F3F3EEEEEEEBEBEBEAEAEAD5D5D5B7B7B79C9C9CFF00FFFF00FFFF00FF
+          E5C7B7FFFFFFFFFFFFFFFFFFFFFFFFFFFEFDFDF8F3FDF6ECF1E1D5C6A194B594
+          89B08F81B78183FF00FFFF00FFFF00FFB8B8B8FFFFFFFFFFFFFFFFFFFFFFFFFE
+          FEFEF8F8F8F4F4F4E3E3E39999999999999999999C9C9CFF00FFFF00FFFF00FF
+          E9CBB8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFCFFFEF9E3CFC9BF8C76E8B2
+          70ECA54AC58768FF00FFFF00FFFF00FFB8B8B8FFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFDFDFDFCFCFCD6D6D6999999ACACAC9B9B9B969696FF00FFFF00FFFF00FF
+          ECCDBAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE4D4D2C89A7FFAC5
+          77CD9377FF00FFFF00FFFF00FFFF00FFBFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFDBDBDB999999B8B8B8A2A2A2FF00FFFF00FFFF00FFFF00FF
+          EACAB6FCF7F4FCF7F3FBF6F3FBF6F3FAF5F3F9F5F3F9F5F3E1D0CEC7977CCF9B
+          86FF00FFFF00FFFF00FFFF00FFFF00FFBFBFBFF8F8F8F7F7F7F7F7F7F7F7F7F6
+          F6F6F6F6F6F6F6F6D7D7D7999999AAAAAAFF00FFFF00FFFF00FFFF00FFFF00FF
+          E9C6B1EBCCB8EBCCB8EBCCB8EBCBB8EACBB8EACBB8EACCB9DABBB0B8857AFF00
+          FFFF00FFFF00FFFF00FFFF00FFFF00FFBFBFBFB1B1B1B1B1B1B1B1B1B1B1B1B1
+          B1B1B1B1B1B1B1B1B1B1B1999999FF00FFFF00FFFF00FFFF00FF}
+        BtnNovo.NumGlyphs = 2
+        BtnNovo.ParentShowHint = False
+        BtnNovo.ShowHint = True
+        BtnNovo.Visible = False
+        BtnEditar.Left = 683
+        BtnEditar.Top = 38
+        BtnEditar.Width = 25
+        BtnEditar.Height = 21
+        BtnEditar.Hint = 'F5 para editar esse registro'
+        BtnEditar.Glyph.Data = {
+          36030000424D3603000000000000360000002800000010000000100000000100
+          18000000000000030000610B0000610B00000000000000000000FF00FFFF00FF
+          9596968184868184868184868184868184868184868184868184868184868184
+          86818486818486FF00FFFF00FFFF00FF959696FEFEFCFCFCFBF8F8F7F3F3F2EF
+          EFEEEBEBEAE6E6E5E2E2E1DCDCDCD0D0D0C5C5C5818486FF00FFFF00FFFF00FF
+          959696FEFEFCB6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6
+          B6D0D0D0818486FF00FFFF00FFFF00FF959696FEFEFC1919193E3935CAB6ABF8
+          F8F7F3F3F2EFEFEEEBEBEAE6E6E5E2E2E1DCDCDC818486FF00FFFF00FFFF00FF
+          959696FEFEFC3E39352D2C2A374546CAB6ABF8F8F7F3F3F2EFEFEEEBEBEAE6E6
+          E5E2E2E1818486FF00FFFF00FFFF00FF959696FEFEFCB6B6B63A5C600C84B10B
+          3B542A407BB6A1A1B6B6B6B6B6B6B6B6B6E6E6E5818486FF00FFFF00FFFF00FF
+          959696FEFEFCFEFEFC3A5C60165E827B645A0C84B12A407BCAB6ABF3F3F2EFEF
+          EEEBEBEA818486FF00FFFF00FFFF00FF959696FEFEFCFEFEFCFEFEFC80A6CB15
+          C4FB01A5E60C84B12A407BCAB6ABF6F6F4EFEFEE818486FF00FFFF00FFFF00FF
+          959696FEFEFCB6B6B6B6B6B680A6CB97E7FB15C4FB01A5E60C84B12A407BB6A1
+          A1F6F6F4818486FF00FFFF00FFFF00FF959696FEFEFCFEFEFCFEFEFCFEFEFC80
+          A6CB97E7FB15C4FB01A5E60C84B12A407BCAB6AB818486FF00FFFF00FFFF00FF
+          959696FEFEFCFEFEFCFEFEFCFEFEFCFEFEFC80A6CB97E7FB15C4FB01A5E60C84
+          B12A407B818486FF00FFFF00FFFF00FF959696FEFEFCB6B6B6B6B6B6B6B6B6B6
+          B6B6B6B6B680A6CB97E7FB15C4FB1F92F2111B8307035AFF00FFFF00FFFF00FF
+          959696FEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFC80A6CB3187E72D44
+          B42D44B4111B8307035AFF00FFFF00FF959696FEFEFCFEFEFCFEFEFCFEFEFCFE
+          FEFCFEFEFCFEFEFCFEFEFC2D44B46E88D86F7FD52D44B4FF00FFFF00FFFF00FF
+          959696FEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFC8184862D44
+          B42D44B4FF00FFFF00FFFF00FFFF00FF95969681848681848681848681848681
+          8486818486818486818486818486FF00FFFF00FFFF00FFFF00FF}
+        BtnEditar.ParentShowHint = False
+        BtnEditar.ShowHint = True
+        BtnEditar.Visible = False
+        Display.Left = 658
+        Display.Top = 38
+        Display.Width = 190
+        Display.Height = 21
+        Display.TabStop = False
+        Display.Color = clSkyBlue
+        Display.ReadOnly = True
+        Display.TabOrder = 6
+        TamanhoDisplay = 190
+      end
+      object LabelDBEdit5: TLabelDBEdit
+        Left = 856
+        Top = 38
+        Width = 73
+        Height = 21
+        DataField = 'PLACAVEICULO'
         DataSource = DataSaida
-        ReadOnly = True
+        TabOrder = 7
+        Titulo.Left = 856
+        Titulo.Top = 23
+        Titulo.Width = 76
+        Titulo.Height = 13
+        Titulo.Caption = 'Placa do ve'#237'culo'
+        IsNull = True
+        PodeRepetir = True
+        CorPrincipal = clWhite
+        CorSecundaria = 11592447
+        GravaEsteCampo = True
+        AsInteger = 0
+      end
+      object cmbUF: TDBComboBox
+        Left = 935
+        Top = 38
+        Width = 41
+        Height = 21
+        Style = csDropDownList
+        DataField = 'UFPLACAVEICULO'
+        DataSource = DataSaida
+        Items.Strings = (
+          'AC'
+          'AL'
+          'AP'
+          'AM'
+          'BA'
+          'CE'
+          'DF'
+          'ES'
+          'GO'
+          'MA'
+          'MT'
+          'MS'
+          'MG'
+          'PA'
+          'PB'
+          'PR'
+          'PE'
+          'PI'
+          'RJ'
+          'RN'
+          'RS'
+          'RO'
+          'RR'
+          'SC'
+          'SP'
+          'SE'
+          'TO')
+        TabOrder = 8
+      end
+      object cxDBDateEdit2: TcxDBDateEdit
+        Left = 1036
+        Top = 38
+        DataBinding.DataField = 'DATA'
+        DataBinding.DataSource = DataSaida
         TabOrder = 9
-        Titulo.Left = 16
-        Titulo.Top = 17
+        Width = 107
+      end
+      object LabelDBEdit6: TLabelDBEdit
+        Left = 1149
+        Top = 38
+        Width = 71
+        Height = 21
+        DataField = 'HORASAIDA'
+        DataSource = DataSaida
+        TabOrder = 10
+        Titulo.Left = 1149
+        Titulo.Top = 23
         Titulo.Width = 66
         Titulo.Height = 13
-        Titulo.Caption = 'Base do ICMS'
+        Titulo.Caption = 'Hora de sa'#237'da'
         IsNull = True
         PodeRepetir = True
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object LabelDBEdit8: TLabelDBEdit
-        Left = 104
-        Top = 32
-        Width = 96
-        Height = 21
-        TabStop = False
-        Color = clSkyBlue
-        DataField = 'VALORICMS'
-        DataSource = DataSaida
-        ReadOnly = True
-        TabOrder = 10
-        Titulo.Left = 104
-        Titulo.Top = 17
-        Titulo.Width = 92
-        Titulo.Height = 13
-        Titulo.Caption = 'Valor total do ICMS'
-        IsNull = True
-        PodeRepetir = True
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object LabelDBEdit9: TLabelDBEdit
-        Left = 369
-        Top = 32
-        Width = 88
-        Height = 21
-        TabStop = False
-        Color = clSkyBlue
-        DataField = 'VALORIPI'
-        DataSource = DataSaida
-        ReadOnly = True
-        TabOrder = 11
-        Titulo.Left = 369
-        Titulo.Top = 17
-        Titulo.Width = 84
-        Titulo.Height = 13
-        Titulo.Caption = 'Valor total do IPI '
-        IsNull = True
-        PodeRepetir = True
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object LabelDBEdit10: TLabelDBEdit
-        Left = 464
-        Top = 32
-        Width = 80
-        Height = 21
-        TabStop = False
-        Color = clSkyBlue
-        DataField = 'BASECALCULOICMSST'
-        DataSource = DataSaida
-        ReadOnly = True
-        TabOrder = 12
-        Titulo.Left = 464
-        Titulo.Top = 17
-        Titulo.Width = 74
-        Titulo.Height = 13
-        Titulo.Caption = 'Base ICMS S.T.'
-        IsNull = True
-        PodeRepetir = True
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object LabelDBEdit11: TLabelDBEdit
-        Left = 551
-        Top = 32
-        Width = 106
-        Height = 21
-        TabStop = False
-        Color = clSkyBlue
-        DataField = 'VALORST'
-        DataSource = DataSaida
-        ReadOnly = True
-        TabOrder = 13
-        Titulo.Left = 551
-        Titulo.Top = 17
-        Titulo.Width = 100
-        Titulo.Height = 13
-        Titulo.Caption = 'Valor total ICMS S.T.'
-        IsNull = True
-        PodeRepetir = True
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object LabelDBEdit17: TLabelDBEdit
-        Left = 665
-        Top = 32
-        Width = 102
-        Height = 21
-        TabStop = False
-        Color = clSkyBlue
-        DataField = 'BASECALCULOPISCOFINS'
-        DataSource = DataSaida
-        ReadOnly = True
-        TabOrder = 14
-        Titulo.Left = 665
-        Titulo.Top = 17
-        Titulo.Width = 102
-        Titulo.Height = 13
-        Titulo.Caption = 'Base do  PIS/COFINS'
-        IsNull = False
-        PodeRepetir = False
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object LabelDBEdit19: TLabelDBEdit
-        Left = 774
-        Top = 32
-        Width = 61
-        Height = 21
-        TabStop = False
-        Color = clSkyBlue
-        DataField = 'VALORCOFINS'
-        DataSource = DataSaida
-        ReadOnly = True
-        TabOrder = 15
-        Titulo.Left = 774
-        Titulo.Top = 17
-        Titulo.Width = 38
-        Titulo.Height = 13
-        Titulo.Caption = 'COFINS'
-        IsNull = False
-        PodeRepetir = False
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object LabelDBEdit18: TLabelDBEdit
-        Left = 840
-        Top = 32
-        Width = 57
-        Height = 21
-        TabStop = False
-        Color = clSkyBlue
-        DataField = 'VALORPIS'
-        DataSource = DataSaida
-        ReadOnly = True
-        TabOrder = 16
-        Titulo.Left = 840
-        Titulo.Top = 17
-        Titulo.Width = 16
-        Titulo.Height = 13
-        Titulo.Caption = 'PIS'
-        IsNull = False
-        PodeRepetir = False
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object LabelDBEdit22: TLabelDBEdit
-        Left = 274
-        Top = 32
-        Width = 88
-        Height = 21
-        TabStop = False
-        Color = clSkyBlue
-        DataField = 'VALORISS'
-        DataSource = DataSaida
-        ReadOnly = True
-        TabOrder = 17
-        Titulo.Left = 274
-        Titulo.Top = 17
-        Titulo.Width = 83
-        Titulo.Height = 13
-        Titulo.Caption = 'Valor total do ISS'
-        IsNull = True
-        PodeRepetir = True
-        CorPrincipal = clWhite
-        CorSecundaria = 11592447
-        GravaEsteCampo = True
-        AsInteger = 0
-      end
-      object LabelDBEdit24: TLabelDBEdit
-        Left = 206
-        Top = 32
-        Width = 63
-        Height = 21
-        TabStop = False
-        Color = clSkyBlue
-        DataField = 'BASECALCULOISS'
-        DataSource = DataSaida
-        ReadOnly = True
-        TabOrder = 18
-        Titulo.Left = 206
-        Titulo.Top = 17
-        Titulo.Width = 60
-        Titulo.Height = 13
-        Titulo.Caption = 'Base do  ISS'
-        IsNull = False
-        PodeRepetir = False
         CorPrincipal = clWhite
         CorSecundaria = 11592447
         GravaEsteCampo = True
@@ -1334,49 +1284,50 @@ inherited frmSaida: TfrmSaida
   end
   object Panel3: TPanel
     Left = 0
-    Top = 389
-    Width = 1036
-    Height = 195
+    Top = 394
+    Width = 1225
+    Height = 190
     Align = alBottom
     TabOrder = 2
     object cxPageControl1: TcxPageControl
       Left = 1
       Top = 1
-      Width = 1034
-      Height = 193
+      Width = 1223
+      Height = 188
       ActivePage = cxTabSheet3
       Align = alClient
+      HideTabs = True
       Style = 2
       TabOrder = 0
       TabPosition = tpBottom
-      ExplicitWidth = 852
-      ExplicitHeight = 151
-      ClientRectBottom = 170
-      ClientRectRight = 1034
+      ExplicitHeight = 214
+      ClientRectBottom = 188
+      ClientRectRight = 1223
       ClientRectTop = 0
       object cxTabSheet3: TcxTabSheet
-        Caption = ' Formas de pagamento '
+        Caption = 'Adicionais'
         ImageIndex = 1
-        ExplicitWidth = 852
-        ExplicitHeight = 128
-        object GroupBox5: TGroupBox
-          Left = 578
+        ExplicitHeight = 214
+        object GroupPagamento: TGroupBox
+          Left = 737
           Top = 0
-          Width = 456
-          Height = 170
-          Align = alRight
+          Width = 486
+          Height = 188
+          Align = alClient
           Caption = ' Condi'#231'os de pagamento '
-          TabOrder = 0
-          ExplicitHeight = 128
+          TabOrder = 2
+          ExplicitLeft = 617
+          ExplicitWidth = 606
+          ExplicitHeight = 214
           object cxGrid2: TcxGrid
             Left = 2
             Top = 15
-            Width = 305
-            Height = 153
+            Width = 335
+            Height = 171
             Align = alClient
             TabOrder = 0
-            ExplicitWidth = 701
-            ExplicitHeight = 111
+            ExplicitWidth = 455
+            ExplicitHeight = 197
             object TvPagamento: TcxGridDBTableView
               NavigatorButtons.ConfirmDelete = False
               DataController.DataSource = DataCondicaoPagamento
@@ -1410,14 +1361,14 @@ inherited frmSaida: TfrmSaida
             end
           end
           object Panel5: TPanel
-            Left = 307
+            Left = 337
             Top = 15
             Width = 147
-            Height = 153
+            Height = 171
             Align = alRight
             TabOrder = 1
-            ExplicitLeft = 703
-            ExplicitHeight = 111
+            ExplicitLeft = 457
+            ExplicitHeight = 197
             object BitBtn4: TBitBtn
               Left = 16
               Top = 8
@@ -1453,82 +1404,37 @@ inherited frmSaida: TfrmSaida
             end
           end
         end
-        object GroupBox3: TGroupBox
+        object GroupTotais: TGroupBox
           Left = 0
           Top = 0
-          Width = 578
-          Height = 170
-          Align = alClient
-          Caption = ' Frete '
-          TabOrder = 1
-          ExplicitLeft = -4
-          ExplicitTop = -2
-          ExplicitHeight = 128
-          object Label2: TLabel
-            Left = 400
-            Top = 69
-            Width = 92
-            Height = 13
-            Caption = 'UF Placa do ve'#237'culo'
-          end
-          object Label3: TLabel
-            Left = 13
-            Top = 110
-            Width = 66
-            Height = 13
-            Caption = 'Data de sa'#237'da'
-          end
-          object DBRadioGroup1: TDBRadioGroup
-            Left = 16
-            Top = 16
-            Width = 171
-            Height = 49
-            Caption = ' Por conta'
-            Columns = 2
-            DataField = 'FLAGMODALIDADEFRETE'
-            DataSource = DataSaida
-            Items.Strings = (
-              'Destinat'#225'rio'
-              'Emitente')
-            ParentBackground = True
-            TabOrder = 0
-            Values.Strings = (
-              'D'
-              'E')
-          end
-          object LabelDBEdit1: TLabelDBEdit
-            Left = 195
-            Top = 38
-            Width = 98
-            Height = 21
-            DataField = 'PESOBRUTO'
-            DataSource = DataSaida
-            TabOrder = 1
-            Titulo.Left = 195
-            Titulo.Top = 23
-            Titulo.Width = 52
-            Titulo.Height = 13
-            Titulo.Caption = 'Peso bruto'
-            IsNull = True
-            PodeRepetir = True
-            CorPrincipal = clWhite
-            CorSecundaria = 11592447
-            GravaEsteCampo = True
-            AsInteger = 0
-          end
-          object LabelDBEdit2: TLabelDBEdit
+          Width = 425
+          Height = 188
+          Align = alLeft
+          Caption = ' Totais '
+          TabOrder = 0
+          ExplicitHeight = 214
+          object LabelDBEdit16: TLabelDBEdit
             Left = 298
-            Top = 38
-            Width = 86
-            Height = 21
-            DataField = 'PESOLIQ'
+            Top = 158
+            Width = 123
+            Height = 22
+            TabStop = False
+            Color = clSkyBlue
+            DataField = 'VALORTOTALNOTA'
             DataSource = DataSaida
-            TabOrder = 2
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 7
             Titulo.Left = 298
-            Titulo.Top = 23
-            Titulo.Width = 59
+            Titulo.Top = 142
+            Titulo.Width = 89
             Titulo.Height = 13
-            Titulo.Caption = 'Peso L'#237'quido'
+            Titulo.Caption = 'Valor total da nota'
             IsNull = True
             PodeRepetir = True
             CorPrincipal = clWhite
@@ -1536,19 +1442,28 @@ inherited frmSaida: TfrmSaida
             GravaEsteCampo = True
             AsInteger = 0
           end
-          object LabelDBEdit3: TLabelDBEdit
-            Left = 392
-            Top = 38
-            Width = 49
-            Height = 21
-            DataField = 'VOLUME'
+          object LabelDBEdit12: TLabelDBEdit
+            Left = 172
+            Top = 158
+            Width = 121
+            Height = 22
+            TabStop = False
+            Color = clSkyBlue
+            DataField = 'VALORTOTALPRODUTOS'
             DataSource = DataSaida
-            TabOrder = 3
-            Titulo.Left = 392
-            Titulo.Top = 23
-            Titulo.Width = 34
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Tahoma'
+            Font.Style = [fsBold]
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 8
+            Titulo.Left = 172
+            Titulo.Top = 142
+            Titulo.Width = 115
             Titulo.Height = 13
-            Titulo.Caption = 'Volume'
+            Titulo.Caption = 'Valor total dos produtos'
             IsNull = True
             PodeRepetir = True
             CorPrincipal = clWhite
@@ -1556,19 +1471,20 @@ inherited frmSaida: TfrmSaida
             GravaEsteCampo = True
             AsInteger = 0
           end
-          object LabelDBEdit4: TLabelDBEdit
-            Left = 449
-            Top = 38
-            Width = 110
+          object edtAcresValor: TLabelDBEdit
+            Left = 271
+            Top = 113
+            Width = 62
             Height = 21
-            DataField = 'ESPECIE'
+            DataField = 'VALORACRESCIMOTOTAL'
             DataSource = DataSaida
             TabOrder = 4
-            Titulo.Left = 449
-            Titulo.Top = 23
-            Titulo.Width = 36
+            OnExit = edtAcresValorExit
+            Titulo.Left = 271
+            Titulo.Top = 98
+            Titulo.Width = 62
             Titulo.Height = 13
-            Titulo.Caption = 'Esp'#233'cie'
+            Titulo.Caption = 'Acr'#233'scimo($)'
             IsNull = True
             PodeRepetir = True
             CorPrincipal = clWhite
@@ -1576,199 +1492,129 @@ inherited frmSaida: TfrmSaida
             GravaEsteCampo = True
             AsInteger = 0
           end
-          object edtTransportadora: TEditPesquisa
-            Left = 16
-            Top = 83
-            Width = 65
+          object edtDescValor: TLabelDBEdit
+            Left = 208
+            Top = 113
+            Width = 58
             Height = 21
-            TabOrder = 5
-            TipoPesquisa = 0
-            TamanhoCodigo = 0
-            AutoPesquisa = True
-            AutoCompletar = True
-            UsaBtnNovo = False
-            UsaBtnEditar = False
-            UsaDisplay = True
-            LblTitulo.Left = 16
-            LblTitulo.Top = 68
-            LblTitulo.Width = 75
-            LblTitulo.Height = 13
-            LblTitulo.Caption = 'Transportadora'
-            BtnPesquisa.Left = 83
-            BtnPesquisa.Top = 83
-            BtnPesquisa.Width = 25
-            BtnPesquisa.Height = 21
-            BtnPesquisa.Hint = 'F2 para pesquisar'
-            BtnPesquisa.Glyph.Data = {
-              36060000424D3606000000000000360000002800000020000000100000000100
-              1800000000000006000000000000000000000000000000000000FF00FF4A667C
-              BE9596FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
-              FFFF00FFFF00FFFF00FFFF00FF777777BDBDBDFF00FFFF00FFFF00FFFF00FFFF
-              00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF6B9CC31E89E8
-              4B7AA3C89693FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
-              FFFF00FFFF00FFFF00FFABABAB9797978B8B8BC1C1C1FF00FFFF00FFFF00FFFF
-              00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF4BB4FE51B5FF
-              2089E94B7AA2C69592FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
-              FFFF00FFFF00FFFF00FFB8B8B8BCBCBC9898988A8A8AC0C0C0FF00FFFF00FFFF
-              00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF51B7FE
-              51B3FF1D87E64E7AA0CA9792FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00
-              FFFF00FFFF00FFFF00FFFF00FFBBBBBBBCBCBC9595958B8B8BC2C2C2FF00FFFF
-              00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
-              51B7FE4EB2FF1F89E64E7BA2B99497FF00FFFF00FFFF00FFFF00FFFF00FFFF00
-              FFFF00FFFF00FFFF00FFFF00FFFF00FFBBBBBBBABABA9696968C8C8CBABABAFF
-              00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
-              FF00FF52B8FE4BB1FF2787D95F6A76FF00FFB0857FC09F94C09F96BC988EFF00
-              FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBCBCBCB9B9B99494947E7E7EFF
-              00FF979797AAAAAAABABABA5A5A5FF00FFFF00FFFF00FFFF00FFFF00FFFF00FF
-              FF00FFFF00FF55BDFFB5D6EDBF9D92BB9B8CE7DAC2FFFFE3FFFFE5FDFADAD8C3
-              B3B58D85FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBEBEBED1D1D1A8A8A8A3
-              A3A3D4D4D4F1F1F1F2F2F2EBEBEBC5C5C59D9D9DFF00FFFF00FFFF00FFFF00FF
-              FF00FFFF00FFFF00FFFF00FFCEA795FDEEBEFFFFD8FFFFDAFFFFDBFFFFE6FFFF
-              FBEADDDCAE837FFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFB1B1B1DD
-              DDDDEBEBEBECECECEDEDEDF2F2F2FDFDFDE3E3E3969696FF00FFFF00FFFF00FF
-              FF00FFFF00FFFF00FFFF00FFC1A091FBDCA8FEF7D0FFFFDBFFFFE3FFFFF8FFFF
-              FDFFFFFDC6A99CFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFA9A9A9D1
-              D1D1E7E7E7EDEDEDF1F1F1FBFBFBFEFEFEFEFEFEB1B1B1FF00FFFF00FFFF00FF
-              FF00FFFF00FFFF00FFC1A091FEE3ACF1C491FCF2CAFFFFDDFFFFE4FFFFF7FFFF
-              F7FFFFE9EEE5CBB9948CFF00FFFF00FFFF00FFFF00FFFF00FFA9A9A9D5D5D5C1
-              C1C1E3E3E3EEEEEEF1F1F1FBFBFBFBFBFBF4F4F4DCDCDCA2A2A2FF00FFFF00FF
-              FF00FFFF00FFFF00FFC2A191FFE6AEEEB581F7DCAEFEFDD8FFFFDFFFFFE3FFFF
-              E4FFFFE0F3ECD2BB968EFF00FFFF00FFFF00FFFF00FFFF00FFA9A9A9D6D6D6B7
-              B7B7D2D2D2EBEBEBEFEFEFF1F1F1F1F1F1EFEFEFE2E2E2A4A4A4FF00FFFF00FF
-              FF00FFFF00FFFF00FFBC978CFBE7B7F4C791F2C994F8E5B9FEFCD8FFFFDDFFFF
-              DCFFFFE0E2D2BAB68E86FF00FFFF00FFFF00FFFF00FFFF00FFA4A4A4D9D9D9C2
-              C2C2C3C3C3D8D8D8EBEBEBEEEEEEEDEDEDEFEFEFCECECE9E9E9EFF00FFFF00FF
-              FF00FFFF00FFFF00FFFF00FFD9C3A9FFFEE5F7DCB8F2C994F5D4A5FAE8BDFDF4
-              C9FDFBD6B69089FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFC1C1C1F2
-              F2F2D7D7D7C3C3C3CDCDCDDBDBDBE3E3E3E9E9E99F9F9FFF00FFFF00FFFF00FF
-              FF00FFFF00FFFF00FFFF00FFB58D85E8DEDDFFFEF2F9D8A3F4C48CF9D49FFDEA
-              B8D0B49FB89086FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF9D9D9DE2
-              E2E2F8F8F8CECECEC0C0C0CCCCCCDADADAB7B7B79F9F9FFF00FFFF00FFFF00FF
-              FF00FFFF00FFFF00FFFF00FFFF00FFAD827FC9AA9EEFE0B7EFDFB2E7CEACB890
-              86B89086FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FF96
-              9696B3B3B3D3D3D3D0D0D0C9C9C99F9F9F9F9F9FFF00FFFF00FFFF00FFFF00FF
-              FF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFBA968ABB988CB79188FF00
-              FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF00FFFF
-              00FFFF00FFA2A2A2A3A3A39F9F9FFF00FFFF00FFFF00FFFF00FF}
-            BtnPesquisa.NumGlyphs = 2
-            BtnPesquisa.ParentShowHint = False
-            BtnPesquisa.ShowHint = True
-            BtnNovo.Left = 108
-            BtnNovo.Top = 83
-            BtnNovo.Width = 25
-            BtnNovo.Height = 21
-            BtnNovo.Hint = 'F3 para criar novo registro'
-            BtnNovo.Glyph.Data = {
-              36060000424D3606000000000000360000002800000020000000100000000100
-              18000000000000060000120B0000120B00000000000000000000FF00FFFF00FF
-              B78183B78183B78183B78183B78183B78183B78183B78183B78183B78183B781
-              83B78183B78183FF00FFFF00FFFF00FF9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C
-              9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9C9CFF00FFFF00FFFF00FF
-              C7A79CFEEED4F7E3C5F6DFBCF5DBB4F3D7ABF3D3A2F1CF9AF0CF97F0CF98F0CF
-              98F5D49AB78183FF00FFFF00FFFF00FF9C9C9CE9E9E9DEDEDED9D9D9D4D4D4CF
-              CFCFCACACAC5C5C5C3C3C3C4C4C4C4C4C4C7C7C79C9C9CFF00FFFF00FFFF00FF
-              C7A79EFDEFD9F6E3CBF5DFC2F4DBBAF2D7B2F1D4A9F1D0A2EECC99EECC97EECC
-              97F3D199B78183FF00FFFF00FFFF00FF9C9C9CEBEBEBE0E0E0DBDBDBD7D7D7D2
-              D2D2CDCDCDC9C9C9C3C3C3C2C2C2C2C2C2C6C6C69C9C9CFF00FFFF00FFFF00FF
-              C7A9A1FEF3E3F8E7D3F5E3CBF5DFC3F3DBBBF2D7B2F1D4ABF0D0A3EECC9AEECC
-              97F3D199B78183FF00FFFF00FFFF00FF959595F0F0F0E5E5E5E0E0E0DCDCDCD7
-              D7D7D2D2D2CECECEC9C9C9C4C4C4C2C2C2C6C6C69C9C9CFF00FFFF00FFFF00FF
-              C9ACA5FFF7EBF9EBDAF7E7D2F6E3CAF5DFC2F4DBB9F2D7B2F1D4AAF0D0A1EFCD
-              99F3D198B78183FF00FFFF00FFFF00FF959595F5F5F5E9E9E9E4E4E4E0E0E0DB
-              DBDBD6D6D6D2D2D2CDCDCDC8C8C8C4C4C4C5C5C59C9C9CFF00FFFF00FFFF00FF
-              CEB2AAFFFCF4FAEFE4F8EADAF7E7D3F5E2CBF5DFC2F4DBBBF1D7B2F1D3AAF0D0
-              A1F3D29BB78183FF00FFFF00FFFF00FF9F9F9FF9F9F9EFEFEFE9E9E9E5E5E5E0
-              E0E0DBDBDBD7D7D7D1D1D1CDCDCDC8C8C8C7C7C79C9C9CFF00FFFF00FFFF00FF
-              D3B7AFFFFFFDFBF4ECFAEFE3F9EBDAF7E7D2F5E3C9F5DFC2F4DBBAF2D7B1F0D4
-              A9F5D5A3B78183FF00FFFF00FFFF00FF9F9F9FFEFEFEF3F3F3EEEEEEE9E9E9E4
-              E4E4DFDFDFDBDBDBD7D7D7D1D1D1CCCCCCCCCCCC9C9C9CFF00FFFF00FFFF00FF
-              D7BBB2FFFFFFFEF9F5FBF3ECFAEFE2F9EADAF8E7D2F5E3CAF5DEC2F4DBBAF2D8
-              B2F6D9ACB78183FF00FFFF00FFFF00FFA6A6A6FFFFFFF9F9F9F3F3F3EEEEEEE9
-              E9E9E5E5E5DFDFDFDBDBDBD7D7D7D2D2D2D1D1D19C9C9CFF00FFFF00FFFF00FF
-              DABEB3FFFFFFFFFEFDFDF8F4FBF3ECF9EFE3F8EADAF7E7D2F6E2CAF6DEC1F4DB
-              B9F8DDB4B78183FF00FFFF00FFFF00FFA6A6A6FFFFFFFEFEFEF8F8F8F3F3F3EE
-              EEEEE9E9E9E4E4E4E0E0E0DBDBDBD6D6D6D6D6D69C9C9CFF00FFFF00FFFF00FF
-              DEC1B5FFFFFFFFFFFFFFFEFDFEF9F4FBF3EBFAEFE2F9EBD9F8E6D1F6E2C8F7E1
-              C2F0DAB7B78183FF00FFFF00FFFF00FFB1B1B1FFFFFFFFFFFFFEFEFEF9F9F9F3
-              F3F3EEEEEEE9E9E9E4E4E4DFDFDFDCDCDCD3D3D39C9C9CFF00FFFF00FFFF00FF
-              E2C5B5FFFFFFFFFFFFFFFFFFFFFEFDFDF9F4FBF3EBFAEEE2FAEDDCFCEFD9E6D9
-              C4C6BCA9B78183FF00FFFF00FFFF00FFB1B1B1FFFFFFFFFFFFFFFFFFFEFEFEF8
-              F8F8F3F3F3EEEEEEEBEBEBEAEAEAD5D5D5B7B7B79C9C9CFF00FFFF00FFFF00FF
-              E5C7B7FFFFFFFFFFFFFFFFFFFFFFFFFFFEFDFDF8F3FDF6ECF1E1D5C6A194B594
-              89B08F81B78183FF00FFFF00FFFF00FFB8B8B8FFFFFFFFFFFFFFFFFFFFFFFFFE
-              FEFEF8F8F8F4F4F4E3E3E39999999999999999999C9C9CFF00FFFF00FFFF00FF
-              E9CBB8FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFCFFFEF9E3CFC9BF8C76E8B2
-              70ECA54AC58768FF00FFFF00FFFF00FFB8B8B8FFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFDFDFDFCFCFCD6D6D6999999ACACAC9B9B9B969696FF00FFFF00FFFF00FF
-              ECCDBAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE4D4D2C89A7FFAC5
-              77CD9377FF00FFFF00FFFF00FFFF00FFBFBFBFFFFFFFFFFFFFFFFFFFFFFFFFFF
-              FFFFFFFFFFFFFFFFDBDBDB999999B8B8B8A2A2A2FF00FFFF00FFFF00FFFF00FF
-              EACAB6FCF7F4FCF7F3FBF6F3FBF6F3FAF5F3F9F5F3F9F5F3E1D0CEC7977CCF9B
-              86FF00FFFF00FFFF00FFFF00FFFF00FFBFBFBFF8F8F8F7F7F7F7F7F7F7F7F7F6
-              F6F6F6F6F6F6F6F6D7D7D7999999AAAAAAFF00FFFF00FFFF00FFFF00FFFF00FF
-              E9C6B1EBCCB8EBCCB8EBCCB8EBCBB8EACBB8EACBB8EACCB9DABBB0B8857AFF00
-              FFFF00FFFF00FFFF00FFFF00FFFF00FFBFBFBFB1B1B1B1B1B1B1B1B1B1B1B1B1
-              B1B1B1B1B1B1B1B1B1B1B1999999FF00FFFF00FFFF00FFFF00FF}
-            BtnNovo.NumGlyphs = 2
-            BtnNovo.ParentShowHint = False
-            BtnNovo.ShowHint = True
-            BtnNovo.Visible = False
-            BtnEditar.Left = 133
-            BtnEditar.Top = 83
-            BtnEditar.Width = 25
-            BtnEditar.Height = 21
-            BtnEditar.Hint = 'F5 para editar esse registro'
-            BtnEditar.Glyph.Data = {
-              36030000424D3603000000000000360000002800000010000000100000000100
-              18000000000000030000610B0000610B00000000000000000000FF00FFFF00FF
-              9596968184868184868184868184868184868184868184868184868184868184
-              86818486818486FF00FFFF00FFFF00FF959696FEFEFCFCFCFBF8F8F7F3F3F2EF
-              EFEEEBEBEAE6E6E5E2E2E1DCDCDCD0D0D0C5C5C5818486FF00FFFF00FFFF00FF
-              959696FEFEFCB6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6
-              B6D0D0D0818486FF00FFFF00FFFF00FF959696FEFEFC1919193E3935CAB6ABF8
-              F8F7F3F3F2EFEFEEEBEBEAE6E6E5E2E2E1DCDCDC818486FF00FFFF00FFFF00FF
-              959696FEFEFC3E39352D2C2A374546CAB6ABF8F8F7F3F3F2EFEFEEEBEBEAE6E6
-              E5E2E2E1818486FF00FFFF00FFFF00FF959696FEFEFCB6B6B63A5C600C84B10B
-              3B542A407BB6A1A1B6B6B6B6B6B6B6B6B6E6E6E5818486FF00FFFF00FFFF00FF
-              959696FEFEFCFEFEFC3A5C60165E827B645A0C84B12A407BCAB6ABF3F3F2EFEF
-              EEEBEBEA818486FF00FFFF00FFFF00FF959696FEFEFCFEFEFCFEFEFC80A6CB15
-              C4FB01A5E60C84B12A407BCAB6ABF6F6F4EFEFEE818486FF00FFFF00FFFF00FF
-              959696FEFEFCB6B6B6B6B6B680A6CB97E7FB15C4FB01A5E60C84B12A407BB6A1
-              A1F6F6F4818486FF00FFFF00FFFF00FF959696FEFEFCFEFEFCFEFEFCFEFEFC80
-              A6CB97E7FB15C4FB01A5E60C84B12A407BCAB6AB818486FF00FFFF00FFFF00FF
-              959696FEFEFCFEFEFCFEFEFCFEFEFCFEFEFC80A6CB97E7FB15C4FB01A5E60C84
-              B12A407B818486FF00FFFF00FFFF00FF959696FEFEFCB6B6B6B6B6B6B6B6B6B6
-              B6B6B6B6B680A6CB97E7FB15C4FB1F92F2111B8307035AFF00FFFF00FFFF00FF
-              959696FEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFC80A6CB3187E72D44
-              B42D44B4111B8307035AFF00FFFF00FF959696FEFEFCFEFEFCFEFEFCFEFEFCFE
-              FEFCFEFEFCFEFEFCFEFEFC2D44B46E88D86F7FD52D44B4FF00FFFF00FFFF00FF
-              959696FEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFCFEFEFC8184862D44
-              B42D44B4FF00FFFF00FFFF00FFFF00FF95969681848681848681848681848681
-              8486818486818486818486818486FF00FFFF00FFFF00FFFF00FF}
-            BtnEditar.ParentShowHint = False
-            BtnEditar.ShowHint = True
-            BtnEditar.Visible = False
-            Display.Left = 108
-            Display.Top = 83
-            Display.Width = 190
-            Display.Height = 21
-            Display.TabStop = False
-            Display.Color = clSkyBlue
-            Display.ReadOnly = True
-            Display.TabOrder = 6
-            TamanhoDisplay = 190
+            DataField = 'VALORDESCONTOTOTAL'
+            DataSource = DataSaida
+            TabOrder = 3
+            OnExit = edtDescValorExit
+            Titulo.Left = 208
+            Titulo.Top = 98
+            Titulo.Width = 59
+            Titulo.Height = 13
+            Titulo.Caption = 'Desconto($)'
+            IsNull = True
+            PodeRepetir = True
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
           end
-          object LabelDBEdit5: TLabelDBEdit
-            Left = 306
-            Top = 83
+          object edtOutros: TLabelDBEdit
+            Left = 121
+            Top = 113
+            Width = 82
+            Height = 21
+            DataField = 'VALOROUTRASDESPESAS'
+            DataSource = DataSaida
+            TabOrder = 2
+            OnExit = edtFreteExit
+            Titulo.Left = 121
+            Titulo.Top = 98
+            Titulo.Width = 81
+            Titulo.Height = 13
+            Titulo.Caption = 'Outras despesas'
+            IsNull = True
+            PodeRepetir = True
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object edtSeguro: TLabelDBEdit
+            Left = 70
+            Top = 113
+            Width = 47
+            Height = 21
+            DataField = 'VALORSEGURO'
+            DataSource = DataSaida
+            TabOrder = 1
+            OnExit = edtFreteExit
+            Titulo.Left = 70
+            Titulo.Top = 98
+            Titulo.Width = 34
+            Titulo.Height = 13
+            Titulo.Caption = 'Seguro'
+            IsNull = True
+            PodeRepetir = True
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object edtFrete: TLabelDBEdit
+            Left = 16
+            Top = 113
+            Width = 49
+            Height = 21
+            DataField = 'VALORFRETE'
+            DataSource = DataSaida
+            TabOrder = 0
+            OnExit = edtFreteExit
+            Titulo.Left = 16
+            Titulo.Top = 98
+            Titulo.Width = 26
+            Titulo.Height = 13
+            Titulo.Caption = 'Frete'
+            IsNull = True
+            PodeRepetir = True
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object LabelDBEdit7: TLabelDBEdit
+            Left = 16
+            Top = 32
+            Width = 71
+            Height = 21
+            TabStop = False
+            Color = clSkyBlue
+            DataField = 'BASECALCULOICMS'
+            DataSource = DataSaida
+            ReadOnly = True
+            TabOrder = 9
+            Titulo.Left = 16
+            Titulo.Top = 17
+            Titulo.Width = 66
+            Titulo.Height = 13
+            Titulo.Caption = 'Base do ICMS'
+            IsNull = True
+            PodeRepetir = True
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object LabelDBEdit8: TLabelDBEdit
+            Left = 91
+            Top = 32
             Width = 73
             Height = 21
-            TabOrder = 7
-            Titulo.Left = 306
-            Titulo.Top = 68
-            Titulo.Width = 76
+            TabStop = False
+            Color = clSkyBlue
+            DataField = 'VALORICMS'
+            DataSource = DataSaida
+            ReadOnly = True
+            TabOrder = 10
+            Titulo.Left = 91
+            Titulo.Top = 17
+            Titulo.Width = 67
             Titulo.Height = 13
-            Titulo.Caption = 'Placa do ve'#237'culo'
+            Titulo.Caption = 'Valor do ICMS'
             IsNull = True
             PodeRepetir = True
             CorPrincipal = clWhite
@@ -1776,65 +1622,248 @@ inherited frmSaida: TfrmSaida
             GravaEsteCampo = True
             AsInteger = 0
           end
-          object cmbUF: TDBComboBox
-            Left = 400
-            Top = 83
-            Width = 41
+          object LabelDBEdit9: TLabelDBEdit
+            Left = 298
+            Top = 32
+            Width = 58
             Height = 21
-            Style = csDropDownList
-            DataField = 'UFPLACAVEICULO'
+            TabStop = False
+            Color = clSkyBlue
+            DataField = 'BASECALCULOIPI'
             DataSource = DataSaida
-            Items.Strings = (
-              'AC'
-              'AL'
-              'AP'
-              'AM'
-              'BA'
-              'CE'
-              'DF'
-              'ES'
-              'GO'
-              'MA'
-              'MT'
-              'MS'
-              'MG'
-              'PA'
-              'PB'
-              'PR'
-              'PE'
-              'PI'
-              'RJ'
-              'RN'
-              'RS'
-              'RO'
-              'RR'
-              'SC'
-              'SP'
-              'SE'
-              'TO')
-            TabOrder = 8
-          end
-          object cxDBDateEdit2: TcxDBDateEdit
-            Left = 15
-            Top = 126
-            DataBinding.DataField = 'DATA'
-            DataBinding.DataSource = DataSaida
-            TabOrder = 9
-            Width = 107
-          end
-          object LabelDBEdit6: TLabelDBEdit
-            Left = 128
-            Top = 126
-            Width = 39
-            Height = 21
-            DataField = 'HORASAIDA'
-            DataSource = DataSaida
-            TabOrder = 10
-            Titulo.Left = 128
-            Titulo.Top = 111
-            Titulo.Width = 23
+            ReadOnly = True
+            TabOrder = 11
+            Titulo.Left = 298
+            Titulo.Top = 17
+            Titulo.Width = 58
             Titulo.Height = 13
-            Titulo.Caption = 'Hora'
+            Titulo.Caption = 'Base do IPI '
+            IsNull = True
+            PodeRepetir = True
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object LabelDBEdit10: TLabelDBEdit
+            Left = 16
+            Top = 72
+            Width = 71
+            Height = 21
+            TabStop = False
+            Color = clSkyBlue
+            DataField = 'BASECALCULOICMSST'
+            DataSource = DataSaida
+            ReadOnly = True
+            TabOrder = 12
+            Titulo.Left = 16
+            Titulo.Top = 57
+            Titulo.Width = 74
+            Titulo.Height = 13
+            Titulo.Caption = 'Base ICMS S.T.'
+            IsNull = True
+            PodeRepetir = True
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object LabelDBEdit11: TLabelDBEdit
+            Left = 91
+            Top = 72
+            Width = 73
+            Height = 21
+            TabStop = False
+            Color = clSkyBlue
+            DataField = 'VALORST'
+            DataSource = DataSaida
+            ReadOnly = True
+            TabOrder = 13
+            Titulo.Left = 91
+            Titulo.Top = 57
+            Titulo.Width = 47
+            Titulo.Height = 13
+            Titulo.Caption = 'Valor S.T.'
+            IsNull = True
+            PodeRepetir = True
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object LabelDBEdit17: TLabelDBEdit
+            Left = 168
+            Top = 72
+            Width = 125
+            Height = 21
+            TabStop = False
+            Color = clSkyBlue
+            DataField = 'BASECALCULOPISCOFINS'
+            DataSource = DataSaida
+            ReadOnly = True
+            TabOrder = 14
+            Titulo.Left = 168
+            Titulo.Top = 57
+            Titulo.Width = 102
+            Titulo.Height = 13
+            Titulo.Caption = 'Base do  PIS/COFINS'
+            IsNull = False
+            PodeRepetir = False
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object LabelDBEdit19: TLabelDBEdit
+            Left = 298
+            Top = 72
+            Width = 58
+            Height = 21
+            TabStop = False
+            Color = clSkyBlue
+            DataField = 'VALORCOFINS'
+            DataSource = DataSaida
+            ReadOnly = True
+            TabOrder = 15
+            Titulo.Left = 298
+            Titulo.Top = 57
+            Titulo.Width = 38
+            Titulo.Height = 13
+            Titulo.Caption = 'COFINS'
+            IsNull = False
+            PodeRepetir = False
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object LabelDBEdit18: TLabelDBEdit
+            Left = 360
+            Top = 72
+            Width = 59
+            Height = 21
+            TabStop = False
+            Color = clSkyBlue
+            DataField = 'VALORPIS'
+            DataSource = DataSaida
+            ReadOnly = True
+            TabOrder = 16
+            Titulo.Left = 360
+            Titulo.Top = 57
+            Titulo.Width = 16
+            Titulo.Height = 13
+            Titulo.Caption = 'PIS'
+            IsNull = False
+            PodeRepetir = False
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object LabelDBEdit22: TLabelDBEdit
+            Left = 234
+            Top = 32
+            Width = 59
+            Height = 21
+            TabStop = False
+            Color = clSkyBlue
+            DataField = 'VALORISS'
+            DataSource = DataSaida
+            ReadOnly = True
+            TabOrder = 17
+            Titulo.Left = 234
+            Titulo.Top = 17
+            Titulo.Width = 58
+            Titulo.Height = 13
+            Titulo.Caption = 'Valor do ISS'
+            IsNull = True
+            PodeRepetir = True
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object LabelDBEdit24: TLabelDBEdit
+            Left = 168
+            Top = 32
+            Width = 63
+            Height = 21
+            TabStop = False
+            Color = clSkyBlue
+            DataField = 'BASECALCULOISS'
+            DataSource = DataSaida
+            ReadOnly = True
+            TabOrder = 18
+            Titulo.Left = 168
+            Titulo.Top = 17
+            Titulo.Width = 60
+            Titulo.Height = 13
+            Titulo.Caption = 'Base do  ISS'
+            IsNull = False
+            PodeRepetir = False
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object LabelDBEdit23: TLabelDBEdit
+            Left = 360
+            Top = 32
+            Width = 59
+            Height = 21
+            TabStop = False
+            Color = clSkyBlue
+            DataField = 'VALORIPI'
+            DataSource = DataSaida
+            ReadOnly = True
+            TabOrder = 19
+            Titulo.Left = 360
+            Titulo.Top = 17
+            Titulo.Width = 59
+            Titulo.Height = 13
+            Titulo.Caption = 'Valor do IPI '
+            IsNull = True
+            PodeRepetir = True
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object edtAcresAliq: TLabelDBEdit
+            Left = 91
+            Top = 159
+            Width = 68
+            Height = 21
+            DataField = 'ALIQACRESCIMO'
+            DataSource = DataSaida
+            TabOrder = 6
+            OnExit = edtAcresAliqExit
+            Titulo.Left = 91
+            Titulo.Top = 144
+            Titulo.Width = 67
+            Titulo.Height = 13
+            Titulo.Caption = 'Acr'#233'scimo(%)'
+            IsNull = True
+            PodeRepetir = True
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object edtDescAliq: TLabelDBEdit
+            Left = 16
+            Top = 159
+            Width = 58
+            Height = 21
+            DataField = 'ALIQDESCONTO'
+            DataSource = DataSaida
+            TabOrder = 5
+            OnExit = edtDescAliqExit
+            Titulo.Left = 16
+            Titulo.Top = 144
+            Titulo.Width = 64
+            Titulo.Height = 13
+            Titulo.Caption = 'Desconto(%)'
             IsNull = True
             PodeRepetir = True
             CorPrincipal = clWhite
@@ -1843,24 +1872,38 @@ inherited frmSaida: TfrmSaida
             AsInteger = 0
           end
         end
-      end
-      object cxTabSheet2: TcxTabSheet
-        Caption = 'Observa'#231#245'es'
-        ImageIndex = 1
-        ExplicitWidth = 852
-        ExplicitHeight = 128
-        object DBMemo1: TDBMemo
-          Left = 0
+        object GroupObs: TGroupBox
+          Left = 425
           Top = 0
-          Width = 1034
-          Height = 170
-          Align = alClient
-          DataField = 'OBS'
-          DataSource = DataSaida
-          ScrollBars = ssVertical
-          TabOrder = 0
-          ExplicitWidth = 852
-          ExplicitHeight = 128
+          Width = 304
+          Height = 188
+          Align = alLeft
+          Caption = ' Observa'#231#245'es '
+          TabOrder = 1
+          ExplicitHeight = 214
+          object DBMemo1: TDBMemo
+            Left = 2
+            Top = 15
+            Width = 300
+            Height = 171
+            Align = alClient
+            DataField = 'OBS'
+            DataSource = DataSaida
+            ScrollBars = ssVertical
+            TabOrder = 0
+            ExplicitWidth = 188
+            ExplicitHeight = 197
+          end
+        end
+        object cxSplitter1: TcxSplitter
+          Left = 729
+          Top = 0
+          Width = 8
+          Height = 188
+          HotZoneClassName = 'TcxMediaPlayer9Style'
+          ExplicitLeft = 741
+          ExplicitTop = -3
+          ExplicitHeight = 214
         end
       end
     end
@@ -1870,17 +1913,17 @@ inherited frmSaida: TfrmSaida
     Params = <>
     OnNewRecord = CdsSaidaNewRecord
     Left = 376
-    Top = 200
+    Top = 120
   end
   object DataSaida: TDataSource
     DataSet = CdsSaida
     Left = 312
-    Top = 200
+    Top = 120
   end
   object DataItens: TDataSource
     DataSet = CdsItens
     Left = 312
-    Top = 248
+    Top = 168
   end
   object CdsItens: TpFIBClientDataSet
     Aggregates = <>
@@ -1889,23 +1932,25 @@ inherited frmSaida: TfrmSaida
     Params = <>
     OnNewRecord = CdsItensNewRecord
     Left = 376
-    Top = 248
+    Top = 168
   end
   object CdsCondicaoPagamento: TpFIBClientDataSet
     Aggregates = <>
     Params = <>
+    AfterScroll = CdsCondicaoPagamentoAfterScroll
+    OnNewRecord = CdsCondicaoPagamentoNewRecord
     Left = 456
-    Top = 192
+    Top = 112
   end
   object DataCondicaoPagamento: TDataSource
     DataSet = CdsCondicaoPagamento
     Left = 480
-    Top = 248
+    Top = 168
   end
   object ActionList1: TActionList
     Images = DMConexao.ImageList16_16
-    Left = 680
-    Top = 203
+    Left = 656
+    Top = 147
     object actNovoPagamento: TAction
       Caption = 'Incluir [Ctrl+R]'
       ImageIndex = 17
@@ -1945,12 +1990,16 @@ inherited frmSaida: TfrmSaida
   object DataParcelamentos: TDataSource
     DataSet = CdsParcelamentos
     Left = 224
-    Top = 248
+    Top = 168
   end
   object CdsParcelamentos: TpFIBClientDataSet
     Aggregates = <>
+    Filter = 'FLAGEDICAO <> '#39'D'#39
+    Filtered = True
     Params = <>
+    BeforePost = CdsParcelamentosBeforePost
+    OnNewRecord = CdsParcelamentosNewRecord
     Left = 216
-    Top = 192
+    Top = 112
   end
 end

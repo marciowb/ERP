@@ -52,7 +52,7 @@ uses
   uLst_Proposta in 'uLst_Proposta.pas' {frmLst_Proposta},
   uCad_proposta in 'uCad_proposta.pas' {frmCad_Proposta},
   uDlg_CadastroERP in 'uDlg_CadastroERP.pas' {frmDlg_CadastroERP},
-  udlgCondicaoPagamentoProposta in 'udlgCondicaoPagamentoProposta.pas' {frmdlgCondicaoPagamentoProposta},
+  udlgCondicaoPagamento in 'udlgCondicaoPagamento.pas' {frmdlgCondicaoPagamento},
   uRegras in 'uRegras.pas',
   uLst_TipoContrato in 'uLst_TipoContrato.pas' {frmLst_TipoContrato},
   uLst_Contratos in 'uLst_Contratos.pas' {frmLst_Contratos},

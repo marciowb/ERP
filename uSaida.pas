@@ -18,7 +18,7 @@ uses
   cxDBEdit, Mask, EditPesquisa, DBCtrls, LabelDBEdit, dxSkinscxPCPainter,
   Buttons, cxPC, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage,
   cxDBData, cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, ActnList;
+  cxGridTableView, cxGridDBTableView, cxGrid, ActnList,Math, cxSplitter;
 
 type
   TfrmSaida = class(TfrmPadrao)
@@ -35,8 +35,6 @@ type
     Label1: TLabel;
     edtPessoa: TEditPesquisa;
     cxPageControl1: TcxPageControl;
-    cxTabSheet2: TcxTabSheet;
-    DBMemo1: TDBMemo;
     TvItens: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     cxGrid1: TcxGrid;
@@ -70,7 +68,7 @@ type
     TvItensUNIDADE: TcxGridDBColumn;
     TvItensCFOP: TcxGridDBColumn;
     cxTabSheet3: TcxTabSheet;
-    GroupBox5: TGroupBox;
+    GroupPagamento: TGroupBox;
     TvPagamento: TcxGridDBTableView;
     cxGrid2Level1: TcxGridLevel;
     cxGrid2: TcxGrid;
@@ -79,24 +77,6 @@ type
     TvPagamentoVALOR: TcxGridDBColumn;
     TvPagamentoNUMTOTALPARCELAS: TcxGridDBColumn;
     TvPagamentoNOMECONDICAOPAGAMENTO: TcxGridDBColumn;
-    GroupBox4: TGroupBox;
-    LabelDBEdit16: TLabelDBEdit;
-    LabelDBEdit12: TLabelDBEdit;
-    LabelDBEdit20: TLabelDBEdit;
-    LabelDBEdit21: TLabelDBEdit;
-    edtTotalnota: TLabelDBEdit;
-    LabelDBEdit15: TLabelDBEdit;
-    LabelDBEdit14: TLabelDBEdit;
-    LabelDBEdit13: TLabelDBEdit;
-    edtFrete: TLabelDBEdit;
-    LabelDBEdit7: TLabelDBEdit;
-    LabelDBEdit8: TLabelDBEdit;
-    LabelDBEdit9: TLabelDBEdit;
-    LabelDBEdit10: TLabelDBEdit;
-    LabelDBEdit11: TLabelDBEdit;
-    LabelDBEdit17: TLabelDBEdit;
-    LabelDBEdit19: TLabelDBEdit;
-    LabelDBEdit18: TLabelDBEdit;
     Panel5: TPanel;
     BitBtn4: TBitBtn;
     BitBtn5: TBitBtn;
@@ -108,18 +88,18 @@ type
     actNovoItem: TAction;
     actEditarItem: TAction;
     actExcluirItem: TAction;
-    LabelDBEdit22: TLabelDBEdit;
     Panel6: TPanel;
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
-    LabelDBEdit24: TLabelDBEdit;
     DataParcelamentos: TDataSource;
     CdsParcelamentos: TpFIBClientDataSet;
+    btnGravar: TBitBtn;
+    btnCancelar: TBitBtn;
     GroupBox3: TGroupBox;
     Label2: TLabel;
     Label3: TLabel;
-    DBRadioGroup1: TDBRadioGroup;
+    grpFrete: TDBRadioGroup;
     LabelDBEdit1: TLabelDBEdit;
     LabelDBEdit2: TLabelDBEdit;
     LabelDBEdit3: TLabelDBEdit;
@@ -129,8 +109,30 @@ type
     cmbUF: TDBComboBox;
     cxDBDateEdit2: TcxDBDateEdit;
     LabelDBEdit6: TLabelDBEdit;
-    btnGravar: TBitBtn;
-    btnCancelar: TBitBtn;
+    GroupTotais: TGroupBox;
+    LabelDBEdit16: TLabelDBEdit;
+    LabelDBEdit12: TLabelDBEdit;
+    edtAcresValor: TLabelDBEdit;
+    edtDescValor: TLabelDBEdit;
+    edtOutros: TLabelDBEdit;
+    edtSeguro: TLabelDBEdit;
+    edtFrete: TLabelDBEdit;
+    LabelDBEdit7: TLabelDBEdit;
+    LabelDBEdit8: TLabelDBEdit;
+    LabelDBEdit9: TLabelDBEdit;
+    LabelDBEdit10: TLabelDBEdit;
+    LabelDBEdit11: TLabelDBEdit;
+    LabelDBEdit17: TLabelDBEdit;
+    LabelDBEdit19: TLabelDBEdit;
+    LabelDBEdit18: TLabelDBEdit;
+    LabelDBEdit22: TLabelDBEdit;
+    LabelDBEdit24: TLabelDBEdit;
+    GroupObs: TGroupBox;
+    DBMemo1: TDBMemo;
+    LabelDBEdit23: TLabelDBEdit;
+    edtAcresAliq: TLabelDBEdit;
+    edtDescAliq: TLabelDBEdit;
+    cxSplitter1: TcxSplitter;
     procedure actNovoPagamentoExecute(Sender: TObject);
     procedure actEditarPagamentoExecute(Sender: TObject);
     procedure actExcluirPagamentoExecute(Sender: TObject);
@@ -143,10 +145,24 @@ type
     procedure edtEmpresaRegAchado(const ValoresCamposEstra: array of Variant);
     procedure CdsSaidaNewRecord(DataSet: TDataSet);
     procedure CdsItensNewRecord(DataSet: TDataSet);
+    procedure edtFreteExit(Sender: TObject);
+    procedure edtDescAliqExit(Sender: TObject);
+    procedure edtAcresAliqExit(Sender: TObject);
+    procedure edtDescValorExit(Sender: TObject);
+    procedure edtAcresValorExit(Sender: TObject);
+    procedure CdsParcelamentosNewRecord(DataSet: TDataSet);
+    procedure CdsParcelamentosBeforePost(DataSet: TDataSet);
+    procedure CdsCondicaoPagamentoAfterScroll(DataSet: TDataSet);
+    procedure CdsCondicaoPagamentoNewRecord(DataSet: TDataSet);
+    procedure grpFreteClick(Sender: TObject);
   private
     { Private declarations }
     UfEmpresa: String;
+    TotalPagamentos: Currency;
     Procedure RestartaVenda;
+    procedure CalculaTotalPagamentos;
+    Procedure CalculaTotais(SemDesconAcrescimo: Boolean=False);
+    procedure RateiaValores;
   public
     { Public declarations }
     Procedure AbreVenda(IdVenda: String);
@@ -157,7 +173,7 @@ var
 
 implementation
 
-uses UDmConexao, Comandos, MinhasClasses, uDlg_SaidaItem;
+uses UDmConexao, Comandos, MinhasClasses, uDlg_SaidaItem, udlgCondicaoPagamento;
 
 {$R *.dfm}
 procedure TfrmSaida.AbreVenda(IdVenda: String);
@@ -180,6 +196,7 @@ begin
     frmDlg_SaidaItem.pDataSet.Edit;
     frmDlg_SaidaItem.FechaEGrava := False;
     frmDlg_SaidaItem.ShowModal;
+    CalculaTotais;
   Finally
     FreeAndNil(frmDlg_SaidaItem);
   End;
@@ -188,7 +205,19 @@ end;
 procedure TfrmSaida.actEditarPagamentoExecute(Sender: TObject);
 begin
   inherited;
-//
+   Try
+    frmdlgCondicaoPagamento := TfrmdlgCondicaoPagamento.Create(nil);
+    frmdlgCondicaoPagamento.pDataSet := Self.CdsCondicaoPagamento;
+    frmdlgCondicaoPagamento.DataSetParcelas := Self.CdsParcelamentos;
+    frmdlgCondicaoPagamento.FechaEGrava := True;
+    frmdlgCondicaoPagamento.pDataSet.Edit;
+    frmdlgCondicaoPagamento.ValorTotalPagamentos := Self.TotalPagamentos;
+    frmdlgCondicaoPagamento.ValorTotal := CdsSaida.FieldByName('VALORTOTALNOTA').AsCurrency;
+    frmdlgCondicaoPagamento.ShowModal;
+    CalculaTotalPagamentos;
+  Finally
+    FreeAndNil(frmdlgCondicaoPagamento);
+  End;
 end;
 
 procedure TfrmSaida.actExcluirItemExecute(Sender: TObject);
@@ -199,6 +228,7 @@ begin
     CdsItens.Edit;
     CdsItens.FieldByName('FLAGEDICAO').AsString := 'D';
     CdsItens.Post;
+    CalculaTotais;
   end;
 
 end;
@@ -208,9 +238,9 @@ begin
   inherited;
   if ConfirmaDel then
   begin
-    CdsItens.Edit;
-    CdsItens.FieldByName('FLAGEDICAO').AsString := 'D';
-    CdsItens.Post;
+    CdsCondicaoPagamento.Edit;
+    CdsCondicaoPagamento.FieldByName('FLAGEDICAO').AsString := 'D';
+    CdsCondicaoPagamento.Post;
   end;
 
 end;
@@ -224,6 +254,7 @@ begin
     frmDlg_SaidaItem.pDataSet.Append;
     frmDlg_SaidaItem.FechaEGrava := False;
     frmDlg_SaidaItem.ShowModal;
+    CalculaTotais;
   Finally
     FreeAndNil(frmDlg_SaidaItem);
   End;
@@ -232,13 +263,147 @@ end;
 procedure TfrmSaida.actNovoPagamentoExecute(Sender: TObject);
 begin
   inherited;
-  //
+  Try
+    frmdlgCondicaoPagamento := TfrmdlgCondicaoPagamento.Create(nil);
+    frmdlgCondicaoPagamento.pDataSet := Self.CdsCondicaoPagamento;
+    frmdlgCondicaoPagamento.DataSetParcelas := Self.CdsParcelamentos;
+    frmdlgCondicaoPagamento.FechaEGrava := False;
+    frmdlgCondicaoPagamento.ValorTotalPagamentos := Self.TotalPagamentos;
+    frmdlgCondicaoPagamento.ValorTotal := CdsSaida.FieldByName('VALORTOTALNOTA').AsCurrency;
+
+    frmdlgCondicaoPagamento.pDataSet.Append;
+    frmdlgCondicaoPagamento.ShowModal;
+    CalculaTotalPagamentos;
+  Finally
+    FreeAndNil(frmdlgCondicaoPagamento);
+  End;
 end;
 
 procedure TfrmSaida.btnCancelarClick(Sender: TObject);
 begin
   inherited;
   RestartaVenda;
+end;
+
+procedure TfrmSaida.CalculaTotais(SemDesconAcrescimo: Boolean=False);
+var
+  BaseICMS,ICMS,BaseISS,ISS,BaseIPI,IPI,
+  BaseST,ST,BasePISCOFINS,COFINS,PIS,
+  TotalProduto, TotalNota, ValorDesconto,ValorAcrescimo: Currency;
+begin
+  Try
+    CdsItens.DisableControls;
+    BaseICMS := 0;
+    ICMS := 0;
+    BaseISS := 0;
+    ISS := 0;
+    BaseIPI := 0;
+    IPI := 0;
+    BaseST := 0;
+    ST := 0;
+    BasePISCOFINS := 0;
+    COFINS := 0;
+    PIS := 0;
+    TotalProduto:= 0;
+    TotalNota := 0;
+    ValorDesconto := 0;
+    ValorAcrescimo  := 0;
+
+    CdsItens.First;
+    while not CdsItens.Eof do
+    begin
+      BaseICMS := BaseICMS + CdsItens.FieldByName('BASEICMS').AsCurrency;
+      ICMS := ICMS + CdsItens.FieldByName('VALORICMS').AsCurrency;
+      BaseISS := BaseISS + CdsItens.FieldByName('BASEISS').AsCurrency;
+      ISS := ISS + CdsItens.FieldByName('VALORISS').AsCurrency;
+      BaseIPI := BaseIPI + CdsItens.FieldByName('BASEIPI').AsCurrency;
+      IPI := IPI + CdsItens.FieldByName('VALORIPI').AsCurrency;
+      BaseST := BaseST + CdsItens.FieldByName('BASEICMSST').AsCurrency;
+      ST := ST + CdsItens.FieldByName('VALORST').AsCurrency;
+      BasePISCOFINS := BasePISCOFINS + CdsItens.FieldByName('BASEPISCOFINS').AsCurrency;
+      COFINS := COFINS + CdsItens.FieldByName('VALORCOFINS').AsCurrency;
+      PIS := PIS + CdsItens.FieldByName('VALORPIS').AsCurrency;
+      TotalProduto := TotalProduto+ CdsItens.FieldByName('SUBTOTAL').AsCurrency;
+      if not SemDesconAcrescimo then
+      begin
+        ValorDesconto := ValorDesconto+ CdsItens.FieldByName('VALORDESCONTO').AsCurrency;
+        ValorAcrescimo := ValorAcrescimo+ CdsItens.FieldByName('VALORACRESCIMO').AsCurrency;
+      end;
+      CdsItens.Next;
+    end;
+    CdsSaida.FieldByName('BASECALCULOICMS').AsCurrency :=BaseICMS;
+    CdsSaida.FieldByName('VALORICMS').AsCurrency :=ICMS;
+
+    CdsSaida.FieldByName('BASECALCULOIPI').AsCurrency :=BaseIPI;
+    CdsSaida.FieldByName('VALORIPI').AsCurrency :=IPI;
+
+    CdsSaida.FieldByName('BASECALCULOPISCOFINS').AsCurrency :=BasePISCOFINS;
+    CdsSaida.FieldByName('VALORPIS').AsCurrency :=PIS;
+    CdsSaida.FieldByName('VALORCOFINS').AsCurrency :=COFINS;
+
+    CdsSaida.FieldByName('BASECALCULOICMSST').AsCurrency :=BaseST;
+    CdsSaida.FieldByName('VALORST').AsCurrency :=ST;
+
+    CdsSaida.FieldByName('BASECALCULOISS').AsCurrency :=BaseISS;
+    CdsSaida.FieldByName('VALORISS').AsCurrency := ISS;
+
+    CdsSaida.FieldByName('VALORTOTALPRODUTOS').AsCurrency := (TotalProduto-ValorDesconto)+ValorAcrescimo;
+
+    CdsSaida.FieldByName('VALORDESCONTOTOTAL').AsCurrency := ValorDesconto;
+    CdsSaida.FieldByName('VALORACRESCIMOTOTAL').AsCurrency := ValorAcrescimo;
+
+    TotalNota :=
+     TotalProduto+
+       IPI+ST+CdsSaida.FieldByName('VALOROUTRASDESPESAS').AsCurrency+CdsSaida.FieldByName('VALORSEGURO').AsCurrency+
+       ifThen(grpFrete.ItemIndex = 0,CdsSaida.FieldByName('VALORFRETE').AsCurrency);
+
+    CdsSaida.FieldByName('ALIQDESCONTO').AsCurrency :=
+          (CdsSaida.FieldByName('VALORDESCONTOTOTAL').AsCurrency  / TotalNota) * 100;
+
+    CdsSaida.FieldByName('ALIQACRESCIMO').AsCurrency :=
+          (CdsSaida.FieldByName('VALORACRESCIMOTOTAL').AsCurrency  / TotalNota) * 100;
+
+    CdsSaida.FieldByName('VALORTOTALNOTA').AsCurrency := (TotalNota-ValorDesconto)+ValorAcrescimo;
+
+    CdsItens.First;
+  Finally
+
+    CdsItens.EnableControls;
+  End;
+end;
+
+procedure TfrmSaida.CalculaTotalPagamentos;
+begin
+  TotalPagamentos := 0;
+  Try
+    CdsCondicaoPagamento.AfterScroll := nil;
+    CdsCondicaoPagamento.First;
+    while not CdsCondicaoPagamento.Eof do
+    begin
+      TotalPagamentos :=  TotalPagamentos + CdsCondicaoPagamento.FieldByName('VALOR').AsCurrency;
+      CdsCondicaoPagamento.Next;
+    end;
+  Finally
+    CdsCondicaoPagamento.AfterScroll := CdsCondicaoPagamentoAfterScroll;
+    CdsCondicaoPagamentoAfterScroll(CdsCondicaoPagamento);
+  End;
+
+end;
+
+procedure TfrmSaida.CdsCondicaoPagamentoAfterScroll(DataSet: TDataSet);
+begin
+  inherited;
+  if CdsCondicaoPagamento.FieldByName('IDSAIDACONDICAOPAGAMENTO').AsString <>  '' then
+    CdsParcelamentos.Filter := 'FLAGEDICAO<> ''D'' AND IDSAIDACONDICAOPAGAMENTO = '+ CdsCondicaoPagamento.FieldByName('IDSAIDACONDICAOPAGAMENTO').AsString;
+  CdsParcelamentos.Filtered := True;
+end;
+
+procedure TfrmSaida.CdsCondicaoPagamentoNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  CdsCondicaoPagamento.FieldByName('IDSAIDACONDICAOPAGAMENTO').AsString := FormatDateTime('ddmmyyyyhhnnsszzz',StrToDateTime(GetDataServidor+GetHoraServidor));
+  CdsCondicaoPagamento.FieldByName('FLAGEDICAO').AsString := 'I';
+  CdsCondicaoPagamento.FieldByName('IDSAIDA').AsString := CdsSaida.FieldByName('IDSAIDA').AsString ;
 end;
 
 procedure TfrmSaida.CdsItensNewRecord(DataSet: TDataSet);
@@ -250,11 +415,64 @@ begin
   CdsItens.FieldByName('flagedicao').AsString := 'I';
 end;
 
+procedure TfrmSaida.CdsParcelamentosBeforePost(DataSet: TDataSet);
+begin
+  inherited;
+  if CdsParcelamentos.FieldByName('FLAGEDICAO').AsString = 'N' then
+    CdsParcelamentos.FieldByName('FLAGEDICAO').AsString := 'E';
+end;
+
+procedure TfrmSaida.CdsParcelamentosNewRecord(DataSet: TDataSet);
+begin
+  inherited;
+  CdsParcelamentos.FieldByName('IDPARSAIDACONDICAOPAGAMENTO').AsString := FormatDateTime('ddmmyyyyhhnnsszzz',StrToDateTime(GetDataServidor+GetHoraServidor));
+  CdsParcelamentos.FieldByName('IDSAIDACONDICAOPAGAMENTO').AsString := CdsCondicaoPagamento.FieldByName('IDSAIDACONDICAOPAGAMENTO').AsString;
+  CdsParcelamentos.FieldByName('FLAGEDICAO').AsString := 'I';
+end;
+
 procedure TfrmSaida.CdsSaidaNewRecord(DataSet: TDataSet);
 begin
   inherited;
   PreencheCamposValorPadraoBD(CdsSaida,tpERPSaida);
-  CdsSaida.FieldByName('IDSAIDA').AsString := FormatDateTime('ddmmyyyyhhnnsszzz',StrToDate(GetDataServidor));
+  CdsSaida.FieldByName('IDSAIDA').AsString := FormatDateTime('ddmmyyyyhhnnsszzz',StrToDateTime(GetDataServidor+GetHoraServidor));
+  CdsSaida.FieldByName('FLAGMODALIDADEFRETE').AsString := 'D';
+end;
+
+procedure TfrmSaida.edtAcresAliqExit(Sender: TObject);
+begin
+  inherited;
+  RateiaValores;
+end;
+
+procedure TfrmSaida.edtAcresValorExit(Sender: TObject);
+var
+  ValorAcres: Currency;
+begin
+  inherited;
+  ValorAcres :=  CdsSaida.FieldByName('VALORACRESCIMOTOTAL').AsCurrency ;
+  CalculaTotais(True);
+  CdsSaida.FieldByName('VALORACRESCIMOTOTAL').AsCurrency := ValorAcres;
+  CdsSaida.FieldByName('ALIQACRESCIMO').AsCurrency := (CdsSaida.FieldByName('VALORACRESCIMOTOTAL').AsCurrency  / CdsSaida.FieldByName('VALORTOTALNOTA').AsCurrency) * 100;
+  RateiaValores;
+
+end;
+
+procedure TfrmSaida.edtDescAliqExit(Sender: TObject);
+begin
+  inherited;
+  RateiaValores;
+end;
+
+procedure TfrmSaida.edtDescValorExit(Sender: TObject);
+var
+  ValorDesc: Currency;
+begin
+  inherited;
+  ValorDesc :=  CdsSaida.FieldByName('VALORDESCONTOTOTAL').AsCurrency ;
+  CalculaTotais(True);
+  CdsSaida.FieldByName('VALORDESCONTOTOTAL').AsCurrency := ValorDesc;
+  CdsSaida.FieldByName('ALIQDESCONTO').AsCurrency := (CdsSaida.FieldByName('VALORDESCONTOTOTAL').AsCurrency  / CdsSaida.FieldByName('VALORTOTALNOTA').AsCurrency) * 100;
+  RateiaValores;
 
 end;
 
@@ -263,6 +481,12 @@ procedure TfrmSaida.edtEmpresaRegAchado(
 begin
   inherited;
   UfEmpresa := VarToStr(ValoresCamposEstra[0]);
+end;
+
+procedure TfrmSaida.edtFreteExit(Sender: TObject);
+begin
+  inherited;
+  RateiaValores;
 end;
 
 procedure TfrmSaida.edtOperacaoRegAchado(
@@ -288,10 +512,48 @@ begin
   EdtEmpresa.CamposExtraPesquisa := 'UF';
   edtOperacao.CamposExtraPesquisa := 'FLAGTIPOPESSOA';
   ConfiguraEditPesquisa(edtEmpresa,CdsSaida,tpERPEmpresa);
+  edtOperacao.SQLComp := ' FLAGTIPOOPERACAO =''S''';
   ConfiguraEditPesquisa(edtOperacao,CdsSaida,tpERPOperacaoSaida);
   ConfiguraEditPesquisa(edtTransportadora,CdsSaida,tpERPTransportadora);
   ConfiguraEditPesquisa(edtPessoa,CdsSaida,tpERPCliente);
   RestartaVenda;
+end;
+
+procedure TfrmSaida.grpFreteClick(Sender: TObject);
+begin
+  inherited;
+  CalculaTotais;
+end;
+
+procedure TfrmSaida.RateiaValores;
+var
+  Rat, AliqDesconto, ALiqAcrescimo,
+  ValorDesconto, ValorAcrescimo: Currency;
+begin
+  Try
+    CdsItens.DisableControls;
+    while not CdsItens.eof do
+    begin
+      CdsItens.Edit;
+      CdsItens.FieldByName('ALIQACRESCIMO').AsCurrency := edtAcresAliq.AsCurrency;
+      CdsItens.FieldByName('ALIQDESCONTO').AsCurrency := edtDescAliq.AsCurrency;
+      CdsItens.FieldByName('VALORDESCONTO').AsCurrency := CdsItens.FieldByName('SUBTOTAL').AsCurrency * CdsItens.FieldByName('ALIQDESCONTO').AsCurrency/100;
+      CdsItens.FieldByName('VALORACRESCIMO').AsCurrency := CdsItens.FieldByName('SUBTOTAL').AsCurrency * CdsItens.FieldByName('ALIQACRESCIMO').AsCurrency/100;
+
+      Rat := (100-((CdsItens.FieldByName('VALORTOTAL').AsCurrency/ CdsSaida.FieldByName('VALORTOTALNOTA').AsCurrency) * 100))/100;
+
+      CdsItens.FieldByName('VALORFRETERATEADO').AsCurrency :=  CdsSaida.FieldByName('VALORFRETE').AsCurrency * Rat;
+      CdsItens.FieldByName('VALORSEGURORATEADO').AsCurrency :=  CdsSaida.FieldByName('VALORSEGURO').AsCurrency * Rat;
+      CdsItens.FieldByName('VALOROUTRASDESPESASRATEADO').AsCurrency :=  CdsSaida.FieldByName('VALOROUTRASDESPESAS').AsCurrency * Rat;
+
+      CdsItens.Post;
+      CdsItens.Next;
+    end;
+    CdsItens.First;
+  Finally
+    CdsItens.EnableControls;
+  End;
+  CalculaTotais;
 end;
 
 procedure TfrmSaida.RestartaVenda;

@@ -168,8 +168,8 @@
 			<DCCReference Include="uDlg_CadastroERP.pas">
 				<Form>frmDlg_CadastroERP</Form>
 			</DCCReference>
-			<DCCReference Include="udlgCondicaoPagamentoProposta.pas">
-				<Form>frmdlgCondicaoPagamentoProposta</Form>
+			<DCCReference Include="udlgCondicaoPagamento.pas">
+				<Form>frmdlgCondicaoPagamento</Form>
 			</DCCReference>
 			<DCCReference Include="uRegras.pas"/>
 			<DCCReference Include="uLst_TipoContrato.pas">

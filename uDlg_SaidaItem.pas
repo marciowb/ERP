@@ -53,8 +53,8 @@ implementation
 
 procedure TfrmDlg_SaidaItem.FormShow(Sender: TObject);
 begin
-  edtProduto.CamposExtraPesquisa := 'IDUNIDADE,IDNCM,IDCODIGOMUNICIPAL,'+
-                        'CST,CSOSN,CUSTOMEDIO,CUSTOESTOQUE,CUSTOCONTABIL,CODIGOBARRAS,MARCKUP';
+    edtProduto.CamposExtraPesquisa := 'IDUNIDADE,IDNCM,IDCODIGOMUNICIPALSERVICO,'+
+                          'CST,CSOSN,CUSTOMEDIO,CUSTOATUAL,CUSTOCONTABIL,CODIGOBARRAS,MARKUP';
   inherited;
   edtProduto.UsaBtnNovo := false;
   edtProduto.UsaBtnEditar := false;

@@ -873,7 +873,7 @@ inherited frmCad_Proposta: TfrmCad_Proposta
             Top = 178
             Width = 683
             Height = 191
-            ActivePage = tsProduto
+            ActivePage = tsPagamento
             Align = alClient
             Style = 2
             TabOrder = 1

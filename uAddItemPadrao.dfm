@@ -7,21 +7,21 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
   TextHeight = 13
   inherited Panel1: TPanel
     Top = 396
-    ExplicitTop = 307
+    ExplicitTop = 396
     inherited btnOk: TBitBtn
-      Left = 158
+      Left = 154
       Top = 6
-      ExplicitLeft = 158
+      ExplicitLeft = 154
       ExplicitTop = 6
     end
     inherited btnCancelar: TBitBtn
-      Left = 255
-      ExplicitLeft = 255
+      Left = 251
+      ExplicitLeft = 251
     end
   end
   inherited Panel2: TPanel
     Height = 396
-    ExplicitHeight = 307
+    ExplicitHeight = 396
     object Panel3: TPanel
       Left = 0
       Top = 0
@@ -30,7 +30,6 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
       Align = alClient
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitTop = 32
       object edtProduto: TEditPesquisa
         Left = 16
         Top = 26
@@ -409,7 +408,6 @@ inherited frmAddItemPadrao: TfrmAddItemPadrao
         Align = alBottom
         Caption = ' Observa'#231#245'es '
         TabOrder = 10
-        ExplicitTop = 153
         object cxDBMemo1: TcxDBMemo
           Left = 2
           Top = 15

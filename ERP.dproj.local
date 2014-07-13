@@ -86,5 +86,7 @@
     <Transaction>2014/07/06 06:53:16.151.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\uDlg_SaidaItem.dfm</Transaction>
     <Transaction>2014/07/06 07:53:24.014.pas,D:\Meus Projetos\ERP\Unit1.pas=D:\Meus Projetos\ERP\uCad_Transportadora.pas</Transaction>
     <Transaction>2014/07/06 07:53:24.014.dfm,D:\Meus Projetos\ERP\Unit1.dfm=D:\Meus Projetos\ERP\uCad_Transportadora.dfm</Transaction>
+    <Transaction>2014/07/12 07:04:43.077.pas,D:\Meus Projetos\ERP\udlgCondicaoPagamentoProposta.pas=D:\Meus Projetos\ERP\udlgCondicaoPagamento.pas</Transaction>
+    <Transaction>2014/07/12 07:04:43.077.dfm,D:\Meus Projetos\ERP\udlgCondicaoPagamentoProposta.dfm=D:\Meus Projetos\ERP\udlgCondicaoPagamento.dfm</Transaction>
   </Transactions>
 </BorlandProject>
