@@ -20,7 +20,7 @@ uses
   dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
   dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
   dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinXmas2008Blue, dxSkinscxPCPainter;
+  dxSkinXmas2008Blue, dxSkinscxPCPainter, Grids, DBGrids;
 
 type
   TfrmLst_Empresa = class(TfrmLstCadastroSimplesERP)
@@ -53,6 +53,9 @@ type
     LabelDBEdit9: TLabelDBEdit;
     LabelDBEdit11: TLabelDBEdit;
     LabelDBEdit12: TLabelDBEdit;
+    LabelDBEdit13: TLabelDBEdit;
+    GroupBox3: TGroupBox;
+    DBGrid1: TDBGrid;
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);

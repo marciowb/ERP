@@ -630,6 +630,48 @@ inherited frmLst_Empresa: TfrmLst_Empresa
             GravaEsteCampo = True
             AsInteger = 0
           end
+          object LabelDBEdit13: TLabelDBEdit
+            Left = 16
+            Top = 59
+            Width = 89
+            Height = 21
+            DataField = 'NUMEROSAIDA'
+            DataSource = DataCadastro
+            TabOrder = 3
+            Titulo.Left = 16
+            Titulo.Top = 44
+            Titulo.Width = 71
+            Titulo.Height = 13
+            Titulo.Caption = 'N'#186' '#250'ltima sa'#237'da'
+            IsNull = True
+            PodeRepetir = True
+            CorPrincipal = clWhite
+            CorSecundaria = 11592447
+            GravaEsteCampo = True
+            AsInteger = 0
+          end
+          object GroupBox3: TGroupBox
+            Left = 0
+            Top = 86
+            Width = 323
+            Height = 88
+            Align = alBottom
+            Caption = ' Documentos '
+            TabOrder = 4
+            object DBGrid1: TDBGrid
+              Left = 2
+              Top = 15
+              Width = 319
+              Height = 71
+              Align = alClient
+              TabOrder = 0
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -11
+              TitleFont.Name = 'Tahoma'
+              TitleFont.Style = []
+            end
+          end
         end
       end
       object LabelDBEdit10: TLabelDBEdit

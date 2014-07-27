@@ -133,6 +133,12 @@ type
     edtAcresAliq: TLabelDBEdit;
     edtDescAliq: TLabelDBEdit;
     cxSplitter1: TcxSplitter;
+    cxGrid2Level2: TcxGridLevel;
+    cxGrid2DBTableView1: TcxGridDBTableView;
+    cxGrid2DBTableView1Column1: TcxGridDBColumn;
+    cxGrid2DBTableView1Column2: TcxGridDBColumn;
+    EdtAlmoxarifado: TEditPesquisa;
+    edtFuncionario: TEditPesquisa;
     procedure actNovoPagamentoExecute(Sender: TObject);
     procedure actEditarPagamentoExecute(Sender: TObject);
     procedure actExcluirPagamentoExecute(Sender: TObject);
@@ -155,6 +161,8 @@ type
     procedure CdsCondicaoPagamentoAfterScroll(DataSet: TDataSet);
     procedure CdsCondicaoPagamentoNewRecord(DataSet: TDataSet);
     procedure grpFreteClick(Sender: TObject);
+    procedure CdsItensAfterPost(DataSet: TDataSet);
+    procedure btnGravarClick(Sender: TObject);
   private
     { Private declarations }
     UfEmpresa: String;
@@ -173,7 +181,8 @@ var
 
 implementation
 
-uses UDmConexao, Comandos, MinhasClasses, uDlg_SaidaItem, udlgCondicaoPagamento;
+uses UDmConexao, Comandos, MinhasClasses, uDlg_SaidaItem, udlgCondicaoPagamento,
+  uRegras, uLibERP;
 
 {$R *.dfm}
 procedure TfrmSaida.AbreVenda(IdVenda: String);
@@ -228,6 +237,10 @@ begin
     CdsItens.Edit;
     CdsItens.FieldByName('FLAGEDICAO').AsString := 'D';
     CdsItens.Post;
+    TRegrasSaidaProduto.DesbloqueiaQuantidadeProduto(CdsItens.FieldByName('idsaida').AsLargeInt,
+                                                      edtEmpresa.ValorChaveInteger,
+                                                      CdsItens.FieldByName('NUMITEM').AsLargeInt);
+
     CalculaTotais;
   end;
 
@@ -283,6 +296,16 @@ procedure TfrmSaida.btnCancelarClick(Sender: TObject);
 begin
   inherited;
   RestartaVenda;
+end;
+
+procedure TfrmSaida.btnGravarClick(Sender: TObject);
+begin
+  inherited;
+  if  TRegrasSaidaProduto.GravaSaida(CdsSaida, CdsItens,CdsCondicaoPagamento, CdsParcelamentos) Then
+  begin
+    Avisa('Saída gravada com sucesso');
+    RestartaVenda;
+  end;
 end;
 
 procedure TfrmSaida.CalculaTotais(SemDesconAcrescimo: Boolean=False);
@@ -406,6 +429,21 @@ begin
   CdsCondicaoPagamento.FieldByName('IDSAIDA').AsString := CdsSaida.FieldByName('IDSAIDA').AsString ;
 end;
 
+procedure TfrmSaida.CdsItensAfterPost(DataSet: TDataSet);
+begin
+  inherited;
+  if (CdsItens.FieldByName('flagedicao').AsString = 'I') or
+     (CdsItens.FieldByName('flagedicao').AsString = 'E')   then
+    TRegrasSaidaProduto.BloqueiaQuantidadeProduto(CdsItens.FieldByName('idsaida').AsLargeInt,
+                                                  CdsItens.FieldByName('idproduto').AsLargeInt,
+                                                  edtEmpresa.ValorChaveInteger,
+                                                  CdsItens.FieldByName('idcor').AsLargeInt,
+                                                  CdsItens.FieldByName('idtamanho').AsLargeInt,
+                                                  CdsItens.FieldByName('NUMITEM').AsLargeInt,
+                                                  CdsItens.FieldByName('IDALMOXARIFADO').AsLargeInt,
+                                                  CdsItens.FieldByName('quantidade').AsFloat);
+end;
+
 procedure TfrmSaida.CdsItensNewRecord(DataSet: TDataSet);
 begin
   inherited;
@@ -413,6 +451,7 @@ begin
   CdsItens.FieldByName('NUMITEM').AsInteger := CdsItens.RecordCount +1;
   CdsItens.FieldByName('IDSAIDAPRODUTO').AsInteger := StrToInt64(CdsItens.FieldByName('NUMITEM').AsString + CdsItens.FieldByName('IDSAIDA').AsString);
   CdsItens.FieldByName('flagedicao').AsString := 'I';
+  CdsItens.FieldByName('IDALMOXARIFADO').AsInteger := EdtAlmoxarifado.ValorChaveInteger;
 end;
 
 procedure TfrmSaida.CdsParcelamentosBeforePost(DataSet: TDataSet);
@@ -425,7 +464,7 @@ end;
 procedure TfrmSaida.CdsParcelamentosNewRecord(DataSet: TDataSet);
 begin
   inherited;
-  CdsParcelamentos.FieldByName('IDPARSAIDACONDICAOPAGAMENTO').AsString := FormatDateTime('ddmmyyyyhhnnsszzz',StrToDateTime(GetDataServidor+GetHoraServidor));
+  CdsParcelamentos.FieldByName('IDPARSAIDACONDICAOPAGAMENTO').AsString := FormatDateTime('ddmmyyyyhhnnsszzz',StrToDateTime(GetDataServidor+GetHoraServidor))+IntToStr(CdsParcelamentos.RecordCount+1);
   CdsParcelamentos.FieldByName('IDSAIDACONDICAOPAGAMENTO').AsString := CdsCondicaoPagamento.FieldByName('IDSAIDACONDICAOPAGAMENTO').AsString;
   CdsParcelamentos.FieldByName('FLAGEDICAO').AsString := 'I';
 end;
@@ -516,6 +555,7 @@ begin
   ConfiguraEditPesquisa(edtOperacao,CdsSaida,tpERPOperacaoSaida);
   ConfiguraEditPesquisa(edtTransportadora,CdsSaida,tpERPTransportadora);
   ConfiguraEditPesquisa(edtPessoa,CdsSaida,tpERPCliente);
+  ConfiguraEditPesquisa(EdtAlmoxarifado,nil,tpERPAlmoxarifado);
   RestartaVenda;
 end;
 
@@ -558,8 +598,14 @@ end;
 
 procedure TfrmSaida.RestartaVenda;
 begin
+  if CdsSaida.Active  then
+    TRegrasSaidaProduto.DesbloqueiaProdutosVenda(CdsSaida.FieldByName('idsaida').AsLargeInt, edtEmpresa.ValorChaveInteger);
   AbreVenda('-1');
   CdsSaida.Append;
+  TRotinasPesquisa.ConfiguraPesquisaFuncionario(edtFuncionario,CdsSaida);
+  if Self.Showing then
+    edtFuncionario.SetFocus;
+
 end;
 
 end.

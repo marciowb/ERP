@@ -1,6 +1,6 @@
 ﻿[Closed Files]
-File_0=TSourceModule,'D:\Meus Projetos\ERP\uCad_proposta.pas',0,1,403,45,403,0,0,,
-File_1=TSourceModule,'D:\Meus Projetos\ERP\uAddItemPadrao.pas',0,1,88,1,94,0,0,,
+File_0=TSourceModule,'D:\Meus Projetos\componentes\Kimera\TLabelEdit\LabelDBEdit.pas',0,1,169,1,181,0,0,,
+File_1=TSourceModule,'D:\Meus Projetos\ERP\uCad_proposta.pas',0,1,403,45,403,0,0,,
 File_2=TSourceModule,'D:\Meus Projetos\ERP\uCad_OS.pas',0,1,113,90,129,0,0,,
 File_3=TSourceModule,'D:\Meus Projetos\ERP\uLst_Proposta.pas',0,1,56,82,65,0,0,,
 File_4=TSourceModule,'D:\Meus Projetos\componentes\Kimera\EditPesquisa\EditPesquisa.pas',0,1,376,1,390,0,0,,
@@ -17,22 +17,33 @@ File_14=TSourceModule,'D:\Meus Projetos\ERP\uDlg_EquipamentoCliente.pas',0,1,70,
 
 [Modules]
 Module0=D:\Meus Projetos\ERP\uSaida.pas
-Module1=D:\Meus Projetos\ERP\uSQLERP.pas
-Module2=D:\Meus Projetos\ERP\udlgCondicaoPagamento.pas
-Module3=D:\Meus Projetos\ERP\uForms.pas
-Module4=D:\Meus Projetos\ERP\uRegras.pas
+Module1=D:\Meus Projetos\Global\UDmConexao.pas
+Module2=D:\Meus Projetos\ERP\uAddItemPadrao.pas
+Module3=D:\Meus Projetos\ERP\uSQLERP.pas
+Module4=D:\Meus Projetos\ERP\udlgCondicaoPagamento.pas
 Module5=D:\Meus Projetos\ERP\uDlg_SaidaItem.pas
 Module6=D:\Meus Projetos\Global\Comandos.pas
-Module7=default.htm
-Module8=D:\Meus Projetos\Global\UDmConexao.pas
+Module7=D:\Meus Projetos\ERP\uForms.pas
+Module8=D:\Meus Projetos\ERP\uRegras.pas
 Module9=D:\Meus Projetos\ERP\uPrincipal.pas
 Module10=D:\Meus Projetos\Global\MinhasClasses.pas
 Module11=D:\Meus Projetos\ERP\uConstantes.pas
 Module12=D:\Meus Projetos\ERP\uLibSaida.pas
-Count=13
+Module13=default.htm
+Count=14
 EditWindowCount=1
 
 [D:\Meus Projetos\ERP\uSaida.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=1
+
+[D:\Meus Projetos\Global\UDmConexao.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[D:\Meus Projetos\ERP\uAddItemPadrao.pas]
 ModuleType=TSourceModule
 FormState=1
 FormOnTop=0
@@ -45,7 +56,17 @@ FormOnTop=0
 [D:\Meus Projetos\ERP\udlgCondicaoPagamento.pas]
 ModuleType=TSourceModule
 FormState=1
-FormOnTop=1
+FormOnTop=0
+
+[D:\Meus Projetos\ERP\uDlg_SaidaItem.pas]
+ModuleType=TSourceModule
+FormState=1
+FormOnTop=0
+
+[D:\Meus Projetos\Global\Comandos.pas]
+ModuleType=TSourceModule
+FormState=0
+FormOnTop=0
 
 [D:\Meus Projetos\ERP\uForms.pas]
 ModuleType=TSourceModule
@@ -55,24 +76,6 @@ FormOnTop=0
 [D:\Meus Projetos\ERP\uRegras.pas]
 ModuleType=TSourceModule
 FormState=0
-FormOnTop=0
-
-[D:\Meus Projetos\ERP\uDlg_SaidaItem.pas]
-ModuleType=TSourceModule
-FormState=1
-FormOnTop=1
-
-[D:\Meus Projetos\Global\Comandos.pas]
-ModuleType=TSourceModule
-FormState=0
-FormOnTop=0
-
-[default.htm]
-ModuleType=TURLModule
-
-[D:\Meus Projetos\Global\UDmConexao.pas]
-ModuleType=TSourceModule
-FormState=1
 FormOnTop=0
 
 [D:\Meus Projetos\ERP\uPrincipal.pas]
@@ -95,7 +98,10 @@ ModuleType=TSourceModule
 FormState=0
 FormOnTop=0
 
-[D:\Meus Projetos\ERP\uAddItemPadrao.pas]
+[default.htm]
+ModuleType=TURLModule
+
+[D:\Meus Projetos\Global\uFormPadrao.pas]
 FormState=1
 FormOnTop=0
 
@@ -107,32 +113,12 @@ FormOnTop=0
 FormState=1
 FormOnTop=0
 
-[D:\Meus Projetos\Global\uFormPadrao.pas]
-FormState=1
-FormOnTop=0
-
-[D:\Meus Projetos\ERP\uCad_CadastroPaiERP.pas]
-FormState=1
-FormOnTop=0
-
-[D:\Meus Projetos\Global\Cad_CadastroPai.pas]
-FormState=1
-FormOnTop=0
-
 [D:\Meus Projetos\Global\uPrincipalPadrao.pas]
 FormState=1
 FormOnTop=0
 
-[D:\Meus Projetos\ERP\uListagemPadraoERP.pas]
-FormState=1
-FormOnTop=0
-
-[D:\Meus Projetos\Global\uListagemPadrao.pas]
-FormState=1
-FormOnTop=0
-
 [EditWindow0]
-ViewCount=13
+ViewCount=14
 CurrentEditView=D:\Meus Projetos\ERP\uSaida.pas
 View0=0
 View1=1
@@ -147,6 +133,7 @@ View9=9
 View10=10
 View11=11
 View12=12
+View13=13
 PercentageSizes=1
 Create=1
 Visible=1
@@ -166,13 +153,12 @@ TopPanelSize=0
 LeftPanelSize=0
 RightPanelSize=0
 BottomPanelSize=0
-BottomPanelClients=DockSite1
-BottomPanelData=0000080001000100000009000000446F636B53697465317A45000000000000000D06000000000000FFFFFFFF
+BottomPanelClients=DockSite1,MessageView
+BottomPanelData=0000080001020200000009000000446F636B53697465310F0000004D65737361676556696577466F726D1534000000000000022806000000000000FFFFFFFF
 BottomMiddlePanelSize=0
 BottomMiddlePanelClients=DockSite0
 BottomMiddelPanelData=0000080001000100000009000000446F636B53697465302D1900000000000000771B000000000000FFFFFFFF
-TabDockLeftClients=DockSite3=0,DockSite2=1,PropertyInspector=2
-TabDockBottomClients=MessageView=0
+TabDockLeftClients=DockSite3=0,PropertyInspector=1,DockSite2=2
 TabDockRightClients=DockSite4=0
 
 [View0]
@@ -204,9 +190,9 @@ EditViewName=D:\Meus Projetos\ERP\uForms.pas
 [View3]
 CustomEditViewType=TEditView
 Module=D:\Meus Projetos\Global\Comandos.pas
-CursorX=111
-CursorY=2002
-TopLine=1988
+CursorX=1
+CursorY=134
+TopLine=130
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -214,21 +200,21 @@ EditViewName=D:\Meus Projetos\Global\Comandos.pas
 
 [View4]
 CustomEditViewType=TEditView
-Module=D:\Meus Projetos\ERP\uSaida.pas
-CursorX=44
-CursorY=290
-TopLine=273
+Module=D:\Meus Projetos\ERP\uSQLERP.pas
+CursorX=49
+CursorY=988
+TopLine=969
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=D:\Meus Projetos\ERP\uSaida.pas
+EditViewName=D:\Meus Projetos\ERP\uSQLERP.pas
 
 [View5]
 CustomEditViewType=TEditView
-Module=D:\Meus Projetos\ERP\udlgCondicaoPagamento.pas
-CursorX=4
-CursorY=198
-TopLine=192
+Module=D:\Meus Projetos\ERP\uSaida.pas
+CursorX=1
+CursorY=444
+TopLine=441
 LeftCol=1
 Elisions=
 Bookmarks=
@@ -236,27 +222,38 @@ EditViewName=Borland.FormDesignerView
 
 [View6]
 CustomEditViewType=TEditView
+Module=D:\Meus Projetos\ERP\udlgCondicaoPagamento.pas
+CursorX=1
+CursorY=147
+TopLine=132
+LeftCol=1
+Elisions=
+Bookmarks=
+EditViewName=D:\Meus Projetos\ERP\udlgCondicaoPagamento.pas
+
+[View7]
+CustomEditViewType=TEditView
 Module=D:\Meus Projetos\ERP\uDlg_SaidaItem.pas
-CursorX=90
-CursorY=57
-TopLine=51
+CursorX=6
+CursorY=55
+TopLine=54
 LeftCol=1
 Elisions=
 Bookmarks=
 EditViewName=Borland.FormDesignerView
 
-[View7]
+[View8]
 CustomEditViewType=TEditView
-Module=D:\Meus Projetos\ERP\uSQLERP.pas
-CursorX=103
-CursorY=983
-TopLine=963
+Module=D:\Meus Projetos\ERP\uAddItemPadrao.pas
+CursorX=83
+CursorY=99
+TopLine=80
 LeftCol=1
 Elisions=
 Bookmarks=
-EditViewName=D:\Meus Projetos\ERP\uSQLERP.pas
+EditViewName=D:\Meus Projetos\ERP\uAddItemPadrao.pas
 
-[View8]
+[View9]
 CustomEditViewType=TEditView
 Module=D:\Meus Projetos\Global\UDmConexao.pas
 CursorX=1
@@ -267,7 +264,7 @@ Elisions=
 Bookmarks=
 EditViewName=Borland.FormDesignerView
 
-[View9]
+[View10]
 CustomEditViewType=TEditView
 Module=D:\Meus Projetos\ERP\uLibSaida.pas
 CursorX=55
@@ -278,7 +275,7 @@ Elisions=
 Bookmarks=
 EditViewName=D:\Meus Projetos\ERP\uLibSaida.pas
 
-[View10]
+[View11]
 CustomEditViewType=TEditView
 Module=D:\Meus Projetos\ERP\uRegras.pas
 CursorX=1
@@ -289,7 +286,7 @@ Elisions=
 Bookmarks=
 EditViewName=D:\Meus Projetos\ERP\uRegras.pas
 
-[View11]
+[View12]
 CustomEditViewType=TEditView
 Module=D:\Meus Projetos\ERP\uConstantes.pas
 CursorX=1
@@ -300,7 +297,7 @@ Elisions=
 Bookmarks=
 EditViewName=D:\Meus Projetos\ERP\uConstantes.pas
 
-[View12]
+[View13]
 CustomEditViewType=TEditView
 Module=D:\Meus Projetos\Global\MinhasClasses.pas
 CursorX=58
@@ -312,11 +309,8 @@ Bookmarks=
 EditViewName=D:\Meus Projetos\Global\MinhasClasses.pas
 
 [Watches]
-Count=4
-Watch0='Parent.Name',256,0,18,1,0,'Watches',1
-Watch1='Cds.state',256,0,18,1,0,'Watches',1
-Watch2='Field.fieldname',256,0,18,1,0,'Watches',1
-Watch3='CdsListagem.Fields[i].fieldname',256,0,18,1,0,'Watches',1
+Count=1
+Watch0='CdsCondicaoPagamento.FieldByName(''IDSAIDACONDICAOPAGAMENTO'').AsString',256,0,18,1,0,'Watches',1
 
 [WatchWindow]
 WatchColumnWidth=120
@@ -329,11 +323,11 @@ State=0
 Left=0
 Top=0
 Width=3821
-Height=975
+Height=1071
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3821
-ClientHeight=975
+ClientHeight=1071
 TBDockHeight=220
 LRDockWidth=13602
 Dockable=1
@@ -392,14 +386,14 @@ Visible=0
 Docked=1
 State=0
 Left=0
-Top=728
+Top=0
 Width=2767
-Height=1319
+Height=1415
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2767
-ClientHeight=1319
-TBDockHeight=1319
+ClientHeight=1415
+TBDockHeight=1415
 LRDockWidth=2767
 Dockable=1
 StayOnTop=0
@@ -430,7 +424,7 @@ Visible=0
 Docked=1
 State=0
 Left=-8
-Top=227
+Top=-31
 Width=278
 Height=357
 MaxLeft=-1
@@ -454,11 +448,11 @@ State=0
 Left=0
 Top=0
 Width=3821
-Height=975
+Height=1071
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3821
-ClientHeight=975
+ClientHeight=1071
 TBDockHeight=412
 LRDockWidth=4949
 Dockable=1
@@ -473,11 +467,11 @@ State=0
 Left=0
 Top=0
 Width=3821
-Height=975
+Height=1071
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3821
-ClientHeight=975
+ClientHeight=1071
 TBDockHeight=220
 LRDockWidth=7408
 Dockable=1
@@ -496,11 +490,11 @@ State=0
 Left=0
 Top=0
 Width=3821
-Height=975
+Height=1071
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3821
-ClientHeight=975
+ClientHeight=1071
 TBDockHeight=1538
 LRDockWidth=3485
 Dockable=1
@@ -515,11 +509,11 @@ State=0
 Left=0
 Top=0
 Width=3821
-Height=975
+Height=1071
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3821
-ClientHeight=975
+ClientHeight=1071
 TBDockHeight=2060
 LRDockWidth=3485
 Dockable=1
@@ -531,8 +525,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=-1290
-Top=-74
+Left=-8
+Top=-31
 Width=2840
 Height=6209
 MaxLeft=-1
@@ -553,11 +547,11 @@ State=0
 Left=0
 Top=0
 Width=2335
-Height=893
+Height=1140
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2335
-ClientHeight=893
+ClientHeight=1140
 TBDockHeight=2321
 LRDockWidth=2826
 Dockable=1
@@ -572,11 +566,11 @@ State=0
 Left=0
 Top=0
 Width=2335
-Height=755
+Height=1140
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2335
-ClientHeight=755
+ClientHeight=1140
 TBDockHeight=3201
 LRDockWidth=2826
 Dockable=1
@@ -591,11 +585,11 @@ State=0
 Left=0
 Top=0
 Width=2335
-Height=755
+Height=1140
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2335
-ClientHeight=755
+ClientHeight=1140
 TBDockHeight=1154
 LRDockWidth=3675
 Dockable=1
@@ -634,24 +628,24 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=84
-Top=315
+Left=0
+Top=0
 Width=1896
 Height=8599
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=1779
-ClientHeight=8063
+ClientWidth=1896
+ClientHeight=8599
 TBDockHeight=8599
 LRDockWidth=1896
 Dockable=1
 StayOnTop=0
-SplitPos=133
+SplitPos=111
 
 [PropInspDesignerSelection]
 ArrangeBy=Name
-SelectedItem=AlignWithMargins,CustomHint
-ExpandedItems=Anchors=0,BorderIcons=0,Constraints=0,Font=0,GlassFrame=0,HorzScrollBar=0,Margins=0,Padding=0,Touch=0,VertScrollBar=0,DataBinding=1,Options=1,Styles=0,Summary=0,ActiveControl=0,DataSource=0,Titulo=1,BevelEdges=0,Properties=0,FilterOptions=0,DataController=0,NavigatorButtons=0,BackgroundBitmaps=0,DateTimeHandling=0,FilterBox=0,Filtering=0,FilterRow=0,NewItemRow=0,OptionsBehavior=0,OptionsCustomize=0,OptionsData=0,OptionsSelection=0,OptionsView=1,Preview=0,Column=0,Titulo.Anchors=0,Titulo.Constraints=0,LevelTabs=0,LookAndFeel=0,Titulo.Font=0,TabSlants=0
+SelectedItem=,
+ExpandedItems=
 
 [ModelViewTool]
 PercentageSizes=1
@@ -700,11 +694,11 @@ State=0
 Left=0
 Top=0
 Width=3821
-Height=975
+Height=1071
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3821
-ClientHeight=975
+ClientHeight=1071
 TBDockHeight=1552
 LRDockWidth=8741
 Dockable=1
@@ -767,14 +761,14 @@ Visible=0
 Docked=1
 State=0
 Left=0
-Top=23
+Top=0
 Width=2335
-Height=1099
+Height=1484
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=2335
-ClientHeight=1099
-TBDockHeight=1099
+ClientHeight=1484
+TBDockHeight=1484
 LRDockWidth=2335
 Dockable=1
 StayOnTop=0
@@ -791,14 +785,14 @@ Visible=0
 Docked=1
 State=0
 Left=0
-Top=23
+Top=0
 Width=3821
-Height=1319
+Height=1415
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=3821
-ClientHeight=1319
-TBDockHeight=1319
+ClientHeight=1415
+TBDockHeight=1415
 LRDockWidth=3821
 Dockable=1
 StayOnTop=0
@@ -814,8 +808,8 @@ Create=1
 Visible=0
 Docked=1
 State=0
-Left=1366
-Top=105
+Left=0
+Top=0
 Width=1999
 Height=8599
 MaxLeft=-1

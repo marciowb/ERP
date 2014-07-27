@@ -13,12 +13,12 @@ inherited frmdlgCondicaoPagamento: TfrmdlgCondicaoPagamento
     ExplicitTop = 248
     ExplicitWidth = 517
     inherited btnOk: TBitBtn
-      Left = 231
-      ExplicitLeft = 231
+      Left = 227
+      ExplicitLeft = 227
     end
     inherited btnCancelar: TBitBtn
-      Left = 322
-      ExplicitLeft = 322
+      Left = 318
+      ExplicitLeft = 318
     end
   end
   inherited Panel2: TPanel

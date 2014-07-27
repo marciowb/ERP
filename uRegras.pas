@@ -1,7 +1,7 @@
 unit uRegras;
 
 interface
-  Uses MinhasClasses, uSQLERP,Comandos,Classes,SysUtils, Math,DB,pFIBClientDataSet;
+  Uses MinhasClasses, uSQLERP,Comandos,Classes,SysUtils, Math,DB,pFIBClientDataSet, StrUtils;
   Type
     TParcela = record
       NumParcela: Integer;
@@ -32,6 +32,13 @@ interface
     TRegrasEntradaMercadoria = class
       class Procedure CalculaTotalNotaEntrada(var DataSetMaster: TpFIBClientDataSet; var DataSetProdutos: TpFIBClientDataSet);
       class procedure CalculaValoresItens(var CampoAtual: TField);
+    end;
+
+    TRegrasSaidaProduto = class
+      class procedure BloqueiaQuantidadeProduto(IdVenda,idProduto, IdEmpresa, IdCor, IDTamanho,NumItem,IdAlmoxarifado:Integer; Quantidade: Double);
+      class procedure DesbloqueiaQuantidadeProduto(IdVenda,IdEmpresa,NumItem:Integer);
+      class function GravaSaida(const DataSetSaida, DataSetProdutos, DataSetPagamentos, DataSetParcelamento: TpFIBClientDataSet): Boolean;
+      class procedure DesbloqueiaProdutosVenda(IdVenda,IdEmpresa:Integer);
     end;
 
 implementation
@@ -263,6 +270,103 @@ begin
 
   End;
 
+end;
+
+{ TRegrasSaidaProduto }
+
+class procedure TRegrasSaidaProduto.BloqueiaQuantidadeProduto(IdVenda,
+  idProduto, IdEmpresa, IdCor, IDTamanho,NumItem,IdAlmoxarifado: Integer; Quantidade: Double);
+var
+  StrSQL: String;
+begin
+  Try
+    StartTrans;
+    StrSQL :=
+     'insert into RESERVAVENDAANDAMENTO (IDRESERVAVENDAANDAMENTO, IDVENDA,IDEMPRESA, NUMITEM, IDPRODUTO, IDCOR, IDTAMANHO,IDALMOXARIFADO, QUANTIDADE) '+
+     ' values (gen_id(seq_IDRESERVAVENDAANDAMENTO,1), '+GetInteger(IdVenda)+', '+GetInteger(IdEmpresa)+', '+GetInteger(NumItem)+', '+GetInteger(idProduto)+', '+IfThen(GetInteger(IdCor)='0','null',GetInteger(IdCor))+', '+
+     IfThen(GetInteger(IDTamanho)='0','null',GetInteger(IDTamanho))+', '+IfThen(GetInteger(IdAlmoxarifado)='0','null',GetInteger(IdAlmoxarifado))+', '+GetNumber(Quantidade)+') ';
+    Exec_SQL(StrSQL);
+    Commit;
+  Except
+    on e:Exception do
+    begin
+      RollBack;
+      Raise;
+    end;
+  End;
+end;
+
+class procedure TRegrasSaidaProduto.DesbloqueiaProdutosVenda(IdVenda,
+  IdEmpresa: Integer);
+var
+  StrSQL: String;
+begin
+  Try
+    StartTrans;
+    StrSQL :=
+      'delete from RESERVAVENDAANDAMENTO '+
+      ' where IDEMPRESA = '+IntToStr(IdEmpresa)+
+      '   AND IDVENDA = '+IntToStr(IdVenda);
+    Exec_SQL(StrSQL);
+    Commit;
+  Except
+    on e:Exception do
+    begin
+      RollBack;
+      Raise;
+    end;
+  End;
+
+end;
+
+class procedure TRegrasSaidaProduto.DesbloqueiaQuantidadeProduto(IdVenda,IdEmpresa,NumItem:Integer);
+var
+  StrSQL: String;
+begin
+  Try
+    StartTrans;
+    StrSQL :=
+      'delete from RESERVAVENDAANDAMENTO '+
+      ' where IDEMPRESA = '+IntToStr(IdEmpresa)+
+      '   AND IDVENDA = '+IntToStr(IdVenda)+
+      '   and NUMITEM = '+IntToStr(NumItem);
+    Exec_SQL(StrSQL);
+    Commit;
+  Except
+    on e:Exception do
+    begin
+      RollBack;
+      Raise;
+    end;
+  End;
+end;
+
+class function TRegrasSaidaProduto.GravaSaida(const DataSetSaida,
+  DataSetProdutos, DataSetPagamentos, DataSetParcelamento: TpFIBClientDataSet): Boolean;
+var
+  StrSQL : String;
+begin
+  Result := False;
+  Try
+    StartTrans;
+    AlteraBanco(taInsere,DataSetSaida,tpERPSaida);
+    SetRegistros(DataSetProdutos,tpERPSaidaProduto);
+    SetRegistros(DataSetPagamentos,tpERPSaidaCondicaoPagamento);
+    SetRegistros(DataSetParcelamento,tpERPSaidaCondicaoPagamentoParcelas);
+    StrSQL :=
+      'delete from RESERVAVENDAANDAMENTO '+
+      ' where IDVENDA = '+IntToStr(DataSetSaida.FieldByName('idsaida').AsLargeInt);
+    Exec_SQL(StrSQL);
+    Commit;
+    Result := True;
+  Except
+    on E: Exception do
+    begin
+      RollBack;
+      raise;
+    end;
+
+  End;
 end;
 
 end.

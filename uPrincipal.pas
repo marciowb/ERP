@@ -128,6 +128,8 @@ type
     NovaSada1: TMenuItem;
     actTransportadora: TAction;
     ransportadora1: TMenuItem;
+    actAlmoxarifado: TAction;
+    Almoxarifados1: TMenuItem;
     procedure actCadastroExecute(Sender: TObject);
     procedure actCFOPExecute(Sender: TObject);
     procedure actNCMExecute(Sender: TObject);
@@ -176,6 +178,7 @@ type
     procedure actEntradasExecute(Sender: TObject);
     procedure actNovaSaidaExecute(Sender: TObject);
     procedure actTransportadoraExecute(Sender: TObject);
+    procedure actAlmoxarifadoExecute(Sender: TObject);
   private
     { Private declarations }
     Procedure AtualizaAgenda;
@@ -196,6 +199,12 @@ procedure TfrmPrincipal.actAgendaExecute(Sender: TObject);
 begin
   inherited;
   TrotinasForms.AbreAgenda;
+end;
+
+procedure TfrmPrincipal.actAlmoxarifadoExecute(Sender: TObject);
+begin
+  inherited;
+  TrotinasForms.AbreCadastroAlmoxarifado;
 end;
 
 procedure TfrmPrincipal.actBancoExecute(Sender: TObject);

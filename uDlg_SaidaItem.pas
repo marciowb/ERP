@@ -37,17 +37,21 @@ type
     LabelDBEdit32: TLabelDBEdit;
     LabelDBEdit33: TLabelDBEdit;
     LabelDBEdit34: TLabelDBEdit;
+    edtAlmoxarifado: TEditPesquisa;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+
   end;
 
 var
   frmDlg_SaidaItem: TfrmDlg_SaidaItem;
 
 implementation
+
+uses Comandos, MinhasClasses;
 
 {$R *.dfm}
 
@@ -58,7 +62,7 @@ begin
   inherited;
   edtProduto.UsaBtnNovo := false;
   edtProduto.UsaBtnEditar := false;
-
+  ConfiguraEditPesquisa(EdtAlmoxarifado,pDataSet,tpERPAlmoxarifado);
 
 end;
 

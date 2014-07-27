@@ -53,6 +53,7 @@ interface
       class Procedure AbreListageEntrada;
       CLASS procedure AbreVenda(IdVenda: Integer = - 1);
       class function AbreCadastroTransportadora(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
+      class function AbreCadastroAlmoxarifado(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
   private
 
     end;
@@ -77,6 +78,12 @@ begin
   Finally
     FreeAndNil(frmAgenda);
   End;
+end;
+
+class function TrotinasForms.AbreCadastroAlmoxarifado(
+  TipoOperacao: TTipoOperacaoForm): CampoChave;
+begin
+  AbreFormSimplesPeloTipoPesquisa(tpERPAlmoxarifado,TipoOperacao);
 end;
 
 class function TrotinasForms.AbreCadastroBanco(TipoOperacao: TTipoOperacaoForm = toNada): CampoChave;
